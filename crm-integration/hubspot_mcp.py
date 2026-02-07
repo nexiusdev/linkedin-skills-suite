@@ -307,6 +307,7 @@ def _parse_prospects_table(content: str) -> List[Dict[str, str]]:
     """Parse the markdown prospects table from icp-prospects.md.
 
     Returns list of dicts with keys matching column headers.
+    Handles escaped pipes (\\|) in cell content by joining overflow into the last column.
     """
     prospects = []
     lines = content.split("\n")
@@ -333,6 +334,11 @@ def _parse_prospects_table(content: str) -> List[Dict[str, str]]:
             # Skip separator row
             if all(c.replace("-", "").replace(":", "").strip() == "" for c in cells):
                 continue
+            # Handle escaped pipes (\|) in Notes column causing extra cells
+            if len(cells) > len(headers):
+                # Join overflow cells back into the last column (Notes)
+                overflow = cells[len(headers) - 1:]
+                cells = cells[:len(headers) - 1] + [" | ".join(overflow)]
             if len(cells) == len(headers):
                 row = dict(zip(headers, cells))
                 prospects.append(row)
@@ -348,6 +354,7 @@ def _prospect_to_hubspot_properties(prospect: Dict[str, str]) -> Dict[str, str]:
     props: Dict[str, str] = {
         "firstname": firstname,
         "lastname": lastname,
+        "email": prospect.get("Email", ""),
         "jobtitle": prospect.get("Role", ""),
         "city": prospect.get("Location", ""),
         "linkedin_profile": prospect.get("Profile URL", ""),

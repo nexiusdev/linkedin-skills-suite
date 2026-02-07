@@ -69,13 +69,39 @@ When user triggers autonomous mode ("start linkedin"):
      - Update Profile Cache with all captured data
      - Record: Last Checked, Activity Status, Last Post, Recent Posts
 
+   COMMENT DEDUP RULE (applies to ALL commenting across ALL blocks):
+   **ONE COMMENT PER POST - NEVER comment on the same post twice.**
+   (Replying to your own comment thread on a post is OK. Posting a new top-level comment is NOT.)
+
+   → PRE-FLIGHT (once per session, before any commenting starts):
+     1. Navigate to /in/melverick/recent-activity/comments/
+     2. Scroll to load all visible entries (at least 30-50 entries)
+     3. Extract "already commented" set: { author_slug + first_60_chars_of_post_text }
+     4. Store this set in memory for the entire session
+     5. This takes ~30 seconds and prevents all duplicate comments
+
+   → BEFORE EACH COMMENT:
+     1. Build post identifier: author_slug + first_60_chars_of_post_text
+     2. Check against "already commented" set
+     3. If MATCH FOUND → SKIP this post, find a replacement post
+     4. If NO MATCH → Proceed with commenting
+
+   → AFTER EACH COMMENT:
+     1. Add the post identifier to the "already commented" set (in-memory)
+     2. Log to shared activity log with: Author, Post URL, Post Topic, Comment Preview
+     3. This ensures subsequent comments in the same session also check correctly
+
    MORNING BLOCK:
    → CHECK: Comments today < 30 limit? If not, skip commenting
+   → RUN COMMENT DEDUP PRE-FLIGHT (scrape comments activity page → build dedup set)
    → Find 9 posts to comment on (3 Peer, 3 Prospect, 3 Thought Leader)
    → For each comment:
      - CHECK: Still under 30 comment limit?
+     - CHECK: Post NOT in "already commented" set (COMMENT DEDUP RULE)
+     - If duplicate detected → Skip post, find replacement
      - Generate comment using linkedin-pro-commenter (AI auto-selects)
      - Post comment via Claude for Chrome
+     - Update "already commented" set with new post identifier
      - Update daily limits: Comments +1
    → Log all comments to shared activity log
 
@@ -96,11 +122,14 @@ When user triggers autonomous mode ("start linkedin"):
    → Check notifications for comments on your post
    → For each reply:
      - CHECK: Still under 30 comment limit?
-     - Reply to comment
+     - Reply to comment (replies to comments on YOUR post are OK, not subject to dedup)
      - Update daily limits: Comments +1
    → Golden Hour engagement (5-10 posts):
      - CHECK: Comments + Likes within limits?
+     - CHECK: Post NOT in "already commented" set (COMMENT DEDUP RULE)
+     - If already commented on post → Like only, skip commenting
      - Engage with posts (comments and/or likes)
+     - Update "already commented" set after each new comment
      - Update daily limits after each action
    → Log engagement to shared activity log
 
@@ -115,7 +144,9 @@ When user triggers autonomous mode ("start linkedin"):
    → **WARM UP existing prospects (2-3 Touch Rule):**
      - Read icp-prospects.md → Filter for 0-1 touch prospects
      - Run linkedin-icp-warmer → Find their recent posts
+     - CHECK: Post NOT in "already commented" set (COMMENT DEDUP RULE)
      - Comment on posts to build touches (+1 touch per comment)
+     - Update "already commented" set after each new comment
      - Update Touch History in icp-prospects.md
    → **ONLY send connection requests to 2+ touch prospects:**
      - Filter icp-prospects.md for Touches >= 2
@@ -838,6 +869,9 @@ BEFORE COMMENTING:
   → Read today's comment count from shared log
   → If count >= 30: STOP, log "Daily comment limit reached"
   → If count >= 25: WARN "Approaching comment limit (25/30)"
+  → CHECK DEDUP: Is this post in the "already commented" set?
+  → If YES: SKIP post, log "Already commented on this post - skipping"
+  → If NO: Proceed with comment
 
 BEFORE SENDING CONNECTION:
   → Read this week's connection request count (rolling 7-day window)
@@ -1289,8 +1323,17 @@ All task completions should update the shared log, not just the to-do file.
 - CHECK limit for that action type
 - If at limit → Skip and log "Limit reached"
 - If approaching limit (80%+) → Warn in output
+- **CHECK COMMENT DEDUP** → Is this post in the "already commented" set? If yes → SKIP
 - After action → Update Daily Limits Status immediately
+- After comment → Update "already commented" set with new post identifier
+- After comment → Log to shared activity log with Post URL
 - **After visiting LinkedIn profile** → Update Profile Cache with new data
+
+**Comment Dedup Pre-flight (once per session):**
+- Must run BEFORE any commenting block starts
+- Navigate to /in/melverick/recent-activity/comments/
+- Build "already commented" set: { author_slug + first_60_chars_of_post }
+- This set persists for the entire session across all blocks
 
 ## Automation Setup
 

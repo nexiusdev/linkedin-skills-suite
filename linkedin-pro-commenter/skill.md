@@ -342,13 +342,22 @@ User can override: "use variation 2" or "make it more direct"
 ## Workflow
 
 1. **User pastes LinkedIn post**
-2. **Post Analysis** - Automatically identify post type, author persona, tone, audience, engagement level
-3. **Deep read** - What's the actual argument? What's the insight? What's being missed?
-4. **Genuine response formation** - What would be the authentic intellectual response after reading this?
-5. **Generate 3 articulation variations** - Create 3 distinct ways to express that response
-6. **AI auto-selects best variation** - Uses selection framework to identify optimal comment for post context
-7. **Output selected comment** - Present with "✅ SELECTED COMMENT" header, ready to copy/paste
-8. **Alternatives provided** - Other variations shown for user override if needed
+2. **DEDUP CHECK (MANDATORY)** - Before generating any comment:
+   - Check the "already commented" set (built during session pre-flight)
+   - Match by: author_slug + first_60_chars_of_post_text
+   - If MATCH → STOP. Report: "Already commented on this post - skipping to avoid duplicate"
+   - If NO MATCH → Proceed to step 3
+   - **NOTE:** This checks for previous top-level comments only. Replying to your own comment thread on a post is allowed.
+3. **Post Analysis** - Automatically identify post type, author persona, tone, audience, engagement level
+4. **Deep read** - What's the actual argument? What's the insight? What's being missed?
+5. **Genuine response formation** - What would be the authentic intellectual response after reading this?
+6. **Generate 3 articulation variations** - Create 3 distinct ways to express that response
+7. **AI auto-selects best variation** - Uses selection framework to identify optimal comment for post context
+8. **Output selected comment** - Present with "✅ SELECTED COMMENT" header, ready to copy/paste
+9. **Alternatives provided** - Other variations shown for user override if needed
+10. **POST-COMMENT LOG** - After comment is posted:
+    - Add post to "already commented" set (author_slug + first_60_chars)
+    - Log to shared activity log: Author, Post URL, Post Topic, Comment Preview
 
 **Fully automated** - No user selection required. Comment is ready to post immediately.
 User can override at any point: "use variation 2" or "make it shorter"
@@ -356,6 +365,11 @@ User can override at any point: "use variation 2" or "make it shorter"
 ## Quality Checklist
 
 Before delivering any comment, verify:
+
+**Dedup (FIRST CHECK - before anything else):**
+- Post NOT in "already commented" set (built during session pre-flight from /in/melverick/recent-activity/comments/)
+- If duplicate detected → STOP, do not generate comment, report "Already commented on this post"
+- Replying to your own existing comment thread is OK (not a duplicate)
 
 **Authenticity:**
 - References something specific from the post (not just topic)

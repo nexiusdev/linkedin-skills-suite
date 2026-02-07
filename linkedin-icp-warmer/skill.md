@@ -228,12 +228,30 @@ For each prioritized prospect:
    - Post age (days)
    - Current engagement level
 
-### Step 4: Cross-Reference Engagement History
+### Step 4: Cross-Reference Engagement History (COMMENT DEDUP CHECK)
 
-For each new post found, check shared log:
-- Have you already commented on this post? → Skip
-- Have you liked/saved this post? → Comment opportunity (adds touch)
-- Fresh post, no engagement? → Full opportunity
+**ONE COMMENT PER POST - NEVER comment on the same post twice.**
+
+For each new post found, check BOTH sources:
+
+**Source 1: "Already Commented" Set (in-memory, built during session pre-flight)**
+- This set is built at session start by scraping /in/melverick/recent-activity/comments/
+- Contains: { author_slug + first_60_chars_of_post_text } for all recent comments
+- If post is in this set → SKIP (already commented)
+
+**Source 2: Shared Activity Log (persistent)**
+- Check `shared/logs/linkedin-activity.md` → Comments Made table
+- Search by Post URL or author_slug + topic match
+- If found → SKIP (already commented)
+
+**Decision Matrix:**
+- Already commented (either source) → SKIP this post entirely
+- Only liked/saved this post → Comment opportunity (adds touch)
+- Fresh post, no engagement → Full opportunity
+
+**After commenting on a post:**
+- Add to "already commented" set immediately
+- Log to shared activity log with: Author, Post URL, Post Topic, Comment Preview
 
 ### Step 5: Output Warmup Opportunities
 

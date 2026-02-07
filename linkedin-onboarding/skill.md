@@ -84,6 +84,154 @@ Collect primary (3-4) and adjacent (2-3) industries:
 - "What timezone are you in?" (for optimal posting times)
 - This adjusts the daily planner time blocks
 
+### Phase 5: Integrations & API Keys
+
+Present all integration groups upfront so the client can decide what to set up now vs later.
+
+Ask: "Which integrations do you want to set up now?" using AskUserQuestion (multiSelect: true):
+
+| Integration | What It Enables | Free Tier |
+|------------|-----------------|-----------|
+| Google Sheets CRM | Lightweight contact tracking via spreadsheet | Free (Google account) |
+| HubSpot CRM | Full pipeline tracking, contact sync, deal stages | Free CRM |
+| Email Enrichment | Find emails for unresponsive prospects (5 providers) | 275 lookups/month |
+
+Then collect keys ONLY for selected groups, in the order below.
+
+**CRM choice:** Google Sheets and HubSpot are alternatives — client picks one (or both). Google Sheets is simpler (no account setup beyond Google), HubSpot is more powerful (deal stages, activity timeline, pipeline reporting).
+
+---
+
+#### 5A: Google Sheets CRM Setup (Lightweight Option)
+
+**Q13a: Google Sheets CRM**
+
+Ask: "Do you want to use Google Sheets as a lightweight CRM for contact tracking? (Just needs a Google account — no extra signups.)"
+
+If yes, guide the client through Google Cloud Service Account setup:
+
+**Step 1: Create a Google Cloud Service Account**
+
+| Step | Action |
+|------|--------|
+| 1 | Go to console.cloud.google.com > Create or select a project |
+| 2 | IAM & Admin > Service Accounts > Create Service Account |
+| 3 | Name: `mcp-gsheets`, click Create |
+| 4 | Skip optional permissions, click Done |
+| 5 | Click the new service account > Keys > Add Key > Create new key > JSON |
+| 6 | Save the downloaded JSON file somewhere safe (e.g., `~/.config/mcp-gdrive/gsheets-service-account.json`) |
+
+**Step 2: Enable Google Sheets API**
+
+| Step | Action |
+|------|--------|
+| 1 | In Cloud Console > APIs & Services > Library |
+| 2 | Search "Google Sheets API" > Enable it |
+
+**Step 3: Register MCP server**
+
+Run in terminal:
+```bash
+claude mcp add google-sheets -s user -e GOOGLE_APPLICATION_CREDENTIALS=/path/to/gsheets-service-account.json -e GOOGLE_PROJECT_ID=your-project-id -- npx -y mcp-gsheets@latest
+```
+
+Replace `/path/to/gsheets-service-account.json` with the actual path to the downloaded JSON key, and `your-project-id` with the Google Cloud project ID.
+
+**Step 4: Share spreadsheets with the service account**
+
+The service account email (e.g., `mcp-gsheets@your-project.iam.gserviceaccount.com`) needs **Editor** access on any spreadsheet it reads/writes. Share the prospect tracking spreadsheet with this email.
+
+**Verification:** After setup, test by creating a spreadsheet via the MCP tool. If it succeeds, Google Sheets CRM is ready.
+
+If skipped: Prospect tracking still works via `icp-prospects.md` (local markdown file).
+
+---
+
+#### 5A-alt: HubSpot CRM Setup (Full-Featured Option)
+
+**Q13b: HubSpot CRM**
+
+Ask: "Do you have a HubSpot account? The free CRM tier is enough."
+
+If yes, collect:
+
+| Key | Where to Get It |
+|-----|-----------------|
+| `HUBSPOT_API_KEY` | HubSpot > Settings > Integrations > Private Apps > Create app > Copy access token |
+| `HUBSPOT_PORTAL_ID` | HubSpot > Settings > Account > Hub ID (top-right corner) |
+
+**Required HubSpot Private App scopes:**
+- `crm.objects.contacts.read` + `.write`
+- `crm.objects.companies.read` + `.write`
+- `crm.objects.deals.read` + `.write`
+- `crm.schemas.contacts.read` + `.write`
+
+Write to `.mcp.json` under `hubspot-crm.env`:
+```json
+"HUBSPOT_API_KEY": "pat-na1-xxxxx",
+"HUBSPOT_PORTAL_ID": "12345678"
+```
+
+After writing, run `crm_setup_properties` to create custom HubSpot properties (idempotent, safe to re-run).
+
+If skipped: CRM sync and email-to-HubSpot features will be unavailable. Prospect tracking still works via `icp-prospects.md`.
+
+---
+
+#### 5B: Email Enrichment Setup (Optional)
+
+**Q14: Email Enrichment**
+
+Ask: "Do you want to set up email enrichment for prospects who don't accept connection requests? (Free tier covers 275 lookups/month across 5 providers)"
+
+If yes, present provider options using AskUserQuestion (multiSelect: true):
+
+| Provider | Free Credits | What to Sign Up |
+|----------|-------------|-----------------|
+| Apollo.io | 50/month | apollo.io > Settings > API Keys |
+| Hunter.io | 25/month | hunter.io > API tab |
+| Snov.io | 50/month | snov.io > Account Settings (Client ID + Secret) |
+| GetProspect | 50/month | getprospect.com > API |
+| Prospeo | 100/month | prospeo.io > Dashboard > API |
+
+For each selected provider, collect the API key(s) using AskUserQuestion.
+
+**Snov.io requires TWO values:** Client ID and Client Secret (both from Account Settings).
+
+Write to `.mcp.json` under `hubspot-crm.env`:
+```json
+"APOLLO_API_KEY": "...",
+"HUNTER_API_KEY": "...",
+"SNOV_CLIENT_ID": "...",
+"SNOV_CLIENT_SECRET": "...",
+"GETPROSPECT_API_KEY": "...",
+"PROSPEO_API_KEY": "..."
+```
+
+**Validation step:** After writing keys, run the validation script to confirm each key works:
+
+```bash
+python "C:\Users\melve\.claude\skills\email-finder\validate-keys.py"
+```
+
+This tests each configured provider with a known lookup and reports pass/fail. Display the results:
+
+```
+Email Enrichment Setup Results:
+- Apollo: PASS (50 credits/month)
+- Hunter: PASS (25 credits/month)
+- Snov.io: PASS (50 credits/month)
+- GetProspect: FAIL — Invalid API key
+- Prospeo: PASS (100 credits/month)
+
+Total monthly capacity: 225 lookups/month (4 providers active)
+
+Tip: Fix GetProspect key later via .mcp.json, or skip it — the waterfall
+handles missing providers gracefully.
+```
+
+If skipped: Add a note to the post-onboarding checklist suggesting they set it up later with "find emails" when needed.
+
 ## Output Generation
 
 After collecting all information, generate these files:
@@ -187,6 +335,26 @@ Next steps:
 1. Review the generated files and adjust any details
 2. Run "start linkedin" to begin your first session
 3. Use "linkedin-profile-icp" to further refine your ICP if needed
+
+Integrations:
+
+  Google Sheets CRM: [if configured]
+  - Service account connected
+  - Share prospect spreadsheets with: [service account email]
+  [if skipped]
+  - Not configured. Set up later with a Google Cloud Service Account.
+
+  HubSpot CRM: [if configured]
+  - Connected (Portal ID: [id])
+  - Custom properties created via crm_setup_properties
+  [if skipped]
+  - Not configured. Run "setup hubspot" later.
+
+  Email enrichment: [if configured]
+  - [X] providers active ([total] lookups/month)
+  - Run "find emails" to enrich pending prospects with no response after 7 days
+  [if skipped]
+  - Not configured. Run "find emails" later to set up when needed.
 
 Optional profile optimization:
 - Update your LinkedIn headline to include: [suggested headline keywords]
