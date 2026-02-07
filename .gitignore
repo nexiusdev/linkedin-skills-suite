@@ -1,0 +1,23 @@
+# Browser profile data (contains cookies, cache, session data)
+chrome_profile/
+
+# Playwright MCP logs and screenshots
+.playwright-mcp/
+
+# Scratchpad (working files, not part of the skills suite)
+scratchpad/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temp files
+*.tmp
+*.log
+
+# Tree output (debug)
+tree_output.txt

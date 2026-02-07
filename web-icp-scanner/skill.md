@@ -1,0 +1,873 @@
+# Web ICP Scanner
+
+Scan the web daily to find 10 ICP prospects outside of LinkedIn. **FULLY AUTONOMOUS** - auto-approves all prospects scoring 60+ without user interaction.
+
+## Trigger Phrases
+
+- "scan web for prospects"
+- "find ICP prospects"
+- "web icp scan"
+- "daily prospect scan"
+- "find 10 prospects"
+- "prospect hunting"
+
+## Workflow Overview
+
+```
+┌─────────────────────────────────────────────────────────────────────────┐
+│  WEB ICP SCANNER - FULLY AUTONOMOUS DAILY PROSPECT DISCOVERY           │
+├─────────────────────────────────────────────────────────────────────────┤
+│                                                                         │
+│  1. LOAD → Load ICP profile + learning history                         │
+│  2. SEARCH → Multi-source web search (news, directories, press)        │
+│  3. FILTER → Apply ICP filters + learned patterns                      │
+│  4. SCORE → Calculate ICP score for each prospect                      │
+│  5. AUTO-APPROVE → All prospects scoring 60+ are AUTO-APPROVED         │
+│  6. LOG → Save to web-discovered-prospects.md + icp-prospects.md       │
+│  7. REPORT → Show summary of prospects added (no user input needed)    │
+│                                                                         │
+│  ⚠️ NO USER FEEDBACK REQUIRED - All 60+ score prospects auto-added    │
+│                                                                         │
+└─────────────────────────────────────────────────────────────────────────┘
+```
+
+## AUTONOMOUS MODE (Default)
+
+**All prospects scoring 60+ are automatically approved and added to icp-prospects.md.**
+
+- Do NOT ask for user feedback
+- Do NOT wait for approval
+- Auto-add all qualifying prospects immediately
+- Show summary when complete
+
+## Phase 1: Load ICP Profile & Learning History
+
+**Before any search, ALWAYS read these files:**
+
+```
+REQUIRED FILES:
+├── references/icp-profile.md              # Current ICP criteria
+├── web-icp-scanner/icp-learning-log.md    # Feedback history + learned patterns
+└── shared/logs/icp-prospects.md           # Master prospect list (dedup check)
+```
+
+**Extract from ICP Profile:**
+- Target roles (primary + secondary)
+- Target industries (primary + adjacent)
+- Company size range
+- Geography (read target geography from `references/icp-profile.md`)
+- Pain keywords
+- Search keywords
+
+**Extract from Learning Log:**
+- Positive signals (from approved prospects)
+- Negative signals (from rejected prospects)
+- Refined search queries (what works)
+- Industries/roles to boost or demote
+
+## Phase 2: Multi-Source Web Search
+
+**Search Categories (rotate daily for coverage):**
+
+### Category A: Company News & Press Releases
+
+Search queries (combine ICP keywords + signals):
+
+Generate search queries by combining your ICP keywords with your target geography from `references/icp-profile.md`:
+```
+Day 1: "[industry] company funding [target geography] 2026"
+Day 2: "[industry] [target market] expansion [target geography] announcement"
+Day 3: "[pain keyword] solution provider [target geography]"
+Day 4: "CEO founder [industry] interview [target geography]"
+Day 5: "[industry] digital transformation case study [target geography]"
+Day 6: "[industry] startup raises series A [target geography]"
+Day 7: "[target market] [industry] awards [target geography] 2026"
+```
+
+### Category B: Industry Directories & Lists
+
+Search queries:
+
+Generate queries using your target geography and market from `references/icp-profile.md`:
+```
+- "top [target market] [industry] companies [target geography] 2026"
+- "[industry] companies list [target geography]"
+- "fastest growing [industry] [target market] [target geography]"
+- "[industry] association members [target geography]"
+- "[target geography] [industry] companies directory"
+```
+
+### Category C: Event Speakers & Panelists
+
+Search queries:
+
+Generate queries using your target geography from `references/icp-profile.md`:
+```
+- "[industry] conference speaker [target geography] 2026"
+- "[target market] summit panelist [target geography]"
+- "[industry] webinar presenter [target geography]"
+- "digital transformation event speaker [target geography]"
+```
+
+### Category D: Awards & Recognition
+
+Search queries:
+
+Generate queries using your target geography from `references/icp-profile.md`:
+```
+- "[target market] awards [industry] [target geography] 2026"
+- "enterprise [industry] award winner [target geography]"
+- "business excellence award [industry] [target geography]"
+- "fastest growing company award [target geography]"
+```
+
+### Category E: Job Postings (Company Signal)
+
+Search queries:
+
+Generate queries using your target geography from `references/icp-profile.md`:
+```
+- "[industry] company hiring [target geography]"
+- "[target market] hiring [role] [target geography]"
+- "startup hiring operations manager [target geography]"
+```
+
+**Execute 3-5 searches per scan** using WebSearch tool.
+
+## Phase 3: ICP Filtering & Scoring
+
+For each potential prospect found, apply this scoring matrix:
+
+### ICP Score Matrix (100 points total)
+
+| Criteria | Weight | Scoring |
+|----------|--------|---------|
+| **Geography** | 25 pts | Primary target geography (25), Secondary geography (20), Adjacent region (15), Other (10), Outside target (0) - read geography tiers from `references/icp-profile.md` |
+| **Role Match** | 25 pts | Primary role (25), Secondary role (15), Adjacent role (10), Unclear (5), Non-target (0) |
+| **Company Size** | 20 pts | 10-200 employees (20), 200-500 (15), <10 (10), >500 (5), Unknown (10) |
+| **Industry Match** | 20 pts | Primary industry (20), Adjacent industry (15), Other (10), Mismatch (0) |
+| **Pain Signal** | 10 pts | Strong pain indicator (10), Moderate (5), None (0) |
+
+**Minimum Score to Include: 60 points**
+
+### Learned Pattern Adjustments
+
+Apply modifiers from learning log:
+
+```
+POSITIVE SIGNALS (add points):
+- [From approved prospects - dynamically populated]
+- Example: "+5 for Series A companies" (learned pattern)
+
+NEGATIVE SIGNALS (subtract points):
+- [From rejected prospects - dynamically populated]
+- Example: "-10 for consulting firms" (learned pattern)
+```
+
+## Phase 4: Present Prospects
+
+**Output format for each prospect (show 10 per scan):**
+
+```markdown
+## Prospect [#]: [Name]
+
+**Role:** [Title] at [Company]
+**Location:** [City, Country]
+**Industry:** [Industry]
+**Company Size:** [Estimated size]
+**Source:** [Where found - article title, directory, etc.]
+**Source URL:** [Link]
+
+### ICP Score: [XX]/100
+
+| Criteria | Score | Reasoning |
+|----------|-------|-----------|
+| Geography | X/25 | [Target geography match = 25] |
+| Role | X/25 | [CEO = Primary = 25] |
+| Company Size | X/20 | [~50 employees = 20] |
+| Industry | X/20 | [E-commerce = Primary = 20] |
+| Pain Signal | X/10 | [Mentioned "scaling challenges" = 10] |
+
+### Key Signals
+
+- [Signal 1 from source]
+- [Signal 2 from source]
+- [Relevant quote if available]
+
+### Contact Discovery
+
+- **LinkedIn:** [Search query to find them]
+- **Company Website:** [URL if found]
+- **Email:** [Actual email if found, or pattern-based guess]
+
+---
+
+**Your verdict?** [APPROVE] [REJECT] [MAYBE]
+**If REJECT, why?** (This trains the learning system)
+```
+
+## Phase 4b: Email Extraction (Capture During Web Research)
+
+**ALWAYS attempt to extract email when visiting prospect sources or company websites.**
+
+### Email Discovery Sources
+
+#### 1. Article/Press Release Content
+
+When reading news articles or press releases about a prospect:
+- Look for direct quotes with contact info: "For more information, contact [name] at [email]"
+- Check article author bylines for email addresses
+- Look for "About the Author" sections with contact details
+
+#### 2. Company Website Deep Dive
+
+When you find a prospect's company website, check these pages:
+
+```
+PRIORITY ORDER:
+1. /contact or /contact-us → Often has direct emails
+2. /about or /about-us → Team page with individual emails
+3. /team or /our-team → Leadership bios with emails
+4. /leadership or /management → Executive contact info
+5. Footer → Often contains info@ or hello@ emails
+6. /press or /media → Press contact emails
+```
+
+#### 3. Conference/Event Speaker Pages
+
+Event websites often list speaker contact info:
+- Speaker bio pages
+- Event contact directories
+- Speaker submission forms (sometimes show email)
+
+#### 4. Industry Directory Listings
+
+Business directories often include:
+- Company profile pages with contact details
+- Member directories with email listings
+- Association member pages
+
+### Email Pattern Detection
+
+If no direct email found, infer from company domain:
+
+```
+COMMON PATTERNS (use with Company URL domain):
+- firstname@company.com (most common)
+- firstname.lastname@company.com
+- f.lastname@company.com
+- first.last@company.com
+- firstnamelastname@company.com
+
+EXAMPLE:
+Prospect: John Tan
+Company URL: https://acme.sg
+Pattern guess: john@acme.sg or john.tan@acme.sg
+```
+
+### Email Validation Signals
+
+Mark email confidence level:
+- **Confirmed** - Found directly on website/article
+- **Pattern-based** - Inferred from company email pattern
+- **Unverified** - Guess only, needs validation
+
+### Update Master Prospect List
+
+When adding APPROVED prospects to `icp-prospects.md`:
+
+```markdown
+Email column values:
+- Confirmed email → john.tan@acme.sg
+- Pattern-based → john.tan@acme.sg (pattern)
+- Unknown → TBD
+```
+
+Add to Notes: "Email: [source] [date]" (e.g., "Email: company website 02Feb")
+
+---
+
+## Phase 4c: LinkedIn Profile URL Discovery
+
+**ALWAYS attempt to find LinkedIn profile URL for each prospect. This is CRITICAL for future engagement.**
+
+### Strategy 1: Google Search with LinkedIn Site Filter (PRIMARY METHOD)
+
+**Most effective approach - use this FIRST:**
+
+```
+SEARCH QUERY FORMAT:
+"[Full Name]" "[Company Name]" [Role/Title] site:linkedin.com/in/
+
+EXAMPLES:
+- "Brian Ng" "Kskin" co-founder site:linkedin.com/in/
+- "Jennifer Zhang" "WIZ.AI" CEO site:linkedin.com/in/
+- "Alan Lai" "ProfilePrint" founder site:linkedin.com/in/
+```
+
+**Success indicators:**
+- First result is usually the correct profile
+- Look for job title match in search snippet
+- Verify company name in snippet
+- Profile URL format: https://linkedin.com/in/[username] or https://sg.linkedin.com/in/[username]
+
+### Strategy 2: LinkedIn Company Page → People Tab
+
+**Use when Strategy 1 fails or returns ambiguous results:**
+
+```
+WORKFLOW:
+1. Search Google for: "[Company Name]" LinkedIn company page
+2. Navigate to company LinkedIn page: linkedin.com/company/[company-slug]
+3. Click "People" tab on company page
+4. Use search box to search for prospect's name
+5. If not found in search, browse employee list (may need multiple pages)
+```
+
+**Why this works:**
+- Directly shows all employees with LinkedIn profiles at that company
+- No ambiguity about which "[Common Name]" is the right person
+- Can verify role/title matches
+
+**When to use:**
+- Common names (e.g., "John Tan", "Mary Lee")
+- Google search returns too many results
+- Need to verify prospect still works at company
+
+### Strategy 3: Company Website → Team/About Page
+
+**Use for executive-level prospects or when LinkedIn search fails:**
+
+```
+WEBSITE PAGES TO CHECK:
+1. /team or /our-team → Often links to LinkedIn profiles
+2. /about-us or /about → Team bios with social links
+3. /leadership or /management → Executive profiles
+4. /founders or /our-story → Founder bios
+5. Footer → Sometimes has team member social links
+```
+
+**Look for:**
+- LinkedIn icon links next to team member photos
+- "Connect with [Name] on LinkedIn" links
+- Social media icon bars under bio sections
+
+### Strategy 4: Press Release & News Article Search
+
+**For high-profile founders and executives:**
+
+```
+SEARCH QUERIES:
+- "[Full Name]" "[Company]" LinkedIn interview
+- "[Full Name]" "[Company]" founder profile
+- "[Company]" raises funding "[Full Name]" LinkedIn
+- "[Full Name]" "[Company]" startup awards LinkedIn
+```
+
+**Why this works:**
+- Journalists often link to LinkedIn profiles in articles
+- Press releases sometimes include profile links
+- Award announcements link to winner profiles
+
+### Strategy 5: Crunchbase Cross-Reference
+
+**For startup founders and funded companies:**
+
+```
+SEARCH: "[Full Name]" "[Company]" Crunchbase
+
+Crunchbase profiles often link to:
+- LinkedIn profile URLs
+- Personal websites (which may link to LinkedIn)
+- Other social profiles
+```
+
+### Strategy 6: Alternative Name Formats
+
+**If initial search fails, try variations:**
+
+```
+NAME VARIATIONS TO TRY:
+- Full name: "Joshua Christopher Chandra"
+- First + Last: "Joshua Chandra"
+- Initials: "J.C. Chandra"
+- Nickname: "Josh Chandra"
+- Different surname order (for Asian names): "Chandra Joshua"
+```
+
+### LinkedIn Profile URL Validation
+
+**Before saving, verify it's the correct person:**
+
+```
+VERIFICATION CHECKLIST:
+✓ Current company matches (or recent if they switched jobs)
+✓ Job title/role aligns with prospect info
+✓ Location matches target geography (from references/icp-profile.md)
+✓ Industry matches
+✓ Follower count seems appropriate for role
+```
+
+### Handling Edge Cases
+
+| Scenario | Action |
+|----------|--------|
+| **No LinkedIn profile found** | Mark Profile URL as "TBD" - may not have LinkedIn |
+| **Multiple profiles with same name** | Use Company Page strategy to disambiguate |
+| **Profile is private/limited** | Still save URL - can at least send connection request |
+| **Wrong company in profile** | Check if they recently changed jobs; verify via news search |
+| **Profile deactivated** | Mark as "INACTIVE" in Notes field |
+
+### Update Master Prospect List
+
+When adding APPROVED prospects to `icp-prospects.md`:
+
+```markdown
+Profile URL column values:
+- Found via Google: https://sg.linkedin.com/in/username
+- Found via company page: https://www.linkedin.com/in/username
+- Not found: TBD
+
+Add to Notes: "LinkedIn: [discovery method] [date]"
+Examples:
+- "LinkedIn: Google search 05Feb"
+- "LinkedIn: Company page 05Feb"
+- "LinkedIn: TBD - no profile found 05Feb"
+```
+
+### Success Rate Benchmarks
+
+Based on 20-prospect batch testing:
+
+| Prospect Type | Success Rate | Primary Method |
+|---------------|--------------|----------------|
+| Startup founders (funded) | 90%+ | Google + site:linkedin.com/in/ |
+| SME CEOs/Co-founders | 70-80% | Company page search |
+| Executives at larger SMEs | 60-70% | Company page + Google |
+| Technical co-founders | 50-60% | May use different name formats |
+
+**Time investment:** 2-3 minutes per prospect (worthwhile for engagement ROI)
+
+---
+
+## Phase 5: Auto-Approve All Qualifying Prospects
+
+**⚠️ AUTONOMOUS MODE - No user feedback required**
+
+All prospects scoring **60 points or higher** are automatically:
+1. Marked as APPROVED
+2. Added to `shared/logs/icp-prospects.md`
+3. Logged to `web-discovered-prospects.md`
+
+**Do NOT:**
+- Ask user for feedback
+- Wait for approval
+- Present options to choose from
+
+**Just execute and report results.**
+
+---
+
+## Phase 5b: Post-Scan Rejection (User-Triggered Learning)
+
+**Learning happens when the user REJECTS a prospect with reasoning.**
+
+### Rejection Trigger Phrases
+
+```
+- "reject #129 - too large"
+- "remove prospect [Name] - not SME"
+- "reject [Name] because [reason]"
+- "bad ICP: [Name] - [reason]"
+```
+
+### Rejection Workflow
+
+When user rejects a previously auto-approved prospect:
+
+1. **Parse rejection:**
+   - Extract prospect name/number
+   - Extract rejection reason
+
+2. **Update icp-prospects.md:**
+   - Find the prospect row
+   - Add to Notes: "REJECTED [date]: [reason]"
+   - Change Classification: PROSPECT → REJECTED
+
+3. **Update icp-learning-log.md:**
+   - Add to "Learned Negative Signals" table
+   - Increment frequency if pattern already exists
+   - Add rejection reason to User Feedback Patterns
+
+4. **Apply future scoring adjustment:**
+   - If same rejection reason appears 3+ times → Auto-create score penalty
+   - Example: 3x "too large" for >500 employees → Add "-15 for >500 employees" to scoring
+
+5. **Confirm to user:**
+   ```
+   ✓ Rejected: [Name] - [Reason]
+   ✓ Learning updated: [Pattern added/incremented]
+   ✓ Future scans will penalize: [Specific adjustment]
+   ```
+
+### Rejection Reason Categories
+
+Standard rejection reasons (for consistent learning):
+
+| Short Code | Full Meaning | Score Penalty (after 3x) |
+|------------|--------------|--------------------------|
+| `too large` | Company >200 employees | -15 to Company Size |
+| `too small` | Company <10 employees | -10 to Company Size |
+| `not target geography` | Outside target geography | -20 to Geography |
+| `not decision-maker` | Not C-suite/Director level | -15 to Role Match |
+| `seller not buyer` | Service provider/consultant | -20 to Industry Match |
+| `enterprise` | Enterprise/MNC, not target market | -15 to Company Size |
+| `stale` | News/source >6 months old | -10 to Pain Signal |
+| `duplicate` | Already in pipeline | Skip (no penalty) |
+
+### Example Rejection
+
+```
+User: "reject #135 - too large, this is an association not a target company"
+
+Claude:
+✓ Rejected: [Name] ([Organization])
+✓ Reason logged: "too large, association not target company"
+✓ Learning updated:
+  - Added "association" to negative signals (1/3 to become pattern)
+  - Added "federation" to negative signals (1/3 to become pattern)
+  - "too large" incremented to 2/3 frequency
+✓ icp-prospects.md updated: Row #135 marked REJECTED
+```
+
+---
+
+## Phase 6: Learning Engine (Rejection-Based)
+
+**Learning is driven ONLY by user rejection feedback.**
+
+Since all 60+ prospects are auto-approved, the system learns exclusively from:
+- User rejections with reasoning (Phase 5b)
+- Pattern detection across multiple rejections
+
+### Pattern Detection Algorithm
+
+```
+FOR each rejected prospect (user-triggered via Phase 5b):
+  - Extract: role, industry, company size, source type, specific signals
+  - Count frequency of rejection reasons
+  - IF rejection_reason appears 3+ times → Add to Learned Negative Signals WITH score penalty
+
+FOR search effectiveness:
+  - Track which search queries yielded rejected prospects
+  - If query yields 3+ rejections → DEMOTE query (reduce usage)
+  - If query yields 0 rejections over 3 scans → BOOST query (prioritize)
+```
+
+**Note:** Positive signals are NOT learned since everything is auto-approved. The system improves by learning what to AVOID.
+
+### ICP Profile Updates
+
+When negative patterns emerge (3+ similar rejections), update `references/icp-profile.md`:
+
+**Auto-updates (from rejections):**
+- Add keywords from rejected companies to exclusion list
+- Adjust company size ceiling based on "too large" rejections
+- Reduce industry priority based on consistent rejection
+
+**Suggested updates (require user approval):**
+- Removing industries with consistent rejection
+- Changing company size range
+- Adding new exclusion rules
+
+## Phase 7: Logging
+
+### Save to web-discovered-prospects.md
+
+```markdown
+## [Date] Scan Results
+
+**Scan Parameters:**
+- Search queries used: [list]
+- Sources checked: [list]
+- Total found: [X]
+- Passed ICP filter: [Y]
+
+**Prospects:**
+
+| # | Name | Role | Company | Location | Score | Verdict | Notes |
+|---|------|------|---------|----------|-------|---------|-------|
+| 1 | ... | ... | ... | ... | 85 | APPROVED | Added to master list |
+| 2 | ... | ... | ... | ... | 72 | REJECTED | Too large (500+ employees) |
+...
+
+**Learning Updates:**
+- [Any patterns detected]
+- [Any ICP updates made]
+```
+
+### Update Master Prospect List
+
+For APPROVED prospects, add to `shared/logs/icp-prospects.md`:
+
+```markdown
+| # | Name | Date Found | Role | Company | Company URL | Location | Classification | Touches | Last Touch | Touch History | Connection Status | Profile URL | Email | Notes |
+|---|------|------------|------|---------|-------------|----------|----------------|---------|------------|---------------|-------------------|-------------|-------|-------|
+| [next#] | [Name] | [Today] | [Role] | [Company] | [URL] | [Location] | PROSPECT | 0 | - | - | none | TBD | [email or TBD] | Source: Web ICP Scan [Date] \| [Key signal] |
+```
+
+---
+
+## ICP Learning Log Structure
+
+**Location:** `web-icp-scanner/icp-learning-log.md`
+
+**Learning is REJECTION-BASED only.** All 60+ prospects are auto-approved; learning happens when user rejects with reasoning.
+
+```markdown
+# ICP Learning Log
+
+Last updated: [Date]
+Total scans: [X]
+Total prospects auto-approved: [Y]
+Total rejections (user feedback): [Z]
+
+## Learned Negative Signals (From User Rejections)
+
+Signals from REJECTED prospects that trigger score penalties:
+
+| Signal | Frequency | First Seen | Score Modifier | Rejection Reason |
+|--------|-----------|------------|----------------|------------------|
+| "Enterprise" in company name | 3/3 rejected | 15Jan | -15 | Too large |
+| "Consulting firm" | 3/4 rejected | 18Jan | -20 | Service provider, not buyer |
+| "Government agency" | 3/3 rejected | 20Jan | -20 | Not target market |
+| "Association" | 1/3 | 02Feb | (pending) | Not target company |
+
+**Minimum frequency to become active pattern:** 3 occurrences
+
+## Search Query Performance
+
+| Query Template | Times Used | Auto-Approved | Rejected | Status |
+|----------------|------------|---------------|----------|--------|
+| "[target market] funding [target geography] [industry]" | 10 | 7 | 3 | ACTIVE |
+| "[industry] startup [target geography]" | 8 | 5 | 0 | BOOST |
+| "top [industry] companies [target geography]" | 6 | 2 | 4 | DEMOTE |
+
+**Status Key:**
+- `BOOST` - 0-1 rejections, prioritize in future scans
+- `ACTIVE` - 2 rejections, keep using
+- `DEMOTE` - 3+ rejections, reduce usage
+- `RETIRE` - >50% rejection rate, stop using
+
+## ICP Refinement History
+
+| Date | Change Type | Before | After | Trigger (Rejection Pattern) |
+|------|-------------|--------|-------|------------------------------|
+| 28Jan | Removed industry | "Heavy manufacturing" | - | 3x "too large" rejections |
+| 30Jan | Added exclusion | - | "Association/Federation" | 3x "not target market" rejections |
+
+## User Rejection Patterns (Ranked by Frequency)
+
+1. **Too large** - Company >200 employees → -15 Company Size
+2. **Not target geography** - Outside target geography → -20 Geography
+3. **Seller not buyer** - Consulting/agency → -20 Industry Match
+4. **Not decision-maker** - Manager level → -15 Role Match
+5. **Enterprise** - MNC/corporate → -15 Company Size
+```
+
+---
+
+## Execution Modes
+
+### Mode 1: Full Scan (Default - AUTONOMOUS)
+
+```
+Trigger: "scan web for prospects"
+
+1. Load ICP + Learning history
+2. Execute 5 web searches
+3. Filter to top 10 prospects (score 60+)
+4. AUTO-APPROVE ALL qualifying prospects
+5. Add ALL to icp-prospects.md (no user input)
+6. Update learning log
+7. Show summary report
+
+⚠️ NO USER INTERACTION - Fully autonomous execution
+```
+
+### Mode 2: Quick Scan (AUTONOMOUS)
+
+```
+Trigger: "quick prospect scan"
+
+1. Load ICP (skip learning history)
+2. Execute 2 web searches (highest performing queries)
+3. Filter to top 5 prospects (score 60+)
+4. AUTO-APPROVE ALL qualifying prospects
+5. Add ALL to icp-prospects.md
+6. Show summary report
+
+⚠️ NO USER INTERACTION - Fully autonomous execution
+```
+
+### Mode 3: Industry Focus (AUTONOMOUS)
+
+```
+Trigger: "scan for [industry] prospects"
+
+1. Load ICP
+2. Execute searches focused on specific industry
+3. Filter to top 10 from that industry (score 60+)
+4. AUTO-APPROVE ALL qualifying prospects
+5. Add ALL to icp-prospects.md
+6. Show summary report
+
+⚠️ NO USER INTERACTION - Fully autonomous execution
+```
+
+### Mode 4: Learning Review
+
+```
+Trigger: "review icp learning"
+
+1. Display current learned patterns
+2. Show approval rate trends
+3. Show search query performance
+4. Suggest ICP profile updates
+5. Get user approval for changes (only mode requiring input)
+```
+
+---
+
+## Search Source Configuration
+
+**Priority news sources (for press/funding news):**
+
+Identify news sources relevant to your target geography and industry from `references/icp-profile.md`. Examples:
+```
+- Regional tech news publications
+- Local business newspapers
+- Industry-specific news sites
+- Startup/funding news platforms
+```
+
+**Priority directory sources:**
+
+Find business directories in your target geography:
+```
+- Government enterprise/SME directories
+- Industry association member lists
+- Business federation directories
+- Chamber of commerce listings
+```
+
+**Priority event sources:**
+
+Identify events in your target geography and niche:
+```
+- Industry conferences in your geography
+- Business/tech summits
+- Innovation festivals
+- Startup pitch events
+```
+
+---
+
+## Deduplication Rules
+
+**Before adding to output, check:**
+
+1. **Name match** - Already in icp-prospects.md?
+2. **Company match** - Different person, same company already tracked?
+3. **Recent scan** - Found in last 7 days of web scans?
+
+**If duplicate found:**
+- Skip silently (don't count toward 10)
+- Log in scan results: "Skipped [Name] - duplicate"
+
+---
+
+## Example Execution
+
+```
+User: "scan web for prospects"
+
+Claude: Reading ICP profile and learning history...
+
+**ICP Loaded (from references/icp-profile.md):**
+- Target: [Your target roles]
+- Industries: [Your target industries]
+- Geography: [Your target geography]
+- Size: [Your target company size]
+
+**Learned Patterns Applied:**
+- Boosting: Series A companies (+5), "digital transformation" mentions (+3)
+- Demoting: Consulting firms (-10), Government agencies (-15)
+
+**Executing web searches...**
+
+1. "[target market] funding [target geography] [industry] 2026"
+2. "[industry] company expansion [target geography] 2026"
+3. "digital transformation award winner [target geography] [target market]"
+4. "startup founder CEO interview [target geography] [industry]"
+5. "[target geography] [target market] awards 2026"
+
+**Found 47 potential prospects. Filtering...**
+
+**Top 10 ICP Matches:**
+
+[Presents 10 prospects with full details and scoring]
+
+---
+
+After user feedback:
+
+**Feedback Summary:**
+- APPROVED: 6 prospects
+- REJECTED: 3 prospects (2 too large, 1 wrong geography)
+- MAYBE: 1 prospect
+
+**Learning Updates:**
+- Detected pattern: 2 rejections for ">200 employees" → Strengthening company size filter
+- New positive signal: "recently hired COO" appeared in 3/6 approved
+
+**Added 6 prospects to master list.**
+
+Next scan recommendations:
+- Try: "[target market] COO hire [target geography] 2026" (new positive signal)
+- Avoid: "[source] top enterprises" queries (yielded oversized companies)
+```
+
+---
+
+## Integration Points
+
+### Connects to:
+- `linkedin-icp-finder` - Handoff approved prospects for LinkedIn search & warming
+- `linkedin-icp-warmer` - Feed approved prospects into engagement pipeline
+- `linkedin-connect-timer` - Track web-discovered prospects in connection timing
+
+### Outputs to:
+- `shared/logs/icp-prospects.md` - Master prospect list
+- `web-icp-scanner/web-discovered-prospects.md` - Daily scan logs
+- `web-icp-scanner/icp-learning-log.md` - Learning patterns
+- `references/icp-profile.md` - ICP criteria updates (with approval)
+
+---
+
+## Maintenance
+
+### Weekly Tasks
+- Review learning log for pattern accuracy
+- Prune outdated search queries
+- Check approval rate trends
+
+### Monthly Tasks
+- Full ICP profile review based on learning
+- Refresh news source effectiveness
+- Archive old scan logs (>30 days)
+
+---
+
+*Skill created: 02 February 2026*
+*Version: 1.0*

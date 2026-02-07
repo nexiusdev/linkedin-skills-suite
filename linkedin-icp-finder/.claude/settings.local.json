@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(linkedin-pro-commenter)",
+      "Skill(linkedin-trender)",
+      "Skill(linkedin-icp-finder)"
+    ]
+  }
+}

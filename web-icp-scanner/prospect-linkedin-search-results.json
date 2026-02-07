@@ -1,0 +1,184 @@
+{
+  "search_date": "2026-02-04 20:42:30",
+  "total_prospects": 10,
+  "summary": {
+    "found_with_posts": 3,
+    "profile_found_no_posts": 2,
+    "not_found": 5,
+    "errors": 0
+  },
+  "results": [
+    {
+      "name": "Bhavana Ravindran",
+      "company": "Earlybird AI",
+      "title": "Founder",
+      "profile_url": null,
+      "posts": [],
+      "status": "not_found",
+      "notes": "Profile not found in LinkedIn search results"
+    },
+    {
+      "name": "Rishab Patwari",
+      "company": "Hivebotics",
+      "title": "Founder & CEO",
+      "profile_url": null,
+      "posts": [],
+      "status": "not_found",
+      "notes": "Profile not found in LinkedIn search results"
+    },
+    {
+      "name": "Paco Chan",
+      "company": "Farmio",
+      "title": "Co-Founder",
+      "profile_url": null,
+      "posts": [],
+      "status": "not_found",
+      "notes": "Profile not found in LinkedIn search results"
+    },
+    {
+      "name": "Daniel Yew",
+      "company": "Quocia",
+      "title": "Founder",
+      "profile_url": "https://www.linkedin.com/in/danielyew/",
+      "posts": [],
+      "status": "profile_found_no_posts",
+      "notes": "Profile found but no recent posts visible"
+    },
+    {
+      "name": "Dushyant Verma",
+      "company": "SmartViz",
+      "title": "Founder",
+      "profile_url": "https://www.linkedin.com/in/dushyantprakash/",
+      "posts": [
+        {
+          "url": "https://www.linkedin.com/feed/update/urn:li:activity:7422805824164544512/",
+          "preview": "Generative AI and the Future of Creative Work: A Deep Dive with Industry Leaders - Discussion with Sunil Nair (Co-founder Clairva.ai) and Saurabh Kulkarni (Head of Digital Studio India)",
+          "date": "Recent",
+          "topic": "Generative AI and Creative Work"
+        },
+        {
+          "url": "https://www.linkedin.com/feed/update/urn:li:activity:7406290539806883840/",
+          "preview": "South Korea announced mandatory AI labeling for advertisers. The EU's transparency obligations for General Purpose AI are already live. AI regulations tightening in 2026.",
+          "date": "Recent",
+          "topic": "AI Regulations"
+        }
+      ],
+      "status": "found",
+      "notes": "Active poster with relevant AI content"
+    },
+    {
+      "name": "Xing Xian Ang",
+      "company": "CapBay",
+      "title": "CEO & Co-Founder",
+      "profile_url": "https://www.linkedin.com/in/angxingxian/",
+      "posts": [
+        {
+          "url": "https://www.linkedin.com/feed/update/urn:li:activity:7387760074720497664/",
+          "preview": "CapBay and Perbadanan Usahawan Johor (PUJB) signed strategic MoU to strengthen Johor SME ecosystem. RM100 million fund via CapBay Digital Financing.",
+          "date": "Recent",
+          "topic": "SME Financing Partnership"
+        },
+        {
+          "url": "https://www.linkedin.com/feed/update/urn:li:activity:7355804794558533633/",
+          "preview": "Partnership supports Malaysian exporters by combining CapBay's SME network with Olea's global trade finance expertise.",
+          "date": "Recent",
+          "topic": "Export Trade Finance"
+        },
+        {
+          "url": "https://www.linkedin.com/feed/update/urn:li:activity:7340345765753430018/",
+          "preview": "CapBay turns 9! Celebrated with Sports Day activities and team building.",
+          "date": "Recent",
+          "topic": "Company Anniversary"
+        }
+      ],
+      "status": "found",
+      "notes": "Very active poster - good engagement opportunity"
+    },
+    {
+      "name": "Alfan Hendro",
+      "company": "RevScaler",
+      "title": "Founder",
+      "profile_url": null,
+      "posts": [],
+      "status": "not_found",
+      "notes": "Profile not found in LinkedIn search results"
+    },
+    {
+      "name": "Kieran Donovan",
+      "company": "k-ID",
+      "title": "Founder",
+      "profile_url": "https://www.linkedin.com/in/kieran-donovan-06399819/",
+      "posts": [
+        {
+          "url": "https://www.linkedin.com/feed/update/urn:li:activity:7421914271154008064/",
+          "preview": "Persona, Incode, and Veratad have joined the OpenAge Initiative - coalition aligned around privacy-preserving age assurance.",
+          "date": "Recent",
+          "topic": "OpenAge Initiative"
+        },
+        {
+          "url": "https://www.linkedin.com/feed/update/urn:li:activity:7421580460050264064/",
+          "preview": "Free Speech Coalition announces support for OpenAge Initiative and adoption of privacy-preserving age verification standards.",
+          "date": "Recent",
+          "topic": "Age Verification Standards"
+        }
+      ],
+      "status": "found",
+      "notes": "Active poster on age assurance/privacy topics"
+    },
+    {
+      "name": "Ethan Ow",
+      "company": "Wenti Labs",
+      "title": "Co-Founder",
+      "profile_url": "https://www.linkedin.com/in/ethanow/",
+      "posts": [],
+      "status": "profile_found_no_posts",
+      "notes": "Profile found but no recent posts visible"
+    },
+    {
+      "name": "Eeling Yoong",
+      "company": "Hera Bathroom",
+      "title": "CEO",
+      "profile_url": null,
+      "posts": [],
+      "status": "not_found",
+      "notes": "Profile not found in LinkedIn search results"
+    }
+  ],
+  "prospects_with_posts": [
+    {
+      "name": "Dushyant Verma",
+      "profile_url": "https://www.linkedin.com/in/dushyantprakash/",
+      "post_count": 2,
+      "posts": [
+        "https://www.linkedin.com/feed/update/urn:li:activity:7422805824164544512/",
+        "https://www.linkedin.com/feed/update/urn:li:activity:7406290539806883840/"
+      ]
+    },
+    {
+      "name": "Xing Xian Ang",
+      "profile_url": "https://www.linkedin.com/in/angxingxian/",
+      "post_count": 3,
+      "posts": [
+        "https://www.linkedin.com/feed/update/urn:li:activity:7387760074720497664/",
+        "https://www.linkedin.com/feed/update/urn:li:activity:7355804794558533633/",
+        "https://www.linkedin.com/feed/update/urn:li:activity:7340345765753430018/"
+      ]
+    },
+    {
+      "name": "Kieran Donovan",
+      "profile_url": "https://www.linkedin.com/in/kieran-donovan-06399819/",
+      "post_count": 2,
+      "posts": [
+        "https://www.linkedin.com/feed/update/urn:li:activity:7421914271154008064/",
+        "https://www.linkedin.com/feed/update/urn:li:activity:7421580460050264064/"
+      ]
+    }
+  ],
+  "recommended_next_actions": [
+    "Engage with Dushyant Verma's post on AI regulations - good conversation starter",
+    "Comment on Xing Xian Ang's CapBay-PUJB partnership post - SME financing angle",
+    "Engage with Kieran Donovan's OpenAge Initiative posts - privacy/tech angle",
+    "Follow up on Daniel Yew and Ethan Ow profiles for future warming (no current posts)",
+    "Alternative search needed for: Bhavana Ravindran, Rishab Patwari, Paco Chan, Alfan Hendro, Eeling Yoong"
+  ]
+}
