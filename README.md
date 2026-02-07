@@ -41,6 +41,8 @@ The update script automatically stashes any local skill edits you've made, pulls
 
 Your personalized config in `references/`, `shared/logs/`, and account settings is never touched — those files are gitignored.
 
+See [UPDATING.md](UPDATING.md) for detailed step-by-step instructions with screenshots of every outcome.
+
 ## Skills
 
 ### Core Workflow
