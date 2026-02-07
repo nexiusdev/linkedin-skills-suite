@@ -127,7 +127,267 @@ Search queries:
 - "startup hiring operations manager ASEAN"
 ```
 
-**Execute 3-5 searches per scan** using WebSearch tool.
+### Category F: Startup Founder Lists & Rankings
+
+Search queries:
+
+```
+- "top startup founders Singapore 2026"
+- "startup founders to watch ASEAN 2026"
+- "Forbes 30 under 30 Singapore Malaysia"
+- "emerging entrepreneurs Southeast Asia 2026"
+- "Tech in Asia startup founders Singapore"
+```
+
+### Category G: Entrepreneur of the Year & Business Awards
+
+Search queries:
+
+```
+- "EY Entrepreneur of the Year Singapore Malaysia nominees"
+- "SME100 Awards Malaysia winners"
+- "Singapore SME 500 Award winners Best Digital Adopter"
+- "Emerging Enterprise Awards Singapore winners"
+- "Platinum Business Awards Malaysia winners"
+- "SOBA Star Outstanding Business Awards Malaysia"
+```
+
+### Category H: Venture Capital & Funding Announcements
+
+Search queries:
+
+```
+- "Series A funding Singapore startup 2026 founder"
+- "seed round raised Singapore SME 2026"
+- "venture capital investment Malaysia startup founder"
+- "Tech in Asia funding round ASEAN SME"
+- "Deal Street Asia startup funding Singapore Malaysia"
+```
+
+### Category I: Government Programs & Accelerator Graduates
+
+Search queries:
+
+```
+- "Enterprise Singapore startup SG founder grant recipients"
+- "MDEC Malaysia digital economy corporation SME"
+- "startup accelerator graduates Singapore 2025 2026"
+- "Antler Singapore cohort founders"
+- "SWITCH Singapore startup pitch competition winners"
+- "MaGIC Malaysia accelerator program graduates"
+```
+
+### Category J: Industry-Specific Thought Leadership
+
+Search queries:
+
+```
+- "SME CEO interview [industry] Singapore podcast"
+- "[industry] founder story Malaysia ASEAN"
+- "digital transformation success story SME Singapore"
+- "automation case study SME operations ASEAN"
+- "Business Times Singapore SME profile [industry]"
+```
+
+### Category K: Podcast Guest Appearances ⭐ HIGH PRIORITY
+
+Search queries:
+
+```
+- "SME founder interview podcast Singapore 2026"
+- "BFM podcast entrepreneur Malaysia CEO"
+- "Money FM 89.3 business leader interview Singapore"
+- "e27 podcast startup founder ASEAN"
+- "Asia Tech Podcast founder CEO Singapore Malaysia"
+- "[industry] founder podcast interview Southeast Asia"
+```
+
+### Category L: Business Media Founder Profiles ⭐ HIGH PRIORITY
+
+Search queries:
+
+```
+- "The Peak Singapore entrepreneur profile founder"
+- "Tatler Asia founder CEO Singapore Malaysia"
+- "Singapore Business Review CEO interview SME"
+- "The Edge Singapore entrepreneur profile"
+- "Business Times Singapore CEO of the week SME"
+- "Digital News Asia founder profile Malaysia"
+```
+
+### Category M: Franchise & Multi-Unit Operators ⭐ HIGH PRIORITY
+
+Search queries:
+
+```
+- "franchise owner Singapore multiple outlets founder"
+- "multi-unit operator Malaysia F&B retail chain"
+- "franchise expansion Singapore Malaysia ASEAN 2026"
+- "restaurant chain founder Singapore 10 outlets"
+- "retail chain operator Malaysia expansion scaling"
+- "franchise owner CEO interview Singapore operations"
+```
+
+---
+
+### LOW PRIORITY CATEGORIES
+
+*Use these when primary categories (A-M) are exhausted or for targeted scans.*
+
+### Category N: University Alumni Entrepreneur Networks (LOW PRIORITY)
+
+Search queries:
+
+```
+- "NUS Enterprise alumni startup founders"
+- "SMU Institute of Innovation alumni entrepreneurs"
+- "NTU alumni startup Singapore founder"
+- "INSEAD Singapore alumni entrepreneur CEO"
+- "University of Malaya alumni startup founder"
+```
+
+### Category O: Co-working / Incubator Member Directories (LOW PRIORITY)
+
+Search queries:
+
+```
+- "JTC LaunchPad Singapore startup members"
+- "Block71 Singapore portfolio companies founders"
+- "Found8 Singapore startup members"
+- "WORQ Malaysia coworking startup founders"
+- "1337 Ventures accelerator Malaysia portfolio"
+```
+
+### Category P: M&A and Exit Announcements (LOW PRIORITY)
+
+Search queries:
+
+```
+- "startup acquisition Singapore founder 2025 2026"
+- "SME exit Malaysia acquired founder"
+- "merger acquisition announcement Singapore SME"
+- "second-time founder Singapore startup serial entrepreneur"
+```
+
+### Category Q: Government Tender Winners (LOW PRIORITY)
+
+Search queries:
+
+```
+- "GeBIZ Singapore tender awarded SME company"
+- "government procurement winner SME Singapore"
+- "MyProcurement Malaysia awarded company SME"
+- "government contract winner [industry] Singapore"
+```
+
+### Category R: Industry Association Directories (LOW PRIORITY)
+
+Search queries:
+
+```
+- "Singapore Fintech Association members directory"
+- "Singapore Manufacturing Federation member companies"
+- "Malaysia SME Association council members"
+- "Singapore Retailers Association member list"
+- "ASEAN Business Advisory Council members"
+```
+
+### Category S: Trade Show & Exhibition Exhibitors (LOW PRIORITY)
+
+Search queries:
+
+```
+- "SME exhibitor list Singapore Expo 2025 2026"
+- "Food & Hotel Asia exhibitor Singapore SME"
+- "Manufacturing Solutions Expo exhibitor Singapore"
+- "SEMICON Southeast Asia exhibitor Malaysia"
+- "RetailAsia Expo Singapore exhibitor list company"
+```
+
+### Category T: Business Networking Groups (LOW PRIORITY)
+
+Search queries:
+
+```
+- "BNI Singapore chapter members business owner"
+- "Entrepreneurs' Organization EO Singapore members"
+- "Young Presidents Organization YPO Singapore Malaysia"
+- "TiE Singapore charter member entrepreneur"
+- "Rotary Club Singapore business owner founder"
+```
+
+### Category U: Crowdfunding & Community-Funded Projects (LOW PRIORITY)
+
+Search queries:
+
+```
+- "Kickstarter Singapore founder project funded"
+- "Indiegogo Singapore Malaysia startup campaign"
+- "equity crowdfunding Singapore FundedHere Fundnel"
+- "crowdfunding success story ASEAN founder SME"
+```
+
+### Category V: Patent & IP Filings (LOW PRIORITY)
+
+Search queries:
+
+```
+- "patent filed Singapore startup founder IPOS"
+- "intellectual property Malaysia SME innovation"
+- "Singapore patent grant company founder [industry]"
+- "MyIPO Malaysia patent registered SME"
+```
+
+### Category W: E-commerce Marketplace Top Sellers (LOW PRIORITY)
+
+Search queries:
+
+```
+- "top Shopee seller Singapore founder brand owner"
+- "Lazada top seller Malaysia SME business owner"
+- "Amazon Singapore seller SME founder story"
+- "e-commerce brand owner Singapore success story"
+- "D2C brand founder Singapore Malaysia ASEAN"
+```
+
+### Category X: Business Book Authors & Course Creators (LOW PRIORITY)
+
+Search queries:
+
+```
+- "Singapore entrepreneur author business book founder"
+- "Malaysia CEO author book SME business"
+- "Udemy Skillshare course creator Singapore founder"
+- "ASEAN business author entrepreneur speaker"
+```
+
+### Category Y: Angel Investor Portfolios (LOW PRIORITY)
+
+Search queries:
+
+```
+- "angel investor Singapore portfolio companies founders"
+- "Angel Central Singapore invested startups"
+- "BANSEA Business Angel Network Southeast Asia members"
+- "angel syndicate Malaysia startup founder invested"
+- "Singapore angel network portfolio company CEO"
+```
+
+### Category Z: Office Expansion & Lease Announcements (LOW PRIORITY)
+
+Search queries:
+
+```
+- "company new office Singapore expansion SME"
+- "startup office move Singapore larger space hiring"
+- "Malaysia SME new headquarters expansion announcement"
+- "JTC industrial space lease Singapore company"
+- "company expansion announcement ASEAN new market"
+```
+
+---
+
+**Execute 5-7 searches per scan** using WebSearch tool. Rotate across categories to ensure broad coverage - use 2-3 categories per scan. Prioritize ⭐ HIGH PRIORITY categories (K, L, M) alongside proven categories (F, G, H). Use LOW PRIORITY categories (N-Z) when primary categories are exhausted or for targeted industry-specific scans.
 
 ## Phase 3: ICP Filtering & Scoring
 
