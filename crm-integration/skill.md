@@ -9,6 +9,8 @@ Sync LinkedIn prospect pipeline data to HubSpot CRM. One-way auto-sync from `icp
 - "crm pipeline" / "pipeline summary" — runs `crm_get_pipeline`
 - "log activity to crm" — runs `crm_log_activity`
 - "lookup in crm" / "crm contact" — runs `crm_get_contact`
+- "find emails" / "enrich emails" / "email lookup" — runs `crm_find_emails`
+- "pull emails" / "reverse sync emails" — runs `crm_pull_emails`
 
 ## Setup Instructions
 
@@ -30,7 +32,7 @@ Sync LinkedIn prospect pipeline data to HubSpot CRM. One-way auto-sync from `icp
 
 ### 2. Set Environment Variables
 
-Add to your MCP server config in `.claude/settings.local.json`:
+Add to your MCP server config in `.mcp.json`:
 
 ```json
 "hubspot-crm": {
@@ -38,10 +40,31 @@ Add to your MCP server config in `.claude/settings.local.json`:
   "args": ["C:\\Users\\melve\\.claude\\skills\\crm-integration\\hubspot_mcp.py"],
   "env": {
     "HUBSPOT_API_KEY": "pat-na1-xxxxx",
-    "HUBSPOT_PORTAL_ID": "12345678"
+    "HUBSPOT_PORTAL_ID": "12345678",
+    "APOLLO_API_KEY": "your-apollo-api-key",
+    "HUNTER_API_KEY": "your-hunter-api-key",
+    "SNOV_CLIENT_ID": "your-snov-client-id",
+    "SNOV_CLIENT_SECRET": "your-snov-client-secret",
+    "GETPROSPECT_API_KEY": "your-getprospect-api-key",
+    "PROSPEO_API_KEY": "your-prospeo-api-key"
   }
 }
 ```
+
+### 2b. Get Email Enrichment API Keys
+
+All are optional — the waterfall uses whichever keys are configured:
+
+| Provider | Free Tier | Env Vars | Sign Up |
+|----------|-----------|----------|---------|
+| Apollo.io | 50/month | `APOLLO_API_KEY` | [apollo.io](https://app.apollo.io) > Settings > API Keys |
+| Hunter.io | 25/month | `HUNTER_API_KEY` | [hunter.io](https://hunter.io) > API tab |
+| Snov.io | 50/month | `SNOV_CLIENT_ID` + `SNOV_CLIENT_SECRET` | [snov.io](https://snov.io) > Account Settings |
+| GetProspect | 50/month | `GETPROSPECT_API_KEY` | [getprospect.com](https://getprospect.com) > API |
+| Prospeo | 100/month | `PROSPEO_API_KEY` | [prospeo.io](https://prospeo.io) > Dashboard > API |
+
+**Waterfall order:** Apollo -> Hunter -> Snov.io -> GetProspect -> Prospeo
+**Max combined free credits:** 275/month
 
 ### 3. Install Dependencies
 
@@ -95,6 +118,18 @@ Look up a contact by LinkedIn URL (exact match) or name (fuzzy search). Returns 
 
 ### crm_get_pipeline
 Pipeline funnel summary — count of contacts in each stage.
+
+### crm_find_emails
+Find business emails for prospects with pending connections > 7 days. Uses Apollo (primary, 50/month) then Hunter (fallback, 25/month). Only stores verified emails (Apollo) or confidence >= 80% (Hunter). Updates HubSpot email property automatically.
+
+**Parameters:**
+- `min_days_pending` (int, default 7): Days since connect_sent to qualify
+- `dry_run` (bool, default false): Preview eligible prospects without calling APIs
+
+**Credit tracking:** Stops when monthly limits hit (Apollo: 50, Hunter: 25).
+
+### crm_pull_emails
+Reverse sync: checks HubSpot contacts for emails that aren't in `icp-prospects.md`. Reports which prospects need their Email column updated. Useful for catching manually-added emails in HubSpot.
 
 ## Field Mapping
 

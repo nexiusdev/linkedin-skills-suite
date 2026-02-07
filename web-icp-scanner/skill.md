@@ -55,7 +55,7 @@ REQUIRED FILES:
 - Target roles (primary + secondary)
 - Target industries (primary + adjacent)
 - Company size range
-- Geography (read target geography from `references/icp-profile.md`)
+- Geography (ASEAN-5 focus)
 - Pain keywords
 - Search keywords
 
@@ -73,63 +73,58 @@ REQUIRED FILES:
 
 Search queries (combine ICP keywords + signals):
 
-Generate search queries by combining your ICP keywords with your target geography from `references/icp-profile.md`:
 ```
-Day 1: "[industry] company funding [target geography] 2026"
-Day 2: "[industry] [target market] expansion [target geography] announcement"
-Day 3: "[pain keyword] solution provider [target geography]"
-Day 4: "CEO founder [industry] interview [target geography]"
-Day 5: "[industry] digital transformation case study [target geography]"
-Day 6: "[industry] startup raises series A [target geography]"
-Day 7: "[target market] [industry] awards [target geography] 2026"
+Day 1: "[industry] company funding Singapore Malaysia 2026"
+Day 2: "[industry] SME expansion ASEAN announcement"
+Day 3: "[pain keyword] solution provider Singapore"
+Day 4: "CEO founder [industry] interview Singapore Malaysia"
+Day 5: "[industry] digital transformation case study ASEAN"
+Day 6: "[industry] startup raises series A Singapore"
+Day 7: "SME [industry] awards Singapore Malaysia 2026"
 ```
 
 ### Category B: Industry Directories & Lists
 
 Search queries:
 
-Generate queries using your target geography and market from `references/icp-profile.md`:
 ```
-- "top [target market] [industry] companies [target geography] 2026"
-- "[industry] companies list [target geography]"
-- "fastest growing [industry] [target market] [target geography]"
-- "[industry] association members [target geography]"
-- "[target geography] [industry] companies directory"
+- "top SME [industry] companies Singapore 2026"
+- "[industry] companies list Malaysia"
+- "fastest growing [industry] SME ASEAN"
+- "[industry] association members Singapore"
+- "Enterprise Singapore [industry] companies"
 ```
 
 ### Category C: Event Speakers & Panelists
 
 Search queries:
 
-Generate queries using your target geography from `references/icp-profile.md`:
 ```
-- "[industry] conference speaker [target geography] 2026"
-- "[target market] summit panelist [target geography]"
-- "[industry] webinar presenter [target geography]"
-- "digital transformation event speaker [target geography]"
+- "[industry] conference speaker Singapore 2026"
+- "SME summit panelist ASEAN"
+- "[industry] webinar presenter Malaysia"
+- "digital transformation event speaker Singapore"
 ```
 
 ### Category D: Awards & Recognition
 
 Search queries:
 
-Generate queries using your target geography from `references/icp-profile.md`:
 ```
-- "[target market] awards [industry] [target geography] 2026"
-- "enterprise [industry] award winner [target geography]"
-- "business excellence award [industry] [target geography]"
-- "fastest growing company award [target geography]"
+- "SME awards [industry] Singapore 2026"
+- "enterprise [industry] award winner Malaysia"
+- "business excellence award [industry] ASEAN"
+- "fastest growing company award Singapore"
 ```
 
 ### Category E: Job Postings (Company Signal)
 
 Search queries:
 
-Generate queries using your target geography from `references/icp-profile.md`:
 ```
-- "[industry] company hiring [target geography]"
-- "[target market] hiring [role] [target geography]"
-- "startup hiring operations manager [target geography]"
+- "[industry] company hiring Singapore"
+- "SME hiring [role] Malaysia"
+- "startup hiring operations manager ASEAN"
 ```
 
 **Execute 3-5 searches per scan** using WebSearch tool.
@@ -142,7 +137,7 @@ For each potential prospect found, apply this scoring matrix:
 
 | Criteria | Weight | Scoring |
 |----------|--------|---------|
-| **Geography** | 25 pts | Primary target geography (25), Secondary geography (20), Adjacent region (15), Other (10), Outside target (0) - read geography tiers from `references/icp-profile.md` |
+| **Geography** | 25 pts | Singapore (25), Malaysia (20), Thailand/Indonesia/Philippines (15), Other ASEAN (10), Outside ASEAN (0) |
 | **Role Match** | 25 pts | Primary role (25), Secondary role (15), Adjacent role (10), Unclear (5), Non-target (0) |
 | **Company Size** | 20 pts | 10-200 employees (20), 200-500 (15), <10 (10), >500 (5), Unknown (10) |
 | **Industry Match** | 20 pts | Primary industry (20), Adjacent industry (15), Other (10), Mismatch (0) |
@@ -182,7 +177,7 @@ NEGATIVE SIGNALS (subtract points):
 
 | Criteria | Score | Reasoning |
 |----------|-------|-----------|
-| Geography | X/25 | [Target geography match = 25] |
+| Geography | X/25 | [Singapore = 25] |
 | Role | X/25 | [CEO = Primary = 25] |
 | Company Size | X/20 | [~50 employees = 20] |
 | Industry | X/20 | [E-commerce = Primary = 20] |
@@ -206,20 +201,39 @@ NEGATIVE SIGNALS (subtract points):
 **If REJECT, why?** (This trains the learning system)
 ```
 
-## Phase 4b: Email Extraction (Capture During Web Research)
+## Phase 4b: Dedicated Email Search (Per Prospect)
 
-**ALWAYS attempt to extract email when visiting prospect sources or company websites.**
+**For EVERY auto-approved prospect, run a dedicated email search BEFORE moving to Phase 5.**
 
-### Email Discovery Sources
+This is a two-tier approach: (1) targeted web search queries, then (2) opportunistic extraction from sources already visited during discovery.
 
-#### 1. Article/Press Release Content
+### Tier 1: Targeted Web Search Queries (PRIMARY — run for every prospect)
+
+Run these searches using WebSearch for each approved prospect:
+
+```
+QUERY 1: "[Full Name]" "[Company]" email
+QUERY 2: "[Full Name]" "[Company]" contact site:rocketreach.co OR site:contactout.com OR site:signalhire.com OR site:zoominfo.com
+QUERY 3: "[Company]" website domain email
+```
+
+**Accept criteria:**
+- Email domain must match the company (e.g., `@acme.sg` for Acme Pte Ltd)
+- Personal business emails preferred over generic (info@, hello@, contact@)
+- Only accept fully visible emails — reject masked emails (j***@company.com)
+
+**Batch optimization:** When processing 10 prospects, launch parallel sub-agents (batches of 5) to search emails concurrently. Each sub-agent runs all 3 queries per prospect.
+
+### Tier 2: Opportunistic Extraction (SECONDARY — from sources already visited)
+
+#### From Article/Press Release Content
 
 When reading news articles or press releases about a prospect:
 - Look for direct quotes with contact info: "For more information, contact [name] at [email]"
 - Check article author bylines for email addresses
 - Look for "About the Author" sections with contact details
 
-#### 2. Company Website Deep Dive
+#### From Company Website Deep Dive
 
 When you find a prospect's company website, check these pages:
 
@@ -233,23 +247,23 @@ PRIORITY ORDER:
 6. /press or /media → Press contact emails
 ```
 
-#### 3. Conference/Event Speaker Pages
+#### From Conference/Event Speaker Pages
 
 Event websites often list speaker contact info:
 - Speaker bio pages
 - Event contact directories
 - Speaker submission forms (sometimes show email)
 
-#### 4. Industry Directory Listings
+#### From Industry Directory Listings
 
 Business directories often include:
 - Company profile pages with contact details
 - Member directories with email listings
 - Association member pages
 
-### Email Pattern Detection
+### Email Pattern Detection (Last Resort)
 
-If no direct email found, infer from company domain:
+If no direct email found from Tier 1 or Tier 2, infer from company domain:
 
 ```
 COMMON PATTERNS (use with Company URL domain):
@@ -265,12 +279,17 @@ Company URL: https://acme.sg
 Pattern guess: john@acme.sg or john.tan@acme.sg
 ```
 
-### Email Validation Signals
+### Email Validation & Confidence Levels
 
 Mark email confidence level:
-- **Confirmed** - Found directly on website/article
-- **Pattern-based** - Inferred from company email pattern
-- **Unverified** - Guess only, needs validation
+- **Confirmed** — Found directly on website, article, or contact database (rocketreach, contactout, etc.)
+- **Pattern-based** — Inferred from company email pattern (mark with `(pattern)` suffix)
+- **Not found** — No email discovered; leave as `-` or `TBD`
+
+**Do NOT store:**
+- Masked/partial emails (j***@company.com)
+- Generic company emails (info@, hello@, contact@) unless the prospect IS the sole owner
+- Unverified guesses without domain confirmation
 
 ### Update Master Prospect List
 
@@ -280,10 +299,10 @@ When adding APPROVED prospects to `icp-prospects.md`:
 Email column values:
 - Confirmed email → john.tan@acme.sg
 - Pattern-based → john.tan@acme.sg (pattern)
-- Unknown → TBD
+- Unknown → -
 ```
 
-Add to Notes: "Email: [source] [date]" (e.g., "Email: company website 02Feb")
+Add to Notes: "Email: [source] [date]" (e.g., "Email: web search 07Feb", "Email: company website 02Feb")
 
 ---
 
@@ -403,7 +422,7 @@ NAME VARIATIONS TO TRY:
 VERIFICATION CHECKLIST:
 ✓ Current company matches (or recent if they switched jobs)
 ✓ Job title/role aligns with prospect info
-✓ Location matches target geography (from references/icp-profile.md)
+✓ Location matches (Singapore, Malaysia, etc.)
 ✓ Industry matches
 ✓ Follower count seems appropriate for role
 ```
@@ -518,21 +537,21 @@ Standard rejection reasons (for consistent learning):
 |------------|--------------|--------------------------|
 | `too large` | Company >200 employees | -15 to Company Size |
 | `too small` | Company <10 employees | -10 to Company Size |
-| `not target geography` | Outside target geography | -20 to Geography |
+| `not ASEAN` | Outside ASEAN-5 geography | -20 to Geography |
 | `not decision-maker` | Not C-suite/Director level | -15 to Role Match |
 | `seller not buyer` | Service provider/consultant | -20 to Industry Match |
-| `enterprise` | Enterprise/MNC, not target market | -15 to Company Size |
+| `enterprise` | Enterprise/MNC, not SME | -15 to Company Size |
 | `stale` | News/source >6 months old | -10 to Pain Signal |
 | `duplicate` | Already in pipeline | Skip (no penalty) |
 
 ### Example Rejection
 
 ```
-User: "reject #135 - too large, this is an association not a target company"
+User: "reject #135 - too large, SBF is an association not SME"
 
 Claude:
-✓ Rejected: [Name] ([Organization])
-✓ Reason logged: "too large, association not target company"
+✓ Rejected: Kok Ping Soon (Singapore Business Federation)
+✓ Reason logged: "too large, association not SME"
 ✓ Learning updated:
   - Added "association" to negative signals (1/3 to become pattern)
   - Added "federation" to negative signals (1/3 to become pattern)
@@ -640,8 +659,8 @@ Signals from REJECTED prospects that trigger score penalties:
 |--------|-----------|------------|----------------|------------------|
 | "Enterprise" in company name | 3/3 rejected | 15Jan | -15 | Too large |
 | "Consulting firm" | 3/4 rejected | 18Jan | -20 | Service provider, not buyer |
-| "Government agency" | 3/3 rejected | 20Jan | -20 | Not target market |
-| "Association" | 1/3 | 02Feb | (pending) | Not target company |
+| "Government agency" | 3/3 rejected | 20Jan | -20 | Not SME |
+| "Association" | 1/3 | 02Feb | (pending) | Not SME target |
 
 **Minimum frequency to become active pattern:** 3 occurrences
 
@@ -649,9 +668,9 @@ Signals from REJECTED prospects that trigger score penalties:
 
 | Query Template | Times Used | Auto-Approved | Rejected | Status |
 |----------------|------------|---------------|----------|--------|
-| "[target market] funding [target geography] [industry]" | 10 | 7 | 3 | ACTIVE |
-| "[industry] startup [target geography]" | 8 | 5 | 0 | BOOST |
-| "top [industry] companies [target geography]" | 6 | 2 | 4 | DEMOTE |
+| "SME funding Singapore [industry]" | 10 | 7 | 3 | ACTIVE |
+| "[industry] startup ASEAN" | 8 | 5 | 0 | BOOST |
+| "top [industry] companies Singapore" | 6 | 2 | 4 | DEMOTE |
 
 **Status Key:**
 - `BOOST` - 0-1 rejections, prioritize in future scans
@@ -664,12 +683,12 @@ Signals from REJECTED prospects that trigger score penalties:
 | Date | Change Type | Before | After | Trigger (Rejection Pattern) |
 |------|-------------|--------|-------|------------------------------|
 | 28Jan | Removed industry | "Heavy manufacturing" | - | 3x "too large" rejections |
-| 30Jan | Added exclusion | - | "Association/Federation" | 3x "not target market" rejections |
+| 30Jan | Added exclusion | - | "Association/Federation" | 3x "not SME" rejections |
 
 ## User Rejection Patterns (Ranked by Frequency)
 
 1. **Too large** - Company >200 employees → -15 Company Size
-2. **Not target geography** - Outside target geography → -20 Geography
+2. **Not ASEAN** - Outside ASEAN-5 geography → -20 Geography
 3. **Seller not buyer** - Consulting/agency → -20 Industry Match
 4. **Not decision-maker** - Manager level → -15 Role Match
 5. **Enterprise** - MNC/corporate → -15 Company Size
@@ -743,32 +762,34 @@ Trigger: "review icp learning"
 
 **Priority news sources (for press/funding news):**
 
-Identify news sources relevant to your target geography and industry from `references/icp-profile.md`. Examples:
 ```
-- Regional tech news publications
-- Local business newspapers
-- Industry-specific news sites
-- Startup/funding news platforms
+- Tech in Asia (techinasia.com)
+- e27 (e27.co)
+- The Business Times (businesstimes.com.sg)
+- The Edge Singapore (theedgesingapore.com)
+- Digital News Asia (digitalnewsasia.com)
+- Deal Street Asia (dealstreetasia.com)
+- KrASIA (kr-asia.com)
 ```
 
 **Priority directory sources:**
 
-Find business directories in your target geography:
 ```
-- Government enterprise/SME directories
-- Industry association member lists
-- Business federation directories
-- Chamber of commerce listings
+- Enterprise Singapore company directory
+- Singapore Business Federation
+- SME Centre Singapore
+- Malaysia SME Corp
+- ASEAN Business Advisory Council
 ```
 
 **Priority event sources:**
 
-Identify events in your target geography and niche:
 ```
-- Industry conferences in your geography
-- Business/tech summits
-- Innovation festivals
-- Startup pitch events
+- Singapore Week of Innovation and Technology (SWITCH)
+- Singapore FinTech Festival
+- TechInAsia Conference
+- Echelon Asia Summit
+- Wild Digital
 ```
 
 ---
@@ -794,11 +815,11 @@ User: "scan web for prospects"
 
 Claude: Reading ICP profile and learning history...
 
-**ICP Loaded (from references/icp-profile.md):**
-- Target: [Your target roles]
-- Industries: [Your target industries]
-- Geography: [Your target geography]
-- Size: [Your target company size]
+**ICP Loaded:**
+- Target: SME Founders/CEOs, Operations Directors, Finance Directors
+- Industries: Accounting, E-commerce, Manufacturing, Professional Services
+- Geography: Singapore, Malaysia (ASEAN)
+- Size: 10-200 employees
 
 **Learned Patterns Applied:**
 - Boosting: Series A companies (+5), "digital transformation" mentions (+3)
@@ -806,11 +827,11 @@ Claude: Reading ICP profile and learning history...
 
 **Executing web searches...**
 
-1. "[target market] funding [target geography] [industry] 2026"
-2. "[industry] company expansion [target geography] 2026"
-3. "digital transformation award winner [target geography] [target market]"
-4. "startup founder CEO interview [target geography] [industry]"
-5. "[target geography] [target market] awards 2026"
+1. "SME funding Singapore accounting fintech 2026"
+2. "e-commerce company expansion Malaysia ASEAN 2026"
+3. "digital transformation award winner Singapore SME"
+4. "startup founder CEO interview Singapore operations"
+5. "enterprise singapore sme awards 2026"
 
 **Found 47 potential prospects. Filtering...**
 
@@ -834,7 +855,7 @@ After user feedback:
 **Added 6 prospects to master list.**
 
 Next scan recommendations:
-- Try: "[target market] COO hire [target geography] 2026" (new positive signal)
+- Try: "SME COO hire Singapore 2026" (new positive signal)
 - Avoid: "[source] top enterprises" queries (yielded oversized companies)
 ```
 

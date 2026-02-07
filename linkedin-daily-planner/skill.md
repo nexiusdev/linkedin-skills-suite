@@ -668,6 +668,11 @@ IF prospect scores 60+ on ICP matrix:
 **DM Template (Anti-Pitch):**
 > "Hey [Name], enjoyed your post on [Topic]. I just finished a workflow for [Pain Point]. Happy to share the logic diagram if useful—no strings attached."
 
+### CRM Auto-Sync (end of Afternoon Block)
+- [ ] After all Afternoon Block tasks complete → call `crm_sync_all`
+- [ ] This captures: new prospects, connection status updates, touch history changes
+- [ ] Log sync result (created/updated/skipped counts) to activity log
+
 ---
 
 ## Evening Block (10 mins) - Audit
@@ -761,6 +766,11 @@ IF inbound signal passes ICP screen:
 - ✅ Company: SME (10-500 employees), not enterprise/MNC
 - ❌ Skip: Non-ASEAN, junior roles, large corporations, recruiters
 
+### CRM Auto-Sync (end of Evening Block)
+- [ ] After all Evening Block tasks complete → call `crm_sync_all`
+- [ ] This captures: inbound audit results, new ICP matches from followers/viewers
+- [ ] Log sync result (created/updated/skipped counts) to activity log
+
 ---
 
 ## Skills Integration
@@ -776,6 +786,7 @@ IF inbound signal passes ICP screen:
 | Warm up existing prospects | `linkedin-icp-warmer` |
 | Check connection readiness | `linkedin-connect-timer` |
 | Audit profile alignment | `linkedin-profile-icp` |
+| Sync prospects to CRM | `hubspot-crm` (MCP: `crm_sync_all`) |
 
 ### Account-Conditional Features
 
