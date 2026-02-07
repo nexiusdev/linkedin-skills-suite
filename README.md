@@ -28,13 +28,18 @@ The onboarding skill asks ~16 questions about your business, target market, and 
 
 ## Receiving Updates
 
-Your config and activity logs are **gitignored** — they live only on your machine. To get skill updates from the author:
+Your config and activity logs are **gitignored** — they live only on your machine. To get skill updates safely:
 
 ```bash
-git pull
+# Windows (PowerShell):
+.\update.ps1
+# Mac/Linux:
+chmod +x update.sh && ./update.sh
 ```
 
-This updates all `skill.md` files, templates, and shared references without touching your personalized config in `references/`, `shared/logs/`, or account settings. Your data is never overwritten.
+The update script automatically stashes any local skill edits you've made, pulls the latest updates, then restores your edits on top. If your changes conflict with an upstream update, it lists the conflicted files and tells you how to resolve them.
+
+Your personalized config in `references/`, `shared/logs/`, and account settings is never touched — those files are gitignored.
 
 ## Skills
 
