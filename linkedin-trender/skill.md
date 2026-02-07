@@ -1,11 +1,11 @@
 ---
 name: linkedin-feed-trends
-description: Analyze LinkedIn feed to identify trending topics for content creation. Use when user says "find trending topics", "what should I post about", "analyze my feed", or wants to discover what's resonating on LinkedIn today. Works with browser automation (Claude for Chrome or DevTools fallback). Filters for high-engagement posts (20+ likes, 10+ comments) from individual thought leaders only (excludes company pages, brands, organizations, articles). AUTONOMOUS MODE - when called from linkedin-daily-planner, automatically navigates to feed, extracts content, auto-selects top trending topic, and proceeds to post generation. INTERACTIVE MODE - asks user to paste feed content and choose topic. Outputs trending topic recommendations with angle suggestions, then integrates with linkedin-elite-posts skill to generate the actual post.
+description: Analyze LinkedIn feed to identify trending topics for content creation. Use when user says "find trending topics", "what should I post about", "analyze my feed", or wants to discover what's resonating on LinkedIn today. Works with Claude for Chrome - user pastes feed content. Filters for high-engagement posts (20+ likes, 10+ comments) from individual thought leaders only (excludes company pages, brands, organizations, articles). Outputs trending topic recommendations with angle suggestions, then integrates with linkedin-elite-posts skill to generate the actual post.
 ---
 
 # LinkedIn Feed Trends
 
-Analyze your LinkedIn feed to identify trending topics worth posting about today. Designed for browser automation workflow (Claude for Chrome or DevTools fallback).
+Analyze your LinkedIn feed to identify trending topics worth posting about today. Designed for Claude for Chrome workflow.
 
 ## 360Brew Algorithm Context (2026)
 
@@ -25,17 +25,7 @@ Activate when user says:
 - "what's trending on LinkedIn"
 - Or pastes LinkedIn feed content for analysis
 
-## Step 1: Get Feed Content
-
-**Browser Automation:** Uses Claude for Chrome if available, otherwise falls back to Chrome DevTools. See linkedin-daily-planner skill for detailed tool mapping.
-
-**AUTONOMOUS MODE (when called from linkedin-daily-planner):**
-- Navigate to linkedin.com/feed using browser automation
-- Scroll down 5-8 times to load ~30-50 posts from past 24 hours
-- Extract feed content (use `get_page_text` for Claude for Chrome or `take_snapshot` for DevTools)
-- Proceed directly to Step 2 parsing
-
-**INTERACTIVE MODE (when called directly by user):**
+## Step 1: Request Feed Content
 
 Ask user to share their LinkedIn feed:
 
@@ -125,7 +115,7 @@ Why It's Working:
 [Analysis of engagement driver]
 
 Your Angle:
-[Suggested unique perspective based on your business positioning from references/icp-profile.md]
+[Suggested unique perspective based on Nexius Labs positioning]
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📈 TRENDING TOPIC #2: [Topic Name]
@@ -141,16 +131,6 @@ Your Angle:
 ```
 
 ## Step 6: Topic Selection & Post Generation
-
-**AUTONOMOUS MODE (when called from linkedin-daily-planner):**
-- Automatically select TRENDING TOPIC #1 (highest engagement + best alignment)
-- Use the recommended angle from trend analysis
-- Invoke linkedin-elite-posts skill immediately with:
-  - Topic: [Top trending topic]
-  - Angle: [Recommended angle from analysis]
-- No user prompts, proceed directly to post generation
-
-**INTERACTIVE MODE (when called directly by user):**
 
 After presenting trends, ask:
 
@@ -174,18 +154,19 @@ Or tell me if you want to:
 
 ## Positioning Context
 
-When suggesting angles, read your positioning from `references/icp-profile.md` and align with your:
-- Core expertise and domain
-- Target market and their pain points
-- Your product/service focus areas
-- Your unique perspective and experience
+When suggesting angles, align with Melverick's Nexius Labs positioning:
+- Agentic AI systems for SMEs
+- Finance, ERP, CRM automation
+- Natural language → agent execution
+- AI-native business OS vision
+- Non-coder empowerment through AI
 
-**Strong angles for any positioning:**
+**Strong angles for this positioning:**
 - Practical implementation over hype
-- Your target market's challenges vs generic solutions
-- Real deployment experience with your clients
-- Democratizing complex solutions for your audience
-- Your unique technical or strategic viewpoint
+- SME-specific challenges vs enterprise solutions
+- Real deployment experience with SME implementations
+- Democratizing AI for non-technical users
+- Intent-based systems vs menu-driven software
 
 **360Brew Content Rules to Apply:**
 - Opening hook must be a "Topic Signal" (e.g., "In agentic AI systems, the bottleneck isn't...")

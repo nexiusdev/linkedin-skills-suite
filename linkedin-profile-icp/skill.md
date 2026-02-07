@@ -13,7 +13,7 @@ LinkedIn's 360Brew algorithm "reads" your profile to verify your "Right to Speak
 
 **Headline as "Entity Signal":**
 - Avoid clever titles like "Revolutionizing SMEs with AI"
-- Use specific, indexable keywords: "Building [Your Solution] for [Your Market] | Founder at [Company] | [Your Domain] Expert" (read your details from `references/icp-profile.md`)
+- Use specific, indexable keywords: "Building Agentic ERP & CRM Systems for Singapore SMEs | Founder at Nexius Labs | Agentic AI Expert"
 - 360Brew uses headline keywords as "Semantic Weights" for content distribution
 
 **About Section as "System Prompt":**
@@ -43,12 +43,10 @@ LinkedIn's 360Brew algorithm "reads" your profile to verify your "Right to Speak
 
 ## Input
 
-**Browser automation uses Claude for Chrome if available, otherwise falls back to Chrome DevTools. See linkedin-daily-planner skill for detailed tool mapping.**
-
 User provides their LinkedIn profile via:
 - Copy-pasted profile sections (headline, about, experience)
 - Screenshot of profile
-- LinkedIn profile URL (requires browser automation)
+- LinkedIn profile URL (requires Claude for Chrome)
 
 ## Workflow
 
@@ -91,7 +89,7 @@ From extracted signals, determine:
 
 | Anti-ICP Category | Why Skip | Examples |
 |-------------------|----------|----------|
-| **Wrong Geography** | Outside service area | Outside your target geography (from `references/icp-profile.md`) |
+| **Wrong Geography** | Outside service area | Non-ASEAN for ASEAN-focused business |
 | **Wrong Company Size** | Can't afford / too complex | Enterprise for SME-focused, <5 employees |
 | **Wrong Role Level** | No budget/authority | Individual contributors, interns |
 | **Wrong Industry** | No fit for solution | Incompatible sectors |
@@ -105,7 +103,7 @@ Weight criteria to prioritize prospects:
 
 | Criteria | Weight | Score Range | How to Assess |
 |----------|--------|-------------|---------------|
-| **Geography** | 25% | 0 or 100 | Target geography (from `references/icp-profile.md`) = 100, Other = 0 (binary) |
+| **Geography** | 25% | 0 or 100 | ASEAN-5 = 100, Other = 0 (binary) |
 | **Role Match** | 25% | 0-100 | Primary = 100, Secondary = 70, Adjacent = 40 |
 | **Company Size** | 20% | 0-100 | Exact match = 100, Close = 70, Far = 30 |
 | **Pain Signal** | 20% | 0-100 | Explicit pain = 100, Implied = 60, None = 20 |
@@ -266,7 +264,7 @@ TARGET COMPANY PROFILE:
 
 Size: [Range, e.g., 10-200 employees]
 Stage: [Growth phase]
-Geography: [Your target geography from references/icp-profile.md]
+Geography: [Region focus - ASEAN-5]
 Tech Maturity: [Low/Medium/High]
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -286,7 +284,7 @@ SKIP IMMEDIATELY:
 
 | Criteria | Weight | Score 100 | Score 70 | Score 40 | Score 0 |
 |----------|--------|-----------|----------|----------|---------|
-| Geography | 25% | [Exact match] | - | - | [Outside target geography] |
+| Geography | 25% | [Exact match] | - | - | [Non-ASEAN] |
 | Role | 25% | [Primary roles] | [Secondary] | [Adjacent] | [No fit] |
 | Company | 20% | [Exact size] | [Close] | [Far] | [Wrong] |
 | Pain Signal | 20% | [Explicit] | [Implied] | [Weak] | [None] |
@@ -399,7 +397,7 @@ Copy these filters to linkedin-icp-finder:
 Role Filter: [Comma-separated titles]
 Industry Filter: [Comma-separated industries]
 Company Size: [Range]
-Geography: [Your target countries/regions]
+Geography: [ASEAN-5 countries]
 Pain Keywords: [Comma-separated terms]
 Anti-ICP: [What to skip]
 
@@ -425,7 +423,7 @@ Anti-ICP: [What to skip]
 | Target Roles | [Primary roles] |
 | Target Industries | [Industries] |
 | Company Size | [Range] |
-| Geography | [Your target geography] |
+| Geography | [ASEAN-5] |
 | Pain Keywords | [Keywords] |
 
 ## Anti-ICP (Skip Immediately)

@@ -116,7 +116,7 @@ Read the master strategy file to get current values:
 | Comment length | 15-50 words | Word count requirements |
 | Connection limit | 15/day max | Connection request thresholds |
 | DM limit | 25/day max | DM limitations |
-| Posting windows | Day-specific (your timezone) | Optimal timing updates |
+| Posting windows | Day-specific SGT | Optimal timing updates |
 | Golden Hour | 5-10 posts before/after | Engagement timing changes |
 | Response boost | +35% within 1h | Reply impact on reach |
 | Save multiplier | 5x Likes | Save value changes |

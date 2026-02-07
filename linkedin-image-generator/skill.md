@@ -1,11 +1,11 @@
 ---
 name: linkedin-image-generator
-description: Generate images for LinkedIn posts using Nano Banana MCP server with intelligent prompt recommendations. Use when linkedin-elite-post creates content that needs visual assets (schemas, diagrams, conceptual images). Uses nano-banana-prompts skill for curated prompt library and nanobanana MCP tools for generation.
+description: Generate images for LinkedIn posts using Gemini via Claude for Chrome. Use when linkedin-elite-post creates content that needs visual assets (schemas, diagrams, conceptual images). Automatically crafts effective prompts, navigates to Gemini, generates images, and saves them locally for post scheduling.
 ---
 
 # LinkedIn Image Generator
 
-Generate professional images for LinkedIn posts using the Nano Banana MCP server (Google Gemini 2.5 Flash Image) with intelligent prompt recommendations from a 6000+ prompt library.
+Generate professional images for LinkedIn posts using Google Gemini via Claude for Chrome browser automation.
 
 ## Trigger
 
@@ -18,13 +18,13 @@ Generate professional images for LinkedIn posts using the Nano Banana MCP server
 - "generate image for this post"
 - "create visual for linkedin"
 - "make an image for my post"
-- "linkedin post image"
+- "gemini image for linkedin"
 
 ## Prerequisites
 
-- Nano Banana MCP server configured (`nanobanana_mcp.py`)
-- GEMINI_API_KEY environment variable set
-- nano-banana-prompts skill installed (for prompt recommendations)
+- Chrome browser with Gemini tab available (gemini.google.com)
+- User logged into Google account with Gemini access
+- Claude for Chrome MCP tools available
 
 ## Image Types by Post Mode
 
@@ -48,95 +48,169 @@ Extract from the LinkedIn post:
 4. **Target audience**: Technical vs non-technical
 5. **Post mode**: Save-Worthy Asset, Thought Leadership, etc.
 
-### Step 2: Get Prompt Recommendations
+### Step 2: Determine Image Strategy
 
-Use the **nano-banana-prompts** skill to find suitable prompts:
+Based on post analysis, select image approach:
 
-1. **Invoke nano-banana-prompts skill** with image need based on post analysis
-2. **Skill searches** the 6000+ prompt library across relevant categories:
-   - Infographic/Educational visuals for Save-Worthy Assets
-   - Social Media posts for general LinkedIn content
-   - Product Marketing for demos/features
-3. **Receive 1-3 prompt recommendations** with sample images
-4. **Select best prompt** or request custom generation if no match
+**A. Technical Diagram** (for schemas, architectures)
+- Clean, professional diagram
+- Dark or light theme based on preference
+- Labeled components
+- Clear flow/relationships
 
-**Example invocation:**
+**B. Conceptual Visual** (for thought leadership)
+- Abstract representation of the concept
+- Modern, professional aesthetic
+- Minimal or no text in image
+- Brand-appropriate colors
+
+**C. Process/Flow Visual** (for educational)
+- Step-by-step visualization
+- Numbered or sequential
+- Icons for each step
+- Clear start/end points
+
+### Step 3: Craft Gemini Prompt
+
+**Prompt Template:**
+
 ```
-Skill: nano-banana-prompts
-Args: "professional infographic showing AI agent workflow with 5 connected nodes for LinkedIn B2B audience"
+Create a professional LinkedIn post image for [TOPIC].
+
+Image requirements:
+- Style: [Technical diagram / Conceptual illustration / Process flowchart]
+- Theme: [Dark mode with blue accents / Light professional / Modern minimal]
+- Dimensions: 1200x627 pixels (LinkedIn recommended)
+- Text in image: [None / Minimal labels only / Key terms]
+
+Content to visualize:
+[KEY CONCEPTS FROM POST]
+
+Visual elements to include:
+[SPECIFIC ELEMENTS - e.g., "5 connected nodes showing agent workflow"]
+
+Aesthetic:
+- Clean, professional, suitable for B2B audience
+- High contrast for mobile viewing
+- No stock photo feel - should look like a custom diagram/illustration
+
+Do NOT include:
+- Watermarks
+- Generic clip art
+- Busy backgrounds
+- Hard to read text
 ```
 
-### Step 3: Customize Prompt (if needed)
+### Step 4: Generate Image via Gemini (Claude for Chrome)
 
-If using a template from the library:
-- Adapt generic elements to your specific post topic
-- Maintain professional style and LinkedIn-appropriate aesthetic
-- Ensure 16:9 or 1:1 aspect ratio for best LinkedIn display
+**Browser Automation Steps:**
 
-If generating custom prompt:
-- Follow prompt engineering guidelines below
-- Include style, composition, and technical details
-
-### Step 4: Generate Image via Nano Banana MCP
-
-**Use nanobanana MCP tools** to generate the image:
-
-1. **Call nanobanana_generate_image tool:**
+1. **Get browser context**
    ```
-   mcp__nanobanana__generate_image(
-     prompt="[Selected/customized prompt from Step 2-3]",
-     model="gemini-2.5-flash-image",  # Fast, high quality
-     image_size="2K",  # 2048x2048, good for LinkedIn
-     aspect_ratio="16:9",  # LinkedIn recommended for posts
-     output_path="./linkedin-image-generator/assets/generated/[topic]-image.png",
-     response_format="markdown"
-   )
+   Use tabs_context_mcp to find existing Gemini tab or create new one
    ```
 
-2. **Tool handles:**
-   - Sending request to Gemini API
-   - Waiting for generation (10-30 seconds)
-   - Downloading and saving image automatically
-   - Returns image path and generation details
-
-3. **Image saved to:**
+2. **Navigate to Gemini**
    ```
-   C:\Users\melve\.claude\skills\linkedin-image-generator\assets\generated\[topic]-image.png
+   Navigate to: https://gemini.google.com/app
+   Wait for page load
    ```
 
-### Step 5: Verify Generated Image
+3. **Input prompt**
+   ```
+   Find the text input field (prompt box)
+   Enter the crafted image generation prompt
+   Submit the prompt (Enter or click send button)
+   ```
 
-**Check the MCP tool response:**
-- Image path confirmation
-- Generation successful status
-- Any warnings or notes
+4. **Wait for generation**
+   ```
+   Wait for image to appear in response
+   Gemini typically generates in 10-30 seconds
+   Look for image element in the response area
+   ```
 
-**Quality check:**
-- Image matches prompt requirements
-- Professional quality for LinkedIn
-- Readable on mobile (high contrast)
-- No unwanted elements
+5. **Capture image as screenshot (CRITICAL)**
+   ```
+   Click on the generated image to view it in full/expanded mode
+   Use computer tool with action="screenshot" to capture the image
+   SAVE THE SCREENSHOT ID (e.g., "ss_xxxxxxxx") - this is needed for LinkedIn upload
+   ```
 
-### Step 6: Return Image Path
+### Step 5: Store Screenshot ID
+
+**IMPORTANT:** Do NOT download the image to a file. Instead:
+
+1. The screenshot ID from Step 4 is your image reference
+2. Store this ID for use with the `upload_image` MCP tool
+3. This bypasses the native file picker limitation
+
+**Screenshot ID format:**
+```
+ss_[random_string]
+
+Example: ss_7312xts41
+```
+
+### Step 6: Upload to LinkedIn via upload_image Tool
+
+**Why this approach:**
+- Native OS file pickers cannot be controlled by browser automation
+- The `upload_image` MCP tool can upload a screenshot directly to a file input
+- This creates a seamless, fully automated workflow
+
+**Upload workflow:**
+
+1. **Navigate to LinkedIn post composer**
+   ```
+   Navigate to linkedin.com/feed
+   Click "Start a post"
+   Enter post content
+   ```
+
+2. **Open image upload dialog**
+   ```
+   Click the image/media icon in the composer
+   The "Editor" modal appears with "Upload from computer" button
+   ```
+
+3. **Find the file input element**
+   ```
+   Use read_page tool with filter="interactive" to find the hidden file input
+   Look for input[type="file"] element and note its ref_id
+   ```
+
+4. **Upload using upload_image tool**
+   ```
+   Use mcp__claude-in-chrome__upload_image with:
+   - imageId: [screenshot ID from Step 5, e.g., "ss_7312xts41"]
+   - tabId: [current LinkedIn tab ID]
+   - ref: [file input ref_id] OR coordinate: [drop zone coordinates]
+   - filename: "[topic]-diagram.png"
+   ```
+
+5. **Verify upload and continue**
+   ```
+   Wait for image to appear in the composer
+   Click "Next" or "Done" to confirm
+   Proceed to scheduling
+   ```
+
+### Step 7: Return Status
 
 Output to user:
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✅ IMAGE GENERATED
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+========================================
+IMAGE GENERATED & ATTACHED
+========================================
 Topic: [Post topic]
 Image type: [Diagram / Conceptual / Process]
-Resolution: 2K (2048px)
-Aspect Ratio: 16:9
+Screenshot ID: [ss_xxxxxxxx]
+Status: ATTACHED to LinkedIn post
 
-📁 Saved to:
-./linkedin-image-generator/assets/generated/[topic]-image.png
-
-Ready for LinkedIn post scheduling.
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Ready to schedule your post.
+========================================
 ```
-
-**Note:** The image file path can be used directly when scheduling the LinkedIn post via browser automation.
 
 ## Prompt Engineering for LinkedIn Images
 
@@ -232,7 +306,7 @@ When linkedin-elite-post generates a Save-Worthy Asset or any post needing visua
 5. **Capture screenshot** of the generated image (store screenshot ID)
 6. **Navigate to LinkedIn** and open post composer
 7. **Use upload_image tool** to attach the screenshot directly
-8. **Proceed to scheduling** via browser automation
+8. **Proceed to scheduling** via Claude for Chrome
 
 User can override at any point: "use variation 2" or "regenerate image"
 
@@ -254,7 +328,7 @@ The `upload_image` MCP tool bypasses the native OS file picker by:
    ========================================
    ```
 
-## Browser Automation Element References
+## Claude for Chrome Element References
 
 **Gemini interface elements:**
 

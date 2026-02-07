@@ -128,35 +128,9 @@ For X Thread:
 - [Topic] thread opportunity: [structure suggestion]
 ```
 
-## Step 6: Auto-Select Top Recommendation
+## Step 6: Topic Selection
 
-**AUTONOMOUS MODE (default):**
-
-After presenting trends, automatically select the top recommendation based on:
-
-| Criteria | Weight | Evaluation |
-|----------|--------|------------|
-| Cross-platform potential | 30% | How well it works across Instagram/LinkedIn/X |
-| Narrative strength | 25% | Clear story arc, emotional hook |
-| Timeliness | 20% | Breaking news or anniversary timing |
-| Visual potential | 15% | Can be visualized effectively |
-| Positioning alignment | 10% | Relevance to Agentic AI for SMEs |
-
-Output auto-selection:
-
-```
-========================================
-✅ AUTO-SELECTED: TOPIC #[X]
-========================================
-Selection rationale: [1-2 sentence explanation of why this topic wins]
-
-Proceeding with: [Topic name]
-Next step: [Context-specific action based on calling skill]
-```
-
-**INTERACTIVE MODE:**
-
-If user explicitly wants to choose, present selection prompt:
+After presenting trends, ask:
 
 ```
 Which trending topic interests you? I can help you:

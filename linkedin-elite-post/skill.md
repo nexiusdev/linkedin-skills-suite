@@ -20,28 +20,6 @@ LinkedIn's 360Brew algorithm evaluates "Topic Authority" and Profile-Content ali
 - **Depth Score**: Algorithm now measures dwell time (how long users engage), not just clicks. Longer-form valuable content is rewarded.
 - **Single Images Underperform**: Single image posts get ~30% less reach than text-only. Use PDF carousels or native video instead.
 
-## LinkedIn Character Limit Enforcement
-
-**CRITICAL: All posts MUST stay within 2700 characters (90% of LinkedIn's 3000 character limit).**
-
-This ensures:
-- No truncation in LinkedIn's post composer
-- Reliable browser automation (fill tool works better with shorter content)
-- Better mobile reading experience
-- Margin for last-minute edits
-
-**Character counting rules:**
-- Count ALL characters including spaces, line breaks, and special characters (━, •, →, etc.)
-- Line breaks count as 1 character each
-- Unicode characters (like bullet points and arrows) count as 1 character each
-
-**If a post exceeds 2700 characters:**
-- Trim unnecessary words and filler phrases
-- Consolidate similar points
-- Shorten examples
-- Remove redundant section dividers
-- Keep the core value and framework intact
-
 ## Core Workflow
 
 When the user requests a LinkedIn post:
@@ -62,104 +40,43 @@ When the user requests a LinkedIn post:
      - Well-structured body with strategic formatting
      - Mode-appropriate CTA
      - Mode label for easy identification
-   - **CRITICAL: Each variation MUST be ≤2700 characters total**
 
 4. **Formatting Requirements**
    - Use lots of white space and line breaks
-   - Vary formatting every ~8 lines (lists, short paragraphs, Unicode bold headers)
+   - Vary formatting every ~8 lines (lists, short paragraphs, emphasis)
    - Write for mobile (concise sentences)
    - Never use rigid, repetitive formatting
    - Stagger sentence lengths in hooks for rhythm
-   - **CRITICAL: Use Unicode bold characters for headers, NOT ** markdown syntax**
-   - **Keep total character count ≤2700** (including all spaces, line breaks, and special characters)
 
 5. **Quality Standards**
    - Tone: Professional, engaging, inspiring, educational
    - Priority: Thought leadership with authentic voice
    - Avoid: Generic advice, wall of text, weak hooks
    - Focus: Genuine insights, specific frameworks, actionable value
-   - **Length: Maximum 2700 characters per post**
-
-6. **⚠️ CRITICAL: NO EM-DASHES (—) IN POSTS**
-   - Em-dashes (—) are a STRONG AI-detection signal on LinkedIn
-   - NEVER use em-dashes in any post content
-   - Use commas, periods, colons, or "and" instead
-   - Before finalizing: Search all text for "—" and REPLACE if found
-   - Examples of BAD → GOOD:
-     - BAD: "AI agents—the future of work" → GOOD: "AI agents: the future of work"
-     - BAD: "efficiency—and scale" → GOOD: "efficiency and scale"
-     - BAD: "automation—not replacement" → GOOD: "automation, not replacement"
-   - **Final validation step:** If em-dash found → Rewrite that sentence immediately
-
-7. **⚠️ CRITICAL: NO BOX-DRAWING LINE CHARACTERS IN POSTS**
-   - Box-drawing lines (━━━━━━━) make posts look AI-generated and overly templated
-   - NEVER use decorative line characters (━, ═, ─, etc.) in post content
-   - Use simple formatting instead:
-     - Unicode bold characters for section headers (see Unicode Bold Formatting section below)
-     - Line breaks for spacing
-     - Bullet points (•) sparingly
-     - Natural paragraph breaks
-   - Examples of BAD → GOOD:
-     - BAD: "━━━━━━━ THE FRAMEWORK ━━━━━━━" → GOOD: "𝗧𝗛𝗘 𝗙𝗥𝗔𝗠𝗘𝗪𝗢𝗥𝗞" or just "The Framework:"
-     - BAD: Using lines to separate sections → GOOD: Use double line breaks
-   - **Goal:** Keep posts looking organic, not template-based
-
-8. **⚠️ CRITICAL: LINKEDIN FORMATTING - USE UNICODE BOLD, NOT MARKDOWN**
-   - LinkedIn does NOT support standard Markdown formatting (no `**bold**` or `__italic__`)
-   - NEVER use `**text**` syntax in post content - it won't render as bold
-   - NEVER use ALL CAPS with ** markdown like `**THE FRAMEWORK**` - LinkedIn shows the asterisks literally
-   - USE Unicode mathematical bold characters for headers and emphasis instead
-   - Unicode bold renders properly on LinkedIn without any special syntax
-
-   **Unicode Bold Character Reference:**
-   ```
-   𝗔 𝗕 𝗖 𝗗 𝗘 𝗙 𝗚 𝗛 𝗜 𝗝 𝗞 𝗟 𝗠 𝗡 𝗢 𝗣 𝗤 𝗥 𝗦 𝗧 𝗨 𝗩 𝗪 𝗫 𝗬 𝗭
-   𝗮 𝗯 𝗰 𝗱 𝗲 𝗳 𝗴 𝗵 𝗶 𝗷 𝗸 𝗹 𝗺 𝗻 𝗼 𝗽 𝗾 𝗿 𝘀 𝘁 𝘂 𝘃 𝘄 𝘅 𝘆 𝘇
-   𝟬 𝟭 𝟮 𝟯 𝟰 𝟱 𝟲 𝟳 𝟴 𝟵
-   ```
-
-   **Examples of BAD → GOOD:**
-   - BAD: `**THE FRAMEWORK**` → GOOD: `𝗧𝗛𝗘 𝗙𝗥𝗔𝗠𝗘𝗪𝗢𝗥𝗞`
-   - BAD: `**Layer 1: Intent Mapping**` → GOOD: `𝗟𝗮𝘆𝗲𝗿 𝟭: 𝗜𝗻𝘁𝗲𝗻𝘁 𝗠𝗮𝗽𝗽𝗶𝗻𝗴`
-   - BAD: `**Key Implementation**` → GOOD: `𝗞𝗲𝘆 𝗜𝗺𝗽𝗹𝗲𝗺𝗲𝗻𝘁𝗮𝘁𝗶𝗼𝗻`
-
-   **When to Use Unicode Bold:**
-   - Section headers (e.g., `𝗧𝗛𝗘 𝗙𝗥𝗔𝗠𝗘𝗪𝗢𝗥𝗞`, `𝗦𝗠𝗘 𝗜𝗺𝗽𝗹𝗲𝗺𝗲𝗻𝘁𝗮𝘁𝗶𝗼𝗻`)
-   - Layer labels (e.g., `𝗟𝗮𝘆𝗲𝗿 𝟭`, `𝗟𝗮𝘆𝗲𝗿 𝟮`, `𝗟𝗮𝘆𝗲𝗿 𝟯`)
-   - Key framework components
-   - Call-to-action headers (e.g., `𝗦𝗔𝗩𝗘 𝗧𝗛𝗜𝗦`)
-
-   **How to Generate Unicode Bold:**
-   - For full words: Convert each letter individually using the reference above
-   - For mixed case: Use uppercase bold for emphasis, lowercase bold for readability
-   - For numbers: Use bold numbers (𝟬-𝟵) in technical content
-
-   **Final validation step:** Before finalizing, check that NO `**text**` markdown remains in the post
 
 ## Output Format
 
-Present variations clearly with **character counts**, then **auto-select the best one**:
+Present variations clearly, then **auto-select the best one**:
 
 ```
-**VARIATION 1: [MODE NAME]**
-Character count: [XXXX]/2700 ✅
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+VARIATION 1: [MODE NAME]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 [Post content with proper formatting]
 
-
-**VARIATION 2: [MODE NAME]**
-Character count: [XXXX]/2700 ✅
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+VARIATION 2: [MODE NAME]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 [Post content with proper formatting]
 
-
-**VARIATION 3: [MODE NAME]**
-Character count: [XXXX]/2700 ✅
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+VARIATION 3: [MODE NAME]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 [Post content with proper formatting]
 ```
-
-**IMPORTANT:** Display a ⚠️ warning instead of ✅ if any variation exceeds 2700 characters.
 
 ### AI Auto-Selection
 
@@ -176,17 +93,12 @@ After generating variations, **automatically select the best variation** based o
 **Output after selection:**
 
 ```
-**✅ SELECTED: VARIATION [X] - [MODE NAME]**
-Character count: [XXXX]/2700 ✅
-
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ SELECTED: VARIATION [X] - [MODE NAME]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Selection rationale: [Brief 1-2 sentence explanation]
 
 [Full post content of selected variation]
-
-
-**📊 CHARACTER COUNT VERIFICATION**
-Total characters: [XXXX]/2700
-Status: ✅ Within limit / ⚠️ Exceeds limit (trim required)
 ```
 
 Then include the **Schedule Recommendation** and proceed to **image generation** (if visual needed).
@@ -207,8 +119,6 @@ User can override: "use variation 2 instead" or "refine the selected post"
 - White space is your friend
 - Mobile-first: tight, concise sentences
 - Lists for processing, prose for flow
-- Use Unicode bold characters (𝗧𝗛𝗘 𝗙𝗥𝗔𝗠𝗘𝗪𝗢𝗥𝗞) for section headers, not ** markdown
-- Never use `**text**` syntax - LinkedIn displays it literally with asterisks
 
 **Mode Differentiation:**
 - Thought Leadership: Insights, frameworks, unique perspectives
@@ -237,9 +147,7 @@ User can override: "use variation 2 instead" or "refine the selected post"
 - Optimal: 3-5 posts per week (120% reach increase vs 1 post/week)
 - Never put external links in post body; use first comment instead
 
-## Optimal Posting Schedule
-
-> **Note:** Read your timezone from `references/linkedin-strategy.md`. All times below are examples; adjust to your local timezone.
+## Optimal Posting Schedule (SGT)
 
 **Do NOT post immediately. Schedule for optimal windows based on content type.**
 
@@ -257,15 +165,16 @@ User can override: "use variation 2 instead" or "refine the selected post"
 After generating post variations, always include:
 
 ```
-**📅 RECOMMENDED SCHEDULE**
-
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📅 RECOMMENDED SCHEDULE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Content Type: [Educational / Thought Leadership / Demo / Reflection]
 Best Day: [Day based on content type]
-Primary Window: [Time range] (your timezone)
-Secondary Window: [Time range] (your timezone, if available)
+Primary Window: [Time range] SGT
+Secondary Window: [Time range] SGT (if available)
 
 Current time: [Now]
-Recommendation: Schedule for [Day], [Time] (your timezone) (use LinkedIn's Schedule feature)
+Recommendation: Schedule for [Day], [Time] SGT (use LinkedIn's Schedule feature)
 
 Pre-post checklist:
 - [ ] 15 mins engagement before posting (Golden Hour warm-up)
@@ -286,13 +195,11 @@ Match your content type to the optimal day:
 | Thought Leadership | Thursday | End-of-week reflection mode |
 | Personal Story / Win | Friday | Light, human content performs well |
 
-## Browser Automation: Schedule Post Workflow
-
-**Browser automation uses Claude for Chrome if available, otherwise falls back to Chrome DevTools. See linkedin-daily-planner skill for detailed tool mapping.**
+## Claude for Chrome: Schedule Post Workflow
 
 **MANDATORY: Never click "Post" immediately. Always use LinkedIn's "Schedule" feature.**
 
-When using browser automation to publish content, follow this workflow:
+When using Claude for Chrome to publish content, follow this workflow:
 
 ### Step 1: Open Post Composer
 1. Navigate to LinkedIn homepage
@@ -381,13 +288,13 @@ Here is the SQL schema I used to handle multi-agent state management.
 
 Visual map showing how an AI Agent "thinks": Trigger → Retrieval → Reasoning → Action → Feedback Loop
 
-Why it gets saved: Non-coders and business owners save it to explain concepts to stakeholders or as a workflow blueprint.
+Why it gets saved: Non-coders and SME owners save it to explain concepts to stakeholders or as blueprint for n8n workflows.
 
 Hook template:
 ```
-Most [target market] automations fail because they lack a feedback loop.
+Most SME automations fail because they lack a feedback loop.
 
-Here is the 5-step logic map we use at [Your Company].
+Here is the 5-step logic map we use at Nexius Labs.
 
 [Diagram image]
 ```
@@ -412,36 +319,31 @@ Save this for your next build.
 Structure every Save-Worthy Asset post with these 4 elements:
 
 ```
-𝟭. 𝗧𝗛𝗘 𝗖𝗢𝗡𝗧𝗘𝗫𝗧 (𝗧𝗵𝗲 "𝗪𝗵𝘆")
+1. THE CONTEXT (The "Why")
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Identify a specific friction point.
 Example: "Manual data entry in SMEs is a $X billion waste."
 
-
-𝟮. 𝗧𝗛𝗘 𝗦𝗢𝗟𝗨𝗧𝗜𝗢𝗡 (𝗧𝗵𝗲 "𝗔𝘀𝘀𝗲𝘁")
+2. THE SOLUTION (The "Asset")
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Explicitly state what you're sharing.
 Example: "I've documented the [Schema/PRD/Logic] below."
 
+3. THE VISUAL ANCHOR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Attach a high-quality PDF or clean, high-contrast image.
+360Brew's Computer Vision checks if it looks like a technical document.
+Requirements:
+- Clean, readable formatting
+- High contrast (dark text on light background)
+- Professional appearance (not a screenshot of messy notes)
 
-𝟯. 𝗧𝗛𝗘 𝗖𝗢𝗡𝗧𝗘𝗡𝗧 𝗙𝗢𝗥𝗠𝗔𝗧
-
-𝗣𝗥𝗘𝗙𝗘𝗥𝗥𝗘𝗗: Text-based asset in the post (no image penalty, full reach)
-- Format schema/code with proper spacing and structure
-- Use simple bullet points (•) and arrows (→) for visual hierarchy
-- Keep well-formatted and readable on mobile
-- Use Unicode bold for headers, not decorative lines
-
-𝗔𝗟𝗧𝗘𝗥𝗡𝗔𝗧𝗜𝗩𝗘: PDF carousel or external link
-- Multi-slide PDF (better than single image)
-- Link to full asset in first comment (preserves main post reach)
-
-𝗔𝗩𝗢𝗜𝗗: Single images (30% reach penalty)
-
-
-𝟰. 𝗧𝗛𝗘 𝗖𝗧𝗔 (𝗦𝗮𝘃𝗲-𝗙𝗼𝗰𝘂𝘀𝗲𝗱)
+4. THE CTA (Save-Focused)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Instead of "Like this post," use:
 - "Save this post so you can refer back to the schema when you start your next build."
 - "Bookmark this for your next automation project."
-- "Save this template you'll need it when scaling."
+- "Save this template—you'll need it when scaling."
 ```
 
 ### Save-Worthy Asset Output Format
@@ -449,9 +351,10 @@ Instead of "Like this post," use:
 When generating a Save-Worthy Asset variation:
 
 ```
-**VARIATION X: SAVE-WORTHY ASSET**
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+VARIATION X: SAVE-WORTHY ASSET
 Asset Type: [Modular Schema / Logic Diagram / PRD Template]
-Character count: [XXXX]/2700 ✅
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 [HOOK - 1-2 lines identifying the friction point]
 
@@ -460,22 +363,13 @@ Character count: [XXXX]/2700 ✅
 [ASSET INTRODUCTION - "Here's the [schema/diagram/template]..."]
 
 [ASSET CONTENT - The actual schema, diagram structure, or template]
-Format as text in the post (no image - full reach, no algorithm penalty)
-- Use proper spacing, line breaks, and simple formatting
-- Make it scannable and readable on mobile
-- Keep schema/framework inline in the post text
-- Use Unicode bold for headers (e.g., 𝗟𝗮𝘆𝗲𝗿 𝟭, 𝗧𝗛𝗘 𝗙𝗥𝗔𝗠𝗘𝗪𝗢𝗥𝗞)
-- Use bullets (•) and arrows (→) for structure
-- NEVER use ** markdown - LinkedIn doesn't support it
+(Note: If visual, indicate "[Attach: PDF/Image of schema]")
 
 [CTA - Save-focused call to action]
 
-
-**Character limit note:** Save-Worthy Assets often include detailed content. If approaching 2700 character limit:
-- Condense the asset to key elements (users can ask for full version)
-- Use abbreviated syntax for schemas (e.g., `id INT PRIMARY KEY` instead of full SQL)
-- Focus on the framework structure, not exhaustive details
-- Add note: "Full schema/template available - DM me" (drives conversation)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ATTACHMENT NEEDED: [Describe what visual asset to create]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
 ### Using Save-Worthy Assets in Outreach
@@ -492,43 +386,28 @@ Thought it might be worth a save for your team."
 
 ## Image Generation Integration
 
-**IMPORTANT: LinkedIn penalizes single image posts (~30% less reach than text-only). Avoid images unless explicitly requested by user.**
+**For posts requiring visuals, invoke `linkedin-image-generator` skill.**
 
-### When NOT to Use Images (Default)
+### Auto-Invoke Triggers
 
-- **Educational posts** - Text-only performs better
-- **Thought leadership** - Text-only maintains authority
-- **Engagement posts** - Text-only encourages discussion
-- **Lead generation** - Text-only focuses on message
-- **Save-Worthy Assets with inline content** - Text schemas/frameworks are save-worthy on their own
+Automatically invoke linkedin-image-generator when:
+- Post mode is **Save-Worthy Asset** (schema, diagram, PRD)
+- Post content contains "[Attach: PDF/Image of schema]" placeholder
+- Post references visual elements (diagrams, flowcharts, maps)
+- User requests an image for the post
 
-### When Images Are Acceptable (User Request Only)
-
-Only generate images if:
-- **User explicitly requests** an image or visual
-- **User specifically asks** for a diagram, schema, or visual representation
-- Never auto-invoke linkedin-image-generator based on post mode alone
-
-### Alternative to Single Images
-
-For Save-Worthy Assets that truly need visuals:
-- **Text-based frameworks** in the post (preferred - full reach)
-- **PDF carousels** (multi-slide, higher engagement than single images)
-- **Native video** (60-90s, +69% performance boost)
-- **External link in first comment** to full visual asset (preserves main post reach)
-
-### Workflow IF User Requests Image
+### Workflow with Image Generation
 
 1. Generate post variations (this skill)
 2. **AI auto-selects best variation** (based on selection criteria)
-3. **Ask user**: "LinkedIn penalizes single image posts. Do you still want to generate an image, or prefer text-only for better reach?"
-4. Only if user confirms: Invoke linkedin-image-generator
-5. Image saved to `linkedin-image-generator/assets/generated/`
-6. Schedule post via Claude for Chrome (attach image)
+3. **Invoke linkedin-image-generator** with selected post content
+4. Image saved to `linkedin-image-generator/assets/generated/`
+5. Schedule post via Claude for Chrome (attach image)
+6. User can override selection at any point
 
-### Text-Only Posts (Default)
+### Output with Image
 
-All posts are generated as text-only by default for maximum reach:
+When image is generated, update the schedule recommendation:
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -536,15 +415,18 @@ All posts are generated as text-only by default for maximum reach:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Content Type: [Type]
 Best Day: [Day]
-Primary Window: [Time] (your timezone)
-Format: Text-only ✅ (Full reach, no image penalty)
+Primary Window: [Time] SGT
+
+🖼️ IMAGE READY
+File: [filename].png
+Path: linkedin-image-generator/assets/generated/[filename].png
 
 Pre-post checklist:
 - [ ] 15 mins engagement before posting (Golden Hour warm-up)
 - [ ] External links moved to first comment
+- [ ] Attach image from path above
 - [ ] Use LinkedIn's SCHEDULE feature
 - [ ] Scheduled for optimal window
-- [ ] Text-only format (no images)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 

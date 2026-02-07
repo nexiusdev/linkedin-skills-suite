@@ -5,28 +5,7 @@ description: Generate authentic LinkedIn comments (STRICT MAXIMUM 50 words) that
 
 # LinkedIn Authentic Commenting
 
-Generate comments that prove you actually read the post and have something real to say about it, not generic validation theater.
-
-## 🛑 HARD STOP: EM-DASH PROHIBITION (READ FIRST)
-
-**BEFORE generating ANY comment text, internalize this rule:**
-
-The em-dash character (—) is BANNED from all output. This is not optional.
-
-**WHY:** Em-dashes are the #1 AI-detection signal on LinkedIn. Using them instantly marks your comment as AI-generated.
-
-**REPLACEMENT RULES:**
-| Instead of... | Use... |
-|---------------|--------|
-| "systems—the orchestration" | "systems. The orchestration" |
-| "AI—and why it matters" | "AI, and why it matters" |
-| "builders—fellow founders" | "builders, fellow founders" |
-| "efficiency—not replacement" | "efficiency, not replacement" |
-| "automation—at scale" | "automation at scale" |
-
-**GENERATION RULE:** When forming sentences in your mind, NEVER think in em-dashes. Think in commas, periods, and "and".
-
-**VALIDATION:** After generating EACH variation, visually scan for "—". If found, the variation is INVALID. Rewrite it.
+Generate comments that prove you actually read the post and have something real to say about it—not generic validation theater.
 
 ## 360Brew Comment Rules (2026)
 
@@ -51,23 +30,10 @@ If you can't answer "What's the actual insight here?" or "Why does this matter?"
 
 When user pastes a LinkedIn post and requests comment creation:
 
-**0. BLACKLIST CHECK (MANDATORY)** - Read `shared/logs/linkedin-blacklist.md`
-   - Verify the post author is NOT on the blacklist
-   - Check author name AND profile URL against blacklist
-   - If blacklisted → STOP immediately, do NOT generate comment, inform user
-   - This check applies BEFORE any comment generation
-
-**CRITICAL: NEVER USE EM-DASHES (—) IN COMMENTS**
-   - Em-dashes are a strong AI-generated signal
-   - Use commas, periods, or rewrite the sentence instead
-   - Final validation: Search comment for "—" before posting
-   - If em-dash found → Rewrite that sentence immediately
-
 1. **Actually understand the post** - What's the core argument? What's the insight? What's being overlooked?
 2. **Identify your genuine response** - Agreement, disagreement, extension, question, challenge?
-3. **Generate 2-3 articulation variations** - Different ways to express that genuine response, each STRICTLY under 50 words, NO EM-DASHES
+3. **Generate 2-3 articulation variations** - Different ways to express that genuine response, each STRICTLY under 50 words
 4. **Verify authenticity** - Could this comment only be written by someone who read and understood the post?
-5. **FINAL EM-DASH CHECK** - Scan selected comment for "—" character before posting. If found, replace with comma or period.
 
 ## Authenticity Framework
 
@@ -175,29 +141,29 @@ Authenticity check:
 
 ## Core Principles (Non-Negotiable)
 
-**1. ABSOLUTELY NO EM-DASHES (—) - CRITICAL**
-NEVER use em-dashes in ANY comment. They are an instant AI-detection signal. Use commas, periods, or rewrite the sentence. Before posting ANY comment, scan for "—" character. If found, immediately rewrite that sentence. This is NON-NEGOTIABLE.
-
-**2. 15-50 word range (STRICT)**
+**1. 15-50 word range (STRICT)**
 Every comment must be at least 15 words (360Brew filters shorter comments as "low-value") and no more than 50 words (conciseness forces clarity).
 
-**3. Prove you read it**
+**2. Prove you read it**
 The comment must reference something specific from the post that shows you actually engaged with the content, not just the headline.
 
-**4. Add something new**
+**3. Add something new**
 If your comment doesn't add information or perspective the author didn't mention, it's just validation theater. Delete it.
 
-**5. Reflect genuine experience**
+**4. Reflect genuine experience**
 Ground comments in specific deployments, specific challenges, specific learnings. Generic expertise claims are hollow.
 
-**6. Have a point of view**
+**5. Have a point of view**
 Agreement, disagreement, extension, challenge, question—but SOME intellectual position. Passive observation isn't engagement.
 
-**7. Write like a human who thinks**
+**6. Write like a human who thinks**
 If it reads like AI-generated corporate LinkedIn speak, start over. Use natural language. Be direct.
 
-**8. Could stand alone as insight**
+**7. Could stand alone as insight**
 The comment should be valuable content by itself, not just a reaction that requires the original post for context.
+
+**8. No em-dashes**
+Never use em-dashes (—) in comments. Use commas, periods, or rewrite the sentence instead. Em-dashes feel overly polished and AI-generated.
 
 ## The Anti-Patterns (What NOT to Do)
 
@@ -211,17 +177,17 @@ These are the performative garbage patterns that prove you didn't actually engag
 - **Question asking as engagement bait** - Unless you're genuinely curious, don't fake it.
 - **"Thanks for sharing"** - This isn't email. Have a real response or move on.
 
-## When to Mention Your Company
+## When to Mention Nexius Labs
 
-Only mention your company when it's genuinely relevant to the specific point you're making. Not as positioning strategy, but as grounding for your perspective. Read your company details from `references/icp-profile.md`.
+Only mention your company when it's genuinely relevant to the specific point you're making. Not as positioning strategy, but as grounding for your perspective.
 
 **Natural contexts:**
-- "We've deployed this across [number] clients and the pattern I keep seeing is..."
-- "One of our implementations ran into exactly this—turned out the issue was..."
-- "In our work with [target market], the companies that succeed do X, not Y..."
+- "We've deployed this across 12 accounting firms and the pattern I keep seeing is..."
+- "One of our ERP implementations ran into exactly this—turned out the issue was..."
+- "In our automation work, the companies that succeed do X, not Y..."
 
 **Forced/strategic contexts (avoid):**
-- "At [Company], we help companies with this" - Sales pitch, not thought
+- "At Nexius Labs, we help companies with this" - Sales pitch, not thought
 - "This is why we built our platform around..." - Not about the post
 - "We've seen this across many deployments" - Generic credential drop
 
@@ -258,7 +224,7 @@ Load these as needed for deeper guidance:
 - **references/selection-guide.md** - Detailed selection heuristics, decision tree, and examples for choosing best variation
 - **references/strategy-guide.md** - Core LinkedIn engagement strategy and principles
 - **references/comment-patterns.md** - 7 proven comment patterns with examples
-- **references/icp-profile.md** - Your business positioning, expertise areas, and target market
+- **references/nexius-positioning.md** - Nexius Labs value prop, expertise areas, proof points
 
 ## Automatic AI Selection of Best Variation
 
@@ -338,52 +304,54 @@ Before presenting selection, confirm:
 - Alternative variations offer meaningfully different approaches
 - All variations pass authenticity checks
 
-### Output Format for Autonomous Mode
+### Output Format for Selected Variation
 
-**In AUTONOMOUS mode (default):**
-- Generate 3 variations internally
-- Auto-select best variation based on post context
-- IMMEDIATELY post the selected comment using browser automation
-- DO NOT present alternatives or wait for confirmation
+AI auto-selects the best comment. Present in this order:
 
-**Internal decision-making only** - alternatives are evaluated but not shown to user.
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+POST ANALYSIS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Type: [Thought Leadership/Case Study/etc.]
+Tone: [Technical/Inspirational/etc.]
+Audience: [Founders/Practitioners/etc.]
+Engagement: [Low/Medium/High]
 
-The skill should:
-1. Generate comment variations silently
-2. Select best one
-3. Post it immediately
-4. Only then show what was posted in the completion report
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ SELECTED COMMENT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Selection rationale: [1-2 sentence explanation]
 
-## Workflow (FULLY AUTONOMOUS)
+[THE SELECTED COMMENT - MAXIMUM 50 WORDS]
 
-1. **BLACKLIST CHECK** - Verify author is not on blacklist (MANDATORY first step)
+(Word count: X/50)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ALTERNATIVES (if user wants to override)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Variation 2: [Name]
+[Comment text] (X/50 words)
+
+Variation 3: [Name]
+[Comment text] (X/50 words)
+```
+
+User can override: "use variation 2" or "make it more direct"
+
+## Workflow
+
+1. **User pastes LinkedIn post**
 2. **Post Analysis** - Automatically identify post type, author persona, tone, audience, engagement level
 3. **Deep read** - What's the actual argument? What's the insight? What's being missed?
 4. **Genuine response formation** - What would be the authentic intellectual response after reading this?
 5. **Generate 3 articulation variations** - Create 3 distinct ways to express that response
 6. **AI auto-selects best variation** - Uses selection framework to identify optimal comment for post context
-7. **IMMEDIATELY POST THE SELECTED COMMENT** - Use browser automation to post without asking
-8. **Log to shared activity log** - Update activity log with comment details
+7. **Output selected comment** - Present with "✅ SELECTED COMMENT" header, ready to copy/paste
+8. **Alternatives provided** - Other variations shown for user override if needed
 
-**CRITICAL: This is FULLY AUTONOMOUS mode.**
-- DO NOT ask user to confirm before posting
-- DO NOT wait for user approval
-- DO NOT present alternatives and wait for selection
-- Auto-select best variation and IMMEDIATELY post it using browser automation
-- Comment field should already be open when this skill is invoked
-- Just fill the text and click Post button immediately
-
-**Autonomous Flow:**
-```
-Blacklist Check → Generate 3 variations (NO EM-DASHES) → Auto-select best → FINAL EM-DASH SCAN → Fill comment field → Click Post → Log → Report completion
-```
-
-**Mandatory pre-posting check:**
-- Scan selected comment for "—" character
-- If found → Replace with comma/period and regenerate
-- Only post after confirming zero em-dashes
-
-**No user interaction required.** The skill executes end-to-end autonomously.
+**Fully automated** - No user selection required. Comment is ready to post immediately.
+User can override at any point: "use variation 2" or "make it shorter"
 
 ## Quality Checklist
 
@@ -402,8 +370,8 @@ Before delivering any comment, verify:
 - Could stand alone as valuable micro-content
 
 **Technical:**
-- **NO EM-DASHES (—) - MANDATORY CHECK** - Scan comment for "—" before posting. If found, immediately rewrite. Use commas or periods instead. Em-dashes = AI-detection signal.
 - **15-50 word range** - Minimum 15 words (algorithm requirement), maximum 50 words
+- **NO EM-DASHES (—)** - Use commas or periods instead (em-dashes = AI-generated signal)
 - Reads like natural human thought, not AI corporate speak
 - Written for entire audience, not just author
 - Company mention (if any) is genuinely relevant, not strategic positioning
@@ -489,59 +457,6 @@ Sometimes the best engagement is no engagement:
 - The conversation is fully explored and you'd be repeating points
 
 **Remember:** Every comment is a micro-representation of your thinking. A few thoughtful comments > many performative ones.
-
-## Browser Automation Workflow
-
-**Browser automation uses Claude for Chrome if available, otherwise falls back to Chrome DevTools. See linkedin-daily-planner skill for detailed tool mapping.**
-
-When using browser automation to post comments or replies on LinkedIn:
-
-### Critical Steps (DO NOT SKIP):
-
-**When Commenting on a Post:**
-1. Navigate to the LinkedIn post URL
-2. **LIKE the post** (click the "Like" button/reaction)
-3. Click into the comment text field
-4. Type the comment
-5. **CLICK THE "Post" OR "COMMENT" BUTTON** to submit (DO NOT just type and leave)
-6. Wait for confirmation that comment posted successfully
-
-**When Replying to a Comment:**
-1. Navigate to the LinkedIn post with the comment
-2. Find the specific comment to reply to
-3. **LIKE the comment** (click the like icon on the comment)
-4. Click "Reply" on that comment
-5. Type the reply text in the reply field
-6. **CLICK THE "Reply" OR "POST" BUTTON** to submit (DO NOT just type and leave)
-7. Wait for confirmation that reply posted successfully
-
-### Common Mistakes to Avoid:
-- ❌ Typing comment/reply but NOT clicking the Post/Reply button
-- ❌ Forgetting to like the post before/after commenting
-- ❌ Forgetting to like the comment before/after replying
-- ❌ Not waiting for confirmation before moving to next task
-
-### Automation Checklist:
-```
-FOR EACH COMMENT:
-[ ] Navigate to post URL
-[ ] Like the post
-[ ] Click comment field
-[ ] Type comment text
-[ ] Click "Post" button ← CRITICAL
-[ ] Confirm comment appeared
-[ ] Log to shared activity log
-
-FOR EACH REPLY:
-[ ] Navigate to post URL
-[ ] Find the comment to reply to
-[ ] Like the comment
-[ ] Click "Reply" on that comment
-[ ] Type reply text in reply field
-[ ] Click "Reply" button ← CRITICAL
-[ ] Confirm reply appeared
-[ ] Log to shared activity log
-```
 
 ## Shared Activity Log (Token Optimization)
 

@@ -1,11 +1,9 @@
 ---
 name: linkedin-connect-timer
-description: Analyze past LinkedIn activity to determine optimal timing for connection requests based on the 360Brew "Semantic Bridge" strategy. Use when user says "who should I connect with", "connection timing", "ready to connect", or wants to identify prospects ready for connection requests. Applies the 2-3 Touch Rule (minimum 2-3 engagements before connecting). Works with browser automation (Claude for Chrome or DevTools fallback). Reads from shared activity log first, then LinkedIn if needed. Outputs prioritized list of prospects ready for connection, recommended approach (blank for 3+ touches, asset-led for 2 touches), and optimal send times.
+description: Analyze past LinkedIn activity to determine optimal timing for connection requests based on the 360Brew "Semantic Bridge" strategy. Use when user says "who should I connect with", "connection timing", "ready to connect", or wants to identify prospects ready for connection requests. Applies the 2-3 Touch Rule (minimum 2-3 engagements before connecting). Reads from shared activity log first, then LinkedIn if needed. Outputs prioritized list of prospects ready for connection, recommended approach (blank for 3+ touches, asset-led for 2 touches), and optimal send times.
 ---
 
 # LinkedIn Connect Timer
-
-**Browser automation uses Claude for Chrome if available, otherwise falls back to Chrome DevTools. See linkedin-daily-planner skill for detailed tool mapping.**
 
 Analyze your LinkedIn activity history to identify prospects who are "warmed up" and ready for connection requests based on the 360Brew Semantic Bridge strategy.
 
@@ -53,7 +51,7 @@ linkedin-connect-timer/logs/activity-log.md
 ```markdown
 # LinkedIn Activity Log
 
-Last updated: [YYYY-MM-DD HH:MM]
+Last updated: [YYYY-MM-DD HH:MM SGT]
 Last activity timestamp: [YYYY-MM-DD HH:MM]
 
 ## Engagement Records
@@ -83,7 +81,7 @@ Last activity timestamp: [YYYY-MM-DD HH:MM]
    - If not exists: Create new log, do full read
 
 2. **Read only NEW activities**
-   - Read your LinkedIn username from `shared/linkedin-account-config.md` and navigate to `https://www.linkedin.com/in/{username}/recent-activity/all/`
+   - Navigate to `https://www.linkedin.com/in/melverick/recent-activity/all/`
    - Only extract activities NEWER than `Last activity timestamp`
    - Stop scrolling when reaching already-logged timestamps
 
@@ -98,25 +96,7 @@ Last activity timestamp: [YYYY-MM-DD HH:MM]
 
 ## Workflow
 
-### Step 0: Blacklist Check (MANDATORY FIRST STEP)
-
-**CRITICAL: Before analyzing ANY prospect for connection readiness, check the blacklist.**
-
-**File location:** `shared/logs/linkedin-blacklist.md`
-
-```
-BEFORE IDENTIFYING CONNECTION CANDIDATES:
-1. Read linkedin-blacklist.md
-2. Check if prospect name OR profile URL appears in blacklist
-3. If FOUND → SKIP from connection pipeline entirely
-4. If NOT FOUND → Proceed with connection timing analysis
-```
-
-**This check overrides ALL other criteria. Never suggest connections to blacklisted contacts.**
-
----
-
-### Step 0a: Load or Initialize Activity Log
+### Step 0: Load or Initialize Activity Log
 
 ```
 Check: linkedin-connect-timer/logs/activity-log.md exists?
@@ -135,12 +115,12 @@ IF NOT EXISTS:
 
 ### Step 1: Access LinkedIn Activity Page (Incremental)
 
-Navigate to user's recent activity (read username from `shared/linkedin-account-config.md`):
+Navigate to user's recent activity:
 ```
-https://www.linkedin.com/in/{username}/recent-activity/all/
+https://www.linkedin.com/in/melverick/recent-activity/all/
 ```
 
-Use browser automation to read the activity feed.
+Use Claude for Chrome to read the activity feed.
 
 **Incremental Read Logic:**
 ```
@@ -309,19 +289,21 @@ For each "Ready" prospect (must have 2-3+ engagements), recommend approach:
 - You have a relevant PRD/schema/asset to offer
 - No back-and-forth conversation yet
 
-**Asset-Led Note Template (Genuine Curiosity - No Fake Offers):**
+**Asset-Led Note Template:**
 ```
-Hi [Name], your post on [Topic] caught my eye.
+Hi [Name], caught your post on [Topic].
 
-Curious how you're handling [specific challenge they mentioned]? Seeing [related observation] across [their industry] in your target geography (read from references/icp-profile.md).
+I'm mapping out an Agentic [ERP/CRM/workflow] for [Their Industry] to automate [Pain Point from their post].
+
+Happy to share the schema if useful.
 ```
-(Keep under 250 characters - authentic question, not solution-offering)
+(Keep under 250 characters)
 
 ### Step 7: Optimal Timing Recommendation
 
-**Best Send Windows (read timezone from `references/linkedin-strategy.md`):**
-- Tuesday-Thursday: 9:00 AM - 10:30 AM (your timezone)
-- Secondary: Tuesday-Thursday: 12:00 PM - 1:00 PM (your timezone)
+**Best Send Windows (SGT):**
+- Tuesday-Thursday: 9:00 AM - 10:30 AM
+- Secondary: Tuesday-Thursday: 12:00 PM - 1:00 PM
 
 **Avoid:**
 - Mondays (inbox overload)
@@ -333,12 +315,12 @@ Curious how you're handling [specific challenge they mentioned]? Seeing [related
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⏰ OPTIMAL SEND TIME
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Current time: [Time] (your timezone)
+Current time: [Time] SGT
 Day: [Day of week]
 
 Recommendation: [SEND NOW / WAIT UNTIL [Time]]
 
-Next optimal window: [Day], [Time range] (your timezone)
+Next optimal window: [Day], [Time range] SGT
 ```
 
 ### Step 8: Save Updated Activity Log
@@ -386,12 +368,12 @@ When prioritizing connection requests, consider contact type:
 
 360Brew prioritizes "Tribal Relevance." Group prospects by cluster:
 
-**Geographic Cluster (read geography from `references/icp-profile.md`):**
-- People in same local industry group in your target geography
-- Commented on same industry-focused posts
+**Singapore SME Cluster:**
+- People in same local industry group
+- Commented on same SME-focused posts
 
 **Tech-Stack Cluster:**
-- Followers of tools and platforms relevant to your domain
+- Followers of n8n, Supabase, Agentic AI content
 - Engaged with similar technical posts
 
 **Benefit:** Once 3-4 people in a cluster accept, 360Brew auto-suggests you to the rest.
@@ -401,7 +383,7 @@ When prioritizing connection requests, consider contact type:
 🎯 CLUSTER OPPORTUNITIES
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Cluster: [Name, e.g., "[Your Geography] [Industry] Leaders"]
+Cluster: [Name, e.g., "Singapore Finance SMEs"]
 Members ready: [Names]
 Recommendation: Connect with all in same session for cluster boost
 ```
@@ -459,7 +441,7 @@ Before sending connection requests:
 - [ ] At least one 15+ word comment exists
 - [ ] Prospect has 48+ hours of engagement history
 - [ ] Current day is Tuesday-Thursday
-- [ ] Current time is 9:00-10:30 AM your timezone (or secondary window)
+- [ ] Current time is 9:00-10:30 AM SGT (or secondary window)
 - [ ] Daily limit not exceeded (<15 requests)
 - [ ] Request approach determined (blank for 3+, asset-led for 2)
 - [ ] Note is under 250 characters (if using note)
