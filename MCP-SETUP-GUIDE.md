@@ -28,6 +28,28 @@ The LinkedIn Skills Suite uses MCP servers to extend Claude's capabilities for b
 
 ---
 
+## Quick Start: API Keys Setup
+
+**Before installing any MCPs**, set up your API keys:
+
+1. **Copy the environment template:**
+   ```bash
+   cp .env.example .env
+   ```
+
+2. **Edit `.env` and add your API keys:**
+   - All API keys go in this ONE file
+   - The file is already in `.gitignore` (safe from git)
+   - See `.env.example` for all available options
+
+3. **Which keys do you need?**
+   - **Browser automation:** No API keys needed (Claude in Chrome extension handles it)
+   - **HubSpot CRM:** Get from HubSpot Settings → Private Apps
+   - **Email finder:** Pick ONE service (Apollo, Hunter, Snov.io, etc.)
+   - **Video creation:** Optional - only if using video skills
+
+---
+
 ## Installation Instructions
 
 ### 1. Install Claude in Chrome (Primary Browser Automation)
@@ -83,33 +105,44 @@ claude code --list-tools | grep "mcp__playwright"
    - `crm.schemas.contacts.write` (for custom properties)
 6. Generate and copy the API key
 
-**Step 2: Install the MCP Server**
+**Step 2: Setup API Keys**
+
+1. Copy the environment template:
+```bash
+cp .env.example .env
+```
+
+2. Open `.env` and add your API keys:
+```bash
+# Edit .env file
+HUBSPOT_API_KEY=your_actual_hubspot_key_here
+HUBSPOT_PORTAL_ID=your_actual_portal_id_here
+
+# Optional: Add email enrichment keys (you only need one)
+APOLLO_API_KEY=your_apollo_key_here
+# ... or any other email finder service
+```
+
+**Step 3: Install the MCP Server**
 
 The HubSpot CRM MCP is included in the repository under `crm-integration/`.
 
-1. Navigate to the crm-integration folder:
+1. Install Python dependencies:
 ```bash
 cd crm-integration
-```
-
-2. Install Python dependencies:
-```bash
 pip install -r requirements.txt
-# or
-pip install fastmcp hubspot-api-client python-dotenv
 ```
 
-3. Create environment file:
+**Step 4: Register with Claude Code**
+
+1. Copy the MCP configuration template:
 ```bash
-# Create .env file in crm-integration/
-echo "HUBSPOT_ACCESS_TOKEN=your_api_key_here" > .env
+cp .mcp.json.example .mcp.json
 ```
 
-**Step 3: Register with Claude Code**
+2. Edit `.mcp.json` and update the path to your installation:
 
-Add to your Claude Code MCP configuration:
-
-**For Windows** (`%USERPROFILE%\.claude\mcp.json`):
+**For Windows**:
 ```json
 {
   "mcpServers": {
@@ -119,14 +152,15 @@ Add to your Claude Code MCP configuration:
         "C:\\path\\to\\linkedin-skills-suite\\crm-integration\\hubspot_mcp.py"
       ],
       "env": {
-        "HUBSPOT_ACCESS_TOKEN": "your_api_key_here"
+        "HUBSPOT_API_KEY": "${HUBSPOT_API_KEY}",
+        "HUBSPOT_PORTAL_ID": "${HUBSPOT_PORTAL_ID}"
       }
     }
   }
 }
 ```
 
-**For Mac/Linux** (`~/.claude/mcp.json`):
+**For Mac/Linux**:
 ```json
 {
   "mcpServers": {
@@ -136,12 +170,15 @@ Add to your Claude Code MCP configuration:
         "/path/to/linkedin-skills-suite/crm-integration/hubspot_mcp.py"
       ],
       "env": {
-        "HUBSPOT_ACCESS_TOKEN": "your_api_key_here"
+        "HUBSPOT_API_KEY": "${HUBSPOT_API_KEY}",
+        "HUBSPOT_PORTAL_ID": "${HUBSPOT_PORTAL_ID}"
       }
     }
   }
 }
 ```
+
+**Note:** The `${VARIABLE}` syntax tells Claude Code to read values from your `.env` file.
 
 **Step 4: Setup HubSpot Properties**
 
