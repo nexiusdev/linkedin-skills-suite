@@ -94,6 +94,14 @@ When user triggers autonomous mode ("start linkedin"):
    MORNING BLOCK:
    → CHECK: Comments today < 30 limit? If not, skip commenting
    → RUN COMMENT DEDUP PRE-FLIGHT (scrape comments activity page → build dedup set)
+   → **HIGH-PRIORITY PROSPECT WARMING (2-3 prospects, ~5 mins):**
+     - Read icp-prospects.md → Filter for 2-touch prospects (one more touch = ready to connect)
+     - Run linkedin-icp-warmer with priority scoring → Get top 2-3 prospects
+     - CHECK: Post NOT in "already commented" set (COMMENT DEDUP RULE)
+     - CHECK: Last touch was 2+ days ago (multi-touch cadence rule)
+     - Comment on their posts to reach 3 touches
+     - Update Touch History with responsiveness tracking: "DDMon: comment ✓" (responded) or "DDMon: comment ○" (no response)
+     - Update daily limits: Comments +1 per prospect
    → Find 9 posts to comment on (3 Peer, 3 Prospect, 3 Thought Leader)
    → For each comment:
      - CHECK: Still under 30 comment limit?
@@ -141,13 +149,20 @@ When user triggers autonomous mode ("start linkedin"):
      - CHECK: DMs today < 25 limit?
      - Send Value DM to PROSPECT connections only
      - Update daily limits: DMs +1
-   → **WARM UP existing prospects (2-3 Touch Rule):**
+   → **WARM UP existing prospects (2-3 Touch Rule) with SMART PRIORITIZATION:**
      - Read icp-prospects.md → Filter for 0-1 touch prospects
-     - Run linkedin-icp-warmer → Find their recent posts
+     - Run linkedin-icp-warmer with priority scoring:
+       * Priority Score = ICP Score (0-100) + Signal Strength (0-15) + Recency (0-10) + Activity (0-10)
+       * Signal: Profile View = 10, Follower = 15, Post Comment = 5, Post Like = 3
+       * Recency: 0-2 days since last touch = 10, 3-5 = 5, 6+ = 0
+       * Activity: ACTIVE = 10, MODERATE = 5, INACTIVE = 0
+     - Top 3-5 prospects by priority score
      - CHECK: Post NOT in "already commented" set (COMMENT DEDUP RULE)
+     - CHECK: Last touch was 2+ days ago (multi-touch cadence rule - minimum 2-3 days between touches)
+     - CHECK: Different post from last touch (never comment on same post twice)
      - Comment on posts to build touches (+1 touch per comment)
      - Update "already commented" set after each new comment
-     - Update Touch History in icp-prospects.md
+     - Update Touch History with responsiveness tracking: "DDMon: comment ✓" (responded) or "DDMon: comment ○" (no response)
    → **ONLY send connection requests to 2+ touch prospects:**
      - Filter icp-prospects.md for Touches >= 2
      - CHECK: Connections today < 15 limit?
@@ -157,6 +172,12 @@ When user triggers autonomous mode ("start linkedin"):
    → Run linkedin-icp-finder for NEW prospects (discovery only):
      - Screen results against ICP Scoring Matrix
      - **SAVE qualifying prospects (60+) to icp-prospects.md as 0-touch**
+     - Do NOT send connection requests to 0-touch prospects
+   → Run web-icp-scanner for NEW web prospects (beyond LinkedIn):
+     - Execute 5-7 web searches across categories (news, directories, awards, podcasts)
+     - Apply ICP scoring (60+ auto-approved)
+     - Run 4-tier email enrichment per prospect (web → opportunistic → API for 70+ → pattern)
+     - **SAVE all qualifying prospects (60+) to icp-prospects.md as 0-touch**
      - Do NOT send connection requests to 0-touch prospects
    → Log all to shared activity log
 
@@ -178,8 +199,25 @@ When user triggers autonomous mode ("start linkedin"):
      - Comment likes and replies
      - Profile views (CHECK: < 80 limit before viewing back)
      - New followers
-   → Screen each for ICP fit
-   → **SAVE all ICP matches to icp-prospects.md** with source noted
+   → Screen each for ICP fit (quick check from list view)
+   → **IMMEDIATE ENRICHMENT for all ICP matches:**
+     - Navigate to each ICP match's profile page
+     - Extract full company name (from Experience section)
+     - Click "Contact Info" → Extract email
+     - **If email = "Not public":** Run 3-tier email enrichment:
+       * **Tier 1 - Web Search (FREE):** Search `"[Name]" "[Company]" email`
+       * **Tier 2 - API Waterfall (4 credits):** If web search fails, call `crm_find_email` MCP tool
+         - Tries: Apollo → Hunter → Snov.io → GetProspect → Prospeo
+         - Stops at first verified email found
+       * **Result:** Update icp-prospects.md Email column or mark "Not found"
+     - Capture mutual connections count
+     - Confirm profile URL
+     - Check recent activity status (ACTIVE = post within 30 days)
+     - Close profile, move to next
+   → **SAVE enriched ICP matches to icp-prospects.md:**
+     - Include: Full company name, email, confirmed URL, mutual connections
+     - Mark as "✅ ENRICHED" in Notes column
+     - Add source (Profile View / Follower / Post Engagement with date)
    → For ICP matches needing engagement:
      - CHECK: Comments/Likes/Profile Views within limits?
      - Execute engagement action
@@ -388,6 +426,8 @@ Connections: [X]/10 target
 **If Afternoon Block:**
 - "Run linkedin-connect-timer to check connection pipeline"
 - "Run linkedin-icp-warmer to find warmup opportunities"
+- "Run linkedin-icp-finder to discover LinkedIn prospects"
+- "Run web-icp-scanner to discover web prospects"
 
 **If Evening Block:**
 - "Check inbound engagement (comment likes, replies, profile views, new followers)"
@@ -608,9 +648,16 @@ Create the to-do file with this structure:
 ```markdown
 # LinkedIn Daily Outreach Plan - [Day, DD MMM YYYY]
 
-## Morning Block (15 mins) - Pre-Posting Warm-Up
+## Morning Block (20 mins) - Pre-Posting Warm-Up + High-Priority Warming
 
 The 15/15 Rule: Engage BEFORE posting to warm your topical relevance.
+
+### 🔥 High-Priority Prospect Warming (2-3 prospects, ~5 mins)
+- [ ] Run linkedin-icp-warmer → Filter for **2-touch prospects** (Priority Score 120+)
+- [ ] CHECK: Last touch was 2+ days ago (multi-touch cadence rule)
+- [ ] Comment on their recent posts to reach **3 touches = connection-ready**
+- [ ] Update Touch History: "DDMon: comment ○" (check back in 2-3 days for responsiveness)
+- [ ] **Result:** These prospects ready for connection requests in Afternoon Block
 
 ### Commenting Tasks (use linkedin-pro-commenter + linkedin-icp-finder)
 
@@ -665,11 +712,16 @@ The 15/15 Rule: Engage BEFORE posting to warm your topical relevance.
 - [ ] NO external links, NO pitch, reference their content
 - [ ] Mark "Value DM Sent = Yes" in log
 
-### Warm Up Existing Prospects (2-3 Touch Rule)
+### 🎯 Warm Up Existing Prospects (Smart Prioritization + Cadence Rule)
 - [ ] Read `shared/logs/icp-prospects.md` → Filter for 0-1 touch prospects
-- [ ] Run linkedin-icp-warmer to find their recent posts
+- [ ] Run linkedin-icp-warmer with **Priority Score formula:**
+  - Score = ICP (0-100) + Signal (0-15) + Recency (0-10) + Activity (0-10)
+  - Target: 90-119 points (Medium Priority = 1-touch prospects needing advancement)
+- [ ] **CHECK: Last touch was 2+ days ago** (multi-touch cadence rule - respects time between touches)
+- [ ] **CHECK: Different post from last touch** (never comment on same post twice)
 - [ ] Comment on 3-5 prospect posts (builds +1 touch per comment)
-- [ ] Update Touch History column in icp-prospects.md after each engagement
+- [ ] Update Touch History: "DDMon: comment ○" (○ = no response yet, will check in 2-3 days)
+- [ ] **After 2-3 days:** Check if prospect engaged back → Update ○ to ✓ if responsive
 
 **2-3 Touch Rule:**
 | Touches | Status | Action |
@@ -686,11 +738,37 @@ The 15/15 Rule: Engage BEFORE posting to warm your topical relevance.
 - [ ] For 3+ touch prospects: Send blank request (performs better)
 - [ ] Update Connection Status to "pending" in icp-prospects.md
 
-### Discover NEW Prospects (use linkedin-icp-finder)
-- [ ] Run linkedin-icp-finder to search for new prospects
+### Discover NEW Prospects - LinkedIn (use linkedin-icp-finder)
+- [ ] Run linkedin-icp-finder to search for new prospects on LinkedIn
 - [ ] Screen each result against ICP Scoring Matrix (80+ = HOT, 60-79 = WARM)
 - [ ] **Save all qualifying prospects to `shared/logs/icp-prospects.md` as 0-touch**
 - [ ] ⚠️ **Do NOT send connection requests** - warm up first!
+
+### Discover NEW Prospects - Web (use web-icp-scanner)
+- [ ] Run web-icp-scanner to discover prospects beyond LinkedIn
+- [ ] Executes 5-7 web searches across categories:
+  - News & press releases (funding, expansion, awards)
+  - Industry directories & business lists
+  - Podcast guest appearances & media profiles
+  - Event speakers & conference panelists
+  - Franchise owners & multi-unit operators
+- [ ] Auto-scores each prospect (ICP matrix: 100 points)
+- [ ] **Auto-approves ALL 60+ score prospects** (no user feedback needed)
+- [ ] **4-tier email enrichment per prospect:**
+  - Tier 1: Web search (FREE)
+  - Tier 2: Opportunistic extraction (FREE)
+  - Tier 3: API waterfall for 70+ scores (paid credits)
+  - Tier 4: Pattern detection (FREE)
+- [ ] **Save all qualifying prospects to `shared/logs/icp-prospects.md` as 0-touch**
+- [ ] ⚠️ **Do NOT send connection requests** - warm up first!
+- [ ] Log results to `web-discovered-prospects.md` for tracking
+
+**Why Web Scanner:**
+- Discovers prospects NOT active on LinkedIn
+- Finds high-profile founders featured in news/podcasts
+- Captures prospects from awards, events, directories
+- Average: 5-10 new prospects per scan
+- Runs autonomously with zero manual filtering
 
 **Prospect Saving Rule:**
 ```
@@ -765,6 +843,32 @@ IF prospect scores 60+ on ICP matrix:
 - [ ] For ICP matches: Find their posts → Comment to reciprocate
 - [ ] Reply to comment replies (builds thread depth = algorithm boost)
 
+**Profile Views & Followers Audit with IMMEDIATE ENRICHMENT:**
+- [ ] Navigate to linkedin.com/me/profile-views/
+- [ ] Screen viewers from list view (quick ICP check based on headline)
+- [ ] **For each ICP match found:**
+  - [ ] Click profile link to visit full profile page
+  - [ ] Extract full company name from Experience section
+  - [ ] Click "Contact Info" button → Extract email
+  - [ ] **If email = "Not public":** Run 3-tier email enrichment:
+    * **Tier 1 - Web Search (FREE):** Search `"[Name]" "[Company]" email`
+    * **Tier 2 - API Waterfall (uses credits):** If web search fails, call `crm_find_email` MCP tool
+      - Waterfall: Apollo → Hunter → Snov.io → GetProspect → Prospeo
+      - Stops at first verified email found
+      - Total capacity: 275 lookups/month across all providers
+    * Update Email column with result or mark "Not found"
+  - [ ] Note mutual connections count
+  - [ ] Confirm profile URL from browser
+  - [ ] Check recent activity (ACTIVE = post within 30 days, INACTIVE = 30+ days)
+  - [ ] Close profile, move to next ICP match
+- [ ] Navigate to linkedin.com/mynetwork/network-manager/people-follow/followers/
+- [ ] Screen new followers (same enrichment process for ICP matches)
+- [ ] **Save all enriched ICP matches to icp-prospects.md:**
+  - Include: Name, Role, Full Company, Location, Email, Profile URL, Mutual Connections
+  - Mark as "✅ ENRICHED" in Notes column
+  - Source: "Profile View [date]" or "New Follower [date]"
+  - Set Touches = 0, Connection Status = connected/none
+
 ### Comment Reply Audit (Scan Older Posts - MANDATORY)
 
 **Problem this solves:** Comments on posts from 1-2 weeks ago are invisible in notifications. Viral posts (30+ comments) keep getting new comments for days. Without this audit, those comments go unreplied, damaging engagement and credibility.
@@ -833,6 +937,24 @@ IF inbound signal passes ICP screen:
 - ✅ Company: SME (10-500 employees), not enterprise/MNC
 - ❌ Skip: Non-ASEAN, junior roles, large corporations, recruiters
 
+### LOW-PRIORITY PROSPECT WARMING (2-3 prospects, ~5 mins)
+
+**Focus:** Initial warming for 0-1 touch prospects to expand pipeline
+
+- [ ] Read icp-prospects.md → Filter for 0-1 touch prospects
+- [ ] Run linkedin-icp-warmer with priority scoring → Get bottom 2-3 prospects (lowest priority score but still ICP match)
+- [ ] CHECK: Post NOT in "already commented" set (COMMENT DEDUP RULE)
+- [ ] CHECK: Comments today < 30 limit?
+- [ ] Comment on their posts to initiate or continue warming
+- [ ] Update Touch History with responsiveness tracking: "DDMon: comment ✓" (responded) or "DDMon: comment ○" (no response)
+- [ ] Update daily limits: Comments +1 per prospect
+- [ ] Log warming activity to shared activity log
+
+**Why Evening Block for low-priority:**
+- Morning/Afternoon focused on high-priority (near connection-ready)
+- Evening mops up backlog and initiates new warming
+- Spreads warming across 3 daily sessions → 7-11 prospects/day vs 3-5/day
+
 ### CRM Auto-Sync (end of Evening Block)
 - [ ] After all Evening Block tasks complete → call `crm_sync_all`
 - [ ] This captures: inbound audit results, new ICP matches from followers/viewers
@@ -849,7 +971,8 @@ IF inbound signal passes ICP screen:
 | Generate images for posts | `linkedin-image-generator` |
 | Write comments | `linkedin-pro-commenter` |
 | Find high-engagement posts | `linkedin-post-finder` |
-| Screen ICP prospects | `linkedin-icp-finder` |
+| Screen ICP prospects (LinkedIn) | `linkedin-icp-finder` |
+| Discover prospects (Web/News) | `web-icp-scanner` |
 | Warm up existing prospects | `linkedin-icp-warmer` |
 | Check connection readiness | `linkedin-connect-timer` |
 | Audit profile alignment | `linkedin-profile-icp` |
@@ -1257,6 +1380,85 @@ On Fridays, add a weekly audit section:
 - [ ] Update headline if needed (entity keywords)
 - [ ] Update About section if pillars have shifted
 - [ ] Check top skills alignment
+
+### 🔥 ICP Warming Audit (CRITICAL - Measures warming effectiveness)
+
+**Purpose:** Track warming pipeline health, identify bottlenecks, measure conversion rates
+
+- [ ] **Conversion Funnel Analysis:**
+  - Read icp-prospects.md → Count prospects by touch stage
+  - **0→1 touch conversion:** How many 0-touch prospects got first engagement this week?
+  - **1→2 touch conversion:** How many 1-touch prospects advanced to 2 touches?
+  - **2→3 touch conversion:** How many 2-touch prospects reached connection-ready (3 touches)?
+  - Target: 30%+ conversion rate at each stage (if lower, increase warming volume)
+
+- [ ] **Responsiveness Rate Analysis:**
+  - Count prospects with "✓" in Touch History (they engaged back with your comments)
+  - Count prospects with "○" in Touch History (no response yet)
+  - **Responsiveness Rate = (✓ count) / (Total touches) × 100**
+  - Target: 15%+ responsiveness rate (if lower, improve comment quality)
+  - High-response prospects = strong ICP fit, prioritize for connection
+
+- [ ] **Pipeline Backlog Status:**
+  - Total prospects discovered this week (from linkedin-icp-finder + web-icp-scanner)
+  - Total prospects warmed this week (daily warming sessions across 3 blocks)
+  - **Discovery Rate:** ~15-25 prospects/day = 105-175/week
+  - **Warming Capacity:** 7-11 prospects/day = 49-77/week
+  - **Backlog Growth:** Discovery - Warming = net backlog increase
+  - If backlog growing >50/week → Increase warming volume or tighten ICP criteria
+
+- [ ] **Time-to-Warm Average:**
+  - Sample 5-10 prospects who reached 3 touches this week
+  - Calculate days from first touch (0→1) to connection-ready (3 touches)
+  - **Average Time-to-Warm = Total days / Prospects sampled**
+  - Target: 7-14 days (with 2-3 day gaps between touches)
+  - If >14 days → Increase warming frequency (2-3 prospects per block)
+
+- [ ] **Multi-Touch Cadence Compliance:**
+  - Check Touch History for prospects warmed this week
+  - Verify 2-3 day gaps between touches (not same-day double-touching)
+  - Verify different posts engaged (not same post twice)
+  - Flag any violations and adjust process
+
+- [ ] **Priority Scoring Validation:**
+  - Review top 10 prospects by priority score
+  - Check if they're actually high-value (ICP score, activity, responsiveness)
+  - Adjust scoring formula if mis-ranked prospects found
+  - Current formula: ICP (0-100) + Signal (0-15) + Recency (0-10) + Activity (0-10)
+
+**Output Format:**
+```markdown
+## ICP Warming Audit - Week of [Date]
+
+### Conversion Funnel
+| Stage | This Week | Last Week | Change |
+|-------|-----------|-----------|--------|
+| 0→1 touch | X prospects (Y%) | - | - |
+| 1→2 touch | X prospects (Y%) | - | - |
+| 2→3 touch | X prospects (Y%) | - | - |
+
+### Responsiveness Rate
+- Prospects engaged back: X (✓)
+- No response yet: Y (○)
+- **Rate: Z%** (Target: 15%+)
+
+### Pipeline Status
+- Total prospects: N
+- 0-touch backlog: A
+- 1-touch warming: B
+- 2-touch near-ready: C
+- 3+ touch ready: D
+- **Backlog growth this week: +X prospects**
+
+### Time-to-Warm
+- Average: X days (Target: 7-14 days)
+- Fastest: X days
+- Slowest: Y days
+
+### Action Items
+- [ ] [Identified improvement based on data]
+- [ ] [Identified improvement based on data]
+```
 
 ### 🔍 Sales Navigator Pipeline Refresh (if Account Type = SALES_NAVIGATOR)
 

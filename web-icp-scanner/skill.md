@@ -465,7 +465,14 @@ NEGATIVE SIGNALS (subtract points):
 
 **For EVERY auto-approved prospect, run a dedicated email search BEFORE moving to Phase 5.**
 
-This is a two-tier approach: (1) targeted web search queries, then (2) opportunistic extraction from sources already visited during discovery.
+This is a **4-tier waterfall approach** with escalating cost:
+
+1. **Tier 1:** Web Search (FREE) — Primary method
+2. **Tier 2:** Opportunistic Extraction (FREE) — From sources already visited
+3. **Tier 3:** API Waterfall (PAID CREDITS) — Only for 70+ score prospects
+4. **Tier 4:** Pattern Detection (FREE) — Last resort guessing
+
+**Credit conservation strategy:** API enrichment (Tier 3) runs ONLY for high-priority prospects scoring 70+ to preserve the 275 lookups/month quota for top-tier ICP matches.
 
 ### Tier 1: Targeted Web Search Queries (PRIMARY — run for every prospect)
 
@@ -521,9 +528,47 @@ Business directories often include:
 - Member directories with email listings
 - Association member pages
 
-### Email Pattern Detection (Last Resort)
+### Tier 3: API Waterfall (ONLY if Tier 1 & 2 fail) 💳
 
-If no direct email found from Tier 1 or Tier 2, infer from company domain:
+**For high-priority prospects where web search and opportunistic extraction found nothing.**
+
+Run this ONLY for prospects scoring **70+ points** to conserve API credits:
+
+```
+EXECUTION:
+1. Load MCP tool: crm_find_email (via ToolSearch first)
+2. Call with prospect data:
+   - name: [Full Name]
+   - company: [Company Name]
+   - linkedin_url: [LinkedIn URL from Phase 4c]
+   - domain: [Company domain if found]
+3. Waterfall tries providers in sequence:
+   → Apollo (50/month) — name + company + LinkedIn URL
+   → Hunter (25/month) — name + domain
+   → Snov.io (50/month) — name + domain
+   → GetProspect (50/month) — name + company/domain
+   → Prospeo (100/month) — LinkedIn URL or name + company
+4. Stops at first verified email found
+```
+
+**Credit Management:**
+- Total capacity: 275 lookups/month across all providers
+- Use ONLY for prospects scoring 70+ (top-tier ICP matches)
+- Track usage per scan to avoid exhausting monthly quota
+- Log which provider found the email for cost analysis
+
+**When to skip API enrichment:**
+- Prospect scores < 70 (medium priority)
+- Monthly credits exhausted
+- No company name or LinkedIn URL available (insufficient data)
+
+**Result handling:**
+- ✅ Email found → Update Email column with source "(Apollo)", "(Hunter)", etc.
+- ❌ Not found → Fall through to Tier 4 (Pattern Detection)
+
+### Tier 4: Email Pattern Detection (Last Resort)
+
+If no direct email found from Tier 1, 2, or 3, infer from company domain:
 
 ```
 COMMON PATTERNS (use with Company URL domain):
@@ -541,15 +586,33 @@ Pattern guess: john@acme.sg or john.tan@acme.sg
 
 ### Email Validation & Confidence Levels
 
-Mark email confidence level:
+Mark email confidence level and source:
+
+**Tier 1 - Web Search:**
 - **Confirmed** — Found directly on website, article, or contact database (rocketreach, contactout, etc.)
-- **Pattern-based** — Inferred from company email pattern (mark with `(pattern)` suffix)
-- **Not found** — No email discovered; leave as `-` or `TBD`
+- Mark source: "Web Search"
+
+**Tier 2 - Opportunistic:**
+- **Confirmed** — Found on company website, event page, or directory
+- Mark source: "Company Website", "Event Page", "Directory"
+
+**Tier 3 - API Waterfall:**
+- **Verified** — Found via API provider with verified/valid status
+- Mark source: "(Apollo)", "(Hunter)", "(GetProspect)", etc.
+
+**Tier 4 - Pattern:**
+- **Pattern-based** — Inferred from company email pattern
+- Mark with `(pattern)` suffix
+
+**Not found:**
+- No email discovered across all tiers
+- Leave as `-` or `Not found`
 
 **Do NOT store:**
 - Masked/partial emails (j***@company.com)
 - Generic company emails (info@, hello@, contact@) unless the prospect IS the sole owner
 - Unverified guesses without domain confirmation
+- Low-confidence API results (< 80% confidence)
 
 ### Update Master Prospect List
 
@@ -557,12 +620,19 @@ When adding APPROVED prospects to `icp-prospects.md`:
 
 ```markdown
 Email column values:
-- Confirmed email → john.tan@acme.sg
+- Web Search found → john.tan@acme.sg
+- API found → john.tan@acme.sg
 - Pattern-based → john.tan@acme.sg (pattern)
-- Unknown → -
-```
+- Unknown → Not found
 
-Add to Notes: "Email: [source] [date]" (e.g., "Email: web search 07Feb", "Email: company website 02Feb")
+Notes column tracking:
+- "Email: Web Search 07Feb" (Tier 1)
+- "Email: Company Website 07Feb" (Tier 2)
+- "Email: Apollo API 07Feb" (Tier 3)
+- "Email: Hunter API 07Feb" (Tier 3)
+- "Email: Pattern-based 07Feb" (Tier 4)
+- "Email: Not found (tried all tiers) 07Feb"
+```
 
 ---
 

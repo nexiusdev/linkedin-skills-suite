@@ -183,30 +183,67 @@ FILTER OUT prospects with Flags (check "Flags" column in Warming Up table):
 - Any other flag starting with ⚠️ → Skip and note reason
 ```
 
-### Step 2: Prioritize Prospects
+### Step 2: Prioritize Prospects with SMART SCORING
 
-Rank prospects by warmup priority:
+Rank prospects by priority score to maximize conversion rate and responsiveness.
 
-**🔥 HIGH PRIORITY (Engage Today)**
+**Priority Score Formula:**
+```
+Priority Score = ICP Score + Signal Strength + Recency + Activity Status
+
+Components:
+- ICP Score (0-100): From icp-prospects.md, measures ICP fit quality
+- Signal Strength (0-15): Inbound engagement signal value
+  * Profile View = 10
+  * New Follower = 15
+  * Post Comment to you = 5
+  * Post Like to you = 3
+- Recency (0-10): Days since last touch
+  * 0-2 days = 10 (ready for next touch)
+  * 3-5 days = 5 (approaching ready)
+  * 6+ days = 0 (stale, lower priority)
+- Activity Status (0-10): From Profile Cache
+  * ACTIVE (posts weekly) = 10
+  * MODERATE (posts monthly) = 5
+  * INACTIVE (30+ days) = 0
+
+Maximum Score: 135 points
+```
+
+**Priority Tiers Based on Score:**
+
+**🔥 HIGH PRIORITY (120+ points) - Engage Today**
 - 2 touches already (one more = ready to connect)
-- Replied to your previous comment
-- High-value ICP signal (decision-maker, pain points visible)
+- Strong ICP score (70+) + high signal strength (10+)
+- Last touch 2+ days ago (respects cadence rule)
+- ACTIVE poster (posts weekly)
+- **Action:** Warm in Morning Block for fast-track to connection
 
-**🟡 MEDIUM PRIORITY (Engage This Week)**
+**🟡 MEDIUM PRIORITY (90-119 points) - Engage This Week**
 - 1 touch so far (need 2 more)
-- No reply yet but strong ICP fit
-- Posted actively in last 7 days
+- Good ICP score (60-79) + moderate signal
+- Last touch 2-5 days ago
+- MODERATE poster (posts monthly)
+- **Action:** Warm in Afternoon Block for steady progression
 
-**🆕 NEW PROSPECTS (First Touch Needed)**
+**🆕 NEW PROSPECTS (60-89 points) - First Touch Needed**
 - 0 touches (from ICP prospects file)
-- Strong ICP match (decision-maker at SME)
+- Minimum ICP score (60+) to qualify
 - Has recent posts to engage with
 - Initiating first engagement starts the warming process
+- **Action:** Warm in Evening Block to start pipeline
 
-**⚪ LOW PRIORITY (Monitor)**
-- 1 touch, no recent posts
-- Unclear ICP fit
-- Inactive poster
+**⚪ LOW PRIORITY (<60 points) - Monitor**
+- Below ICP threshold OR
+- INACTIVE (no posts in 30+ days) OR
+- Last touch <2 days ago (violates cadence rule)
+- **Action:** Skip for now, revisit next week
+
+**Multi-Touch Cadence Rule (CRITICAL):**
+- Minimum 2-3 days between touches on same prospect
+- Never comment on same post twice
+- Engage with DIFFERENT posts in each touch
+- This builds authentic relationship, not spam pattern
 
 ### Step 3: Search for New Posts
 
@@ -380,14 +417,49 @@ When a warmup comment is posted:
    - Touches = 1
    - Needed = 1-2 more
    - Flags = (empty unless issue discovered)
-2. Log the comment in "Comments Made" table
-3. Prospect now appears in future warmer runs as 1-touch
+2. Update Touch History in icp-prospects.md:
+   - Format: "DDMon: comment ○" (○ = no response yet, check back later)
+   - After 2-3 days: Check if prospect engaged back (liked your comment, replied, or engaged with YOUR content)
+   - If YES: Change ○ to ✓ → "DDMon: comment ✓" (responsive prospect, high priority)
+   - If NO: Keep ○ → "DDMon: comment ○" (no response yet)
+3. Log the comment in "Comments Made" table
+4. Prospect now appears in future warmer runs as 1-touch
 
 **For 1-2 touch prospects (continuing warmup):**
 1. Update prospect's touch count in shared log (increment by 1)
-2. Update "Last Post Seen" date
-3. Move to "Ready to Connect" if now at 3 touches
-4. Log the comment in "Comments Made" table
+2. Update Touch History in icp-prospects.md:
+   - Append new touch with responsiveness tracking: "DDMon: comment ○"
+   - Check previous touches for responsiveness after 2-3 days
+   - Update previous ○ to ✓ if prospect engaged back
+   - Example history: "23Jan: comment ✓, 26Jan: comment ○, 29Jan: comment ○"
+3. Update "Last Post Seen" date and "Last Touch" date (for cadence tracking)
+4. Move to "Ready to Connect" if now at 3 touches
+5. Log the comment in "Comments Made" table
+
+**Responsiveness Tracking Logic:**
+```
+AFTER POSTING COMMENT (immediately):
+  → Touch History += "DDMon: comment ○"
+  → ○ = No response yet (default)
+
+AFTER 2-3 DAYS (check-back):
+  → Check LinkedIn for prospect's engagement back:
+    - Did they like/reply to your comment? ✓
+    - Did they comment on YOUR posts? ✓
+    - Did they view your profile after your comment? ✓
+    - No engagement? Keep ○
+
+IF RESPONSIVE:
+  → Update Touch History: Change ○ to ✓
+  → Example: "23Jan: comment ○" → "23Jan: comment ✓"
+  → Increase priority score for this prospect (responsive = higher ICP fit)
+```
+
+**Why Track Responsiveness:**
+- ✓ prospects are high-quality ICP matches (they engage back)
+- ○ prospects might be passive or not interested
+- Prioritize ✓ prospects for connection (higher acceptance rate)
+- Use responsiveness rate in Weekly Warming Audit to measure warming quality
 
 ### What to Log:
 **Warmup runs:**
