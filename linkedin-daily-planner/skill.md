@@ -161,6 +161,18 @@ When user triggers autonomous mode ("start linkedin"):
    → Log all to shared activity log
 
    EVENING BLOCK:
+   → **MANDATORY FIRST STEP - Activity Log Update (CRITICAL):**
+     - Read today's to-do file (to-do_DDMMYYYY.md)
+     - Extract ALL completed tasks marked [x] with timestamps
+     - Update shared/logs/linkedin-activity.md → Today's Summary:
+       * Comments Made table (Author, Category, Post Topic, Time)
+       * Posts Published table (Type, Topic, Scheduled Time)
+       * Connection Requests sent
+       * DMs sent
+       * Daily Limits Status table (all counts from completed tasks)
+     - Update prospect touch counts in icp-prospects.md
+     - Mark last updated timestamp: "Last updated: YYYY-MM-DD HH:MM SGT"
+     - **This prevents activity log from going stale - DO NOT SKIP**
    → Run full inbound audit:
      - Post engagement (commenters, likers)
      - Comment likes and replies
@@ -707,6 +719,30 @@ IF prospect scores 60+ on ICP matrix:
 ---
 
 ## Evening Block (10 mins) - Audit
+
+### 🔴 MANDATORY: Activity Log Update (CRITICAL - DO NOT SKIP)
+
+**This step prevents activity log from going stale. MUST be done EVERY day.**
+
+- [ ] Read today's to-do file (`to-do_DDMMYYYY.md`)
+- [ ] Extract ALL completed tasks marked with `[x]` and timestamps
+- [ ] Update `shared/logs/linkedin-activity.md` → "Today's Summary" section with:
+  - **Comments Made:** All comment tasks with Author, Category, Post Topic, Timestamp
+  - **Posts Published:** Any posts scheduled/published with Type, Topic, Time
+  - **Connection Requests:** Any connection requests sent
+  - **DMs Sent:** Any value DMs sent to prospects
+  - **Daily Limits Status:** Update all counts based on completed tasks
+  - **Touch History Updates:** Update prospect touch counts in icp-prospects.md
+- [ ] If NO to-do file exists for today → Create summary from memory of what was done
+- [ ] Mark last updated timestamp in activity log: `Last updated: YYYY-MM-DD HH:MM SGT`
+
+**Why this is MANDATORY:**
+- Activity log is source of truth for all skills
+- Other skills read from activity log to avoid duplicate work
+- Weekly metrics, daily limits, and touch tracking depend on accurate logging
+- Without this, data goes stale and skills break
+
+**Time: 2-3 minutes** - Don't skip this even if running late!
 
 ### Daily Metrics Check
 - [ ] Count comments made today (target: 9-15 high-quality)
@@ -1334,6 +1370,16 @@ All task completions should update the shared log, not just the to-do file.
 - Navigate to /in/melverick/recent-activity/comments/
 - Build "already commented" set: { author_slug + first_60_chars_of_post }
 - This set persists for the entire session across all blocks
+
+**Evening Block - Activity Log Update (MANDATORY - DO NOT SKIP):**
+- Read today's to-do file (to-do_DDMMYYYY.md)
+- Extract ALL completed tasks marked [x] with timestamps
+- Update shared/logs/linkedin-activity.md → Today's Summary section
+- Update all prospect touch counts in icp-prospects.md
+- Update Daily Limits Status table with final counts
+- Mark "Last updated: YYYY-MM-DD HH:MM SGT" timestamp
+- **Critical:** This must happen EVERY day to keep activity log current
+- **Time:** 2-3 minutes - never skip even if running late
 
 ## Automation Setup
 
