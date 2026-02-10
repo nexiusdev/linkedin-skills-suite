@@ -789,12 +789,23 @@ IF prospect scores 60+ on ICP matrix:
 **DM Template (Anti-Pitch):**
 > "Hey [Name], enjoyed your post on [Topic]. I just finished a workflow for [Pain Point]. Happy to share the logic diagram if useful—no strings attached."
 
-### CRM Incremental Sync (end of Afternoon Block)
+### 🔴 MANDATORY: CRM Incremental Sync (CRITICAL - DO NOT SKIP)
+
+**This step prevents CRM from going stale. MUST be done at end of EVERY block that modifies prospects.**
+
 - [ ] Review which prospects were modified during this session (new discoveries, touch updates, connection status changes)
+- [ ] Track changed records as you work - maintain a running list of modified prospect names
 - [ ] Sync via CLI: `python crm-integration/cli_sync.py sync "Name1" "Name2"` (works even if MCP tools not loaded)
-- [ ] Fallback: If MCP tools loaded, can use `crm_sync_prospect` instead
-- [ ] Only sync the 5-15 records that actually changed during this block
+- [ ] Only sync records that actually changed during this block
 - [ ] Log sync result (synced count + names) to activity log
+
+**Why this is MANDATORY:**
+- CRM is the system of record for sales pipeline
+- Without sync, prospect data drifts between local files and HubSpot
+- Same root cause as the activity log gap (Feb 8) - deferred tasks get forgotten
+- CLI always works regardless of MCP tool loading state
+
+**Time: 1-2 minutes** - Don't skip this even if running late!
 
 ---
 
@@ -957,12 +968,23 @@ IF inbound signal passes ICP screen:
 - Evening mops up backlog and initiates new warming
 - Spreads warming across 3 daily sessions → 7-11 prospects/day vs 3-5/day
 
-### CRM Incremental Sync (end of Evening Block)
+### 🔴 MANDATORY: CRM Incremental Sync (CRITICAL - DO NOT SKIP)
+
+**This step prevents CRM from going stale. MUST be done at end of EVERY block that modifies prospects.**
+
 - [ ] Review which prospects were modified during this session (inbound ICP matches, enrichments, connection acceptances)
+- [ ] Track changed records as you work - maintain a running list of modified prospect names
 - [ ] Sync via CLI: `python crm-integration/cli_sync.py sync "Name1" "Name2"` (works even if MCP tools not loaded)
-- [ ] Fallback: If MCP tools loaded, can use `crm_sync_prospect` instead
-- [ ] Only sync the 5-15 records that actually changed during this block
+- [ ] Only sync records that actually changed during this block
 - [ ] Log sync result (synced count + names) to activity log
+
+**Why this is MANDATORY:**
+- CRM is the system of record for sales pipeline
+- Without sync, prospect data drifts between local files and HubSpot
+- Same root cause as the activity log gap (Feb 8) - deferred tasks get forgotten
+- CLI always works regardless of MCP tool loading state
+
+**Time: 1-2 minutes** - Don't skip this even if running late!
 
 ---
 
