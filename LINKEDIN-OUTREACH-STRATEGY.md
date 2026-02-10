@@ -1,6 +1,6 @@
 # LinkedIn Outreach Strategy - Comprehensive Documentation
 
-**Author:** *(Configure via linkedin-onboarding)*
+**Author:** Melverick Ng (Nexius Labs)
 **Last Updated:** January 2026
 **Algorithm Context:** LinkedIn 360Brew (150B parameter decoder-only model)
 
@@ -36,8 +36,8 @@ This LinkedIn outreach strategy is built for the 2026 360Brew algorithm era, des
 - Profile-Content alignment for algorithm trust
 
 **Key Differentiators:**
-- Geographic focus configured via `references/icp-profile.md`
-- Target market decision-makers as primary ICP
+- ASEAN-5 geographic focus (Singapore, Malaysia, Thailand, Indonesia, Philippines)
+- SME decision-makers as primary ICP
 - Technical content (schemas, PRDs, logic diagrams) that gets saved
 - Authentic commenting that proves genuine engagement
 - Autonomous workflow execution via Claude Code + Chrome
@@ -79,12 +79,12 @@ LinkedIn's 360Brew is a 150B parameter decoder-only foundation model that has tr
 
 ### Headline Structure
 
-**Bad:** "Revolutionizing businesses with technology"
-**Good:** "Building [Your Solution] for [Your Market] | Founder at [Company] | [Your Domain] Expert" (read from `references/icp-profile.md`)
+**Bad:** "Revolutionizing SMEs with AI"
+**Good:** "Building Agentic ERP & CRM Systems for Singapore SMEs | Founder at Nexius Labs | Agentic AI Expert"
 
 The headline must contain:
-- Specific entity keywords for your domain
-- Target market from your ICP profile
+- Specific entity keywords (Agentic AI, ERP, CRM)
+- Target market (Singapore SMEs)
 - Role identifier (Founder)
 - Authority signal (Expert)
 
@@ -118,13 +118,18 @@ These directly influence who sees your content.
 
 ### Positioning Summary
 
-*(Read your positioning from `references/icp-profile.md`)*
+Helps SMEs adopt Agentic AI to automate business operations (finance, ERP, CRM, inventory) so they can work faster without extra manpower. Also trains non-coders and developers to build AI workflows.
 
 ### Geographic Focus (STRICT)
 
-**Read target geography from `references/icp-profile.md`.**
+**ASEAN-5 ONLY - No Exceptions:**
+- Singapore (primary)
+- Malaysia
+- Thailand
+- Indonesia
+- Philippines
 
-Any prospect outside your configured target geography is immediately skipped. No "proceed with caution" for unclear geography.
+Any prospect outside these 5 countries is immediately skipped. No "proceed with caution" for unclear geography.
 
 ### Target Job Roles
 
@@ -160,7 +165,7 @@ Any prospect outside your configured target geography is immediately skipped. No
 
 - **Size:** 10-200 employees (SME sweet spot)
 - **Stage:** Established SME looking to scale efficiently
-- **Geography:** *(Read from `references/icp-profile.md`)*
+- **Geography:** Singapore, Malaysia, Southeast Asia (ASEAN)
 - **Tech Maturity:** Low-Medium (ready for AI but not there yet)
 
 ### Pain Keywords to Monitor
@@ -250,8 +255,8 @@ In the 360Brew environment, "Save-worthy" assets are the single most important f
 
 2. **Agentic Logic Diagram**
    - Visual map: Trigger → Retrieval → Reasoning → Action → Feedback Loop
-   - Why saved: Non-coders explain to stakeholders, use as workflow blueprint
-   - Hook: "Most [target market] challenges fail because they lack a feedback loop. Here is the 5-step logic map we use at [Your Company]."
+   - Why saved: Non-coders explain to stakeholders, use as n8n blueprint
+   - Hook: "Most SME automations fail because they lack a feedback loop. Here is the 5-step logic map we use at Nexius Labs."
 
 3. **Rapid PRD Template**
    - Structured Product Requirements Document for AI tools
@@ -266,7 +271,7 @@ In the 360Brew environment, "Save-worthy" assets are the single most important f
 
 ### Day-Specific Content Schedule
 
-| Day | Content Focus | Post Type | Primary Window (your timezone) | Secondary Window |
+| Day | Content Focus | Post Type | Primary Window (SGT) | Secondary Window |
 |-----|--------------|-----------|---------------------|------------------|
 | Monday | Strategy/Planning | Frameworks, week-starter | 10:00-11:30 AM | 4:00-5:30 PM |
 | Tuesday | Technical Demo (PEAK) | Video demos, architectures | 8:30-10:30 AM | 12:00-1:30 PM |
@@ -425,7 +430,7 @@ love to send it over if you're curious.
 
 ### Optimal Send Timing
 
-**Best Windows (your timezone, from `references/linkedin-strategy.md`):**
+**Best Windows (SGT):**
 - Tuesday-Thursday: 9:00 AM - 10:30 AM
 - Secondary: Tuesday-Thursday: 12:00 PM - 1:00 PM
 
@@ -439,9 +444,9 @@ love to send it over if you're curious.
 
 360Brew prioritizes "Tribal Relevance." Focus requests in clusters:
 
-**Geographic Cluster:** People in your target geography in the same industry group or who commented on same niche-focused post
+**Singapore SME Cluster:** People in same local industry group or who commented on same SME-focused post
 
-**Tech-Stack Cluster:** People who follow tools and platforms relevant to your domain
+**Tech-Stack Cluster:** People who follow n8n, Supabase, or Agentic AI content
 
 **Benefit:** Once 3-4 people in a cluster accept, 360Brew auto-suggests you to the rest.
 
@@ -449,7 +454,7 @@ love to send it over if you're curious.
 
 ## Daily Workflow & Time Blocks
 
-### Time Block Schedule (your timezone)
+### Time Block Schedule (SGT)
 
 | Time | Block | Duration | Focus |
 |------|-------|----------|-------|
@@ -524,7 +529,7 @@ love to send it over if you're curious.
    - New followers (linkedin.com/mynetwork/network-manager/people-follow/followers/)
 
 2. **ICP Screening (for all inbound):**
-   - Quick screen: Target geography? Decision-maker? Target market?
+   - Quick screen: ASEAN-5? Decision-maker? SME?
    - Log ICP matches to "Inbound Engagement" section
    - Add to "Warming Up" pipeline with signal type
 
@@ -812,7 +817,7 @@ linkedin-daily-planner/scripts/
 - [ ] At least one 15+ word comment exists
 - [ ] Using blank request OR 100% bespoke note
 - [ ] Day is Tuesday-Thursday (optimal)
-- [ ] Time is 9:00-10:30 AM your timezone (optimal)
+- [ ] Time is 9:00-10:30 AM SGT (optimal)
 - [ ] Under daily limit (15 max)
 
 ### Before DMing
@@ -858,21 +863,65 @@ These work for any business:
 
 #### HIGH Priority (Must Change)
 
-All skill files now read from reference files dynamically. No hardcoded company, geography, or personal data in skill files.
+| File | What's Personalized | What to Change |
+|------|---------------------|----------------|
+| `references/icp-profile.md` | Target roles, industries, geography, pain keywords | Replace entirely with new ICP |
+| `references/contact-classification.md` | PEER niche signals, PROSPECT criteria | Update niche keywords, industry focus |
+| `linkedin-icp-finder/skill.md` | **Hardcoded ASEAN-5 geography filter** | Change to new target geography |
+| `LINKEDIN-OUTREACH-STRATEGY.md` | Entire document references Melverick/Nexius Labs | Regenerate for new business |
 
-### Quick Setup for New Users
+#### MEDIUM Priority (Should Update)
+
+| File | What's Personalized | What to Change |
+|------|---------------------|----------------|
+| `linkedin-elite-post/skill.md` | "Nexius Labs positioning" context | Update positioning section |
+| `linkedin-pro-commenter/skill.md` | "When to Mention Nexius Labs", deployment examples | Update company name, example metrics |
+| `linkedin-trender/skill.md` | "Positioning Context" section | Update niche keywords, angles |
+| `references/linkedin-strategy.md` | "Agentic AI and SME Automation" references | Update to new domain/focus |
+| `references/connect-request.md` | Asset-led note templates, "Nexius Style" | Update templates, company name |
+| `references/saved-asset.md` | Example schemas, hooks reference Agentic ERP | Update asset examples for new domain |
+
+#### LOW Priority (Generic/Optional)
+
+| File | Status |
+|------|--------|
+| `linkedin-profile-icp/skill.md` | Already generic - analyzes any profile |
+| `linkedin-post-finder/skill.md` | Topic focus can stay or change |
+| `linkedin-icp-warmer/skill.md` | Generic workflow |
+| `linkedin-connect-timer/skill.md` | Generic workflow |
+| `linkedin-image-generator/skill.md` | Generic workflow |
+| `linkedin-daily-planner/skill.md` | Generic workflow (time blocks universal) |
+| PowerShell scripts | Just change file paths |
+
+### Quick Adaptation Checklist
+
+For a new user to adopt this system:
 
 ```
-1. [ ] Run linkedin-onboarding
-       → Answers 16 questions about your business
-       → Generates all personalized reference files automatically
-       → Configures account settings, company pages, and ICP
+1. [ ] Run linkedin-profile-icp on their LinkedIn profile
+       → Generates their ICP criteria automatically
 
-2. [ ] Review the generated files and adjust any details
+2. [ ] Update references/icp-profile.md with output from step 1
 
-3. [ ] Run "start linkedin" to begin your first session
+3. [ ] Update references/contact-classification.md
+       → Change PEER niche signals to their industry
+       → Change PROSPECT criteria to their ICP
 
-4. [ ] Optionally run "linkedin-profile-icp" to refine your ICP from your LinkedIn profile
+4. [ ] Update linkedin-icp-finder/skill.md
+       → Replace ASEAN-5 geography filter with their target region
+       → Or remove geography filter if targeting globally
+
+5. [ ] Search & replace across files:
+       → "Nexius Labs" → [Their company]
+       → "Agentic AI" → [Their domain]
+       → "SME" → [Their target market]
+       → "Singapore" → [Their primary market]
+
+6. [ ] Update example templates in:
+       → references/connect-request.md
+       → references/saved-asset.md
+
+7. [ ] Regenerate LINKEDIN-OUTREACH-STRATEGY.md
 ```
 
 ### Adaptation Summary

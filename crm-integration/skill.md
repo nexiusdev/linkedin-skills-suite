@@ -82,10 +82,37 @@ When running with `linkedin-daily-planner`:
 
 | Trigger | When | What |
 |---------|------|------|
-| After Afternoon Block | ~3-4 PM | `crm_sync_all` — captures new prospects, connection updates, touch history |
-| After Evening Block | ~8-9 PM | `crm_sync_all` — captures inbound audit results, new ICP matches |
+| After Afternoon Block | ~3-4 PM | CLI sync × N — syncs ONLY prospects modified during this session |
+| After Evening Block | ~8-9 PM | CLI sync × N — syncs ONLY prospects modified during this session |
 
-Auto-sync reads `shared/logs/icp-prospects.md` and pushes all changes to HubSpot. Deduplication by LinkedIn URL means repeated syncs are safe.
+**PRIMARY METHOD: CLI Sync (always works, no MCP dependency):**
+```bash
+python crm-integration/cli_sync.py sync "Name1" "Name2" "Name3"
+```
+
+**FALLBACK METHOD: MCP tools (only if loaded in session):**
+Call `crm_sync_prospect` via MCP tool for each changed record.
+
+**Why CLI is preferred:** Claude Code defers MCP tool loading when many servers are connected (8+). The hubspot-crm tools may not be loaded in every session. The CLI script reads API keys from `.mcp.json` automatically and uses the exact same sync logic.
+
+**INCREMENTAL SYNC RULE:** Do NOT call `crm_sync_all` during routine blocks. Instead, track which prospects changed during the session (new discoveries, touch updates, connection status changes, email enrichments) and sync individually. This reduces API calls from 200+ to typically 5-15 per sync.
+
+**When to use `crm_sync_all`:** Only for initial setup, data migration, or periodic full reconciliation (e.g., weekly audit on Fridays).
+
+## CLI Reference
+
+```bash
+# Sync specific prospects (reads from icp-prospects.md, matches by name)
+python crm-integration/cli_sync.py sync "Hsien Naidu" "Bhavana Ravindran"
+
+# Pipeline summary
+python crm-integration/cli_sync.py pipeline
+
+# Look up a contact in HubSpot
+python crm-integration/cli_sync.py lookup "Hsien Naidu"
+```
+
+API keys are loaded automatically from `.mcp.json` (hubspot-crm env block). No extra config needed.
 
 ## Tools Reference
 
@@ -108,7 +135,9 @@ Sync a single prospect. Creates or updates contact, associates company, creates 
 | INACTIVE or rejected | Nurture |
 
 ### crm_sync_all
-Batch sync all prospects from `icp-prospects.md`. Reads the markdown table, syncs each to HubSpot. Skips entries with "TBD" URLs.
+Batch sync ALL prospects from `icp-prospects.md`. Reads the markdown table, syncs each to HubSpot. Skips entries with "TBD" URLs.
+
+**WARNING:** This syncs all 200+ records. Only use for initial setup, data migration, or weekly full reconciliation (Friday audit). For routine daily blocks, use `crm_sync_prospect` for each changed record instead.
 
 ### crm_log_activity
 Log a LinkedIn engagement (comment, DM, connection request, like) as a HubSpot Note on the contact's timeline.

@@ -789,10 +789,12 @@ IF prospect scores 60+ on ICP matrix:
 **DM Template (Anti-Pitch):**
 > "Hey [Name], enjoyed your post on [Topic]. I just finished a workflow for [Pain Point]. Happy to share the logic diagram if useful—no strings attached."
 
-### CRM Auto-Sync (end of Afternoon Block)
-- [ ] After all Afternoon Block tasks complete → call `crm_sync_all`
-- [ ] This captures: new prospects, connection status updates, touch history changes
-- [ ] Log sync result (created/updated/skipped counts) to activity log
+### CRM Incremental Sync (end of Afternoon Block)
+- [ ] Review which prospects were modified during this session (new discoveries, touch updates, connection status changes)
+- [ ] Sync via CLI: `python crm-integration/cli_sync.py sync "Name1" "Name2"` (works even if MCP tools not loaded)
+- [ ] Fallback: If MCP tools loaded, can use `crm_sync_prospect` instead
+- [ ] Only sync the 5-15 records that actually changed during this block
+- [ ] Log sync result (synced count + names) to activity log
 
 ---
 
@@ -955,10 +957,12 @@ IF inbound signal passes ICP screen:
 - Evening mops up backlog and initiates new warming
 - Spreads warming across 3 daily sessions → 7-11 prospects/day vs 3-5/day
 
-### CRM Auto-Sync (end of Evening Block)
-- [ ] After all Evening Block tasks complete → call `crm_sync_all`
-- [ ] This captures: inbound audit results, new ICP matches from followers/viewers
-- [ ] Log sync result (created/updated/skipped counts) to activity log
+### CRM Incremental Sync (end of Evening Block)
+- [ ] Review which prospects were modified during this session (inbound ICP matches, enrichments, connection acceptances)
+- [ ] Sync via CLI: `python crm-integration/cli_sync.py sync "Name1" "Name2"` (works even if MCP tools not loaded)
+- [ ] Fallback: If MCP tools loaded, can use `crm_sync_prospect` instead
+- [ ] Only sync the 5-15 records that actually changed during this block
+- [ ] Log sync result (synced count + names) to activity log
 
 ---
 
@@ -976,7 +980,7 @@ IF inbound signal passes ICP screen:
 | Warm up existing prospects | `linkedin-icp-warmer` |
 | Check connection readiness | `linkedin-connect-timer` |
 | Audit profile alignment | `linkedin-profile-icp` |
-| Sync prospects to CRM | `hubspot-crm` (MCP: `crm_sync_all`) |
+| Sync prospects to CRM | CLI: `python crm-integration/cli_sync.py sync "Name"` (primary) or MCP: `crm_sync_prospect` (fallback) |
 
 ### Account-Conditional Features
 

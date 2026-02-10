@@ -307,8 +307,11 @@ def _parse_prospects_table(content: str) -> List[Dict[str, str]]:
     """Parse the markdown prospects table from icp-prospects.md.
 
     Returns list of dicts with keys matching column headers.
-    Handles escaped pipes (\\|) in cell content by joining overflow into the last column.
+    Handles escaped pipes (\\|) in ANY column by replacing them with a placeholder
+    before splitting, then restoring after. This prevents column misalignment when
+    Touch History or Notes contain escaped pipes.
     """
+    PIPE_PLACEHOLDER = "\x00PIPE\x00"
     prospects = []
     lines = content.split("\n")
     headers = []
@@ -321,7 +324,9 @@ def _parse_prospects_table(content: str) -> List[Dict[str, str]]:
                 break  # End of table
             continue
 
-        cells = [c.strip() for c in stripped.split("|")]
+        # Replace escaped pipes with placeholder BEFORE splitting
+        safe_line = stripped.replace("\\|", PIPE_PLACEHOLDER)
+        cells = [c.strip().replace(PIPE_PLACEHOLDER, "|") for c in safe_line.split("|")]
         # Remove empty first/last from leading/trailing pipes
         cells = cells[1:-1] if len(cells) > 2 else cells
 
@@ -334,9 +339,8 @@ def _parse_prospects_table(content: str) -> List[Dict[str, str]]:
             # Skip separator row
             if all(c.replace("-", "").replace(":", "").strip() == "" for c in cells):
                 continue
-            # Handle escaped pipes (\|) in Notes column causing extra cells
+            # Handle any remaining overflow (extra unescaped pipes)
             if len(cells) > len(headers):
-                # Join overflow cells back into the last column (Notes)
                 overflow = cells[len(headers) - 1:]
                 cells = cells[:len(headers) - 1] + [" | ".join(overflow)]
             if len(cells) == len(headers):
@@ -404,10 +408,37 @@ async def _search_contact_by_linkedin_url(linkedin_url: str) -> Optional[Dict]:
     return results[0] if results else None
 
 
+async def _search_contact_by_email(email: str) -> Optional[Dict]:
+    """Search HubSpot for a contact by email address. Returns contact or None."""
+    if not email or email == "-":
+        return None
+    data = await _make_api_request(
+        "/crm/v3/objects/contacts/search",
+        method="POST",
+        json_data={
+            "filterGroups": [{
+                "filters": [{
+                    "propertyName": "email",
+                    "operator": "EQ",
+                    "value": email,
+                }]
+            }],
+            "properties": ["firstname", "lastname", "email", "linkedin_profile"],
+        },
+    )
+    results = data.get("results", [])
+    return results[0] if results else None
+
+
 async def _create_or_update_contact(properties: Dict[str, str]) -> Dict[str, Any]:
-    """Create or update a HubSpot contact. Deduplicates by linkedin_profile."""
+    """Create or update a HubSpot contact. Deduplicates by linkedin_profile, then email."""
     linkedin_url = properties.get("linkedin_profile", "")
     existing = await _search_contact_by_linkedin_url(linkedin_url)
+
+    # Fallback: search by email if LinkedIn URL match not found
+    if not existing:
+        email = properties.get("email", "")
+        existing = await _search_contact_by_email(email)
 
     if existing:
         contact_id = existing["id"]
@@ -418,12 +449,27 @@ async def _create_or_update_contact(properties: Dict[str, str]) -> Dict[str, Any
         )
         return {**result, "_action": "updated"}
     else:
-        result = await _make_api_request(
-            "/crm/v3/objects/contacts",
-            method="POST",
-            json_data={"properties": properties},
-        )
-        return {**result, "_action": "created"}
+        try:
+            result = await _make_api_request(
+                "/crm/v3/objects/contacts",
+                method="POST",
+                json_data={"properties": properties},
+            )
+            return {**result, "_action": "created"}
+        except httpx.HTTPStatusError as e:
+            if e.response.status_code == 409:
+                # Conflict — contact exists, try to find and update
+                email = properties.get("email", "")
+                existing = await _search_contact_by_email(email)
+                if existing:
+                    contact_id = existing["id"]
+                    result = await _make_api_request(
+                        f"/crm/v3/objects/contacts/{contact_id}",
+                        method="PATCH",
+                        json_data={"properties": properties},
+                    )
+                    return {**result, "_action": "updated"}
+            raise
 
 
 async def _ensure_company_association(contact_id: str, company_name: str):
