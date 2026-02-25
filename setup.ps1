@@ -51,6 +51,20 @@ New-Placeholder "references/connect-request.md"         $configPlaceholder
 New-Placeholder "references/saved-asset.md"             $configPlaceholder
 New-Placeholder "references/linkedin-strategy.md"       $configPlaceholder
 New-Placeholder "references/company-pages-config.md"    $configPlaceholder
+New-Placeholder "references/client-profile.json" @'
+{
+  "CLIENT_BRAND_PRIMARY": "Primary Brand",
+  "CLIENT_BRAND_SECONDARY": "Secondary Brand",
+  "CLIENT_COMMUNITY_NAME": "Community Name",
+  "CLIENT_FOUNDER_NAME": "Founder Name",
+  "CLIENT_LINKEDIN_HANDLE": "linkedin-handle",
+  "CLIENT_TIMEZONE": "UTC",
+  "CLIENT_TARGET_GEO": "Target Region",
+  "CLIENT_TARGET_GEO_LIST": "Country A, Country B",
+  "CLIENT_WORKSPACE_ROOT": "C:\\Users\\<user>\\linkedin-skills-suite",
+  "CLIENT_LOCAL_USER": "<user>"
+}
+'@
 
 # --- Account config ---
 New-Placeholder "shared/linkedin-account-config.md"                       $configPlaceholder

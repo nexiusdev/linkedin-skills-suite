@@ -4,6 +4,20 @@ A comprehensive LinkedIn outreach automation suite built as Codex-compatible ski
 
 Built on the **360Brew algorithm strategy** for maximum reach and engagement while staying within LinkedIn's safety limits.
 
+## Prerequisites
+
+Before running this suite, make sure you have:
+
+1. Git installed and available in your terminal (`git --version`)
+2. A Codex-compatible runtime/session to execute skills
+3. Python 3.10+ installed (`python --version`)
+4. Browser automation MCP available (`chrome-devtools` or `playwright`)
+5. A LinkedIn account you will operate from (Free, Premium, or Sales Navigator)
+6. Optional integrations ready if needed:
+   - HubSpot account + private app token (for CRM sync)
+   - Google Cloud service account (for Google Sheets workflows)
+   - Email enrichment provider API keys (Apollo/Hunter/Snov/GetProspect/Prospeo)
+
 ## Quick Start
 
 ```bash
@@ -159,6 +173,16 @@ linkedin-skills-suite/
 - Skills are folder-based and use `SKILL.md` as the entry file.
 - Legacy top-level `*.skill` files are not used.
 - Each skill must include frontmatter with `name` and `description`.
+
+## Client Personalization
+
+- Onboarding now writes `references/client-profile.json` with client-specific values.
+- Tokenized files use `{{CLIENT_*}}` placeholders that are rendered from that profile.
+- Apply rendering manually (or from onboarding) with:
+
+```bash
+python shared/scripts/render-client-config.py --profile references/client-profile.json
+```
 
 ## Configuration
 

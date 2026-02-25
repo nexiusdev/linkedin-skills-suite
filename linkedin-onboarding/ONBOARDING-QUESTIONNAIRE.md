@@ -220,7 +220,7 @@ Description: _______________________________________________
 
 This adjusts the daily planner time blocks for optimal posting times.
 
-Examples: "SGT (UTC+8)", "EST (UTC-5)", "GMT (UTC+0)"
+Examples: "{{CLIENT_TIMEZONE}} (UTC+8)", "EST (UTC-5)", "GMT (UTC+0)"
 
 Answer: _______________________________________________
 

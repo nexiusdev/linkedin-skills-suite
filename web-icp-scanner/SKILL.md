@@ -60,7 +60,7 @@ REQUIRED FILES:
 - Target roles (primary + secondary)
 - Target industries (primary + adjacent)
 - Company size range
-- Geography (ASEAN-5 focus)
+- Geography ({{CLIENT_TARGET_GEO}} focus)
 - Pain keywords
 - Search keywords
 
@@ -872,7 +872,7 @@ Standard rejection reasons (for consistent learning):
 |------------|--------------|--------------------------|
 | `too large` | Company >200 employees | -15 to Company Size |
 | `too small` | Company <10 employees | -10 to Company Size |
-| `not ASEAN` | Outside ASEAN-5 geography | -20 to Geography |
+| `not ASEAN` | Outside {{CLIENT_TARGET_GEO}} geography | -20 to Geography |
 | `not decision-maker` | Not C-suite/Director level | -15 to Role Match |
 | `seller not buyer` | Service provider/consultant | -20 to Industry Match |
 | `enterprise` | Enterprise/MNC, not SME | -15 to Company Size |
@@ -1023,7 +1023,7 @@ Signals from REJECTED prospects that trigger score penalties:
 ## User Rejection Patterns (Ranked by Frequency)
 
 1. **Too large** - Company >200 employees → -15 Company Size
-2. **Not ASEAN** - Outside ASEAN-5 geography → -20 Geography
+2. **Not ASEAN** - Outside {{CLIENT_TARGET_GEO}} geography → -20 Geography
 3. **Seller not buyer** - Consulting/agency → -20 Industry Match
 4. **Not decision-maker** - Manager level → -15 Role Match
 5. **Enterprise** - MNC/corporate → -15 Company Size

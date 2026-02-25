@@ -7,7 +7,7 @@ param(
     [switch]$TaskScheduler  # Use -TaskScheduler to use Task Scheduler instead of Startup folder
 )
 
-$scriptPath = "C:\Users\melve\.claude\skills\linkedin-daily-planner\scripts\startup-linkedin.ps1"
+$scriptPath = "{{CLIENT_WORKSPACE_ROOT}}\linkedin-daily-planner\scripts\startup-linkedin.ps1"
 $shortcutName = "LinkedIn-Startup.lnk"
 $startupFolder = [Environment]::GetFolderPath("Startup")
 $shortcutPath = Join-Path $startupFolder $shortcutName

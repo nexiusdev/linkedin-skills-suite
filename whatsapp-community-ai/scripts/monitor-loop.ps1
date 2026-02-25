@@ -1,4 +1,4 @@
-# AI Ignite WhatsApp Monitor - Continuous Loop
+# {{CLIENT_COMMUNITY_NAME}} WhatsApp Monitor - Continuous Loop
 # Keep this terminal window open while working
 # Press Ctrl+C to stop
 
@@ -18,7 +18,7 @@ Write-Host ""
 Write-Host "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" -ForegroundColor Cyan
 
 # Set working directory
-Set-Location "C:\Users\melve\.claude\skills"
+Set-Location "{{CLIENT_WORKSPACE_ROOT}}"
 
 $cycleCount = 0
 

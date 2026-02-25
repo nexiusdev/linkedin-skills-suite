@@ -85,7 +85,7 @@
 - Update shared/logs/linkedin-activity.md → Today's Summary section
 - Update all prospect touch counts in icp-prospects.md
 - Update Daily Limits Status table with final counts
-- Mark "Last updated: YYYY-MM-DD HH:MM SGT" timestamp
+- Mark "Last updated: YYYY-MM-DD HH:MM {{CLIENT_TIMEZONE}}" timestamp
 - **Critical:** This must happen EVERY day to keep activity log current
 - **Time:** 2-3 minutes - never skip even if running late
 ```
@@ -96,7 +96,7 @@
 1. Running Evening Block today (Feb 8) - ✅ COMPLETED
    - Updated activity log with 9 comments from Morning Block
    - Updated touch counts for 3 prospects (Hsien, Antoinette, Tian Beng)
-   - Marked timestamp: "Last updated: 2026-02-08 22:05 SGT"
+   - Marked timestamp: "Last updated: 2026-02-08 22:05 {{CLIENT_TIMEZONE}}"
 
 2. Tomorrow (Feb 9), check that activity log is updated after Evening Block
 3. Going forward, activity log should NEVER go more than 24 hours without update

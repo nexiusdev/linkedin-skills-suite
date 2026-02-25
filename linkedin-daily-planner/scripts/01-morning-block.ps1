@@ -1,7 +1,7 @@
 # LinkedIn Morning Block - 8:00 AM
 # Engage with 3 Peers + 3 Prospects + 3 Thought Leaders
 
-$logFile = "C:\Users\melve\.claude\skills\linkedin-daily-planner\logs\morning-block.log"
+$logFile = "{{CLIENT_WORKSPACE_ROOT}}\linkedin-daily-planner\logs\morning-block.log"
 $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
 
 try {

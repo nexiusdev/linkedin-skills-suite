@@ -1,7 +1,7 @@
 # LinkedIn Midday Block - 12:00 PM (Golden Hour)
 # Post content + engage with PROSPECT posts only
 
-$logFile = "C:\Users\melve\.claude\skills\linkedin-daily-planner\logs\midday-block.log"
+$logFile = "{{CLIENT_WORKSPACE_ROOT}}\linkedin-daily-planner\logs\midday-block.log"
 $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
 
 try {

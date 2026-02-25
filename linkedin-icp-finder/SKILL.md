@@ -9,7 +9,7 @@ Classify LinkedIn contacts and find prospects using the Digital Breadcrumb Strat
 
 **Reference:** `references/contact-classification.md` for full classification criteria.
 
-**🚨 STRICT GEOGRAPHY FILTER: Singapore, Malaysia, Thailand, Indonesia, Philippines ONLY**
+**🚨 STRICT GEOGRAPHY FILTER: {{CLIENT_TARGET_GEO_LIST}} ONLY**
 
 **HARD RULE: If a prospect's location is not clearly one of these 5 ASEAN countries, SKIP IMMEDIATELY. Do not proceed with any further screening. No exceptions.**
 
@@ -251,7 +251,7 @@ SEARCH OPTIMIZATION (SALES NAVIGATOR):
    Search 1: "ASEAN SME Decision Makers"
    ├─ Company size: 11-50, 51-200
    ├─ Seniority: Director, VP, CXO, Owner
-   ├─ Geography: Singapore, Malaysia, Thailand, Indonesia, Philippines
+   ├─ Geography: {{CLIENT_TARGET_GEO_LIST}}
    └─ Posted on LinkedIn: Yes (last 30 days)
 
    Search 2: "Operations Leaders Singapore"
@@ -263,7 +263,7 @@ SEARCH OPTIMIZATION (SALES NAVIGATOR):
    Search 3: "Recent Job Changers (ICP Roles)"
    ├─ Changed jobs: Last 90 days
    ├─ Seniority: Director, VP, CXO
-   ├─ Geography: ASEAN-5
+   ├─ Geography: {{CLIENT_TARGET_GEO}}
    └─ Function: Operations, Finance, General Management
 
 2. USE ADVANCED FILTERS (replaces manual screening):
@@ -396,7 +396,7 @@ ICP SCREENING: [Name]
 🌏 GEOGRAPHY: [✅ CONFIRMED ASEAN / ❌ NON-ASEAN / ❌ UNCONFIRMED - SKIP]
 Location: [Country/City - must be SG/MY/TH/ID/PH]
 
-VERDICT: [✅ HIGH FIT / ⚠️ MEDIUM FIT / ❌ NO FIT / ❌ SKIP - NOT ASEAN-5 / ❌ SKIP - JOB POST / ❌ SKIP - COMMENTS DISABLED]
+VERDICT: [✅ HIGH FIT / ⚠️ MEDIUM FIT / ❌ NO FIT / ❌ SKIP - NOT {{CLIENT_TARGET_GEO}} / ❌ SKIP - JOB POST / ❌ SKIP - COMMENTS DISABLED]
 
 Role: [Title] → [Match assessment vs ICP roles]
 Company: [Company, size if visible] → [Match assessment vs ICP company profile]
@@ -411,7 +411,7 @@ Fit Score: [X/4 criteria met] (Geography + Role + Company + Pain)
 
 **PREREQUISITE: Only proceed to this step if prospect has ✅ CONFIRMED ASEAN geography (SG/MY/TH/ID/PH).**
 
-For ✅ HIGH FIT or ⚠️ MEDIUM FIT prospects with confirmed ASEAN-5 location:
+For ✅ HIGH FIT or ⚠️ MEDIUM FIT prospects with confirmed {{CLIENT_TARGET_GEO}} location:
 
 **A. Recommended Reaction**
 - **Save their post** (360Brew values a Save at 5x more than a Like, 2x more than a Comment)
@@ -486,7 +486,7 @@ Lurkers leave signals when they engage passively with your content. This mode sc
 STEP I1: Navigate to Inbound Source
          ↓
 STEP I2: For each person, apply filters:
-         ├─ Geography: ASEAN-5 only (SG/MY/TH/ID/PH)
+         ├─ Geography: {{CLIENT_TARGET_GEO}} only (SG/MY/TH/ID/PH)
          ├─ Role: Decision-maker, Manager+
          ├─ Company: SME size
          └─ Engagement context: What triggered them?
@@ -1154,7 +1154,7 @@ This makes it easy to reference specific prospects: "Let's warm up prospect #11"
 - Hard-sell your product/service
 - Engage with ANY prospect outside Singapore, Malaysia, Thailand, Indonesia, or Philippines
 - Proceed with prospects whose geography is unclear or unconfirmed
-- Make exceptions for "interesting" prospects who aren't in the ASEAN-5
+- Make exceptions for "interesting" prospects who aren't in the {{CLIENT_TARGET_GEO}}
 - **Engage with job postings or hiring announcements** (appears opportunistic, no pain signals)
 - **Engage with posts that have comments disabled** (no engagement opportunity)
 - **Send external links in first DM** (360Brew flags as "low-trust signal")
@@ -1240,7 +1240,7 @@ Run these searches with ASEAN location filters:
 - ✅ Non-ASEAN and unconfirmed prospects immediately skipped with no further evaluation
 
 **During Inbound Screening (Lurker Mode):**
-- ✅ Geography filter applied FIRST (same ASEAN-5 rule)
+- ✅ Geography filter applied FIRST (same {{CLIENT_TARGET_GEO}} rule)
 - ✅ Signal source documented (Profile View / Follower / Reaction / Request)
 - ✅ Signal date/recency noted (last 24h = hot, last week = warm)
 - ✅ Engagement context captured (what triggered the signal)

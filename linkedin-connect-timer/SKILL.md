@@ -51,7 +51,7 @@ linkedin-connect-timer/logs/activity-log.md
 ```markdown
 # LinkedIn Activity Log
 
-Last updated: [YYYY-MM-DD HH:MM SGT]
+Last updated: [YYYY-MM-DD HH:MM {{CLIENT_TIMEZONE}}]
 Last activity timestamp: [YYYY-MM-DD HH:MM]
 
 ## Engagement Records
@@ -81,7 +81,7 @@ Last activity timestamp: [YYYY-MM-DD HH:MM]
    - If not exists: Create new log, do full read
 
 2. **Read only NEW activities**
-   - Navigate to `https://www.linkedin.com/in/melverick/recent-activity/all/`
+   - Navigate to `https://www.linkedin.com/in/{{CLIENT_LINKEDIN_HANDLE}}/recent-activity/all/`
    - Only extract activities NEWER than `Last activity timestamp`
    - Stop scrolling when reaching already-logged timestamps
 
@@ -117,7 +117,7 @@ IF NOT EXISTS:
 
 Navigate to user's recent activity:
 ```
-https://www.linkedin.com/in/melverick/recent-activity/all/
+https://www.linkedin.com/in/{{CLIENT_LINKEDIN_HANDLE}}/recent-activity/all/
 ```
 
 Use browser MCP (Chrome DevTools or Playwright) to read the activity feed.
@@ -301,7 +301,7 @@ Happy to share the schema if useful.
 
 ### Step 7: Optimal Timing Recommendation
 
-**Best Send Windows (SGT):**
+**Best Send Windows ({{CLIENT_TIMEZONE}}):**
 - Tuesday-Thursday: 9:00 AM - 10:30 AM
 - Secondary: Tuesday-Thursday: 12:00 PM - 1:00 PM
 
@@ -315,12 +315,12 @@ Happy to share the schema if useful.
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⏰ OPTIMAL SEND TIME
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Current time: [Time] SGT
+Current time: [Time] {{CLIENT_TIMEZONE}}
 Day: [Day of week]
 
 Recommendation: [SEND NOW / WAIT UNTIL [Time]]
 
-Next optimal window: [Day], [Time range] SGT
+Next optimal window: [Day], [Time range] {{CLIENT_TIMEZONE}}
 ```
 
 ### Step 8: Save Updated Activity Log
@@ -441,7 +441,7 @@ Before sending connection requests:
 - [ ] At least one 15+ word comment exists
 - [ ] Prospect has 48+ hours of engagement history
 - [ ] Current day is Tuesday-Thursday
-- [ ] Current time is 9:00-10:30 AM SGT (or secondary window)
+- [ ] Current time is 9:00-10:30 AM {{CLIENT_TIMEZONE}} (or secondary window)
 - [ ] Daily limit not exceeded (<15 requests)
 - [ ] Request approach determined (blank for 3+, asset-led for 2)
 - [ ] Note is under 250 characters (if using note)

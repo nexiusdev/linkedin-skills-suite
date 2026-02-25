@@ -1,7 +1,7 @@
 # LinkedIn Afternoon Block - 3:00 PM
 # Handle connections, DMs, and admin tasks
 
-$logFile = "C:\Users\melve\.claude\skills\linkedin-daily-planner\logs\afternoon-block.log"
+$logFile = "{{CLIENT_WORKSPACE_ROOT}}\linkedin-daily-planner\logs\afternoon-block.log"
 $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
 
 try {

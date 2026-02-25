@@ -18,7 +18,8 @@ First-time setup that customizes all LinkedIn outreach skills for a new user's s
    - `references/connect-request.md` - Connection request templates
    - `references/saved-asset.md` - Save-worthy content examples
    - `references/linkedin-strategy.md` - Personalized strategy doc
-4. Updates skill files that reference user-specific content
+4. Generates `references/client-profile.json` for tokenized personalization
+5. Runs `shared/scripts/render-client-config.py` to apply client values across tokenized files
 
 ## Onboarding Flow
 
@@ -29,6 +30,14 @@ Ask these questions (use AskUserQuestion tool for structured collection):
 **Q1: Business Identity**
 - "What is your company/business name?"
 - "What is your LinkedIn profile URL?" (optional but recommended)
+
+**Q1b: Branding & Runtime Variables**
+- "Do you have secondary brand names or sub-brands?" (e.g., academy/education brand)
+- "Do you have a named community/group?" (e.g., WhatsApp/Slack/Discord community name)
+- "What should we use as founder/operator display name?"
+- "What is your LinkedIn handle slug?" (e.g., `my-name` from `/in/my-name/`)
+- "What is your local workspace root path?" (e.g., `C:\\Users\\you\\linkedin-skills-suite`)
+- "What is your local OS username?" (for scheduler examples)
 
 **Q2: Core Positioning**
 - "In one sentence, what do you help your customers achieve?"
@@ -211,7 +220,7 @@ Write to `.mcp.json` under `hubspot-crm.env`:
 **Validation step:** After writing keys, run the validation script to confirm each key works:
 
 ```bash
-python "C:\Users\wdqia\linkedin-skills-suite\email-finder\validate-keys.py"
+python "{{CLIENT_WORKSPACE_ROOT}}\email-finder\validate-keys.py"
 ```
 
 This tests each configured provider with a known lookup and reports pass/fail. Display the results:
@@ -311,10 +320,39 @@ Generate save-worthy asset guidance using:
 
 ### 5. Update linkedin-icp-finder geography filter
 
-Replace the ASEAN-5 filter with the user's Q7 geography:
+Replace the {{CLIENT_TARGET_GEO}} filter with the user's Q7 geography:
 - If "Global": Remove geography filter entirely
 - If specific countries: Update the country list
 - If region: Update to region check
+
+### 6. Generate references/client-profile.json
+
+Create/update `references/client-profile.json` with these values:
+
+```json
+{
+  "CLIENT_BRAND_PRIMARY": "[Q1 company name]",
+  "CLIENT_BRAND_SECONDARY": "[Q1b secondary brand or same as primary]",
+  "CLIENT_COMMUNITY_NAME": "[Q1b community name or generic fallback]",
+  "CLIENT_FOUNDER_NAME": "[Q1b founder/operator name]",
+  "CLIENT_LINKEDIN_HANDLE": "[Q1b LinkedIn handle]",
+  "CLIENT_TIMEZONE": "[Q12 timezone]",
+  "CLIENT_TARGET_GEO": "[Q7 region label]",
+  "CLIENT_TARGET_GEO_LIST": "[Q7 country list joined by comma]",
+  "CLIENT_WORKSPACE_ROOT": "[Q1b workspace root path]",
+  "CLIENT_LOCAL_USER": "[Q1b local username]"
+}
+```
+
+### 7. Run token renderer
+
+Run:
+
+```bash
+python shared/scripts/render-client-config.py --profile references/client-profile.json
+```
+
+This applies `{{CLIENT_*}}` tokens across skills/scripts/docs so brand names, paths, timezone labels, geography text, and profile handles match the new client.
 
 ## Post-Onboarding Checklist
 
@@ -330,6 +368,7 @@ Files created/updated:
 - references/saved-asset.md
 - references/linkedin-strategy.md
 - linkedin-icp-finder/references/icp-profile.md (symlinked)
+- references/client-profile.json
 
 Next steps:
 1. Review the generated files and adjust any details

@@ -115,7 +115,7 @@ Why It's Working:
 [Analysis of engagement driver]
 
 Your Angle:
-[Suggested unique perspective based on Nexius Labs positioning]
+[Suggested unique perspective based on {{CLIENT_BRAND_PRIMARY}} positioning]
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📈 TRENDING TOPIC #2: [Topic Name]
@@ -154,7 +154,7 @@ Or tell me if you want to:
 
 ## Positioning Context
 
-When suggesting angles, align with Melverick's Nexius Labs positioning:
+When suggesting angles, align with {{CLIENT_FOUNDER_NAME}}'s {{CLIENT_BRAND_PRIMARY}} positioning:
 - Agentic AI systems for SMEs
 - Finance, ERP, CRM automation
 - Natural language → agent execution

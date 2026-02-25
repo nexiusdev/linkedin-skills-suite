@@ -1,9 +1,9 @@
-# AI Ignite News Poster
+# {{CLIENT_COMMUNITY_NAME}} News Poster
 # Runs Claude Code to find and post AI news to WhatsApp
-# Schedule: 10 AM and 8 PM SGT, weekdays only
+# Schedule: 10 AM and 8 PM {{CLIENT_TIMEZONE}}, weekdays only
 
 # Set working directory
-Set-Location "C:\Users\melve\.claude\skills"
+Set-Location "{{CLIENT_WORKSPACE_ROOT}}"
 
 # Check if weekend (Saturday=6, Sunday=0)
 $dayOfWeek = (Get-Date).DayOfWeek.value__
@@ -13,7 +13,7 @@ if ($dayOfWeek -eq 0 -or $dayOfWeek -eq 6) {
 }
 
 # Run Claude Code with posting command
-Write-Host "Starting AI Ignite news posting at $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')"
+Write-Host "Starting {{CLIENT_COMMUNITY_NAME}} news posting at $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')"
 claude "post ai news to ai ignite"
 
 Write-Host "Posting complete at $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')"

@@ -1,6 +1,6 @@
 # LinkedIn Outreach Strategy - Comprehensive Documentation
 
-**Author:** Melverick Ng (Nexius Labs)
+**Author:** {{CLIENT_FOUNDER_NAME}} ({{CLIENT_BRAND_PRIMARY}})
 **Last Updated:** January 2026
 **Algorithm Context:** LinkedIn 360Brew (150B parameter decoder-only model)
 
@@ -36,7 +36,7 @@ This LinkedIn outreach strategy is built for the 2026 360Brew algorithm era, des
 - Profile-Content alignment for algorithm trust
 
 **Key Differentiators:**
-- ASEAN-5 geographic focus (Singapore, Malaysia, Thailand, Indonesia, Philippines)
+- {{CLIENT_TARGET_GEO}} geographic focus ({{CLIENT_TARGET_GEO_LIST}})
 - SME decision-makers as primary ICP
 - Technical content (schemas, PRDs, logic diagrams) that gets saved
 - Authentic commenting that proves genuine engagement
@@ -80,7 +80,7 @@ LinkedIn's 360Brew is a 150B parameter decoder-only foundation model that has tr
 ### Headline Structure
 
 **Bad:** "Revolutionizing SMEs with AI"
-**Good:** "Building Agentic ERP & CRM Systems for Singapore SMEs | Founder at Nexius Labs | Agentic AI Expert"
+**Good:** "Building Agentic ERP & CRM Systems for Singapore SMEs | Founder at {{CLIENT_BRAND_PRIMARY}} | Agentic AI Expert"
 
 The headline must contain:
 - Specific entity keywords (Agentic AI, ERP, CRM)
@@ -122,7 +122,7 @@ Helps SMEs adopt Agentic AI to automate business operations (finance, ERP, CRM, 
 
 ### Geographic Focus (STRICT)
 
-**ASEAN-5 ONLY - No Exceptions:**
+**{{CLIENT_TARGET_GEO}} ONLY - No Exceptions:**
 - Singapore (primary)
 - Malaysia
 - Thailand
@@ -256,7 +256,7 @@ In the 360Brew environment, "Save-worthy" assets are the single most important f
 2. **Agentic Logic Diagram**
    - Visual map: Trigger → Retrieval → Reasoning → Action → Feedback Loop
    - Why saved: Non-coders explain to stakeholders, use as n8n blueprint
-   - Hook: "Most SME automations fail because they lack a feedback loop. Here is the 5-step logic map we use at Nexius Labs."
+   - Hook: "Most SME automations fail because they lack a feedback loop. Here is the 5-step logic map we use at {{CLIENT_BRAND_PRIMARY}}."
 
 3. **Rapid PRD Template**
    - Structured Product Requirements Document for AI tools
@@ -271,7 +271,7 @@ In the 360Brew environment, "Save-worthy" assets are the single most important f
 
 ### Day-Specific Content Schedule
 
-| Day | Content Focus | Post Type | Primary Window (SGT) | Secondary Window |
+| Day | Content Focus | Post Type | Primary Window ({{CLIENT_TIMEZONE}}) | Secondary Window |
 |-----|--------------|-----------|---------------------|------------------|
 | Monday | Strategy/Planning | Frameworks, week-starter | 10:00-11:30 AM | 4:00-5:30 PM |
 | Tuesday | Technical Demo (PEAK) | Video demos, architectures | 8:30-10:30 AM | 12:00-1:30 PM |
@@ -430,7 +430,7 @@ love to send it over if you're curious.
 
 ### Optimal Send Timing
 
-**Best Windows (SGT):**
+**Best Windows ({{CLIENT_TIMEZONE}}):**
 - Tuesday-Thursday: 9:00 AM - 10:30 AM
 - Secondary: Tuesday-Thursday: 12:00 PM - 1:00 PM
 
@@ -454,7 +454,7 @@ love to send it over if you're curious.
 
 ## Daily Workflow & Time Blocks
 
-### Time Block Schedule (SGT)
+### Time Block Schedule ({{CLIENT_TIMEZONE}})
 
 | Time | Block | Duration | Focus |
 |------|-------|----------|-------|
@@ -529,7 +529,7 @@ love to send it over if you're curious.
    - New followers (linkedin.com/mynetwork/network-manager/people-follow/followers/)
 
 2. **ICP Screening (for all inbound):**
-   - Quick screen: ASEAN-5? Decision-maker? SME?
+   - Quick screen: {{CLIENT_TARGET_GEO}}? Decision-maker? SME?
    - Log ICP matches to "Inbound Engagement" section
    - Add to "Warming Up" pipeline with signal type
 
@@ -743,7 +743,7 @@ start linkedin
 
 **Option 3: Set up alias**
 ```powershell
-Set-Alias startlinkedin "C:\Users\melve\.claude\skills\linkedin-daily-planner\scripts\start-linkedin.ps1"
+Set-Alias startlinkedin "{{CLIENT_WORKSPACE_ROOT}}\linkedin-daily-planner\scripts\start-linkedin.ps1"
 startlinkedin
 ```
 
@@ -751,7 +751,7 @@ startlinkedin
 
 **Single daily trigger at 9:00 AM:**
 ```powershell
-$action = New-ScheduledTaskAction -Execute "PowerShell.exe" -Argument "-ExecutionPolicy Bypass -File `"C:\Users\melve\.claude\skills\linkedin-daily-planner\scripts\start-linkedin.ps1`""
+$action = New-ScheduledTaskAction -Execute "PowerShell.exe" -Argument "-ExecutionPolicy Bypass -File `"{{CLIENT_WORKSPACE_ROOT}}\linkedin-daily-planner\scripts\start-linkedin.ps1`""
 $trigger = New-ScheduledTaskTrigger -Daily -At 9:00AM
 $settings = New-ScheduledTaskSettingsSet -StartWhenAvailable
 Register-ScheduledTask -TaskName "LinkedIn-Daily" -Action $action -Trigger $trigger -Settings $settings
@@ -817,7 +817,7 @@ linkedin-daily-planner/scripts/
 - [ ] At least one 15+ word comment exists
 - [ ] Using blank request OR 100% bespoke note
 - [ ] Day is Tuesday-Thursday (optimal)
-- [ ] Time is 9:00-10:30 AM SGT (optimal)
+- [ ] Time is 9:00-10:30 AM {{CLIENT_TIMEZONE}} (optimal)
 - [ ] Under daily limit (15 max)
 
 ### Before DMing
@@ -867,15 +867,15 @@ These work for any business:
 |------|---------------------|----------------|
 | `references/icp-profile.md` | Target roles, industries, geography, pain keywords | Replace entirely with new ICP |
 | `references/contact-classification.md` | PEER niche signals, PROSPECT criteria | Update niche keywords, industry focus |
-| `linkedin-icp-finder/skill.md` | **Hardcoded ASEAN-5 geography filter** | Change to new target geography |
-| `LINKEDIN-OUTREACH-STRATEGY.md` | Entire document references Melverick/Nexius Labs | Regenerate for new business |
+| `linkedin-icp-finder/skill.md` | **Hardcoded {{CLIENT_TARGET_GEO}} geography filter** | Change to new target geography |
+| `LINKEDIN-OUTREACH-STRATEGY.md` | Entire document references {{CLIENT_FOUNDER_NAME}}/{{CLIENT_BRAND_PRIMARY}} | Regenerate for new business |
 
 #### MEDIUM Priority (Should Update)
 
 | File | What's Personalized | What to Change |
 |------|---------------------|----------------|
-| `linkedin-elite-post/skill.md` | "Nexius Labs positioning" context | Update positioning section |
-| `linkedin-pro-commenter/skill.md` | "When to Mention Nexius Labs", deployment examples | Update company name, example metrics |
+| `linkedin-elite-post/skill.md` | "{{CLIENT_BRAND_PRIMARY}} positioning" context | Update positioning section |
+| `linkedin-pro-commenter/skill.md` | "When to Mention {{CLIENT_BRAND_PRIMARY}}", deployment examples | Update company name, example metrics |
 | `linkedin-trender/skill.md` | "Positioning Context" section | Update niche keywords, angles |
 | `references/linkedin-strategy.md` | "Agentic AI and SME Automation" references | Update to new domain/focus |
 | `references/connect-request.md` | Asset-led note templates, "Nexius Style" | Update templates, company name |
@@ -908,11 +908,11 @@ For a new user to adopt this system:
        → Change PROSPECT criteria to their ICP
 
 4. [ ] Update linkedin-icp-finder/skill.md
-       → Replace ASEAN-5 geography filter with their target region
+       → Replace {{CLIENT_TARGET_GEO}} geography filter with their target region
        → Or remove geography filter if targeting globally
 
 5. [ ] Search & replace across files:
-       → "Nexius Labs" → [Their company]
+       → "{{CLIENT_BRAND_PRIMARY}}" → [Their company]
        → "Agentic AI" → [Their domain]
        → "SME" → [Their target market]
        → "Singapore" → [Their primary market]

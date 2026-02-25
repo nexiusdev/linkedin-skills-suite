@@ -1,7 +1,7 @@
 # Setup LinkedIn Daily Planner Scheduled Tasks
 # Creates all time-block tasks for automated LinkedIn workflow
 
-$scriptDir = "C:\Users\melve\.claude\skills\linkedin-daily-planner\scripts"
+$scriptDir = "{{CLIENT_WORKSPACE_ROOT}}\linkedin-daily-planner\scripts"
 
 # Task configurations
 $tasks = @(

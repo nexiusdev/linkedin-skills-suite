@@ -25,7 +25,7 @@ This scanning system helps you efficiently identify ACTIVE and MODERATE prospect
 ## Files Created
 
 ### 1. Activity Scan Checklist
-**Location:** `C:\Users\melve\.claude\skills\shared\logs\activity-scan-batch-30jan.md`
+**Location:** `{{CLIENT_WORKSPACE_ROOT}}\shared\logs\activity-scan-batch-30jan.md`
 
 **Purpose:** Main working document for manual scanning
 
@@ -44,7 +44,7 @@ This scanning system helps you efficiently identify ACTIVE and MODERATE prospect
 5. Record last post date and any notes
 
 ### 2. Workflow Guide
-**Location:** `C:\Users\melve\.claude\skills\shared\logs\activity-scan-workflow.md`
+**Location:** `{{CLIENT_WORKSPACE_ROOT}}\shared\logs\activity-scan-workflow.md`
 
 **Purpose:** Step-by-step process guide
 
@@ -62,7 +62,7 @@ This scanning system helps you efficiently identify ACTIVE and MODERATE prospect
 3. Follow the 5-step process for each prospect
 
 ### 3. PowerShell Profile Opener
-**Location:** `C:\Users\melve\.claude\skills\shared\scripts\open-linkedin-profiles.ps1`
+**Location:** `{{CLIENT_WORKSPACE_ROOT}}\shared\scripts\open-linkedin-profiles.ps1`
 
 **Purpose:** Automate opening LinkedIn profiles in batches
 
@@ -74,7 +74,7 @@ This scanning system helps you efficiently identify ACTIVE and MODERATE prospect
 
 **How to use:**
 ```powershell
-cd C:\Users\melve\.claude\skills\shared\scripts
+cd {{CLIENT_WORKSPACE_ROOT}}\shared\scripts
 .\open-linkedin-profiles.ps1
 ```
 Choose mode:
@@ -83,7 +83,7 @@ Choose mode:
 - Single profile for spot checks
 
 ### 4. CSV Results Template
-**Location:** `C:\Users\melve\.claude\skills\shared\logs\activity-scan-results-template.csv`
+**Location:** `{{CLIENT_WORKSPACE_ROOT}}\shared\logs\activity-scan-results-template.csv`
 
 **Purpose:** Structured data capture for easy import
 

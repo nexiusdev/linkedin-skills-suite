@@ -16,6 +16,7 @@ nul
 .mcp.json
 .env
 .env.local
+references/client-profile.json
 *.key
 *.pem
 

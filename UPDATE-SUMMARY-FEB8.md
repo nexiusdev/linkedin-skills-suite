@@ -52,7 +52,7 @@ Added new verification section:
 - Update shared/logs/linkedin-activity.md → Today's Summary section
 - Update all prospect touch counts in icp-prospects.md
 - Update Daily Limits Status table with final counts
-- Mark "Last updated: YYYY-MM-DD HH:MM SGT" timestamp
+- Mark "Last updated: YYYY-MM-DD HH:MM {{CLIENT_TIMEZONE}}" timestamp
 - **Critical:** This must happen EVERY day to keep activity log current
 - **Time:** 2-3 minutes - never skip even if running late
 ```
@@ -73,7 +73,7 @@ Added new verification section:
 **Updated today's summary (Feb 8, 2026):**
 - Added 9 comments from Morning Block with timestamps
 - Updated Daily Limits Status table
-- Marked "Last updated: 2026-02-08 22:05 SGT"
+- Marked "Last updated: 2026-02-08 22:05 {{CLIENT_TIMEZONE}}"
 
 #### 4. `shared/logs/icp-prospects.md`
 **Updated prospect touch counts:**

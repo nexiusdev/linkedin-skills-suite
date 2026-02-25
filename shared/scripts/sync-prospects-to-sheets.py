@@ -20,12 +20,12 @@ import os
 from datetime import datetime
 
 # --- Configuration ---
-SERVICE_ACCOUNT_FILE = r"C:\Users\melve\.claude\skills\gen-lang-client-0759962377-207882157ce2.json"
-PROSPECTS_FILE = r"C:\Users\melve\.claude\skills\shared\logs\icp-prospects.md"
+SERVICE_ACCOUNT_FILE = r"{{CLIENT_WORKSPACE_ROOT}}\gen-lang-client-0759962377-207882157ce2.json"
+PROSPECTS_FILE = r"{{CLIENT_WORKSPACE_ROOT}}\shared\logs\icp-prospects.md"
 SPREADSHEET_ID = "1-3Ua8O6vwqHtuUe17VepNpWPWPeT0eeL8jXfN40lfKc"
 DRIVE_FOLDER_ID = "1PAvNtv07W2wsLkAgIr93xxPCeoINjAnX"
 SERVICE_ACCOUNT_EMAIL = "claude-sheets@gen-lang-client-0759962377.iam.gserviceaccount.com"
-CSV_BACKUP_DIR = r"C:\Users\melve\.claude\skills\shared\logs\backups"
+CSV_BACKUP_DIR = r"{{CLIENT_WORKSPACE_ROOT}}\shared\logs\backups"
 
 SCOPES = [
     "https://www.googleapis.com/auth/spreadsheets",

@@ -1,8 +1,8 @@
-# Setup script for AI Ignite Monitor scheduled task
+# Setup script for {{CLIENT_COMMUNITY_NAME}} Monitor scheduled task
 # Run this script once to create the 15-minute monitoring task
 
 $taskName = "AI-Ignite-Monitor"
-$scriptPath = "C:\Users\melve\.claude\skills\whatsapp-community-ai\scripts\monitor-ai-ignite.ps1"
+$scriptPath = "{{CLIENT_WORKSPACE_ROOT}}\whatsapp-community-ai\scripts\monitor-ai-ignite.ps1"
 
 # Check if task already exists
 $existingTask = Get-ScheduledTask -TaskName $taskName -ErrorAction SilentlyContinue
@@ -22,7 +22,7 @@ $trigger = New-ScheduledTaskTrigger -Once -At (Get-Date) -RepetitionInterval (Ne
 $settings = New-ScheduledTaskSettingsSet -StartWhenAvailable -DontStopOnIdleEnd -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries
 
 # Register the task
-Register-ScheduledTask -TaskName $taskName -Action $action -Trigger $trigger -Settings $settings -Description "Monitor AI Ignite WhatsApp every 15 mins for unanswered questions and auto-reply"
+Register-ScheduledTask -TaskName $taskName -Action $action -Trigger $trigger -Settings $settings -Description "Monitor {{CLIENT_COMMUNITY_NAME}} WhatsApp every 15 mins for unanswered questions and auto-reply"
 
 Write-Host ""
 Write-Host "========================================" -ForegroundColor Green

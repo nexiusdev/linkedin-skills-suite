@@ -177,7 +177,7 @@ These are the performative garbage patterns that prove you didn't actually engag
 - **Question asking as engagement bait** - Unless you're genuinely curious, don't fake it.
 - **"Thanks for sharing"** - This isn't email. Have a real response or move on.
 
-## When to Mention Nexius Labs
+## When to Mention {{CLIENT_BRAND_PRIMARY}}
 
 Only mention your company when it's genuinely relevant to the specific point you're making. Not as positioning strategy, but as grounding for your perspective.
 
@@ -187,7 +187,7 @@ Only mention your company when it's genuinely relevant to the specific point you
 - "In our automation work, the companies that succeed do X, not Y..."
 
 **Forced/strategic contexts (avoid):**
-- "At Nexius Labs, we help companies with this" - Sales pitch, not thought
+- "At {{CLIENT_BRAND_PRIMARY}}, we help companies with this" - Sales pitch, not thought
 - "This is why we built our platform around..." - Not about the post
 - "We've seen this across many deployments" - Generic credential drop
 
@@ -224,7 +224,7 @@ Load these as needed for deeper guidance:
 - **references/selection-guide.md** - Detailed selection heuristics, decision tree, and examples for choosing best variation
 - **references/strategy-guide.md** - Core LinkedIn engagement strategy and principles
 - **references/comment-patterns.md** - 7 proven comment patterns with examples
-- **references/nexius-positioning.md** - Nexius Labs value prop, expertise areas, proof points
+- **references/nexius-positioning.md** - {{CLIENT_BRAND_PRIMARY}} value prop, expertise areas, proof points
 
 ## Automatic AI Selection of Best Variation
 
@@ -367,7 +367,7 @@ User can override at any point: "use variation 2" or "make it shorter"
 Before delivering any comment, verify:
 
 **Dedup (FIRST CHECK - before anything else):**
-- Post NOT in "already commented" set (built during session pre-flight from /in/melverick/recent-activity/comments/)
+- Post NOT in "already commented" set (built during session pre-flight from /in/{{CLIENT_LINKEDIN_HANDLE}}/recent-activity/comments/)
 - If duplicate detected → STOP, do not generate comment, report "Already commented on this post"
 - Replying to your own existing comment thread is OK (not a duplicate)
 

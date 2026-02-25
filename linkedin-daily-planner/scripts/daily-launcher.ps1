@@ -41,7 +41,7 @@ $prompts = @{
 $prompt = $prompts[$TimeBlock]
 
 # Log the launch
-$logPath = "C:\Users\melve\.claude\skills\linkedin-daily-planner\logs"
+$logPath = "{{CLIENT_WORKSPACE_ROOT}}\linkedin-daily-planner\logs"
 if (-not (Test-Path $logPath)) {
     New-Item -ItemType Directory -Path $logPath -Force
 }

@@ -21,7 +21,7 @@ Run this PowerShell script as Administrator to create all scheduled tasks:
 ```powershell
 # Create scheduled tasks for LinkedIn Daily Planner
 
-$scriptPath = "C:\Users\melve\.claude\skills\linkedin-daily-planner\scripts\daily-launcher.ps1"
+$scriptPath = "{{CLIENT_WORKSPACE_ROOT}}\linkedin-daily-planner\scripts\daily-launcher.ps1"
 
 # Morning Block - 9:00 AM (Weekdays only)
 $action = New-ScheduledTaskAction -Execute "PowerShell.exe" -Argument "-ExecutionPolicy Bypass -File `"$scriptPath`" -TimeBlock morning"
@@ -76,7 +76,7 @@ Write-Host "All LinkedIn scheduled tasks created!" -ForegroundColor Green
    - Click "New"
    - Action: "Start a program"
    - Program: `PowerShell.exe`
-   - Arguments: `-ExecutionPolicy Bypass -File "C:\Users\melve\.claude\skills\linkedin-daily-planner\scripts\daily-launcher.ps1" -TimeBlock morning`
+   - Arguments: `-ExecutionPolicy Bypass -File "{{CLIENT_WORKSPACE_ROOT}}\linkedin-daily-planner\scripts\daily-launcher.ps1" -TimeBlock morning`
 
 6. **Conditions Tab**
    - Uncheck "Start only if computer is on AC power"
@@ -142,7 +142,7 @@ Unregister-ScheduledTask -TaskName "LinkedIn-Evening" -Confirm:$false
 
 **Claude Code doesn't open:**
 - Ensure `claude` is in your PATH
-- Try full path: `C:\Users\melve\.claude\bin\claude.exe`
+- Try full path: `C:\Users\{{CLIENT_LOCAL_USER}}\.claude\bin\claude.exe`
 
 **Browser not ready:**
 - Claude for Chrome must be open and logged in

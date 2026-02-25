@@ -1,8 +1,8 @@
-# Setup script for AI Ignite News Poster scheduled tasks
+# Setup script for {{CLIENT_COMMUNITY_NAME}} News Poster scheduled tasks
 # Run this script once to create the 10 AM and 8 PM posting tasks (weekdays only)
 
 $taskName = "AI-Ignite-News-Poster"
-$scriptPath = "C:\Users\melve\.claude\skills\whatsapp-community-ai\scripts\post-ai-news.ps1"
+$scriptPath = "{{CLIENT_WORKSPACE_ROOT}}\whatsapp-community-ai\scripts\post-ai-news.ps1"
 
 # Check if task already exists
 $existingTask = Get-ScheduledTask -TaskName $taskName -ErrorAction SilentlyContinue
@@ -23,7 +23,7 @@ $trigger8PM = New-ScheduledTaskTrigger -Weekly -DaysOfWeek Monday,Tuesday,Wednes
 $settings = New-ScheduledTaskSettingsSet -StartWhenAvailable -DontStopOnIdleEnd -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries
 
 # Register the task with both triggers
-Register-ScheduledTask -TaskName $taskName -Action $action -Trigger $trigger10AM,$trigger8PM -Settings $settings -Description "Post AI news to AI Ignite WhatsApp at 10 AM and 8 PM SGT, weekdays only"
+Register-ScheduledTask -TaskName $taskName -Action $action -Trigger $trigger10AM,$trigger8PM -Settings $settings -Description "Post AI news to {{CLIENT_COMMUNITY_NAME}} WhatsApp at 10 AM and 8 PM {{CLIENT_TIMEZONE}}, weekdays only"
 
 Write-Host ""
 Write-Host "========================================" -ForegroundColor Green
@@ -31,7 +31,7 @@ Write-Host "SUCCESS: Scheduled task created!" -ForegroundColor Green
 Write-Host "========================================" -ForegroundColor Green
 Write-Host ""
 Write-Host "Task Name: $taskName"
-Write-Host "Schedule: 10:00 AM and 8:00 PM SGT"
+Write-Host "Schedule: 10:00 AM and 8:00 PM {{CLIENT_TIMEZONE}}"
 Write-Host "Days: Monday - Friday (weekdays only)"
 Write-Host "Script: $scriptPath"
 Write-Host ""

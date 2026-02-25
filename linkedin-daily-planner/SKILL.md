@@ -74,7 +74,7 @@ When user triggers autonomous mode ("start linkedin"):
    (Replying to your own comment thread on a post is OK. Posting a new top-level comment is NOT.)
 
    → PRE-FLIGHT (once per session, before any commenting starts):
-     1. Navigate to /in/melverick/recent-activity/comments/
+     1. Navigate to /in/{{CLIENT_LINKEDIN_HANDLE}}/recent-activity/comments/
      2. Scroll to load all visible entries (at least 30-50 entries)
      3. Extract "already commented" set: { author_slug + first_60_chars_of_post_text }
      4. Store this set in memory for the entire session
@@ -192,7 +192,7 @@ When user triggers autonomous mode ("start linkedin"):
        * DMs sent
        * Daily Limits Status table (all counts from completed tasks)
      - Update prospect touch counts in icp-prospects.md
-     - Mark last updated timestamp: "Last updated: YYYY-MM-DD HH:MM SGT"
+     - Mark last updated timestamp: "Last updated: YYYY-MM-DD HH:MM {{CLIENT_TIMEZONE}}"
      - **This prevents activity log from going stale - DO NOT SKIP**
    → Run full inbound audit:
      - Post engagement (commenters, likers)
@@ -224,10 +224,10 @@ When user triggers autonomous mode ("start linkedin"):
      - Update daily limits
    → Log all to shared activity log
    → **COMMENT REPLY AUDIT (Scan last 7-14 days of posts for unreplied comments):**
-     - Navigate to own activity page (/in/melverick/recent-activity/all/)
+     - Navigate to own activity page (/in/{{CLIENT_LINKEDIN_HANDLE}}/recent-activity/all/)
      - For each post from last 14 days with comments:
        * Open post → Scan ALL comments (load more if needed)
-       * Identify comments without a reply from Melverick/Nexius Labs
+       * Identify comments without a reply from {{CLIENT_FOUNDER_NAME}}/{{CLIENT_BRAND_PRIMARY}}
        * Reply to unreplied comments (prioritize 1st degree > 2nd degree > company pages)
        * CHECK: Comments today < 30 limit before each reply
      - Log: "Comment Reply Audit: X unreplied found, Y replied"
@@ -292,7 +292,7 @@ If started late, autonomously compress tasks:
 
 When user asks about timing or schedule:
 
-### Time Blocks (SGT)
+### Time Blocks ({{CLIENT_TIMEZONE}})
 
 | Time | Block | Duration | Focus |
 |------|-------|----------|-------|
@@ -302,7 +302,7 @@ When user asks about timing or schedule:
 | 3:00 PM - 6:00 PM | Afternoon Block | 15 mins | Connection requests, DMs, outreach |
 | After 6:00 PM | Evening Block | 10 mins | Daily audit, metrics check, inbound engagement review |
 
-### Posting Windows by Day (SGT)
+### Posting Windows by Day ({{CLIENT_TIMEZONE}})
 
 | Day | Primary Window | Secondary Window | Best Content |
 |-----|----------------|------------------|--------------|
@@ -342,15 +342,15 @@ When user asks about timing or schedule:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⏳ POST SCHEDULING - 12H RULE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Last post: Today 10:30 SGT
-Current time: 16:00 SGT
+Last post: Today 10:30 {{CLIENT_TIMEZONE}}
+Current time: 16:00 {{CLIENT_TIMEZONE}}
 Hours since last: 5.5 hours
 
 ⚠️ 12-HOUR MINIMUM NOT MET
-Next valid posting: Today 22:30 SGT
-Nearest posting window: Tomorrow 08:30 SGT (Tuesday Primary)
+Next valid posting: Today 22:30 {{CLIENT_TIMEZONE}}
+Nearest posting window: Tomorrow 08:30 {{CLIENT_TIMEZONE}} (Tuesday Primary)
 
-Action: Scheduling for Tomorrow 08:30 SGT
+Action: Scheduling for Tomorrow 08:30 {{CLIENT_TIMEZONE}}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
@@ -364,7 +364,7 @@ Action: Scheduling for Tomorrow 08:30 SGT
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⏰ LINKEDIN SCHEDULE CHECK
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Current time: [HH:MM] SGT
+Current time: [HH:MM] {{CLIENT_TIMEZONE}}
 Day: [Day of week]
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -380,15 +380,15 @@ Tasks for this block:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📅 TODAY'S POSTING WINDOW
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Primary: [Time range] SGT
-Secondary: [Time range] SGT (if available)
+Primary: [Time range] {{CLIENT_TIMEZONE}}
+Secondary: [Time range] {{CLIENT_TIMEZONE}} (if available)
 Best content type: [Type for today]
 Window status: [In window / Missed / Upcoming in X mins]
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⏱️ 12-HOUR POSTING RULE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Last post: [Date HH:MM SGT or "None in last 24h"]
+Last post: [Date HH:MM {{CLIENT_TIMEZONE}} or "None in last 24h"]
 Hours since last: [X hours]
 Status: [✅ OK to post / ⚠️ Wait until HH:MM]
 Next valid window: [Day, Time range]
@@ -454,7 +454,7 @@ Connections: [X]/10 target
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⚠️ LATE START DETECTED
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Current time: [HH:MM] SGT
+Current time: [HH:MM] {{CLIENT_TIMEZONE}}
 Blocks passed: Morning Block, Content Block
 
 FLEXIBLE TASKS (still do today):
@@ -462,7 +462,7 @@ FLEXIBLE TASKS (still do today):
 - [ ] Connection requests - can do now
 
 TIME-SENSITIVE (check status):
-- [ ] Post: Primary window MISSED, Secondary at [Time] SGT
+- [ ] Post: Primary window MISSED, Secondary at [Time] {{CLIENT_TIMEZONE}}
 - [ ] Golden Hour: Only if post scheduled
 
 CURRENT BLOCK: [Block Name]
@@ -492,7 +492,7 @@ Focus on: [Prioritized tasks for remaining day]
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📋 ADJUSTED PLAN - Late Start
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Current time: 15:00 SGT (Monday)
+Current time: 15:00 {{CLIENT_TIMEZONE}} (Monday)
 
 ❌ MISSED:
 - Morning Block (commenting warm-up)
@@ -825,7 +825,7 @@ IF prospect scores 60+ on ICP matrix:
   - **Daily Limits Status:** Update all counts based on completed tasks
   - **Touch History Updates:** Update prospect touch counts in icp-prospects.md
 - [ ] If NO to-do file exists for today → Create summary from memory of what was done
-- [ ] Mark last updated timestamp in activity log: `Last updated: YYYY-MM-DD HH:MM SGT`
+- [ ] Mark last updated timestamp in activity log: `Last updated: YYYY-MM-DD HH:MM {{CLIENT_TIMEZONE}}`
 
 **Why this is MANDATORY:**
 - Activity log is source of truth for all skills
@@ -887,12 +887,12 @@ IF prospect scores 60+ on ICP matrix:
 **Problem this solves:** Comments on posts from 1-2 weeks ago are invisible in notifications. Viral posts (30+ comments) keep getting new comments for days. Without this audit, those comments go unreplied, damaging engagement and credibility.
 
 **Execution:**
-- [ ] Navigate to own activity page (`/in/melverick/recent-activity/all/`)
+- [ ] Navigate to own activity page (`/in/{{CLIENT_LINKEDIN_HANDLE}}/recent-activity/all/`)
 - [ ] Check posts from last 14 days that have comments (skip 0-comment posts)
 - [ ] For each post with comments:
   - Open the post detail page
   - Load ALL comments (click "Load more comments" if needed)
-  - Scan each comment: Does it have a reply from Melverick or Nexius Labs?
+  - Scan each comment: Does it have a reply from {{CLIENT_FOUNDER_NAME}} or {{CLIENT_BRAND_PRIMARY}}?
   - If UNREPLIED: Reply with genuine, substantive response (under 50 words)
   - CHECK: Comments today < 30 limit before each reply
 - [ ] Log to activity log: "Comment Reply Audit: X unreplied found across Y posts, Z replied"
@@ -945,7 +945,7 @@ IF inbound signal passes ICP screen:
 - [ ] Log to shared activity log → "Profile Views Received" table
 
 **ICP Fit Quick Check:**
-- ✅ Location: Singapore, Malaysia, Thailand, Indonesia, Philippines
+- ✅ Location: {{CLIENT_TARGET_GEO_LIST}}
 - ✅ Role: Manager, Director, Head of, CEO, Founder, COO, CFO
 - ✅ Company: SME (10-500 employees), not enterprise/MNC
 - ❌ Skip: Non-ASEAN, junior roles, large corporations, recruiters
@@ -1255,7 +1255,7 @@ Insert the appropriate content task based on day of week.
   - High-level AI shifts for SMEs
 - [ ] Ensure opening hook is a "Topic Signal"
 - [ ] Put any external links in FIRST COMMENT, not post body
-- [ ] **Schedule for: 10:00 AM - 11:30 AM SGT (Primary) or 4:00 PM - 5:30 PM SGT (Secondary)**
+- [ ] **Schedule for: 10:00 AM - 11:30 AM {{CLIENT_TIMEZONE}} (Primary) or 4:00 PM - 5:30 PM {{CLIENT_TIMEZONE}} (Secondary)**
 - [ ] **If 12h rule blocks current window → Schedule for next valid window**
 ```
 
@@ -1276,7 +1276,7 @@ Insert the appropriate content task based on day of week.
   - Architecture diagram with explanation
 - [ ] Use clear structure for 360Brew semantic reasoning
 - [ ] Include specific examples from real implementations
-- [ ] **Schedule for: 8:30 AM - 10:30 AM SGT (Primary) or 12:00 PM - 1:30 PM SGT (Secondary)**
+- [ ] **Schedule for: 8:30 AM - 10:30 AM {{CLIENT_TIMEZONE}} (Primary) or 12:00 PM - 1:30 PM {{CLIENT_TIMEZONE}} (Secondary)**
 - [ ] **If 12h rule blocks current window → Schedule for next valid window**
 ```
 
@@ -1297,7 +1297,7 @@ Insert the appropriate content task based on day of week.
   - PRD framework or template
 - [ ] Ensure opening hook is a "Topic Signal"
 - [ ] Put any external links in FIRST COMMENT, not post body
-- [ ] **Schedule for: 9:00 AM - 11:00 AM SGT (Primary) or 3:00 PM - 5:00 PM SGT (Secondary)**
+- [ ] **Schedule for: 9:00 AM - 11:00 AM {{CLIENT_TIMEZONE}} (Primary) or 3:00 PM - 5:00 PM {{CLIENT_TIMEZONE}} (Secondary)**
 - [ ] **If 12h rule blocks current window → Schedule for next valid window**
 ```
 
@@ -1319,7 +1319,7 @@ Insert the appropriate content task based on day of week.
   - Framework or methodology breakdown
 - [ ] Use clear structure (bullet points, headings) for 360Brew semantic reasoning
 - [ ] Include specific examples from real implementations
-- [ ] **Schedule for: 10:00 AM - 12:00 PM SGT (Primary) or 1:00 PM - 2:30 PM SGT (Secondary)**
+- [ ] **Schedule for: 10:00 AM - 12:00 PM {{CLIENT_TIMEZONE}} (Primary) or 1:00 PM - 2:30 PM {{CLIENT_TIMEZONE}} (Secondary)**
 - [ ] **If 12h rule blocks current window → Schedule for next valid window**
 ```
 
@@ -1341,7 +1341,7 @@ Insert the appropriate content task based on day of week.
   - Team highlights or wins
 - [ ] Use first-person narrative for "Human-in-the-loop" trust signal
 - [ ] Connect story back to Agentic AI/SME positioning
-- [ ] **Schedule for: 8:30 AM - 10:00 AM SGT ONLY (No afternoon slot on Friday)**
+- [ ] **Schedule for: 8:30 AM - 10:00 AM {{CLIENT_TIMEZONE}} ONLY (No afternoon slot on Friday)**
 - [ ] **If 12h rule blocks morning window → Skip posting today (no secondary Friday window)**
 ```
 
@@ -1595,7 +1595,7 @@ All task completions should update the shared log, not just the to-do file.
 
 **Comment Dedup Pre-flight (once per session):**
 - Must run BEFORE any commenting block starts
-- Navigate to /in/melverick/recent-activity/comments/
+- Navigate to /in/{{CLIENT_LINKEDIN_HANDLE}}/recent-activity/comments/
 - Build "already commented" set: { author_slug + first_60_chars_of_post }
 - This set persists for the entire session across all blocks
 
@@ -1605,7 +1605,7 @@ All task completions should update the shared log, not just the to-do file.
 - Update shared/logs/linkedin-activity.md → Today's Summary section
 - Update all prospect touch counts in icp-prospects.md
 - Update Daily Limits Status table with final counts
-- Mark "Last updated: YYYY-MM-DD HH:MM SGT" timestamp
+- Mark "Last updated: YYYY-MM-DD HH:MM {{CLIENT_TIMEZONE}}" timestamp
 - **Critical:** This must happen EVERY day to keep activity log current
 - **Time:** 2-3 minutes - never skip even if running late
 
@@ -1628,7 +1628,7 @@ start linkedin
 **Option 3: Set up alias for easy access**
 ```powershell
 # Add to your PowerShell profile
-Set-Alias startlinkedin "C:\Users\wdqia\linkedin-skills-suite\linkedin-daily-planner\scripts\start-linkedin.ps1"
+Set-Alias startlinkedin "{{CLIENT_WORKSPACE_ROOT}}\linkedin-daily-planner\scripts\start-linkedin.ps1"
 
 # Then just run:
 startlinkedin
@@ -1649,7 +1649,7 @@ Set up a single daily trigger:
 
 ```powershell
 # Run once daily at 9:00 AM - AI handles all blocks based on time
-$action = New-ScheduledTaskAction -Execute "PowerShell.exe" -Argument "-ExecutionPolicy Bypass -File `"C:\Users\wdqia\linkedin-skills-suite\linkedin-daily-planner\scripts\start-linkedin.ps1`""
+$action = New-ScheduledTaskAction -Execute "PowerShell.exe" -Argument "-ExecutionPolicy Bypass -File `"{{CLIENT_WORKSPACE_ROOT}}\linkedin-daily-planner\scripts\start-linkedin.ps1`""
 $trigger = New-ScheduledTaskTrigger -Daily -At 9:00AM
 $settings = New-ScheduledTaskSettingsSet -StartWhenAvailable
 Register-ScheduledTask -TaskName "LinkedIn-Daily" -Action $action -Trigger $trigger -Settings $settings -Description "LinkedIn autonomous workflow"
@@ -1660,7 +1660,7 @@ Or run multiple times per day:
 # Morning, Midday, Afternoon, Evening triggers
 @("09:00","12:30","15:00","18:30") | ForEach-Object {
     $time = $_
-    $action = New-ScheduledTaskAction -Execute "PowerShell.exe" -Argument "-ExecutionPolicy Bypass -File `"C:\Users\wdqia\linkedin-skills-suite\linkedin-daily-planner\scripts\start-linkedin.ps1`""
+    $action = New-ScheduledTaskAction -Execute "PowerShell.exe" -Argument "-ExecutionPolicy Bypass -File `"{{CLIENT_WORKSPACE_ROOT}}\linkedin-daily-planner\scripts\start-linkedin.ps1`""
     $trigger = New-ScheduledTaskTrigger -Daily -At $time
     Register-ScheduledTask -TaskName "LinkedIn-$time" -Action $action -Trigger $trigger
 }

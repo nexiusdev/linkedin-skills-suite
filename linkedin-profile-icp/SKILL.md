@@ -13,7 +13,7 @@ LinkedIn's 360Brew algorithm "reads" your profile to verify your "Right to Speak
 
 **Headline as "Entity Signal":**
 - Avoid clever titles like "Revolutionizing SMEs with AI"
-- Use specific, indexable keywords: "Building Agentic ERP & CRM Systems for Singapore SMEs | Founder at Nexius Labs | Agentic AI Expert"
+- Use specific, indexable keywords: "Building Agentic ERP & CRM Systems for Singapore SMEs | Founder at {{CLIENT_BRAND_PRIMARY}} | Agentic AI Expert"
 - 360Brew uses headline keywords as "Semantic Weights" for content distribution
 
 **About Section as "System Prompt":**
@@ -103,7 +103,7 @@ Weight criteria to prioritize prospects:
 
 | Criteria | Weight | Score Range | How to Assess |
 |----------|--------|-------------|---------------|
-| **Geography** | 25% | 0 or 100 | ASEAN-5 = 100, Other = 0 (binary) |
+| **Geography** | 25% | 0 or 100 | {{CLIENT_TARGET_GEO}} = 100, Other = 0 (binary) |
 | **Role Match** | 25% | 0-100 | Primary = 100, Secondary = 70, Adjacent = 40 |
 | **Company Size** | 20% | 0-100 | Exact match = 100, Close = 70, Far = 30 |
 | **Pain Signal** | 20% | 0-100 | Explicit pain = 100, Implied = 60, None = 20 |
@@ -264,7 +264,7 @@ TARGET COMPANY PROFILE:
 
 Size: [Range, e.g., 10-200 employees]
 Stage: [Growth phase]
-Geography: [Region focus - ASEAN-5]
+Geography: [Region focus - {{CLIENT_TARGET_GEO}}]
 Tech Maturity: [Low/Medium/High]
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -397,7 +397,7 @@ Copy these filters to linkedin-icp-finder:
 Role Filter: [Comma-separated titles]
 Industry Filter: [Comma-separated industries]
 Company Size: [Range]
-Geography: [ASEAN-5 countries]
+Geography: [{{CLIENT_TARGET_GEO}} countries]
 Pain Keywords: [Comma-separated terms]
 Anti-ICP: [What to skip]
 
@@ -423,7 +423,7 @@ Anti-ICP: [What to skip]
 | Target Roles | [Primary roles] |
 | Target Industries | [Industries] |
 | Company Size | [Range] |
-| Geography | [ASEAN-5] |
+| Geography | [{{CLIENT_TARGET_GEO}}] |
 | Pain Keywords | [Keywords] |
 
 ## Anti-ICP (Skip Immediately)

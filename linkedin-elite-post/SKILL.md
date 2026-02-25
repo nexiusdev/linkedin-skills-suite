@@ -147,7 +147,7 @@ User can override: "use variation 2 instead" or "refine the selected post"
 - Optimal: 3-5 posts per week (120% reach increase vs 1 post/week)
 - Never put external links in post body; use first comment instead
 
-## Optimal Posting Schedule (SGT)
+## Optimal Posting Schedule ({{CLIENT_TIMEZONE}})
 
 **Do NOT post immediately. Schedule for optimal windows based on content type.**
 
@@ -170,11 +170,11 @@ After generating post variations, always include:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Content Type: [Educational / Thought Leadership / Demo / Reflection]
 Best Day: [Day based on content type]
-Primary Window: [Time range] SGT
-Secondary Window: [Time range] SGT (if available)
+Primary Window: [Time range] {{CLIENT_TIMEZONE}}
+Secondary Window: [Time range] {{CLIENT_TIMEZONE}} (if available)
 
 Current time: [Now]
-Recommendation: Schedule for [Day], [Time] SGT (use LinkedIn's Schedule feature)
+Recommendation: Schedule for [Day], [Time] {{CLIENT_TIMEZONE}} (use LinkedIn's Schedule feature)
 
 Pre-post checklist:
 - [ ] 15 mins engagement before posting (Golden Hour warm-up)
@@ -294,7 +294,7 @@ Hook template:
 ```
 Most SME automations fail because they lack a feedback loop.
 
-Here is the 5-step logic map we use at Nexius Labs.
+Here is the 5-step logic map we use at {{CLIENT_BRAND_PRIMARY}}.
 
 [Diagram image]
 ```
@@ -415,7 +415,7 @@ When image is generated, update the schedule recommendation:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Content Type: [Type]
 Best Day: [Day]
-Primary Window: [Time] SGT
+Primary Window: [Time] {{CLIENT_TIMEZONE}}
 
 🖼️ IMAGE READY
 File: [filename].png

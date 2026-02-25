@@ -1,6 +1,6 @@
 # LinkedIn Daily Workflow - Single Autonomous Trigger
 # Usage: .\start-linkedin.ps1
-# Or add alias: Set-Alias startlinkedin "C:\Users\melve\.claude\skills\linkedin-daily-planner\scripts\start-linkedin.ps1"
+# Or add alias: Set-Alias startlinkedin "{{CLIENT_WORKSPACE_ROOT}}\linkedin-daily-planner\scripts\start-linkedin.ps1"
 
 # Determine current time block
 $hour = (Get-Date).Hour
@@ -14,7 +14,7 @@ else { $block = "Evening" }
 $day = (Get-Date).DayOfWeek
 
 # Log the launch
-$logPath = "C:\Users\melve\.claude\skills\linkedin-daily-planner\logs"
+$logPath = "{{CLIENT_WORKSPACE_ROOT}}\linkedin-daily-planner\logs"
 if (-not (Test-Path $logPath)) {
     New-Item -ItemType Directory -Path $logPath -Force | Out-Null
 }

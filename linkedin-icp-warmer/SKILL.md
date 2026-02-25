@@ -272,7 +272,7 @@ For each prioritized prospect:
 For each new post found, check BOTH sources:
 
 **Source 1: "Already Commented" Set (in-memory, built during session pre-flight)**
-- This set is built at session start by scraping /in/melverick/recent-activity/comments/
+- This set is built at session start by scraping /in/{{CLIENT_LINKEDIN_HANDLE}}/recent-activity/comments/
 - Contains: { author_slug + first_60_chars_of_post_text } for all recent comments
 - If post is in this set → SKIP (already commented)
 

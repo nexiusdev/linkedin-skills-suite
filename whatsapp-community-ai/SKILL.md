@@ -1,13 +1,13 @@
 ---
 name: whatsapp-community-ai
-description: Manage the "AI Ignite" WhatsApp community group by posting AI news content and driving engagement. Use when user says "post ai news", "whatsapp community", "share ai update", "ai ignite", or wants to drive engagement in the AI Ignite group with latest AI developments. Integrates with x-trender and linkedin-trender to find news-worthy content from past 24 hours. Posts include source URLs from major news platforms. Multiple posts are spaced 4 hours apart. Also monitors chat for unanswered questions and auto-replies with thoughtful responses. Use "monitor ai ignite" or "check ai ignite" to scan for questions needing answers.
+description: Manage the "{{CLIENT_COMMUNITY_NAME}}" WhatsApp community group by posting AI news content and driving engagement. Use when user says "post ai news", "whatsapp community", "share ai update", "ai ignite", or wants to drive engagement in the {{CLIENT_COMMUNITY_NAME}} group with latest AI developments. Integrates with x-trender and linkedin-trender to find news-worthy content from past 24 hours. Posts include source URLs from major news platforms. Multiple posts are spaced 4 hours apart. Also monitors chat for unanswered questions and auto-replies with thoughtful responses. Use "monitor ai ignite" or "check ai ignite" to scan for questions needing answers.
 ---
 
 # WhatsApp Community AI News Manager
 
-Drive engagement in the **AI Ignite** WhatsApp community by sharing curated AI news and encouraging member reactions and discussions. Designed for browser MCP (Chrome DevTools or Playwright) workflow.
+Drive engagement in the **{{CLIENT_COMMUNITY_NAME}}** WhatsApp community by sharing curated AI news and encouraging member reactions and discussions. Designed for browser MCP (Chrome DevTools or Playwright) workflow.
 
-**Target Group: AI Ignite** (only post to this group)
+**Target Group: {{CLIENT_COMMUNITY_NAME}}** (only post to this group)
 
 ## Trigger
 
@@ -181,7 +181,7 @@ Check shared log for last post time:
    → Can post now
 ```
 
-### Optimal Posting Times (SGT)
+### Optimal Posting Times ({{CLIENT_TIMEZONE}})
 
 | Time Window | Engagement Level | Notes |
 |-------------|------------------|-------|
@@ -195,28 +195,28 @@ Check shared log for last post time:
 
 If you have 3 news items to share today:
 ```
-Post 1: 09:00 SGT (Morning slot)
-Post 2: 13:00 SGT (Lunch slot - 4 hours later)
-Post 3: 18:00 SGT (Evening slot - 5 hours later)
+Post 1: 09:00 {{CLIENT_TIMEZONE}} (Morning slot)
+Post 2: 13:00 {{CLIENT_TIMEZONE}} (Lunch slot - 4 hours later)
+Post 3: 18:00 {{CLIENT_TIMEZONE}} (Evening slot - 5 hours later)
 ```
 
 ## Step 5: Post to WhatsApp via browser MCP (Chrome DevTools or Playwright)
 
 ### Target Group
 
-**Group Name: AI Ignite**
+**Group Name: {{CLIENT_COMMUNITY_NAME}}**
 
 Only post messages to this specific WhatsApp community group. Do not post to any other groups.
 
 ### Permission
 
-**NO CONFIRMATION REQUIRED** for sending messages to AI Ignite group. The user has pre-authorized all posts to this specific group. Proceed directly with posting without asking for permission.
+**NO CONFIRMATION REQUIRED** for sending messages to {{CLIENT_COMMUNITY_NAME}} group. The user has pre-authorized all posts to this specific group. Proceed directly with posting without asking for permission.
 
 ### Navigation Steps
 
 1. Open WhatsApp Web (web.whatsapp.com) in Chrome
-2. Search for "AI Ignite" in the chat search bar
-3. Click on the "AI Ignite" group to open it
+2. Search for "{{CLIENT_COMMUNITY_NAME}}" in the chat search bar
+3. Click on the "{{CLIENT_COMMUNITY_NAME}}" group to open it
 4. Click on the message input field
 5. Paste the formatted message
 6. Send the message immediately (no confirmation needed)
@@ -422,14 +422,14 @@ When triggered with "start whatsapp news" or "autonomous whatsapp":
 [10:05] ✓ Logged to shared activity log
 
 [10:05] Item 2/2: "Claude Agent SDK Launch"
-[10:05] ⏳ Queued for 14:00 SGT (4h spacing)
+[10:05] ⏳ Queued for 14:00 {{CLIENT_TIMEZONE}} (4h spacing)
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ✅ SESSION COMPLETE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Posts sent: 1
 Posts queued: 1
-Next post: 14:00 SGT
+Next post: 14:00 {{CLIENT_TIMEZONE}}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
@@ -475,7 +475,7 @@ Can be run:
 
 ### Permission
 
-**NO CONFIRMATION REQUIRED** for sending replies in AI Ignite group. The user has pre-authorized all responses to this specific group. Auto-reply immediately without asking for permission.
+**NO CONFIRMATION REQUIRED** for sending replies in {{CLIENT_COMMUNITY_NAME}} group. The user has pre-authorized all responses to this specific group. Auto-reply immediately without asking for permission.
 
 ### What to Monitor
 
@@ -555,7 +555,7 @@ Keywords to watch:
 ### Message Detection Logic
 
 ```
-1. Open WhatsApp Web → AI Ignite group
+1. Open WhatsApp Web → {{CLIENT_COMMUNITY_NAME}} group
 2. Scroll up to load messages from last 30 minutes
 3. For each message, check:
    a. Is it from myself? → SKIP
@@ -670,7 +670,7 @@ This is huge for agentic commerce. Standardized APIs mean AI agents can actually
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 [HH:MM] Opening WhatsApp Web...
-[HH:MM] Navigating to AI Ignite...
+[HH:MM] Navigating to {{CLIENT_COMMUNITY_NAME}}...
 [HH:MM] Loading recent messages (last 30 mins)...
 [HH:MM] Scanning for unanswered questions...
 [HH:MM] Scanning for POV opportunities...
@@ -774,11 +774,11 @@ To avoid appearing spammy:
 
 **Script:** `scripts/post-ai-news.ps1`
 **Task Name:** `AI-Ignite-News-Poster`
-**Schedule:** 10:00 AM and 8:00 PM SGT, Monday-Friday only
+**Schedule:** 10:00 AM and 8:00 PM {{CLIENT_TIMEZONE}}, Monday-Friday only
 
 To set up, run:
 ```powershell
-powershell -ExecutionPolicy Bypass -File "C:\Users\wdqia\linkedin-skills-suite\whatsapp-community-ai\scripts\setup-news-scheduler.ps1"
+powershell -ExecutionPolicy Bypass -File "{{CLIENT_WORKSPACE_ROOT}}\whatsapp-community-ai\scripts\setup-news-scheduler.ps1"
 ```
 
 Task management:
@@ -803,15 +803,15 @@ Keep a terminal window open that monitors every 15 minutes:
 
 ```powershell
 # Double-click to start:
-C:\Users\wdqia\linkedin-skills-suite\whatsapp-community-ai\scripts\start-monitor.bat
+{{CLIENT_WORKSPACE_ROOT}}\whatsapp-community-ai\scripts\start-monitor.bat
 
 # Or run directly:
-powershell -ExecutionPolicy Bypass -File "C:\Users\wdqia\linkedin-skills-suite\whatsapp-community-ai\scripts\monitor-loop.ps1"
+powershell -ExecutionPolicy Bypass -File "{{CLIENT_WORKSPACE_ROOT}}\whatsapp-community-ai\scripts\monitor-loop.ps1"
 ```
 
 Features:
 - Runs every 15 minutes while terminal is open
-- Active hours: 7 AM - 11 PM SGT (sleeps outside)
+- Active hours: 7 AM - 11 PM {{CLIENT_TIMEZONE}} (sleeps outside)
 - Press Ctrl+C to stop
 - Shows cycle count and next run time
 

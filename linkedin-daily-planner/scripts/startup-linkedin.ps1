@@ -14,7 +14,7 @@ $WaitForChrome = 15  # Seconds to wait for Chrome to fully load
 $LinkedInUrl = "https://www.linkedin.com/feed/"
 
 # Log file
-$logPath = "C:\Users\melve\.claude\skills\linkedin-daily-planner\logs"
+$logPath = "{{CLIENT_WORKSPACE_ROOT}}\linkedin-daily-planner\logs"
 if (-not (Test-Path $logPath)) {
     New-Item -ItemType Directory -Path $logPath -Force | Out-Null
 }
@@ -118,7 +118,7 @@ Write-Host "Current time block: $block" -ForegroundColor Yellow
 Write-Log "Time block: $block"
 
 # Run the LinkedIn workflow
-$scriptPath = "C:\Users\melve\.claude\skills\linkedin-daily-planner\scripts\start-linkedin.ps1"
+$scriptPath = "{{CLIENT_WORKSPACE_ROOT}}\linkedin-daily-planner\scripts\start-linkedin.ps1"
 
 if (Test-Path $scriptPath) {
     Write-Log "Executing start-linkedin.ps1"

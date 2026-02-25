@@ -10,7 +10,7 @@
   - Extracts all `[x]` completed tasks with timestamps
   - Updates `shared/logs/linkedin-activity.md` → Today's Summary section
   - Updates prospect touch counts in `icp-prospects.md`
-  - Marks "Last updated: YYYY-MM-DD HH:MM SGT" timestamp
+  - Marks "Last updated: YYYY-MM-DD HH:MM {{CLIENT_TIMEZONE}}" timestamp
 - **Why MANDATORY:** Activity log is source of truth for all skills - daily limits, touch tracking, weekly metrics all depend on it
 - **Enforcement:** Made it FIRST STEP in Evening Block autonomous workflow + added to Quality Checklist
 - **Time budget:** Only 2-3 minutes - no excuse to skip
@@ -56,7 +56,7 @@
 
 ### Comment Dedup Rule - One Comment Per Post (08 Feb 2026)
 - **RULE:** NEVER comment on the same post twice (top-level comments only; replying to your own thread is OK)
-- **Pre-flight:** At session start, scrape `/in/melverick/recent-activity/comments/` → build "already commented" set
+- **Pre-flight:** At session start, scrape `/in/{{CLIENT_LINKEDIN_HANDLE}}/recent-activity/comments/` → build "already commented" set
 - **Set key:** `author_slug + first_60_chars_of_post_text`
 - **Before each comment:** Check post against set → SKIP if match found → find replacement post
 - **After each comment:** Add to set + log to `shared/logs/linkedin-activity.md`

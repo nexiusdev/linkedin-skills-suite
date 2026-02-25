@@ -105,7 +105,7 @@ NO CHANGES FOUND: [List areas with no updates]
 ### Current Strategy Parameters
 
 Read the master strategy file to get current values:
-- `C:\Users\wdqia\linkedin-skills-suite\LINKEDIN-OUTREACH-STRATEGY.md`
+- `{{CLIENT_WORKSPACE_ROOT}}\LINKEDIN-OUTREACH-STRATEGY.md`
 
 ### Parameters to Compare
 
@@ -116,7 +116,7 @@ Read the master strategy file to get current values:
 | Comment length | 15-50 words | Word count requirements |
 | Connection limit | 15/day max | Connection request thresholds |
 | DM limit | 25/day max | DM limitations |
-| Posting windows | Day-specific SGT | Optimal timing updates |
+| Posting windows | Day-specific {{CLIENT_TIMEZONE}} | Optimal timing updates |
 | Golden Hour | 5-10 posts before/after | Engagement timing changes |
 | Response boost | +35% within 1h | Reply impact on reach |
 | Save multiplier | 5x Likes | Save value changes |
@@ -168,14 +168,14 @@ NO CHANGE NEEDED:
 
 Upon approval, the following files can be updated:
 
-1. `C:\Users\wdqia\linkedin-skills-suite\LINKEDIN-OUTREACH-STRATEGY.md` (master strategy)
-2. `C:\Users\wdqia\linkedin-skills-suite\linkedin-daily-planner\skill.md`
-3. `C:\Users\wdqia\linkedin-skills-suite\linkedin-elite-post\skill.md`
-4. `C:\Users\wdqia\linkedin-skills-suite\linkedin-pro-commenter\skill.md`
-5. `C:\Users\wdqia\linkedin-skills-suite\linkedin-connect-timer\skill.md`
-6. `C:\Users\wdqia\linkedin-skills-suite\linkedin-icp-warmer\skill.md`
-7. `C:\Users\wdqia\linkedin-skills-suite\linkedin-icp-finder\skill.md`
-8. `C:\Users\wdqia\linkedin-skills-suite\references\linkedin-strategy.md`
+1. `{{CLIENT_WORKSPACE_ROOT}}\LINKEDIN-OUTREACH-STRATEGY.md` (master strategy)
+2. `{{CLIENT_WORKSPACE_ROOT}}\linkedin-daily-planner\skill.md`
+3. `{{CLIENT_WORKSPACE_ROOT}}\linkedin-elite-post\skill.md`
+4. `{{CLIENT_WORKSPACE_ROOT}}\linkedin-pro-commenter\skill.md`
+5. `{{CLIENT_WORKSPACE_ROOT}}\linkedin-connect-timer\skill.md`
+6. `{{CLIENT_WORKSPACE_ROOT}}\linkedin-icp-warmer\skill.md`
+7. `{{CLIENT_WORKSPACE_ROOT}}\linkedin-icp-finder\skill.md`
+8. `{{CLIENT_WORKSPACE_ROOT}}\references\linkedin-strategy.md`
 
 ### Proposal Output Format
 
@@ -235,7 +235,7 @@ For each approved change:
 
 ### Change Log Entry Format
 
-Add to `C:\Users\wdqia\linkedin-skills-suite\shared\logs\algorithm-changes.md`:
+Add to `{{CLIENT_WORKSPACE_ROOT}}\shared\logs\algorithm-changes.md`:
 
 ```markdown
 ## [Date] - Algorithm Update

@@ -39,7 +39,7 @@ $prospects = @(
     @{Row=70; Name="SINGHAM DHARMESH"; Username="singham-dharmesh-a2473243"},
     @{Row=71; Name="Lam Addison"; Username="lam-addison-7339b838"},
     @{Row=72; Name="Adri Bellamy"; Username="adri-bellamy-864373137"},
-    @{Row=73; Name="Melvern Chia"; Username="melvernchia"},
+    @{Row=73; Name="Melvern Chia"; Username="{{CLIENT_LOCAL_USER}}rnchia"},
     @{Row=74; Name="Emmanuel Stroobant"; Username="emmanuel-stroobant-05a39419"},
     @{Row=75; Name="Brett Davey"; Username="brett-davey-14565649"},
     @{Row=76; Name="Alice Lai"; Username="alice-lai-0836174"},
@@ -204,4 +204,4 @@ switch ($choice) {
 }
 
 Write-ColorOutput "`nDon't forget to update the scan checklist as you review each profile!" -Color Warning
-Write-ColorOutput "Checklist location: C:\Users\melve\.claude\skills\shared\logs\activity-scan-batch-30jan.md" -Color Info
+Write-ColorOutput "Checklist location: {{CLIENT_WORKSPACE_ROOT}}\shared\logs\activity-scan-batch-30jan.md" -Color Info

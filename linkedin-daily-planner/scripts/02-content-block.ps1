@@ -1,7 +1,7 @@
 # LinkedIn Content Block - 9:00 AM
 # Create and schedule save-worthy content
 
-$logFile = "C:\Users\melve\.claude\skills\linkedin-daily-planner\logs\content-block.log"
+$logFile = "{{CLIENT_WORKSPACE_ROOT}}\linkedin-daily-planner\logs\content-block.log"
 $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
 
 try {

@@ -1,6 +1,6 @@
 ---
 name: linkedin-company-pages
-description: Manage daily LinkedIn posts for 3 company pages (Nexius Labs, Nexius Academy, AI Ignite). Use when user says "post to company pages", "company page posts", "manage company pages", or "daily company content". Fully autonomous workflow - finds trending topics via x-trender, selects 1 topic per page based on positioning, generates posts, and publishes via browser automation (browser MCP (Chrome DevTools or Playwright) or DevTools fallback). No approval needed.
+description: Manage daily LinkedIn posts for 3 company pages ({{CLIENT_BRAND_PRIMARY}}, {{CLIENT_BRAND_SECONDARY}}, {{CLIENT_COMMUNITY_NAME}}). Use when user says "post to company pages", "company page posts", "manage company pages", or "daily company content". Fully autonomous workflow - finds trending topics via x-trender, selects 1 topic per page based on positioning, generates posts, and publishes via browser automation (browser MCP (Chrome DevTools or Playwright) or DevTools fallback). No approval needed.
 ---
 
 # LinkedIn Company Pages Manager
@@ -13,9 +13,9 @@ Autonomous daily content creation and posting for 3 company pages with distinct 
 
 | Page | LinkedIn ID | URL Slug | Focus | Content Pillars |
 |------|-------------|----------|-------|-----------------|
-| **Nexius Labs** | 105886234 | nexius-labs | Agentic AI ERP for SMEs | Product updates, AI automation wins, SME transformation stories |
-| **Nexius Academy** | 109310332 | nexius-academy | AI workshops for non-coders | Learning tips, workshop highlights, non-coder success stories |
-| **AI Ignite** | 104472305 | aiignite2022 | AI events for business leaders | Industry insights, event announcements, AI implementation trends |
+| **{{CLIENT_BRAND_PRIMARY}}** | 105886234 | nexius-labs | Agentic AI ERP for SMEs | Product updates, AI automation wins, SME transformation stories |
+| **{{CLIENT_BRAND_SECONDARY}}** | 109310332 | nexius-academy | AI workshops for non-coders | Learning tips, workshop highlights, non-coder success stories |
+| **{{CLIENT_COMMUNITY_NAME}}** | 104472305 | aiignite2022 | AI events for business leaders | Industry insights, event announcements, AI implementation trends |
 
 ## Autonomous Workflow
 
@@ -29,9 +29,9 @@ Match each trending topic to the most relevant company page:
 
 | Topic Type | Best Page | Rationale |
 |------------|-----------|-----------|
-| AI automation, ERP, SME ops | Nexius Labs | Product-aligned |
-| Learning, tutorials, no-code | Nexius Academy | Education-focused |
-| Industry trends, leadership, events | AI Ignite | Thought leadership |
+| AI automation, ERP, SME ops | {{CLIENT_BRAND_PRIMARY}} | Product-aligned |
+| Learning, tutorials, no-code | {{CLIENT_BRAND_SECONDARY}} | Education-focused |
+| Industry trends, leadership, events | {{CLIENT_COMMUNITY_NAME}} | Thought leadership |
 
 **Rules:**
 - Each page gets exactly 1 topic per day
@@ -42,17 +42,17 @@ Match each trending topic to the most relevant company page:
 
 For each page, generate a post using `linkedin-elite-post` framework adapted for company voice:
 
-**Nexius Labs Voice:**
+**{{CLIENT_BRAND_PRIMARY}} Voice:**
 - Professional, solution-focused
 - Emphasize practical AI benefits for SMEs
 - Include product tie-ins where relevant
 
-**Nexius Academy Voice:**
+**{{CLIENT_BRAND_SECONDARY}} Voice:**
 - Encouraging, educational
 - Break down complex AI into simple steps
 - Invite engagement ("What workflow would you automate first?")
 
-**AI Ignite Voice:**
+**{{CLIENT_COMMUNITY_NAME}} Voice:**
 - Thought leadership, industry perspective
 - Forward-looking, trend-focused
 - Call to action for events/networking
@@ -68,13 +68,13 @@ Use browser automation to post to each company page:
 5. Log to activity log
 
 **Admin URLs:**
-- Nexius Labs: `linkedin.com/company/105886234/admin/`
-- Nexius Academy: `linkedin.com/company/109310332/admin/`
-- AI Ignite: `linkedin.com/company/104472305/admin/`
+- {{CLIENT_BRAND_PRIMARY}}: `linkedin.com/company/105886234/admin/`
+- {{CLIENT_BRAND_SECONDARY}}: `linkedin.com/company/109310332/admin/`
+- {{CLIENT_COMMUNITY_NAME}}: `linkedin.com/company/104472305/admin/`
 
 ## Post Format by Page
 
-### Nexius Labs Post Template
+### {{CLIENT_BRAND_PRIMARY}} Post Template
 ```
 [Hook about AI/automation trend]
 
@@ -82,12 +82,12 @@ Here's what this means for SMEs:
 
 [2-3 bullet points on practical implications]
 
-At Nexius Labs, we're building the Agentic ERP that handles this automatically.
+At {{CLIENT_BRAND_PRIMARY}}, we're building the Agentic ERP that handles this automatically.
 
 [Question to drive engagement]
 ```
 
-### Nexius Academy Post Template
+### {{CLIENT_BRAND_SECONDARY}} Post Template
 ```
 [Hook about learning/building AI]
 
@@ -100,7 +100,7 @@ No coding required. Just curiosity.
 What would you build first?
 ```
 
-### AI Ignite Post Template
+### {{CLIENT_COMMUNITY_NAME}} Post Template
 ```
 [Hook about AI trend/insight]
 
@@ -108,7 +108,7 @@ Forward-thinking leaders are paying attention to this.
 
 [Why it matters - 2-3 sentences]
 
-This is exactly what we explore at AI Ignite events.
+This is exactly what we explore at {{CLIENT_COMMUNITY_NAME}} events.
 
 [CTA or thought-provoking question]
 ```

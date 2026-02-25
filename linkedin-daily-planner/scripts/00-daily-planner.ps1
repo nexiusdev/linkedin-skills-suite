@@ -1,7 +1,7 @@
 # LinkedIn Daily Planner - 8:00 AM
 # Creates today's LinkedIn activity plan
 
-$logFile = "C:\Users\melve\.claude\skills\linkedin-daily-planner\logs\daily-planner.log"
+$logFile = "{{CLIENT_WORKSPACE_ROOT}}\linkedin-daily-planner\logs\daily-planner.log"
 $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
 
 try {
