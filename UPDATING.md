@@ -57,7 +57,7 @@ You're done. Your edits and the new updates merged cleanly.
   CONFLICTS DETECTED
   Some of your skill edits clash with upstream updates.
 
-    CONFLICT: linkedin-elite-post/skill.md
+    CONFLICT: linkedin-elite-post/SKILL.md
 ```
 This means you edited the same part of a file that was also updated upstream. See Step 4.
 
@@ -67,13 +67,13 @@ You have three options — pick whichever is easiest:
 
 **Option 1: Keep the author's version (discard your edit)**
 ```
-git checkout --theirs linkedin-elite-post/skill.md
+git checkout --theirs linkedin-elite-post/SKILL.md
 ```
 This throws away your change and uses the new update.
 
 **Option 2: Keep your version (ignore the update for this file)**
 ```
-git checkout --ours linkedin-elite-post/skill.md
+git checkout --ours linkedin-elite-post/SKILL.md
 ```
 This keeps your edit and skips the author's change.
 
@@ -95,7 +95,7 @@ name: linkedin-elite-posts-CLIENT-CUSTOMIZED
 
 | File type | Updated by pull? | Your data safe? |
 |-----------|-----------------|-----------------|
-| Skill files (`skill.md`) | Yes | Stashed and restored automatically |
+| Skill files (`SKILL.md`) | Yes | Stashed and restored automatically |
 | Your config (`references/`) | Never touched | Always safe |
 | Your activity logs (`shared/logs/`) | Never touched | Always safe |
 | Your account settings | Never touched | Always safe |

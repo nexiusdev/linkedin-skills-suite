@@ -1,6 +1,8 @@
-# LinkedIn Skills Suite for Claude Code
+# LinkedIn Skills Suite for Codex
 
-A comprehensive LinkedIn outreach automation suite built as [Claude Code](https://claude.com/claude-code) skills. Fully autonomous daily workflow: prospect discovery, content creation, engagement, connection requests, and pipeline warming — all powered by AI.
+A comprehensive LinkedIn outreach automation suite built as Codex-compatible skills. Fully autonomous daily workflow: prospect discovery, content creation, engagement, connection requests, and pipeline warming.
+
+Note: some skill bodies still mention legacy "Claude for Chrome" wording; in Codex, use the available browser MCP tools (for example `chrome-devtools` or `playwright`) for the same steps.
 
 Built on the **360Brew algorithm strategy** for maximum reach and engagement while staying within LinkedIn's safety limits.
 
@@ -17,7 +19,7 @@ cd linkedin-skills-suite
 # Mac/Linux:
 chmod +x setup.sh && ./setup.sh
 
-# 3. Open Claude Code and personalize
+# 3. Open Codex and personalize
 linkedin-onboarding
 
 # 4. Start the daily workflow
@@ -89,9 +91,7 @@ See [UPDATING.md](UPDATING.md) for detailed step-by-step instructions with scree
 
 | Skill | Description |
 |-------|-------------|
-| **skill-creator** | Create new Claude Code skills following best practices. |
-| **skill-updater** | Apply upstream skill updates without overwriting local customizations. |
-| **mcp-builder** | Build MCP servers to integrate external APIs with Claude. |
+| **mcp-builder** | Build MCP servers to integrate external APIs. |
 
 ## How It Works
 
@@ -152,8 +152,8 @@ linkedin-skills-suite/
 
 ## Requirements
 
-- [Claude Code](https://claude.com/claude-code) CLI
-- Browser automation: Claude for Chrome extension or Chrome DevTools MCP
+- Codex-compatible agent runtime
+- Browser automation MCP (for example Chrome DevTools MCP)
 - LinkedIn account (Free, Premium, or Sales Navigator supported)
 
 ## Configuration
@@ -169,7 +169,7 @@ No hardcoded geography, company names, or industry — everything reads from you
 
 Client data files (config, logs, account settings) are listed in `.gitignore` and are **not tracked** by git. When you push updates:
 
-- All `skill.md` files, scripts, templates, and shared references update normally
+- All `SKILL.md` files, scripts, templates, and shared references update normally
 - Client config in `references/` and `shared/logs/` is never touched
 - New clients run `setup.ps1` / `setup.sh` after cloning to create placeholder files
 

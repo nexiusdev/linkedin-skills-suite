@@ -85,7 +85,7 @@ Write-Host ""
 Write-Host "Setup complete!" -ForegroundColor Green
 Write-Host ""
 Write-Host "Next steps:" -ForegroundColor Yellow
-Write-Host "  1. Open Claude Code in this directory"
+Write-Host "  1. Open Codex in this directory"
 Write-Host "  2. Run: linkedin-onboarding"
 Write-Host "  3. Run: start linkedin"
 Write-Host ""
