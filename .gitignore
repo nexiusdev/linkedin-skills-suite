@@ -24,3 +24,17 @@ linkedin-core/references/client-profile.json
 # API credentials and secrets
 **/credentials.json
 **/secrets.json
+
+# Client runtime data (do not commit)
+shared/logs/icp-prospects.md
+shared/logs/linkedin-activity.md
+shared/logs/whatsapp-activity.md
+shared/logs/video-activity.md
+shared/logs/backups/
+linkedin-core/shared/logs/icp-prospects.md
+linkedin-core/shared/logs/linkedin-activity.md
+linkedin-core/shared/logs/whatsapp-activity.md
+linkedin-core/shared/logs/video-activity.md
+linkedin-core/shared/logs/backups/
+linkedin-daily-planner/to-do_*.md
+to-do_*.md
