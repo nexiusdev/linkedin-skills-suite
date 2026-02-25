@@ -1,3 +1,8 @@
+---
+name: web-icp-scanner
+description: Discover and score new ICP prospects from non-LinkedIn web sources, then auto-approve and log qualified leads into prospect trackers. Use when users ask to scan the web for ICP prospects, run daily autonomous prospect discovery, or add scored web leads to the pipeline.
+---
+
 # Web ICP Scanner
 
 Scan the web daily to find 10 ICP prospects outside of LinkedIn. **FULLY AUTONOMOUS** - auto-approves all prospects scoring 60+ without user interaction.

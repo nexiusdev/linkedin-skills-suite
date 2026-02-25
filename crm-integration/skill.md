@@ -1,3 +1,8 @@
+---
+name: crm-integration
+description: Sync LinkedIn prospect pipeline data with HubSpot CRM, including contact/company/deal upserts, pipeline retrieval, activity logging, and optional email enrichment or reverse email pull. Use when users ask to set up HubSpot CRM integration, run CRM sync, check pipeline status, log outreach activity, or enrich prospect emails.
+---
+
 # HubSpot CRM Integration
 
 Sync LinkedIn prospect pipeline data to HubSpot CRM. One-way auto-sync from `icp-prospects.md` to HubSpot contacts, companies, and deals.

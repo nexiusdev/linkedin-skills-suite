@@ -1,3 +1,8 @@
+---
+name: email-finder
+description: Find business emails for ICP prospects using a free-first workflow (web search and LinkedIn Contact Info) before paid enrichment providers. Use when users request batch email enrichment for stale pending connections or ad-hoc lookup of a specific prospect's work email.
+---
+
 # Email Finder
 
 Find business emails for ICP prospects where connection requests have been pending 7+ days. Uses a **web search first** approach (free) before falling back to paid API providers (Apollo, Hunter, Snov.io, GetProspect, Prospeo — 275 credits/month total). LinkedIn Contact Info is used for connected contacts.
