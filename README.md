@@ -8,12 +8,43 @@ Built on the **360Brew algorithm strategy** for maximum reach and engagement whi
 
 Before running this suite, make sure you have:
 
-1. Git installed and available in your terminal (`git --version`)
-2. Codex dependencies installed first (for example Python 3.10+ and Node.js, if required by your Codex setup)
-3. Codex CLI installed after dependencies
-4. Browser automation MCP available (`chrome-devtools` or `playwright`)
-5. A LinkedIn account you will operate from (Free, Premium, or Sales Navigator)
-6. Optional integrations ready if needed:
+1. Install dependencies first (Git, Python 3.10+, Node.js) using CLI **or** installer/UI:
+
+```bash
+# Windows (PowerShell, via winget)
+winget install --id Git.Git -e
+winget install --id Python.Python.3.12 -e
+winget install --id OpenJS.NodeJS.LTS -e
+
+# macOS (Homebrew)
+brew install git python node
+
+# Ubuntu/Debian
+sudo apt update
+sudo apt install -y git python3 python3-venv python3-pip nodejs npm
+```
+
+If you prefer non-CLI setup, install Git, Python, and Node.js from their official installers/apps, then continue below.
+
+2. Verify dependencies:
+
+```bash
+git --version
+python --version
+node --version
+npm --version
+```
+
+3. Install Codex CLI (via terminal command or your environment's installer method).
+4. Verify Codex CLI is available:
+
+```bash
+codex --version
+```
+
+5. Browser automation MCP available (`chrome-devtools` or `playwright`)
+6. A LinkedIn account you will operate from (Free, Premium, or Sales Navigator)
+7. Optional integrations ready if needed:
    - HubSpot account + private app token (for CRM sync)
    - Google Cloud service account (for Google Sheets workflows)
    - Email enrichment provider API keys (Apollo/Hunter/Snov/GetProspect/Prospeo)
