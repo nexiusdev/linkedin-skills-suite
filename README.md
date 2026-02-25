@@ -73,7 +73,13 @@ The onboarding skill asks ~16 questions about your business, target market, and 
 
 ## Receiving Updates
 
-Your config and activity logs are **gitignored** — they live only on your machine. To get skill updates safely:
+Your config and activity logs are **gitignored** — they live only on your machine.
+
+Choose the update flow based on how your skills were installed.
+
+### A) You cloned this repo locally (git-based install)
+
+Use:
 
 ```bash
 # Windows (PowerShell):
@@ -84,7 +90,19 @@ chmod +x update.sh && ./update.sh
 
 The update script automatically stashes any local skill edits you've made, pulls the latest updates, then restores your edits on top. If your changes conflict with an upstream update, it lists the conflicted files and tells you how to resolve them.
 
-Your personalized config in `linkedin-core/references/`, `linkedin-core/shared/logs/`, and account settings is never touched — those files are gitignored.
+### B) Skills are installed directly in `~/.codex/skills` (non-git install)
+
+Use the `codex-skills-maintainer` skill (or run its script directly):
+
+```bash
+python "$CODEX_HOME/skills/codex-skills-maintainer/scripts/update_codex_installed_skills.py" --repo <owner>/<repo> --ref main
+```
+
+If `CODEX_HOME` is not set, Codex defaults to `~/.codex`.
+
+This mode backs up local client state, reinstalls targeted skills from GitHub, then restores your local state.
+
+Your personalized config in `linkedin-core/references/`, `linkedin-core/shared/logs/`, and account settings is preserved in both update modes.
 
 See [UPDATING.md](UPDATING.md) for detailed step-by-step instructions with screenshots of every outcome.
 
@@ -135,6 +153,7 @@ See [UPDATING.md](UPDATING.md) for detailed step-by-step instructions with scree
 | Skill | Description |
 |-------|-------------|
 | **mcp-builder** | Build MCP servers to integrate external APIs. |
+| **codex-skills-maintainer** | Update skills installed directly in `.codex/skills` with backup/reinstall/restore workflow. |
 
 ## How It Works
 
@@ -191,6 +210,7 @@ linkedin-skills-suite/
 ├── linkedin-algorithm-monitor/  # Algorithm change tracking
 ├── linkedin-onboarding/         # First-time setup
 │   └── references/templates/    # Onboarding templates
+├── codex-skills-maintainer/     # Update skill for direct .codex installs
 └── ...
 ```
 
