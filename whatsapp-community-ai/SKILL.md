@@ -5,7 +5,7 @@ description: Manage the "AI Ignite" WhatsApp community group by posting AI news 
 
 # WhatsApp Community AI News Manager
 
-Drive engagement in the **AI Ignite** WhatsApp community by sharing curated AI news and encouraging member reactions and discussions. Designed for Claude for Chrome workflow.
+Drive engagement in the **AI Ignite** WhatsApp community by sharing curated AI news and encouraging member reactions and discussions. Designed for browser MCP (Chrome DevTools or Playwright) workflow.
 
 **Target Group: AI Ignite** (only post to this group)
 
@@ -200,7 +200,7 @@ Post 2: 13:00 SGT (Lunch slot - 4 hours later)
 Post 3: 18:00 SGT (Evening slot - 5 hours later)
 ```
 
-## Step 5: Post to WhatsApp via Claude for Chrome
+## Step 5: Post to WhatsApp via browser MCP (Chrome DevTools or Playwright)
 
 ### Target Group
 
@@ -778,7 +778,7 @@ To avoid appearing spammy:
 
 To set up, run:
 ```powershell
-powershell -ExecutionPolicy Bypass -File "C:\Users\melve\.claude\skills\whatsapp-community-ai\scripts\setup-news-scheduler.ps1"
+powershell -ExecutionPolicy Bypass -File "C:\Users\wdqia\linkedin-skills-suite\whatsapp-community-ai\scripts\setup-news-scheduler.ps1"
 ```
 
 Task management:
@@ -795,7 +795,7 @@ Unregister-ScheduledTask -TaskName 'AI-Ignite-News-Poster'
 
 #### Monitoring Automation (Every 15 mins)
 
-**Note:** Claude Code CLI requires an interactive terminal, so Windows Task Scheduler won't work. Use the continuous loop script instead.
+**Note:** Codex CLI requires an interactive terminal, so Windows Task Scheduler won't work. Use the continuous loop script instead.
 
 **Option 1: Continuous Loop (Recommended)**
 
@@ -803,10 +803,10 @@ Keep a terminal window open that monitors every 15 minutes:
 
 ```powershell
 # Double-click to start:
-C:\Users\melve\.claude\skills\whatsapp-community-ai\scripts\start-monitor.bat
+C:\Users\wdqia\linkedin-skills-suite\whatsapp-community-ai\scripts\start-monitor.bat
 
 # Or run directly:
-powershell -ExecutionPolicy Bypass -File "C:\Users\melve\.claude\skills\whatsapp-community-ai\scripts\monitor-loop.ps1"
+powershell -ExecutionPolicy Bypass -File "C:\Users\wdqia\linkedin-skills-suite\whatsapp-community-ai\scripts\monitor-loop.ps1"
 ```
 
 Features:

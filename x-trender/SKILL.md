@@ -1,11 +1,11 @@
 ---
-name: x-feed-trends
-description: Analyze X.com (Twitter) to identify trending topics for content creation. Use when user says "find trending on X", "what's trending on Twitter", "X trends", "analyze X feed", or wants to discover what's resonating on X.com today. Works with Claude for Chrome - navigates to X.com/explore to find trending topics. Filters for high-engagement posts from individual thought leaders (excludes brands, news outlets, promotional content). Outputs trending topic recommendations with angle suggestions for cross-platform content creation.
+name: x-trender
+description: Analyze X.com (Twitter) to identify trending topics for content creation. Use when user says "find trending on X", "what's trending on Twitter", "X trends", "analyze X feed", or wants to discover what's resonating on X.com today. Works with browser MCP (Chrome DevTools or Playwright) - navigates to X.com/explore to find trending topics. Filters for high-engagement posts from individual thought leaders (excludes brands, news outlets, promotional content). Outputs trending topic recommendations with angle suggestions for cross-platform content creation.
 ---
 
 # X.com Feed Trends
 
-Analyze X.com (Twitter) to identify trending topics worth creating content about. Designed for Claude for Chrome workflow.
+Analyze X.com (Twitter) to identify trending topics worth creating content about. Designed for browser MCP (Chrome DevTools or Playwright) workflow.
 
 ## Trigger
 
@@ -18,7 +18,7 @@ Activate when user says:
 
 ## Step 1: Navigate to X.com Explore
 
-Using Claude for Chrome, navigate to X.com explore page:
+Using browser MCP (Chrome DevTools or Playwright), navigate to X.com explore page:
 
 1. Go to `x.com/explore` or `x.com/explore/tabs/trending`
 2. Check the "Trending" and "For You" tabs

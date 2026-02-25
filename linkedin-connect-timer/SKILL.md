@@ -120,7 +120,7 @@ Navigate to user's recent activity:
 https://www.linkedin.com/in/melverick/recent-activity/all/
 ```
 
-Use Claude for Chrome to read the activity feed.
+Use browser MCP (Chrome DevTools or Playwright) to read the activity feed.
 
 **Incremental Read Logic:**
 ```

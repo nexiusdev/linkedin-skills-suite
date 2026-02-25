@@ -2,8 +2,6 @@
 
 A comprehensive LinkedIn outreach automation suite built as Codex-compatible skills. Fully autonomous daily workflow: prospect discovery, content creation, engagement, connection requests, and pipeline warming.
 
-Note: some skill bodies still mention legacy "Claude for Chrome" wording; in Codex, use the available browser MCP tools (for example `chrome-devtools` or `playwright`) for the same steps.
-
 Built on the **360Brew algorithm strategy** for maximum reach and engagement while staying within LinkedIn's safety limits.
 
 ## Quick Start
@@ -153,8 +151,14 @@ linkedin-skills-suite/
 ## Requirements
 
 - Codex-compatible agent runtime
-- Browser automation MCP (for example Chrome DevTools MCP)
+- Browser automation MCP (for example `chrome-devtools` or `playwright`)
 - LinkedIn account (Free, Premium, or Sales Navigator supported)
+
+## Skill Format
+
+- Skills are folder-based and use `SKILL.md` as the entry file.
+- Legacy top-level `*.skill` files are not used.
+- Each skill must include frontmatter with `name` and `description`.
 
 ## Configuration
 

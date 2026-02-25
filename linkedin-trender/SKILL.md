@@ -1,11 +1,11 @@
 ---
-name: linkedin-feed-trends
-description: Analyze LinkedIn feed to identify trending topics for content creation. Use when user says "find trending topics", "what should I post about", "analyze my feed", or wants to discover what's resonating on LinkedIn today. Works with Claude for Chrome - user pastes feed content. Filters for high-engagement posts (20+ likes, 10+ comments) from individual thought leaders only (excludes company pages, brands, organizations, articles). Outputs trending topic recommendations with angle suggestions, then integrates with linkedin-elite-posts skill to generate the actual post.
+name: linkedin-trender
+description: Analyze LinkedIn feed to identify trending topics for content creation. Use when user says "find trending topics", "what should I post about", "analyze my feed", or wants to discover what's resonating on LinkedIn today. Works with browser MCP (Chrome DevTools or Playwright) - user pastes feed content. Filters for high-engagement posts (20+ likes, 10+ comments) from individual thought leaders only (excludes company pages, brands, organizations, articles). Outputs trending topic recommendations with angle suggestions, then integrates with linkedin-elite-posts skill to generate the actual post.
 ---
 
 # LinkedIn Feed Trends
 
-Analyze your LinkedIn feed to identify trending topics worth posting about today. Designed for Claude for Chrome workflow.
+Analyze your LinkedIn feed to identify trending topics worth posting about today. Designed for browser MCP (Chrome DevTools or Playwright) workflow.
 
 ## 360Brew Algorithm Context (2026)
 

@@ -1,5 +1,5 @@
 ---
-name: linkedin-elite-posts
+name: linkedin-elite-post
 description: Generate elite LinkedIn posts optimized for engagement, thought leadership, and conversions. Use when the user requests LinkedIn content creation, post writing, or social media content for professional audiences. Creates 2-3 variations across different modes (thought leadership, educational, engagement, lead generation) following proven frameworks for hooks, formatting, and conversion optimization.
 ---
 
@@ -195,11 +195,11 @@ Match your content type to the optimal day:
 | Thought Leadership | Thursday | End-of-week reflection mode |
 | Personal Story / Win | Friday | Light, human content performs well |
 
-## Claude for Chrome: Schedule Post Workflow
+## browser MCP (Chrome DevTools or Playwright): Schedule Post Workflow
 
 **MANDATORY: Never click "Post" immediately. Always use LinkedIn's "Schedule" feature.**
 
-When using Claude for Chrome to publish content, follow this workflow:
+When using browser MCP (Chrome DevTools or Playwright) to publish content, follow this workflow:
 
 ### Step 1: Open Post Composer
 1. Navigate to LinkedIn homepage
@@ -245,7 +245,7 @@ After scheduling:
 
 ### Element References for Automation
 
-When automating via Claude for Chrome:
+When automating via browser MCP (Chrome DevTools or Playwright):
 - **Post composer trigger**: "Start a post" button on homepage
 - **Schedule icon**: Clock icon (🕐) in composer toolbar, typically bottom-left
 - **Date picker**: Calendar interface after clicking clock icon
@@ -402,7 +402,7 @@ Automatically invoke linkedin-image-generator when:
 2. **AI auto-selects best variation** (based on selection criteria)
 3. **Invoke linkedin-image-generator** with selected post content
 4. Image saved to `linkedin-image-generator/assets/generated/`
-5. Schedule post via Claude for Chrome (attach image)
+5. Schedule post via browser MCP (Chrome DevTools or Playwright) (attach image)
 6. User can override selection at any point
 
 ### Output with Image

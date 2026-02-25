@@ -1,11 +1,11 @@
 ---
 name: linkedin-company-pages
-description: Manage daily LinkedIn posts for 3 company pages (Nexius Labs, Nexius Academy, AI Ignite). Use when user says "post to company pages", "company page posts", "manage company pages", or "daily company content". Fully autonomous workflow - finds trending topics via x-trender, selects 1 topic per page based on positioning, generates posts, and publishes via browser automation (Claude for Chrome or DevTools fallback). No approval needed.
+description: Manage daily LinkedIn posts for 3 company pages (Nexius Labs, Nexius Academy, AI Ignite). Use when user says "post to company pages", "company page posts", "manage company pages", or "daily company content". Fully autonomous workflow - finds trending topics via x-trender, selects 1 topic per page based on positioning, generates posts, and publishes via browser automation (browser MCP (Chrome DevTools or Playwright) or DevTools fallback). No approval needed.
 ---
 
 # LinkedIn Company Pages Manager
 
-**Browser automation uses Claude for Chrome if available, otherwise falls back to Chrome DevTools. See linkedin-daily-planner skill for detailed tool mapping.**
+**Browser automation uses browser MCP (Chrome DevTools or Playwright) if available, otherwise falls back to Chrome DevTools. See linkedin-daily-planner skill for detailed tool mapping.**
 
 Autonomous daily content creation and posting for 3 company pages with distinct positioning.
 

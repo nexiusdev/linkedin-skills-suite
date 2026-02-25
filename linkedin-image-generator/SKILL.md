@@ -1,11 +1,11 @@
 ---
 name: linkedin-image-generator
-description: Generate images for LinkedIn posts using Gemini via Claude for Chrome. Use when linkedin-elite-post creates content that needs visual assets (schemas, diagrams, conceptual images). Automatically crafts effective prompts, navigates to Gemini, generates images, and saves them locally for post scheduling.
+description: Generate images for LinkedIn posts using Gemini via browser MCP (Chrome DevTools or Playwright). Use when linkedin-elite-post creates content that needs visual assets (schemas, diagrams, conceptual images). Automatically crafts effective prompts, navigates to Gemini, generates images, and saves them locally for post scheduling.
 ---
 
 # LinkedIn Image Generator
 
-Generate professional images for LinkedIn posts using Google Gemini via Claude for Chrome browser automation.
+Generate professional images for LinkedIn posts using Google Gemini via browser MCP (Chrome DevTools or Playwright) browser automation.
 
 ## Trigger
 
@@ -24,7 +24,7 @@ Generate professional images for LinkedIn posts using Google Gemini via Claude f
 
 - Chrome browser with Gemini tab available (gemini.google.com)
 - User logged into Google account with Gemini access
-- Claude for Chrome MCP tools available
+- browser MCP (Chrome DevTools or Playwright) MCP tools available
 
 ## Image Types by Post Mode
 
@@ -101,7 +101,7 @@ Do NOT include:
 - Hard to read text
 ```
 
-### Step 4: Generate Image via Gemini (Claude for Chrome)
+### Step 4: Generate Image via Gemini (browser MCP (Chrome DevTools or Playwright))
 
 **Browser Automation Steps:**
 
@@ -182,7 +182,7 @@ Example: ss_7312xts41
 
 4. **Upload using upload_image tool**
    ```
-   Use mcp__claude-in-chrome__upload_image with:
+   Use mcp__playwright__browser_file_upload with:
    - imageId: [screenshot ID from Step 5, e.g., "ss_7312xts41"]
    - tabId: [current LinkedIn tab ID]
    - ref: [file input ref_id] OR coordinate: [drop zone coordinates]
@@ -306,7 +306,7 @@ When linkedin-elite-post generates a Save-Worthy Asset or any post needing visua
 5. **Capture screenshot** of the generated image (store screenshot ID)
 6. **Navigate to LinkedIn** and open post composer
 7. **Use upload_image tool** to attach the screenshot directly
-8. **Proceed to scheduling** via Claude for Chrome
+8. **Proceed to scheduling** via browser MCP (Chrome DevTools or Playwright)
 
 User can override at any point: "use variation 2" or "regenerate image"
 
@@ -328,7 +328,7 @@ The `upload_image` MCP tool bypasses the native OS file picker by:
    ========================================
    ```
 
-## Claude for Chrome Element References
+## browser MCP (Chrome DevTools or Playwright) Element References
 
 **Gemini interface elements:**
 
@@ -355,7 +355,7 @@ The `upload_image` MCP tool bypasses the native OS file picker by:
 
 ```
 # Method 1: Using ref (if file input found)
-mcp__claude-in-chrome__upload_image(
+mcp__playwright__browser_file_upload(
   imageId="ss_xxxxxxxx",
   tabId=1234567,
   ref="ref_XX",  # ref of input[type="file"]
@@ -363,7 +363,7 @@ mcp__claude-in-chrome__upload_image(
 )
 
 # Method 2: Using coordinates (drag-drop to upload area)
-mcp__claude-in-chrome__upload_image(
+mcp__playwright__browser_file_upload(
   imageId="ss_xxxxxxxx",
   tabId=1234567,
   coordinate=[693, 300],  # Center of upload area

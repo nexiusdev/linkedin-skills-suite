@@ -45,7 +45,7 @@ When user triggers autonomous mode ("start linkedin"):
 - ❌ Do NOT ask user to select variations - AI auto-selects
 - ❌ Do NOT wait for confirmation - proceed automatically
 - ✅ Execute all tasks for current time block
-- ✅ Use Claude for Chrome for all LinkedIn actions
+- ✅ Use browser MCP (Chrome DevTools or Playwright) for all LinkedIn actions
 - ✅ Log everything to shared activity log
 - ✅ Move to next task immediately after completion
 
@@ -108,7 +108,7 @@ When user triggers autonomous mode ("start linkedin"):
      - CHECK: Post NOT in "already commented" set (COMMENT DEDUP RULE)
      - If duplicate detected → Skip post, find replacement
      - Generate comment using linkedin-pro-commenter (AI auto-selects)
-     - Post comment via Claude for Chrome
+     - Post comment via browser MCP (Chrome DevTools or Playwright)
      - Update "already commented" set with new post identifier
      - Update daily limits: Comments +1
    → Log all comments to shared activity log
@@ -1615,7 +1615,7 @@ Single command to run entire workflow autonomously.
 
 ### Quick Start
 
-**Option 1: Run directly in Claude Code**
+**Option 1: Run directly in Codex**
 ```
 start linkedin
 ```
@@ -1628,7 +1628,7 @@ start linkedin
 **Option 3: Set up alias for easy access**
 ```powershell
 # Add to your PowerShell profile
-Set-Alias startlinkedin "C:\Users\melve\.claude\skills\linkedin-daily-planner\scripts\start-linkedin.ps1"
+Set-Alias startlinkedin "C:\Users\wdqia\linkedin-skills-suite\linkedin-daily-planner\scripts\start-linkedin.ps1"
 
 # Then just run:
 startlinkedin
@@ -1649,7 +1649,7 @@ Set up a single daily trigger:
 
 ```powershell
 # Run once daily at 9:00 AM - AI handles all blocks based on time
-$action = New-ScheduledTaskAction -Execute "PowerShell.exe" -Argument "-ExecutionPolicy Bypass -File `"C:\Users\melve\.claude\skills\linkedin-daily-planner\scripts\start-linkedin.ps1`""
+$action = New-ScheduledTaskAction -Execute "PowerShell.exe" -Argument "-ExecutionPolicy Bypass -File `"C:\Users\wdqia\linkedin-skills-suite\linkedin-daily-planner\scripts\start-linkedin.ps1`""
 $trigger = New-ScheduledTaskTrigger -Daily -At 9:00AM
 $settings = New-ScheduledTaskSettingsSet -StartWhenAvailable
 Register-ScheduledTask -TaskName "LinkedIn-Daily" -Action $action -Trigger $trigger -Settings $settings -Description "LinkedIn autonomous workflow"
@@ -1660,7 +1660,7 @@ Or run multiple times per day:
 # Morning, Midday, Afternoon, Evening triggers
 @("09:00","12:30","15:00","18:30") | ForEach-Object {
     $time = $_
-    $action = New-ScheduledTaskAction -Execute "PowerShell.exe" -Argument "-ExecutionPolicy Bypass -File `"C:\Users\melve\.claude\skills\linkedin-daily-planner\scripts\start-linkedin.ps1`""
+    $action = New-ScheduledTaskAction -Execute "PowerShell.exe" -Argument "-ExecutionPolicy Bypass -File `"C:\Users\wdqia\linkedin-skills-suite\linkedin-daily-planner\scripts\start-linkedin.ps1`""
     $trigger = New-ScheduledTaskTrigger -Daily -At $time
     Register-ScheduledTask -TaskName "LinkedIn-$time" -Action $action -Trigger $trigger
 }
@@ -1668,7 +1668,7 @@ Or run multiple times per day:
 
 ### How Autonomous Mode Works
 
-1. **Single trigger** starts Claude Code
+1. **Single trigger** starts Codex
 2. **AI determines** current time block automatically
 3. **AI executes** all tasks for that block without questions
 4. **AI auto-selects** best variations for posts/comments

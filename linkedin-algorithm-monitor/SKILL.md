@@ -105,7 +105,7 @@ NO CHANGES FOUND: [List areas with no updates]
 ### Current Strategy Parameters
 
 Read the master strategy file to get current values:
-- `C:\Users\melve\.claude\skills\LINKEDIN-OUTREACH-STRATEGY.md`
+- `C:\Users\wdqia\linkedin-skills-suite\LINKEDIN-OUTREACH-STRATEGY.md`
 
 ### Parameters to Compare
 
@@ -168,14 +168,14 @@ NO CHANGE NEEDED:
 
 Upon approval, the following files can be updated:
 
-1. `C:\Users\melve\.claude\skills\LINKEDIN-OUTREACH-STRATEGY.md` (master strategy)
-2. `C:\Users\melve\.claude\skills\linkedin-daily-planner\skill.md`
-3. `C:\Users\melve\.claude\skills\linkedin-elite-post\skill.md`
-4. `C:\Users\melve\.claude\skills\linkedin-pro-commenter\skill.md`
-5. `C:\Users\melve\.claude\skills\linkedin-connect-timer\skill.md`
-6. `C:\Users\melve\.claude\skills\linkedin-icp-warmer\skill.md`
-7. `C:\Users\melve\.claude\skills\linkedin-icp-finder\skill.md`
-8. `C:\Users\melve\.claude\skills\references\linkedin-strategy.md`
+1. `C:\Users\wdqia\linkedin-skills-suite\LINKEDIN-OUTREACH-STRATEGY.md` (master strategy)
+2. `C:\Users\wdqia\linkedin-skills-suite\linkedin-daily-planner\skill.md`
+3. `C:\Users\wdqia\linkedin-skills-suite\linkedin-elite-post\skill.md`
+4. `C:\Users\wdqia\linkedin-skills-suite\linkedin-pro-commenter\skill.md`
+5. `C:\Users\wdqia\linkedin-skills-suite\linkedin-connect-timer\skill.md`
+6. `C:\Users\wdqia\linkedin-skills-suite\linkedin-icp-warmer\skill.md`
+7. `C:\Users\wdqia\linkedin-skills-suite\linkedin-icp-finder\skill.md`
+8. `C:\Users\wdqia\linkedin-skills-suite\references\linkedin-strategy.md`
 
 ### Proposal Output Format
 
@@ -235,7 +235,7 @@ For each approved change:
 
 ### Change Log Entry Format
 
-Add to `C:\Users\melve\.claude\skills\shared\logs\algorithm-changes.md`:
+Add to `C:\Users\wdqia\linkedin-skills-suite\shared\logs\algorithm-changes.md`:
 
 ```markdown
 ## [Date] - Algorithm Update

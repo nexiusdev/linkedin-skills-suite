@@ -211,7 +211,7 @@ Write to `.mcp.json` under `hubspot-crm.env`:
 **Validation step:** After writing keys, run the validation script to confirm each key works:
 
 ```bash
-python "C:\Users\melve\.claude\skills\email-finder\validate-keys.py"
+python "C:\Users\wdqia\linkedin-skills-suite\email-finder\validate-keys.py"
 ```
 
 This tests each configured provider with a known lookup and reports pass/fail. Display the results:

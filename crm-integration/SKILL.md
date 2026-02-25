@@ -98,7 +98,7 @@ python crm-integration/cli_sync.py sync "Name1" "Name2" "Name3"
 **FALLBACK METHOD: MCP tools (only if loaded in session):**
 Call `crm_sync_prospect` via MCP tool for each changed record.
 
-**Why CLI is preferred:** Claude Code defers MCP tool loading when many servers are connected (8+). The hubspot-crm tools may not be loaded in every session. The CLI script reads API keys from `.mcp.json` automatically and uses the exact same sync logic.
+**Why CLI is preferred:** Codex defers MCP tool loading when many servers are connected (8+). The hubspot-crm tools may not be loaded in every session. The CLI script reads API keys from `.mcp.json` automatically and uses the exact same sync logic.
 
 **INCREMENTAL SYNC RULE:** Do NOT call `crm_sync_all` during routine blocks. Instead, track which prospects changed during the session (new discoveries, touch updates, connection status changes, email enrichments) and sync individually. This reduces API calls from 200+ to typically 5-15 per sync.
 
