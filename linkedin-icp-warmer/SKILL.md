@@ -140,6 +140,28 @@ WARMING OPTIMIZATION (SALES NAVIGATOR):
 
 ---
 
+### Step 0c: Browser Budget Guardrails (Token Optimization)
+
+Apply a strict browser budget per warmup run.
+
+**Per-run budget (default):**
+- Max direct profile visits: 10
+- Max post page opens: 12
+- Max browser snapshots: 25
+- Max navigation hops: 15
+
+**Execution order:**
+1. Use cached Recent Post URLs first.
+2. Visit profile activity pages only when cache is stale/missing.
+3. Prioritize highest scoring prospects first.
+
+**When budget is reached:**
+1. Stop opening new browser pages.
+2. Continue only with cached posts and queued actions.
+3. Defer remaining prospects and log deferrals.
+
+---
+
 ### Step 1: Read Prospect Sources
 
 The skill reads from TWO sources to cover the complete warming pipeline (0→3 touches).
@@ -403,7 +425,8 @@ When user selects a prospect:
 ### On Each Run:
 1. **Read shared log first** to identify warming prospects
 2. **Only access LinkedIn profiles** for prospects needing warmup
-3. **Update shared log** after finding opportunities:
+3. **Track browser budget counters** (page opens, snapshots, navigations)
+4. **Update shared log** after finding opportunities:
    - Add new posts found to prospect records
    - Update "Last Post Seen" dates
 
@@ -467,6 +490,14 @@ IF RESPONSIVE:
 | Date | Prospects Scanned | Opportunities Found | Comments Made | Moved to Ready |
 ```
 
+**Browser telemetry (mandatory):**
+Append one row per run to:
+`linkedin-core/shared/logs/browser-usage-metrics.md`
+
+```
+| Date | Block/Run | Skill | Cache_Hits | Cache_Misses | Browser_Page_Opens | Browser_Snapshots | Browser_Navigations | Browser_Minutes | Deferred_Tasks | Notes |
+```
+
 ## Contact Classification Context
 
 **Reference:** `linkedin-core/references/contact-classification.md`
@@ -485,6 +516,7 @@ Before presenting warmup opportunities:
 - [ ] **ICP prospects file read** (linkedin-core/shared/logs/icp-prospects.md) for 0-touch prospects
 - [ ] **Shared log read** for 1-2 touch prospects
 - [ ] **Flags column checked** - skip prospects with NO_COMMENT, INACTIVE flags
+- [ ] Browser budget counters initialized and monitored
 - [ ] 0-touch prospects not already in Warming Up table
 - [ ] 1-2 touch prospects: last engagement was 24+ hours ago
 - [ ] Posts are from last 7 days
@@ -495,6 +527,7 @@ Before presenting warmup opportunities:
 - [ ] Priority correctly assigned (🔥, 🟡, 🆕, ⚪)
 - [ ] **Flagged prospects listed in "Skipped" section with reason**
 - [ ] **0-touch prospects listed in "First Touch Needed" section**
+- [ ] Deferred prospects listed if browser budget cap is hit
 
 After warmup engagement:
 - [ ] **0-touch: Added to Warming Up table** with touch count = 1
@@ -502,6 +535,7 @@ After warmup engagement:
 - [ ] **3 touches: Moved to Ready to Connect**
 - [ ] Comments Made table updated
 - [ ] Warmup run logged
+- [ ] Browser telemetry row appended to `linkedin-core/shared/logs/browser-usage-metrics.md`
 
 ## Edge Cases
 

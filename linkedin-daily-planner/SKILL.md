@@ -45,6 +45,7 @@ When user triggers autonomous mode ("start linkedin"):
 - ❌ Do NOT ask user to select variations - AI auto-selects
 - ❌ Do NOT wait for confirmation - proceed automatically
 - ✅ Execute all tasks for current time block
+- ✅ Local-first execution: read cache/logs before opening browser pages
 - ✅ Use Chrome DevTools MCP (default; Playwright fallback) for all LinkedIn actions
 - ✅ Log everything to shared activity log
 - ✅ Move to next task immediately after completion
@@ -1549,6 +1550,38 @@ Instead of reading LinkedIn activity page, read from shared log:
 ### What to Log:
 All task completions should update the shared log, not just the to-do file.
 
+## Browser Budget (Token Optimization)
+
+Track a hard browser budget per autonomous run to control token usage.
+
+**Run-level budget (default):**
+- Max browser page opens: 30
+- Max browser snapshots: 45
+- Max browser navigations/search hops: 20
+- Max direct profile visits: 12
+
+**Block-level guardrails:**
+- Morning: prioritize cached post URLs, avoid profile discovery unless cache is stale
+- Content: use cached trend insights first, browse only if cache is stale
+- Midday: only open pages required for replies/engagement already queued
+- Afternoon: prioritize warm prospects already in cache/tables
+- Evening: inbound audit capped to top-priority items first
+
+**When budget is reached:**
+1. Stop new browser discovery immediately.
+2. Continue only with cached URLs/data already captured.
+3. Defer remaining browser tasks to next block/day and log deferral reason.
+
+## Browser Telemetry Logging
+
+After each block, append one row to:
+`linkedin-core/shared/logs/browser-usage-metrics.md`
+
+**Fields to log:**
+`Date | Block | Skill | Cache_Hits | Cache_Misses | Browser_Page_Opens | Browser_Snapshots | Browser_Navigations | Browser_Minutes | Deferred_Tasks | Notes`
+
+This log is mandatory for tuning budgets and reducing browser-heavy runs over time.
+
 ## Quality Checklist
 
 **Creating new plan:**
@@ -1585,6 +1618,7 @@ All task completions should update the shared log, not just the to-do file.
 - **CHECK Profile Cache first** → Use cached Recent Post URLs if available
 - **SKIP if Activity Status = INACTIVE** (no posts in 30+ days)
 - CHECK limit for that action type
+- CHECK browser budget remaining for this block/run
 - If at limit → Skip and log "Limit reached"
 - If approaching limit (80%+) → Warn in output
 - **CHECK COMMENT DEDUP** → Is this post in the "already commented" set? If yes → SKIP
@@ -1608,6 +1642,12 @@ All task completions should update the shared log, not just the to-do file.
 - Mark "Last updated: YYYY-MM-DD HH:MM {{CLIENT_TIMEZONE}}" timestamp
 - **Critical:** This must happen EVERY day to keep activity log current
 - **Time:** 2-3 minutes - never skip even if running late
+
+**Browser telemetry (MANDATORY):**
+- Browser counters tracked through the block (page opens/snapshots/navigations)
+- Cache hit vs cache miss counts recorded
+- 1 row appended to `linkedin-core/shared/logs/browser-usage-metrics.md`
+- Deferred tasks logged when budget caps are hit
 
 ## Automation Setup
 

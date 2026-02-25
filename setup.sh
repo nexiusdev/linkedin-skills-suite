@@ -62,9 +62,15 @@ create_placeholder "linkedin-core/references/linkedin-framework.md"      "$CONFI
 create_placeholder "linkedin-core/references/target-list.md"             "$CONFIG_PLACEHOLDER"
 create_placeholder "linkedin-core/references/client-profile.json" '{
   "CLIENT_BRAND_PRIMARY": "Primary Brand",
+  "CLIENT_BRAND_PRIMARY_SLUG": "primary-brand-linkedin-slug",
   "CLIENT_BRAND_SECONDARY": "Secondary Brand",
+  "CLIENT_BRAND_SECONDARY_SLUG": "secondary-brand-linkedin-slug",
   "CLIENT_COMMUNITY_NAME": "Community Name",
+  "CLIENT_COMMUNITY_SLUG": "community-linkedin-slug",
   "CLIENT_FOUNDER_NAME": "Founder Name",
+  "CLIENT_GSHEETS_CREDENTIALS_FILE": "gsheets-service-account.json",
+  "CLIENT_GSHEETS_PROJECT_ID": "your-google-project-id",
+  "CLIENT_GSHEETS_SERVICE_ACCOUNT_EMAIL": "mcp-gsheets@your-project.iam.gserviceaccount.com",
   "CLIENT_LINKEDIN_HANDLE": "linkedin-handle",
   "CLIENT_TIMEZONE": "UTC",
   "CLIENT_TARGET_GEO": "Target Region",
@@ -88,6 +94,10 @@ create_placeholder "linkedin-core/shared/logs/instagram-activity.md"           "
 create_placeholder "linkedin-core/shared/logs/thought-leaders-agentic-ai.md"   "$LOG_PLACEHOLDER"
 create_placeholder "linkedin-core/shared/logs/algorithm-changes.md"            "$LOG_PLACEHOLDER"
 create_placeholder "linkedin-core/shared/logs/video-activity.md"               "$LOG_PLACEHOLDER"
+create_placeholder "linkedin-core/shared/logs/browser-usage-metrics.md" "# Browser Usage Metrics
+
+| Date | Block/Run | Skill | Cache_Hits | Cache_Misses | Browser_Page_Opens | Browser_Snapshots | Browser_Navigations | Browser_Minutes | Deferred_Tasks | Notes |
+|---|---|---|---:|---:|---:|---:|---:|---:|---:|---|"
 create_placeholder "linkedin-connect-timer/logs/activity-log.md" "$LOG_PLACEHOLDER"
 create_placeholder "linkedin-icp-warmer/logs/warmup-runs.md"     "$LOG_PLACEHOLDER"
 create_placeholder "linkedin-icp-finder/references/icp-profile.md" "$CONFIG_PLACEHOLDER"

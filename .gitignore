@@ -30,11 +30,13 @@ shared/logs/icp-prospects.md
 shared/logs/linkedin-activity.md
 shared/logs/whatsapp-activity.md
 shared/logs/video-activity.md
+shared/logs/browser-usage-metrics.md
 shared/logs/backups/
 linkedin-core/shared/logs/icp-prospects.md
 linkedin-core/shared/logs/linkedin-activity.md
 linkedin-core/shared/logs/whatsapp-activity.md
 linkedin-core/shared/logs/video-activity.md
+linkedin-core/shared/logs/browser-usage-metrics.md
 linkedin-core/shared/logs/backups/
 linkedin-daily-planner/to-do_*.md
 to-do_*.md

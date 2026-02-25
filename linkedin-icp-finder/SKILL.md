@@ -149,6 +149,26 @@ BEFORE ANY LINKEDIN SEARCH:
 - `MODERATE` = Posted within 7-30 days
 - `INACTIVE` = No posts in 30+ days (skip warming)
 
+## Step 0a: Browser Budget Guardrails (Token Optimization)
+
+Use a strict browser budget per ICP run.
+
+**Per-run budget (default):**
+- Max LinkedIn searches: 8
+- Max profile visits: 12
+- Max browser snapshots: 25
+- Max navigation hops: 15
+
+**Execution order:**
+1. Reuse cache/log data first.
+2. Use direct profile URLs from files (avoid broad feed/search browsing).
+3. Only browse for missing required fields (role/company/location/profile URL).
+
+**When budget is reached:**
+1. Stop new browser discovery.
+2. Continue screening only from cached/local inputs.
+3. Output a "deferred prospects" list for the next run.
+
 ### Deduplication Check (MANDATORY)
 
 **Before adding ANY new prospect:**
@@ -1229,6 +1249,7 @@ Run these searches with ASEAN location filters:
 - ✅ ICP profile loaded from `linkedin-core/references/icp-profile.md`
 - ✅ Warming Up table checked (avoid re-discovering existing prospects)
 - ✅ Existing icp-prospects files checked (avoid duplicates)
+- ✅ Browser budget counters initialized for this run
 
 **During Outbound Screening:**
 - ✅ Geography filter applied FIRST before any other screening
@@ -1238,6 +1259,7 @@ Run these searches with ASEAN location filters:
 - ✅ **Posts with comments disabled = automatic skip**
 - ✅ Screening uses loaded ICP criteria (not hardcoded)
 - ✅ Non-ASEAN and unconfirmed prospects immediately skipped with no further evaluation
+- ✅ Browser discovery stops when budget cap is reached
 
 **During Inbound Screening (Lurker Mode):**
 - ✅ Geography filter applied FIRST (same {{CLIENT_TARGET_GEO}} rule)
@@ -1246,6 +1268,7 @@ Run these searches with ASEAN location filters:
 - ✅ Engagement context captured (what triggered the signal)
 - ✅ Fast-track warmth level assigned based on signal type
 - ✅ Repeat viewers flagged as very high intent
+- ✅ Uses cached/local context before opening new profile pages
 
 **After Screening (Both Modes):**
 - ✅ **HIGH FIT prospects saved to `icp-prospects-[date].md`** (if 0 touch)
@@ -1256,6 +1279,7 @@ Run these searches with ASEAN location filters:
 - ✅ Comment references something specific they said
 - ✅ No pitching in comments
 - ✅ Connection request references specific conversation
+- ✅ Browser telemetry row appended to `linkedin-core/shared/logs/browser-usage-metrics.md`
 
 ## Shared Activity Log (Token Optimization)
 
@@ -1304,6 +1328,14 @@ Connect Timer sends request → Pending/Connected tables (3 touches)
 ```
 
 **Always capture Profile URL** for deduplication across files.
+
+### Browser Telemetry (MANDATORY)
+
+Append one row per run to:
+`linkedin-core/shared/logs/browser-usage-metrics.md`
+
+Log fields:
+`Date | Block/Run | Skill=linkedin-icp-finder | Cache_Hits | Cache_Misses | Browser_Page_Opens | Browser_Snapshots | Browser_Navigations | Browser_Minutes | Deferred_Tasks | Notes`
 
 ### Read from Log Instead of LinkedIn:
 - Check "Warming Up" table for prospects already in pipeline

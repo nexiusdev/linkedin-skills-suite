@@ -25,9 +25,22 @@ Activate when user says:
 - "what's trending on LinkedIn"
 - Or pastes LinkedIn feed content for analysis
 
+## Local-First Mode (Minimize Browser Usage)
+
+Default behavior is local-first:
+- Reuse cached trend insights before requesting fresh feed capture.
+- Prefer pasted feed content over live browser exploration.
+- Do not open profile pages unless explicitly needed for validation.
+
+Browser usage in this skill should be exceptional, not routine.
+
 ## Step 1: Request Feed Content
 
-Ask user to share their LinkedIn feed:
+Before requesting fresh feed content, check:
+- `linkedin-core/shared/logs/linkedin-activity.md` → Feed Insights Cache
+- If cache is fresh (<12 hours), reuse cached trends and skip browser/feed capture.
+
+Only if cache is stale, ask user to share their LinkedIn feed:
 
 ```
 To find trending topics, I need to see your LinkedIn feed. Please:
@@ -187,6 +200,9 @@ Before presenting report:
 - ✅ Recommended topics align with profile keywords (360Brew Profile-Content Alignment)
 - ✅ Save-worthy content format suggested for each topic
 - ✅ Topic Signal hook example provided for each recommendation
+- ✅ Cache checked before requesting fresh feed capture
+- ✅ Browser use kept within minimal budget for this run
+- ✅ Browser telemetry row appended to `linkedin-core/shared/logs/browser-usage-metrics.md`
 
 ## Edge Cases
 
@@ -218,11 +234,11 @@ Would you like to pick one of these, or should I suggest evergreen topics in you
 
 ### On Each Run:
 1. **Read shared log first** to check:
-   - "Feed Insights Cache" for recently identified trends (if <4 hours old, reuse)
+   - "Feed Insights Cache" for recently identified trends (if <12 hours old, reuse)
    - "High-Engagement Posts Saved" for content inspiration
    - Today's post status (avoid duplicate content)
 2. **Only request fresh feed content** if:
-   - Cache is stale (>4 hours)
+   - Cache is stale (>12 hours)
    - User explicitly requests fresh analysis
 3. **After analysis**, update shared log:
    - Update "Feed Insights Cache > Trending Topics" table
@@ -240,7 +256,15 @@ Would you like to pick one of these, or should I suggest evergreen topics in you
 ```
 **Always capture Profile URL and Post URL** for quick navigation later.
 
+### Browser Telemetry (MANDATORY)
+
+Append one row per run to:
+`linkedin-core/shared/logs/browser-usage-metrics.md`
+
+Log fields:
+`Date | Block/Run | Skill=linkedin-trender | Cache_Hits | Cache_Misses | Browser_Page_Opens | Browser_Snapshots | Browser_Navigations | Browser_Minutes | Deferred_Tasks | Notes`
+
 ### Read from Log Instead of LinkedIn:
 - Check "Feed Insights Cache" before requesting feed paste
 - Check "High-Engagement Posts Saved" for content ideas
-- Reuse cached trends if still relevant (<4 hours old)
+- Reuse cached trends if still relevant (<12 hours old)
