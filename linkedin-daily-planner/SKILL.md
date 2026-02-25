@@ -53,7 +53,7 @@ When user triggers autonomous mode ("start linkedin"):
 
 ```
 1. Determine current time block (based on system time)
-2. Read account config → `shared/linkedin-account-config.md` → Get account type
+2. Read account config → `linkedin-core/shared/linkedin-account-config.md` → Get account type
 3. Read shared activity log → Get today's progress AND daily limits status
 4. Read icp-prospects.md → Profile Cache table → Check for cached data
 5. Read/create today's to-do file
@@ -185,7 +185,7 @@ When user triggers autonomous mode ("start linkedin"):
    → **MANDATORY FIRST STEP - Activity Log Update (CRITICAL):**
      - Read today's to-do file (to-do_DDMMYYYY.md)
      - Extract ALL completed tasks marked [x] with timestamps
-     - Update shared/logs/linkedin-activity.md → Today's Summary:
+     - Update linkedin-core/shared/logs/linkedin-activity.md → Today's Summary:
        * Comments Made table (Author, Category, Post Topic, Time)
        * Posts Published table (Type, Topic, Scheduled Time)
        * Connection Requests sent
@@ -661,7 +661,7 @@ The 15/15 Rule: Engage BEFORE posting to warm your topical relevance.
 
 ### Commenting Tasks (use linkedin-pro-commenter + linkedin-icp-finder)
 
-**Contact Classification:** See `references/contact-classification.md`
+**Contact Classification:** See `linkedin-core/references/contact-classification.md`
 
 - [ ] Comment on 3 **PEER** posts (1K-10K followers, fellow builders in AI/automation)
 - [ ] Comment on 3 **PROSPECT** posts (ICP match - use linkedin-icp-finder to classify)
@@ -713,7 +713,7 @@ The 15/15 Rule: Engage BEFORE posting to warm your topical relevance.
 - [ ] Mark "Value DM Sent = Yes" in log
 
 ### 🎯 Warm Up Existing Prospects (Smart Prioritization + Cadence Rule)
-- [ ] Read `shared/logs/icp-prospects.md` → Filter for 0-1 touch prospects
+- [ ] Read `linkedin-core/shared/logs/icp-prospects.md` → Filter for 0-1 touch prospects
 - [ ] Run linkedin-icp-warmer with **Priority Score formula:**
   - Score = ICP (0-100) + Signal (0-15) + Recency (0-10) + Activity (0-10)
   - Target: 90-119 points (Medium Priority = 1-touch prospects needing advancement)
@@ -741,7 +741,7 @@ The 15/15 Rule: Engage BEFORE posting to warm your topical relevance.
 ### Discover NEW Prospects - LinkedIn (use linkedin-icp-finder)
 - [ ] Run linkedin-icp-finder to search for new prospects on LinkedIn
 - [ ] Screen each result against ICP Scoring Matrix (80+ = HOT, 60-79 = WARM)
-- [ ] **Save all qualifying prospects to `shared/logs/icp-prospects.md` as 0-touch**
+- [ ] **Save all qualifying prospects to `linkedin-core/shared/logs/icp-prospects.md` as 0-touch**
 - [ ] ⚠️ **Do NOT send connection requests** - warm up first!
 
 ### Discover NEW Prospects - Web (use web-icp-scanner)
@@ -759,7 +759,7 @@ The 15/15 Rule: Engage BEFORE posting to warm your topical relevance.
   - Tier 2: Opportunistic extraction (FREE)
   - Tier 3: API waterfall for 70+ scores (paid credits)
   - Tier 4: Pattern detection (FREE)
-- [ ] **Save all qualifying prospects to `shared/logs/icp-prospects.md` as 0-touch**
+- [ ] **Save all qualifying prospects to `linkedin-core/shared/logs/icp-prospects.md` as 0-touch**
 - [ ] ⚠️ **Do NOT send connection requests** - warm up first!
 - [ ] Log results to `web-discovered-prospects.md` for tracking
 
@@ -773,7 +773,7 @@ The 15/15 Rule: Engage BEFORE posting to warm your topical relevance.
 **Prospect Saving Rule:**
 ```
 IF prospect scores 60+ on ICP matrix:
-  → Save to shared/logs/icp-prospects.md
+  → Save to linkedin-core/shared/logs/icp-prospects.md
   → Set Touches = 0, Connection Status = "none"
   → Include: Name, Role, Company, Profile URL
   → Note: "Source: Outbound search [date]"
@@ -817,7 +817,7 @@ IF prospect scores 60+ on ICP matrix:
 
 - [ ] Read today's to-do file (`to-do_DDMMYYYY.md`)
 - [ ] Extract ALL completed tasks marked with `[x]` and timestamps
-- [ ] Update `shared/logs/linkedin-activity.md` → "Today's Summary" section with:
+- [ ] Update `linkedin-core/shared/logs/linkedin-activity.md` → "Today's Summary" section with:
   - **Comments Made:** All comment tasks with Author, Category, Post Topic, Timestamp
   - **Posts Published:** Any posts scheduled/published with Type, Topic, Time
   - **Connection Requests:** Any connection requests sent
@@ -917,14 +917,14 @@ IF prospect scores 60+ on ICP matrix:
 
 **For all inbound signals:**
 - [ ] Quick ICP screen (ASEAN? Decision-maker? SME?)
-- [ ] **Save ICP matches to `shared/logs/icp-prospects.md`**
-- [ ] Log ICP matches to `shared/logs/linkedin-activity.md` → "Inbound Engagement" section
+- [ ] **Save ICP matches to `linkedin-core/shared/logs/icp-prospects.md`**
+- [ ] Log ICP matches to `linkedin-core/shared/logs/linkedin-activity.md` → "Inbound Engagement" section
 - [ ] Add ICP matches to "Warming Up" pipeline with note (signal type)
 
 **Inbound Prospect Saving Rule:**
 ```
 IF inbound signal passes ICP screen:
-  → Save to shared/logs/icp-prospects.md
+  → Save to linkedin-core/shared/logs/icp-prospects.md
   → Include: Name, Role, Company, Profile URL
   → **Check "Contact Info" on profile → Capture Email if visible**
   → Note: "Source: [Signal Type] [date]" (e.g., "Source: Profile View 22Jan")
@@ -1006,7 +1006,7 @@ IF inbound signal passes ICP screen:
 
 ### Account-Conditional Features
 
-**Read account type from:** `shared/linkedin-account-config.md`
+**Read account type from:** `linkedin-core/shared/linkedin-account-config.md`
 
 | Account Type | Additional Features |
 |--------------|---------------------|
@@ -1131,7 +1131,7 @@ Update daily metrics after EACH action:
 
 ## Premium Account Workflow Optimization
 
-**Read account config:** `shared/linkedin-account-config.md`
+**Read account config:** `linkedin-core/shared/linkedin-account-config.md`
 
 ### Account-Specific Daily Limits
 
@@ -1488,7 +1488,7 @@ On Fridays, add a weekly audit section:
 
 ### 🔍 Sales Navigator Pipeline Refresh (if Account Type = SALES_NAVIGATOR)
 
-**Check account type in:** `shared/linkedin-account-config.md`
+**Check account type in:** `linkedin-core/shared/linkedin-account-config.md`
 
 **ONLY show this section if Account Type = SALES_NAVIGATOR**
 
@@ -1496,7 +1496,7 @@ On Fridays, add a weekly audit section:
 - [ ] Open Sales Navigator → Saved Searches → Run 1-2 searches
 - [ ] Review top 10-15 results from each search
 - [ ] Screen against ICP criteria (ASEAN SME decision-maker)
-- [ ] Add 5-10 new ICP matches to `shared/logs/icp-prospects.md`
+- [ ] Add 5-10 new ICP matches to `linkedin-core/shared/logs/icp-prospects.md`
 - [ ] Capture LinkedIn profile URLs during screening
 - [ ] Note source in each prospect: "Source: Sales Nav: [Search Name]"
 
@@ -1526,7 +1526,7 @@ Week 4: All searches quick scan
 
 **ALWAYS read from the shared log for daily metrics instead of re-reading LinkedIn.**
 
-**Log location:** `shared/logs/linkedin-activity.md`
+**Log location:** `linkedin-core/shared/logs/linkedin-activity.md`
 
 ### On Each Run:
 1. **Read shared log first** to get:
@@ -1552,7 +1552,7 @@ All task completions should update the shared log, not just the to-do file.
 ## Quality Checklist
 
 **Creating new plan:**
-- **Account config read** (`shared/linkedin-account-config.md` → Account Type)
+- **Account config read** (`linkedin-core/shared/linkedin-account-config.md` → Account Type)
 - Shared log read first for current metrics
 - **Profile Cache read** (icp-prospects.md → Profile Cache table)
 - Daily Limits Status table checked
@@ -1602,7 +1602,7 @@ All task completions should update the shared log, not just the to-do file.
 **Evening Block - Activity Log Update (MANDATORY - DO NOT SKIP):**
 - Read today's to-do file (to-do_DDMMYYYY.md)
 - Extract ALL completed tasks marked [x] with timestamps
-- Update shared/logs/linkedin-activity.md → Today's Summary section
+- Update linkedin-core/shared/logs/linkedin-activity.md → Today's Summary section
 - Update all prospect touch counts in icp-prospects.md
 - Update Daily Limits Status table with final counts
 - Mark "Last updated: YYYY-MM-DD HH:MM {{CLIENT_TIMEZONE}}" timestamp

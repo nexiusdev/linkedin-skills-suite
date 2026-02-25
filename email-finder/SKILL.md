@@ -64,7 +64,7 @@ When the user asks for a specific person's email (e.g., "find email for John Smi
 
 ### Step 0: Filter Eligible Prospects
 
-Read `shared/logs/icp-prospects.md` and filter using the criteria above. Display the filtered list for confirmation before proceeding.
+Read `linkedin-core/shared/logs/icp-prospects.md` and filter using the criteria above. Display the filtered list for confirmation before proceeding.
 
 ### Step 1: Check Connection Status (Free)
 
@@ -176,5 +176,5 @@ Add to `.mcp.json` under `hubspot-crm` env (all optional, use any combination):
 ## Dependencies
 
 - `crm-integration/hubspot_mcp.py` — MCP server with `crm_find_emails` + `crm_pull_emails` tools
-- `shared/logs/icp-prospects.md` — Source of truth for prospect data
+- `linkedin-core/shared/logs/icp-prospects.md` — Source of truth for prospect data
 - Browser automation (Chrome) — For Step 1 LinkedIn connection status checks

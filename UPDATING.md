@@ -97,7 +97,7 @@ name: linkedin-elite-posts-CLIENT-CUSTOMIZED
 |-----------|-----------------|-----------------|
 | Skill files (`SKILL.md`) | Yes | Stashed and restored automatically |
 | Your config (`references/`) | Never touched | Always safe |
-| Your activity logs (`shared/logs/`) | Never touched | Always safe |
+| Your activity logs (`linkedin-core/shared/logs/`) | Never touched | Always safe |
 | Your account settings | Never touched | Always safe |
 
 ## If something goes wrong

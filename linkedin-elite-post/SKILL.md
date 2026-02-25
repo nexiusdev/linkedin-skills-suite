@@ -30,7 +30,7 @@ When the user requests a LinkedIn post:
    - Modes: Thought Leadership, Educational, Engagement, Lead Generation, **Save-Worthy Asset**
 
 2. **Consult the Framework**
-   - Read `references/linkedin-framework.md` for complete writing guidelines
+   - Read `linkedin-core/references/linkedin-framework.md` for complete writing guidelines
    - Apply hook formulas, formatting principles, and mode-specific structures
 
 3. **Generate Variations**
@@ -432,15 +432,15 @@ Pre-post checklist:
 
 ## Additional Resources
 
-- `references/linkedin-framework.md` - Complete framework with hook formulas, formatting principles, conversion psychology, and mode specifications
-- `references/saved-asset.md` - Detailed guide on creating Save-Worthy Assets
+- `linkedin-core/references/linkedin-framework.md` - Complete framework with hook formulas, formatting principles, conversion psychology, and mode specifications
+- `linkedin-core/references/saved-asset.md` - Detailed guide on creating Save-Worthy Assets
 - `linkedin-image-generator` skill - Generate visuals for posts via Gemini
 
 ## Shared Activity Log (Token Optimization)
 
 **Check the shared log before creating new posts.**
 
-**Log location:** `shared/logs/linkedin-activity.md`
+**Log location:** `linkedin-core/shared/logs/linkedin-activity.md`
 
 ### On Each Run:
 1. **Read shared log first** to check:

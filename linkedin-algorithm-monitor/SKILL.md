@@ -25,7 +25,7 @@ Phase 1: RESEARCH (Last 7 Days)
 
 Phase 2: ANALYSIS
 ├─ Compare findings against current strategy parameters
-├─ Read LINKEDIN-OUTREACH-STRATEGY.md for current values
+├─ Read linkedin-core/references/LINKEDIN-OUTREACH-STRATEGY.md for current values
 └─ Output: Gap analysis - what's changed vs current config
 
 Phase 3: PROPOSAL (Requires Approval)
@@ -105,7 +105,7 @@ NO CHANGES FOUND: [List areas with no updates]
 ### Current Strategy Parameters
 
 Read the master strategy file to get current values:
-- `{{CLIENT_WORKSPACE_ROOT}}\LINKEDIN-OUTREACH-STRATEGY.md`
+- `{{CLIENT_WORKSPACE_ROOT}}\linkedin-core/references/LINKEDIN-OUTREACH-STRATEGY.md`
 
 ### Parameters to Compare
 
@@ -168,14 +168,14 @@ NO CHANGE NEEDED:
 
 Upon approval, the following files can be updated:
 
-1. `{{CLIENT_WORKSPACE_ROOT}}\LINKEDIN-OUTREACH-STRATEGY.md` (master strategy)
-2. `{{CLIENT_WORKSPACE_ROOT}}\linkedin-daily-planner\skill.md`
-3. `{{CLIENT_WORKSPACE_ROOT}}\linkedin-elite-post\skill.md`
-4. `{{CLIENT_WORKSPACE_ROOT}}\linkedin-pro-commenter\skill.md`
-5. `{{CLIENT_WORKSPACE_ROOT}}\linkedin-connect-timer\skill.md`
-6. `{{CLIENT_WORKSPACE_ROOT}}\linkedin-icp-warmer\skill.md`
-7. `{{CLIENT_WORKSPACE_ROOT}}\linkedin-icp-finder\skill.md`
-8. `{{CLIENT_WORKSPACE_ROOT}}\references\linkedin-strategy.md`
+1. `{{CLIENT_WORKSPACE_ROOT}}\linkedin-core/references/LINKEDIN-OUTREACH-STRATEGY.md` (master strategy)
+2. `{{CLIENT_WORKSPACE_ROOT}}\linkedin-daily-planner\SKILL.md`
+3. `{{CLIENT_WORKSPACE_ROOT}}\linkedin-elite-post\SKILL.md`
+4. `{{CLIENT_WORKSPACE_ROOT}}\linkedin-pro-commenter\SKILL.md`
+5. `{{CLIENT_WORKSPACE_ROOT}}\linkedin-connect-timer\SKILL.md`
+6. `{{CLIENT_WORKSPACE_ROOT}}\linkedin-icp-warmer\SKILL.md`
+7. `{{CLIENT_WORKSPACE_ROOT}}\linkedin-icp-finder\SKILL.md`
+8. `{{CLIENT_WORKSPACE_ROOT}}\linkedin-core\references\linkedin-strategy.md`
 
 ### Proposal Output Format
 
@@ -235,7 +235,7 @@ For each approved change:
 
 ### Change Log Entry Format
 
-Add to `{{CLIENT_WORKSPACE_ROOT}}\shared\logs\algorithm-changes.md`:
+Add to `{{CLIENT_WORKSPACE_ROOT}}\linkedin-core\shared\logs\algorithm-changes.md`:
 
 ```markdown
 ## [Date] - Algorithm Update
@@ -266,22 +266,22 @@ CHANGES APPLIED
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Files modified: [X]
 
-1. LINKEDIN-OUTREACH-STRATEGY.md
+1. linkedin-core/references/LINKEDIN-OUTREACH-STRATEGY.md
    └─ [Parameter]: [Old] → [New]
 
-2. linkedin-daily-planner/skill.md
+2. linkedin-daily-planner/SKILL.md
    └─ [Parameter]: [Old] → [New]
 
-3. linkedin-pro-commenter/skill.md
+3. linkedin-pro-commenter/SKILL.md
    └─ [Parameter]: [Old] → [New]
 
-Change log updated: shared/logs/algorithm-changes.md
+Change log updated: linkedin-core/shared/logs/algorithm-changes.md
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ROLLBACK INSTRUCTIONS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 If issues occur, old values are logged in:
-shared/logs/algorithm-changes.md
+linkedin-core/shared/logs/algorithm-changes.md
 
 Or use git to revert:
 git checkout HEAD~1 -- [file]
@@ -315,7 +315,7 @@ When triggered, execute this workflow:
 ### Step 2: Analysis Phase
 
 ```
-1. Read LINKEDIN-OUTREACH-STRATEGY.md
+1. Read linkedin-core/references/LINKEDIN-OUTREACH-STRATEGY.md
 2. Extract current values for each parameter:
    - Post limits (Daily Limits section)
    - Comment rules (Engagement Strategy section)

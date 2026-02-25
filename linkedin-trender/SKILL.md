@@ -214,7 +214,7 @@ Would you like to pick one of these, or should I suggest evergreen topics in you
 
 **Check the shared log first before requesting fresh feed content.**
 
-**Log location:** `shared/logs/linkedin-activity.md`
+**Log location:** `linkedin-core/shared/logs/linkedin-activity.md`
 
 ### On Each Run:
 1. **Read shared log first** to check:

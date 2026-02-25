@@ -252,7 +252,7 @@ Check for:
 
 ## Step 7: Update Shared Activity Log
 
-**Log location:** `shared/logs/whatsapp-activity.md`
+**Log location:** `linkedin-core/shared/logs/whatsapp-activity.md`
 
 ### After Each Post, Log:
 
@@ -713,7 +713,7 @@ Next check: [HH:MM + 15 mins]
 
 ### Logging Replied Messages
 
-**Log location:** `shared/logs/whatsapp-activity.md`
+**Log location:** `linkedin-core/shared/logs/whatsapp-activity.md`
 
 After each auto-reply, log to the "Auto-Replies Sent" table:
 

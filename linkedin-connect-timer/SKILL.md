@@ -349,7 +349,7 @@ Also update prospect status when:
 
 ## Contact Classification for Prioritization
 
-**Reference:** See `references/contact-classification.md` for full criteria.
+**Reference:** See `linkedin-core/references/contact-classification.md` for full criteria.
 
 When prioritizing connection requests, consider contact type:
 
@@ -414,7 +414,7 @@ Acceptance rate this week: [Y%]
 
 **ALWAYS read from the shared log first before accessing LinkedIn.**
 
-**Log location:** `shared/logs/linkedin-activity.md`
+**Log location:** `linkedin-core/shared/logs/linkedin-activity.md`
 
 ### On Each Run:
 1. **Read shared log first** to check:

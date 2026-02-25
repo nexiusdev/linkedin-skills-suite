@@ -186,7 +186,7 @@ Would you like me to:
 
 ## Shared Activity Log
 
-**Log location:** `shared/logs/x-activity.md`
+**Log location:** `linkedin-core/shared/logs/x-activity.md`
 
 ### On Each Run:
 1. **Read shared log first** to check:

@@ -33,7 +33,7 @@ Activate when user says:
 
 **CRITICAL: Check Profile Cache before visiting ANY LinkedIn profile.**
 
-**File location:** `shared/logs/icp-prospects.md` → Profile Cache table
+**File location:** `linkedin-core/shared/logs/icp-prospects.md` → Profile Cache table
 
 ```
 BEFORE VISITING PROSPECT PROFILE:
@@ -64,7 +64,7 @@ When you DO visit LinkedIn, capture and update:
 
 ### Step 0b: Premium Account Optimization
 
-**Read account config:** `shared/linkedin-account-config.md`
+**Read account config:** `linkedin-core/shared/linkedin-account-config.md`
 
 #### FREE Account Warming Strategy
 
@@ -146,7 +146,7 @@ The skill reads from TWO sources to cover the complete warming pipeline (0→3 t
 
 #### Step 1A: Read ICP Prospects File (0-touch prospects)
 
-**File location:** `shared/logs/icp-prospects.md`
+**File location:** `linkedin-core/shared/logs/icp-prospects.md`
 
 Single consolidated file containing all discovered prospects with Date Found column.
 
@@ -164,7 +164,7 @@ FILTER for:
 
 #### Step 1B: Read Shared Activity Log (1-2 touch prospects)
 
-**Log location:** `shared/logs/linkedin-activity.md`
+**Log location:** `linkedin-core/shared/logs/linkedin-activity.md`
 
 ```
 FROM shared log, find:
@@ -277,7 +277,7 @@ For each new post found, check BOTH sources:
 - If post is in this set → SKIP (already commented)
 
 **Source 2: Shared Activity Log (persistent)**
-- Check `shared/logs/linkedin-activity.md` → Comments Made table
+- Check `linkedin-core/shared/logs/linkedin-activity.md` → Comments Made table
 - Search by Post URL or author_slug + topic match
 - If found → SKIP (already commented)
 
@@ -398,7 +398,7 @@ When user selects a prospect:
 
 ## Shared Activity Log Integration
 
-**Log location:** `shared/logs/linkedin-activity.md`
+**Log location:** `linkedin-core/shared/logs/linkedin-activity.md`
 
 ### On Each Run:
 1. **Read shared log first** to identify warming prospects
@@ -469,7 +469,7 @@ IF RESPONSIVE:
 
 ## Contact Classification Context
 
-**Reference:** `references/contact-classification.md`
+**Reference:** `linkedin-core/references/contact-classification.md`
 
 Warmup priority should consider contact type:
 
@@ -482,7 +482,7 @@ Warmup priority should consider contact type:
 ## Quality Checklist
 
 Before presenting warmup opportunities:
-- [ ] **ICP prospects file read** (shared/logs/icp-prospects.md) for 0-touch prospects
+- [ ] **ICP prospects file read** (linkedin-core/shared/logs/icp-prospects.md) for 0-touch prospects
 - [ ] **Shared log read** for 1-2 touch prospects
 - [ ] **Flags column checked** - skip prospects with NO_COMMENT, INACTIVE flags
 - [ ] 0-touch prospects not already in Warming Up table
@@ -507,7 +507,7 @@ After warmup engagement:
 
 **No ICP prospects file found:**
 ```
-ICP prospects file not found at shared/logs/icp-prospects.md
+ICP prospects file not found at linkedin-core/shared/logs/icp-prospects.md
 
 Options:
 1. Run linkedin-icp-finder to discover new prospects
@@ -596,7 +596,7 @@ Track each warmup search:
 ```
 ## Warmup Run - [Date]
 
-ICP Prospects File: shared/logs/icp-prospects.md
+ICP Prospects File: linkedin-core/shared/logs/icp-prospects.md
 0-Touch Prospects Found: [Y]
 
 Warming Up Table Scanned:
@@ -616,4 +616,4 @@ Added to Warming Up: [N] (0→1 touch)
 Moved to Ready: [M] (2→3 touches)
 ```
 
-Also update `shared/logs/linkedin-activity.md` with any new engagement data.
+Also update `linkedin-core/shared/logs/linkedin-activity.md` with any new engagement data.

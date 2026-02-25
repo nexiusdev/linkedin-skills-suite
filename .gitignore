@@ -17,6 +17,7 @@ nul
 .env
 .env.local
 references/client-profile.json
+linkedin-core/references/client-profile.json
 *.key
 *.pem
 

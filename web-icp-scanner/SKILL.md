@@ -51,9 +51,9 @@ Scan the web daily to find 10 ICP prospects outside of LinkedIn. **FULLY AUTONOM
 
 ```
 REQUIRED FILES:
-├── references/icp-profile.md              # Current ICP criteria
+├── linkedin-core/references/icp-profile.md              # Current ICP criteria
 ├── web-icp-scanner/icp-learning-log.md    # Feedback history + learned patterns
-└── shared/logs/icp-prospects.md           # Master prospect list (dedup check)
+└── linkedin-core/shared/logs/icp-prospects.md           # Master prospect list (dedup check)
 ```
 
 **Extract from ICP Profile:**
@@ -810,7 +810,7 @@ Based on 20-prospect batch testing:
 
 All prospects scoring **60 points or higher** are automatically:
 1. Marked as APPROVED
-2. Added to `shared/logs/icp-prospects.md`
+2. Added to `linkedin-core/shared/logs/icp-prospects.md`
 3. Logged to `web-discovered-prospects.md`
 
 **Do NOT:**
@@ -922,7 +922,7 @@ FOR search effectiveness:
 
 ### ICP Profile Updates
 
-When negative patterns emerge (3+ similar rejections), update `references/icp-profile.md`:
+When negative patterns emerge (3+ similar rejections), update `linkedin-core/references/icp-profile.md`:
 
 **Auto-updates (from rejections):**
 - Add keywords from rejected companies to exclusion list
@@ -962,7 +962,7 @@ When negative patterns emerge (3+ similar rejections), update `references/icp-pr
 
 ### Update Master Prospect List
 
-For APPROVED prospects, add to `shared/logs/icp-prospects.md`:
+For APPROVED prospects, add to `linkedin-core/shared/logs/icp-prospects.md`:
 
 ```markdown
 | # | Name | Date Found | Role | Company | Company URL | Location | Classification | Touches | Last Touch | Touch History | Connection Status | Profile URL | Email | Notes |
@@ -1204,10 +1204,10 @@ Next scan recommendations:
 - `linkedin-connect-timer` - Track web-discovered prospects in connection timing
 
 ### Outputs to:
-- `shared/logs/icp-prospects.md` - Master prospect list
+- `linkedin-core/shared/logs/icp-prospects.md` - Master prospect list
 - `web-icp-scanner/web-discovered-prospects.md` - Daily scan logs
 - `web-icp-scanner/icp-learning-log.md` - Learning patterns
-- `references/icp-profile.md` - ICP criteria updates (with approval)
+- `linkedin-core/references/icp-profile.md` - ICP criteria updates (with approval)
 
 ---
 

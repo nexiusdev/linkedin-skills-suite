@@ -12,10 +12,11 @@ echo ""
 
 # --- Directories ---
 dirs=(
-    "references"
-    "shared/logs"
+    "linkedin-core/references"
+    "linkedin-core/shared/logs"
+    "linkedin-core/shared/references"
+    "linkedin-core/shared/scripts"
     "linkedin-connect-timer/logs"
-    "linkedin-daily-planner/shared/logs"
     "linkedin-daily-planner/logs"
     "linkedin-icp-warmer/logs"
     "linkedin-icp-finder/references"
@@ -51,13 +52,15 @@ LOG_PLACEHOLDER="# Activity Log
 No activity recorded yet."
 
 # Config files
-create_placeholder "references/icp-profile.md"            "$CONFIG_PLACEHOLDER"
-create_placeholder "references/contact-classification.md"  "$CONFIG_PLACEHOLDER"
-create_placeholder "references/connect-request.md"         "$CONFIG_PLACEHOLDER"
-create_placeholder "references/saved-asset.md"             "$CONFIG_PLACEHOLDER"
-create_placeholder "references/linkedin-strategy.md"       "$CONFIG_PLACEHOLDER"
-create_placeholder "references/company-pages-config.md"    "$CONFIG_PLACEHOLDER"
-create_placeholder "references/client-profile.json" '{
+create_placeholder "linkedin-core/references/icp-profile.md"            "$CONFIG_PLACEHOLDER"
+create_placeholder "linkedin-core/references/contact-classification.md"  "$CONFIG_PLACEHOLDER"
+create_placeholder "linkedin-core/references/connect-request.md"         "$CONFIG_PLACEHOLDER"
+create_placeholder "linkedin-core/references/saved-asset.md"             "$CONFIG_PLACEHOLDER"
+create_placeholder "linkedin-core/references/linkedin-strategy.md"       "$CONFIG_PLACEHOLDER"
+create_placeholder "linkedin-core/references/company-pages-config.md"    "$CONFIG_PLACEHOLDER"
+create_placeholder "linkedin-core/references/linkedin-framework.md"      "$CONFIG_PLACEHOLDER"
+create_placeholder "linkedin-core/references/target-list.md"             "$CONFIG_PLACEHOLDER"
+create_placeholder "linkedin-core/references/client-profile.json" '{
   "CLIENT_BRAND_PRIMARY": "Primary Brand",
   "CLIENT_BRAND_SECONDARY": "Secondary Brand",
   "CLIENT_COMMUNITY_NAME": "Community Name",
@@ -71,24 +74,21 @@ create_placeholder "references/client-profile.json" '{
 }'
 
 # Account config
-create_placeholder "shared/linkedin-account-config.md"                        "$CONFIG_PLACEHOLDER"
-create_placeholder "linkedin-daily-planner/shared/linkedin-account-config.md" "$CONFIG_PLACEHOLDER"
+create_placeholder "linkedin-core/shared/linkedin-account-config.md"                        "$CONFIG_PLACEHOLDER"
 
 # Activity logs
-create_placeholder "shared/logs/linkedin-activity.md"            "$LOG_PLACEHOLDER"
-create_placeholder "shared/logs/icp-prospects.md"                "$LOG_PLACEHOLDER"
-create_placeholder "shared/logs/linkedin-blacklist.md"           "$LOG_PLACEHOLDER"
-create_placeholder "shared/logs/inbound-screening-history.md"    "$LOG_PLACEHOLDER"
-create_placeholder "shared/logs/company-pages-activity.md"       "$LOG_PLACEHOLDER"
-create_placeholder "shared/logs/x-activity.md"                   "$LOG_PLACEHOLDER"
-create_placeholder "shared/logs/whatsapp-activity.md"            "$LOG_PLACEHOLDER"
-create_placeholder "shared/logs/instagram-activity.md"           "$LOG_PLACEHOLDER"
-create_placeholder "shared/logs/thought-leaders-agentic-ai.md"   "$LOG_PLACEHOLDER"
-create_placeholder "shared/logs/algorithm-changes.md"            "$LOG_PLACEHOLDER"
-create_placeholder "shared/logs/video-activity.md"               "$LOG_PLACEHOLDER"
+create_placeholder "linkedin-core/shared/logs/linkedin-activity.md"            "$LOG_PLACEHOLDER"
+create_placeholder "linkedin-core/shared/logs/icp-prospects.md"                "$LOG_PLACEHOLDER"
+create_placeholder "linkedin-core/shared/logs/linkedin-blacklist.md"           "$LOG_PLACEHOLDER"
+create_placeholder "linkedin-core/shared/logs/inbound-screening-history.md"    "$LOG_PLACEHOLDER"
+create_placeholder "linkedin-core/shared/logs/company-pages-activity.md"       "$LOG_PLACEHOLDER"
+create_placeholder "linkedin-core/shared/logs/x-activity.md"                   "$LOG_PLACEHOLDER"
+create_placeholder "linkedin-core/shared/logs/whatsapp-activity.md"            "$LOG_PLACEHOLDER"
+create_placeholder "linkedin-core/shared/logs/instagram-activity.md"           "$LOG_PLACEHOLDER"
+create_placeholder "linkedin-core/shared/logs/thought-leaders-agentic-ai.md"   "$LOG_PLACEHOLDER"
+create_placeholder "linkedin-core/shared/logs/algorithm-changes.md"            "$LOG_PLACEHOLDER"
+create_placeholder "linkedin-core/shared/logs/video-activity.md"               "$LOG_PLACEHOLDER"
 create_placeholder "linkedin-connect-timer/logs/activity-log.md" "$LOG_PLACEHOLDER"
-create_placeholder "linkedin-daily-planner/shared/logs/linkedin-activity.md" "$LOG_PLACEHOLDER"
-create_placeholder "linkedin-daily-planner/shared/logs/icp-prospects.md"     "$LOG_PLACEHOLDER"
 create_placeholder "linkedin-icp-warmer/logs/warmup-runs.md"     "$LOG_PLACEHOLDER"
 create_placeholder "linkedin-icp-finder/references/icp-profile.md" "$CONFIG_PLACEHOLDER"
 

@@ -226,7 +226,7 @@ Consider checking back later or searching for specific topics.
 
 ## Shared Activity Log
 
-**Log location:** `shared/logs/reddit-activity.md`
+**Log location:** `linkedin-core/shared/logs/reddit-activity.md`
 
 ### On Each Run:
 1. **Read shared log first** to check:

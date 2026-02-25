@@ -125,7 +125,7 @@ When triggered:
 
 ## Activity Logging
 
-**Log location:** `shared/logs/company-pages-activity.md`
+**Log location:** `linkedin-core/shared/logs/company-pages-activity.md`
 
 After each post:
 ```
@@ -142,4 +142,4 @@ After each post:
 
 - **x-trender**: Source for trending topics
 - **linkedin-elite-post**: Post writing framework
-- **shared/logs/**: Activity logging
+- **linkedin-core/shared/logs/**: Activity logging

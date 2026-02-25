@@ -414,7 +414,7 @@ The most valuable comments come from actually doing the work, not from having op
 
 ## Daily Commenting Strategy (360Brew Optimized)
 
-**Reference:** See `references/contact-classification.md` for full classification criteria.
+**Reference:** See `linkedin-core/references/contact-classification.md` for full classification criteria.
 
 **The 3-3-3 Rule (Minimum):**
 - 3 comments on **PEER** posts (1K-10K followers, fellow builders in AI/automation)
@@ -476,7 +476,7 @@ Sometimes the best engagement is no engagement:
 
 **ALWAYS read from the shared log first before generating comments.**
 
-**Log location:** `shared/logs/linkedin-activity.md`
+**Log location:** `linkedin-core/shared/logs/linkedin-activity.md`
 
 ### On Each Run:
 1. **Read shared log first** to check:

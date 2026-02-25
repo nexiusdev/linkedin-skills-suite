@@ -7,7 +7,7 @@ description: Contact classification and ICP discovery for LinkedIn engagement in
 
 Classify LinkedIn contacts and find prospects using the Digital Breadcrumb Strategy. Supports three contact types with tailored engagement approaches.
 
-**Reference:** `references/contact-classification.md` for full classification criteria.
+**Reference:** `linkedin-core/references/contact-classification.md` for full classification criteria.
 
 **🚨 STRICT GEOGRAPHY FILTER: {{CLIENT_TARGET_GEO_LIST}} ONLY**
 
@@ -38,7 +38,7 @@ Classify LinkedIn contacts and find prospects using the Digital Breadcrumb Strat
 
 Before ICP screening, classify each contact into one of three categories.
 
-**Reference:** See `references/contact-classification.md` for full criteria and flowchart.
+**Reference:** See `linkedin-core/references/contact-classification.md` for full criteria and flowchart.
 
 ### Classification Criteria
 
@@ -105,11 +105,11 @@ Engagement Strategy: [See category-specific approach below]
 
 ```
 BEFORE ANY LINKEDIN SEARCH:
-1. Read `shared/logs/icp-prospects.md`
+1. Read `linkedin-core/shared/logs/icp-prospects.md`
    → Check if prospect already exists (by Name or Profile URL)
    → Check Profile Cache for recent data (< 7 days old)
 
-2. Read `shared/logs/linkedin-activity.md`
+2. Read `linkedin-core/shared/logs/linkedin-activity.md`
    → Check Warming Up table (already engaged)
    → Check Connected table (already connected)
 
@@ -171,14 +171,14 @@ BEFORE ANY LINKEDIN SEARCH:
 
 ## Step 0b: Load ICP Profile
 
-**Always start by reading `references/icp-profile.md`** to load current ICP criteria.
+**Always start by reading `linkedin-core/references/icp-profile.md`** to load current ICP criteria.
 
 **If ICP not configured** (shows "[Not configured]"):
 1. Ask user: "I don't have an ICP profile configured yet. Would you like to:"
    - Provide your ICP criteria now (roles, company size, pain points)
    - Run linkedin-profile-icp on your LinkedIn profile first
    - Describe who your ideal customers are
-2. Once user provides info, update `references/icp-profile.md` with the new criteria
+2. Once user provides info, update `linkedin-core/references/icp-profile.md` with the new criteria
 3. Then proceed with screening
 
 **If ICP is configured**: Proceed to Step 0c.
@@ -187,7 +187,7 @@ BEFORE ANY LINKEDIN SEARCH:
 
 ## Step 0c: Check Account Type & Optimize Search Strategy
 
-**Read account config:** `shared/linkedin-account-config.md`
+**Read account config:** `linkedin-core/shared/linkedin-account-config.md`
 
 Check the Account Type and use the appropriate search strategy:
 
@@ -291,7 +291,7 @@ SEARCH OPTIMIZATION (SALES NAVIGATOR):
    → ALWAYS save leads to local icp-prospects.md IMMEDIATELY
    → Copy Lead Notes to local Notes column
    → Document Saved Searches in linkedin-account-config.md
-   → See: shared/linkedin-account-config.md → Data Preservation section
+   → See: linkedin-core/shared/linkedin-account-config.md → Data Preservation section
 ```
 
 ### Sales Navigator Data Export Rule
@@ -331,7 +331,7 @@ Determine what the user has provided:
 
 ## Step 2: ICP Screening (3-Second Scan)
 
-For each prospect, evaluate against the **loaded ICP criteria** from `references/icp-profile.md`:
+For each prospect, evaluate against the **loaded ICP criteria** from `linkedin-core/references/icp-profile.md`:
 
 ### 🚨 MANDATORY: Geography Filter (APPLY FIRST - NO EXCEPTIONS)
 
@@ -986,7 +986,7 @@ ACTION: Connect with event context → Follow up with value-add
 ### File Location
 
 ```
-shared/logs/icp-prospects.md
+linkedin-core/shared/logs/icp-prospects.md
 ```
 
 **Single consolidated file** - all prospects in one place, with Date Found column to track discovery.
@@ -1051,7 +1051,7 @@ Save when ALL of these are true:
 
 When you find new prospects:
 
-1. **Read** `shared/logs/icp-prospects.md`
+1. **Read** `linkedin-core/shared/logs/icp-prospects.md`
 2. **Check** if prospect already exists (by Profile URL)
 3. **Get next row number** (increment from last row)
 4. **Add new row** with all columns filled:
@@ -1063,7 +1063,7 @@ When you find new prospects:
 
 ### Where NOT to Save (Goes to Warming Up Instead)
 
-If you've **already engaged** with the prospect (commented, liked, saved), add them directly to the **Warming Up table** in `shared/logs/linkedin-activity.md` with:
+If you've **already engaged** with the prospect (commented, liked, saved), add them directly to the **Warming Up table** in `linkedin-core/shared/logs/linkedin-activity.md` with:
 - Touch count = 1
 - First Touch = today's date + engagement type
 
@@ -1125,7 +1125,7 @@ This makes it easy to reference specific prospects: "Let's warm up prospect #11"
 
 ## Updating the ICP Profile
 
-**When to update `references/icp-profile.md`:**
+**When to update `linkedin-core/references/icp-profile.md`:**
 
 1. **User provides new ICP info**: Directly update the relevant sections
 2. **linkedin-profile-icp output**: Copy the targeting criteria into the profile
@@ -1219,14 +1219,14 @@ Run these searches with ASEAN location filters:
 
 ## Integration
 
-- **linkedin-profile-icp**: Run first to generate ICP criteria → copy output to `references/icp-profile.md`
+- **linkedin-profile-icp**: Run first to generate ICP criteria → copy output to `linkedin-core/references/icp-profile.md`
 - **linkedin-pro-commenter-v5**: For HIGH FIT prospects needing refined comments
-- **references/target-list.md**: Goldmine accounts and search keywords (update based on ICP)
+- **linkedin-core/references/target-list.md**: Goldmine accounts and search keywords (update based on ICP)
 
 ## Quality Checklist
 
 **Before Screening (Both Modes):**
-- ✅ ICP profile loaded from `references/icp-profile.md`
+- ✅ ICP profile loaded from `linkedin-core/references/icp-profile.md`
 - ✅ Warming Up table checked (avoid re-discovering existing prospects)
 - ✅ Existing icp-prospects files checked (avoid duplicates)
 
@@ -1261,14 +1261,14 @@ Run these searches with ASEAN location filters:
 
 **ALWAYS read from the shared log first before screening prospects.**
 
-**Log location:** `shared/logs/linkedin-activity.md`
+**Log location:** `linkedin-core/shared/logs/linkedin-activity.md`
 
 ### Two Destination Files (Know the Difference)
 
 | File | Purpose | When to Use |
 |------|---------|-------------|
-| `shared/logs/icp-prospects-[date].md` | **Discovery** - raw list of found prospects | 0 touches, just discovered, not engaged yet |
-| `shared/logs/linkedin-activity.md` → Warming Up | **Pipeline** - actively warming prospects | 1+ touches, engagement started |
+| `linkedin-core/shared/logs/icp-prospects-[date].md` | **Discovery** - raw list of found prospects | 0 touches, just discovered, not engaged yet |
+| `linkedin-core/shared/logs/linkedin-activity.md` → Warming Up | **Pipeline** - actively warming prospects | 1+ touches, engagement started |
 
 **Flow:**
 ```

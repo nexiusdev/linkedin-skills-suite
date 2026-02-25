@@ -408,7 +408,7 @@ Anti-ICP: [What to skip]
 
 **After generating the targeting brief, automatically save to reference file.**
 
-**File location:** `references/icp-profile.md`
+**File location:** `linkedin-core/references/icp-profile.md`
 
 ```markdown
 # ICP Profile - [Name]
@@ -462,7 +462,7 @@ Anti-ICP: [What to skip]
 ```
 
 **Auto-save behavior:**
-- If `references/icp-profile.md` exists → Ask to overwrite or append
+- If `linkedin-core/references/icp-profile.md` exists → Ask to overwrite or append
 - If doesn't exist → Create new file
 - Always add entry to Update Log
 
@@ -481,7 +481,7 @@ Anti-ICP: [What to skip]
 **Refresh Workflow:**
 
 ```
-1. Read existing references/icp-profile.md
+1. Read existing linkedin-core/references/icp-profile.md
 2. Re-analyze LinkedIn profile (same Steps 1-9)
 3. Compare new analysis vs existing:
    - What changed?
@@ -489,7 +489,7 @@ Anti-ICP: [What to skip]
    - Any new insights?
 4. Output COMPARISON report
 5. Ask: "Update the ICP profile with these changes?"
-6. If yes → Update references/icp-profile.md with new data
+6. If yes → Update linkedin-core/references/icp-profile.md with new data
 ```
 
 **Refresh Output Format:**
@@ -534,7 +534,7 @@ Update ICP profile? (yes/no)
 
 | Skill | How It Uses ICP Profile |
 |-------|-------------------------|
-| **linkedin-icp-finder** | Reads `references/icp-profile.md` for screening criteria |
+| **linkedin-icp-finder** | Reads `linkedin-core/references/icp-profile.md` for screening criteria |
 | **linkedin-icp-warmer** | Uses ICP criteria to prioritize warming |
 | **linkedin-elite-post** | Uses content pillars for post creation |
 | **linkedin-pro-commenter** | Uses messaging angles for comment tone |
@@ -544,7 +544,7 @@ Update ICP profile? (yes/no)
 ```
 linkedin-profile-icp
          ↓
-   references/icp-profile.md
+   linkedin-core/references/icp-profile.md
          ↓
    ┌─────┴─────┬─────────────┬──────────────┐
    ↓           ↓             ↓              ↓
@@ -581,5 +581,5 @@ icp-finder  icp-warmer  elite-post  pro-commenter
 - ✅ Search keywords are terms prospects actually use
 
 **File Management:**
-- ✅ Output saved to `references/icp-profile.md`
+- ✅ Output saved to `linkedin-core/references/icp-profile.md`
 - ✅ Update Log entry added with date

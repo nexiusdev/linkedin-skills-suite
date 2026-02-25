@@ -13,13 +13,13 @@ First-time setup that customizes all LinkedIn outreach skills for a new user's s
 1. Collects business and positioning information through guided questions
 2. Optionally analyzes user's LinkedIn profile for ICP extraction
 3. Generates personalized reference files:
-   - `references/icp-profile.md` - Target customer criteria
-   - `references/contact-classification.md` - How to classify contacts
-   - `references/connect-request.md` - Connection request templates
-   - `references/saved-asset.md` - Save-worthy content examples
-   - `references/linkedin-strategy.md` - Personalized strategy doc
-4. Generates `references/client-profile.json` for tokenized personalization
-5. Runs `shared/scripts/render-client-config.py` to apply client values across tokenized files
+   - `linkedin-core/references/icp-profile.md` - Target customer criteria
+   - `linkedin-core/references/contact-classification.md` - How to classify contacts
+   - `linkedin-core/references/connect-request.md` - Connection request templates
+   - `linkedin-core/references/saved-asset.md` - Save-worthy content examples
+   - `linkedin-core/references/linkedin-strategy.md` - Personalized strategy doc
+4. Generates `linkedin-core/references/client-profile.json` for tokenized personalization
+5. Runs `linkedin-core/shared/scripts/render-client-config.py` to apply client values across tokenized files
 
 ## Onboarding Flow
 
@@ -245,7 +245,7 @@ If skipped: Add a note to the post-onboarding checklist suggesting they set it u
 
 After collecting all information, generate these files:
 
-### 1. references/icp-profile.md
+### 1. linkedin-core/references/icp-profile.md
 
 ```markdown
 # ICP Profile - [Company Name]
@@ -297,21 +297,21 @@ Look for posts discussing:
 [Generate 6-8 search terms based on domain and pain keywords]
 ```
 
-### 2. references/contact-classification.md
+### 2. linkedin-core/references/contact-classification.md
 
 Use the template from `references/templates/contact-classification-template.md`, replacing:
 - PEER signals with Q10 answers
 - PROSPECT criteria with Q4, Q5, Q6, Q7 answers
 - Geographic focus from Q7
 
-### 3. references/connect-request.md
+### 3. linkedin-core/references/connect-request.md
 
 Generate connection request templates using:
 - Company name from Q1
 - Domain/niche from Q2
 - Asset types from Q11
 
-### 4. references/saved-asset.md
+### 4. linkedin-core/references/saved-asset.md
 
 Generate save-worthy asset guidance using:
 - Asset types from Q11
@@ -325,9 +325,9 @@ Replace the {{CLIENT_TARGET_GEO}} filter with the user's Q7 geography:
 - If specific countries: Update the country list
 - If region: Update to region check
 
-### 6. Generate references/client-profile.json
+### 6. Generate linkedin-core/references/client-profile.json
 
-Create/update `references/client-profile.json` with these values:
+Create/update `linkedin-core/references/client-profile.json` with these values:
 
 ```json
 {
@@ -349,7 +349,7 @@ Create/update `references/client-profile.json` with these values:
 Run:
 
 ```bash
-python shared/scripts/render-client-config.py --profile references/client-profile.json
+python linkedin-core/shared/scripts/render-client-config.py --profile linkedin-core/references/client-profile.json
 ```
 
 This applies `{{CLIENT_*}}` tokens across skills/scripts/docs so brand names, paths, timezone labels, geography text, and profile handles match the new client.
@@ -362,13 +362,13 @@ After generating files, display:
 Onboarding complete! Your LinkedIn skills are now customized for [Company Name].
 
 Files created/updated:
-- references/icp-profile.md
-- references/contact-classification.md
-- references/connect-request.md
-- references/saved-asset.md
-- references/linkedin-strategy.md
+- linkedin-core/references/icp-profile.md
+- linkedin-core/references/contact-classification.md
+- linkedin-core/references/connect-request.md
+- linkedin-core/references/saved-asset.md
+- linkedin-core/references/linkedin-strategy.md
 - linkedin-icp-finder/references/icp-profile.md (symlinked)
-- references/client-profile.json
+- linkedin-core/references/client-profile.json
 
 Next steps:
 1. Review the generated files and adjust any details
