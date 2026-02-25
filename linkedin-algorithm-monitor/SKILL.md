@@ -51,7 +51,7 @@ Last 7 days only (quick scan for recent updates)
 **Primary Sources (Official/Trusted):**
 1. LinkedIn Official Blog - blog.linkedin.com
 2. LinkedIn Engineering Blog - engineering.linkedin.com
-3. Richard van der Blom (360Brew) - LinkedIn algorithm researcher
+3. independent LinkedIn algorithm researcher (360Brew) - LinkedIn algorithm researcher
 4. LinkedIn Help Center updates
 
 **Secondary Sources:**
@@ -68,7 +68,7 @@ Execute these web searches in sequence:
 1. "LinkedIn algorithm update [current month] 2026"
 2. "LinkedIn algorithm changes this week"
 3. "360Brew algorithm update 2026"
-4. "Richard van der Blom LinkedIn 2026"
+4. "independent LinkedIn algorithm researcher LinkedIn 2026"
 5. "LinkedIn reach changes 2026"
 6. "LinkedIn posting best practices [current month] 2026"
 7. "LinkedIn engagement changes 2026"
@@ -302,7 +302,7 @@ When triggered, execute this workflow:
    - "LinkedIn algorithm update January 2026"
    - "LinkedIn algorithm changes this week"
    - "360Brew algorithm update 2026"
-   - "Richard van der Blom LinkedIn 2026"
+   - "independent LinkedIn algorithm researcher LinkedIn 2026"
    - "LinkedIn reach changes 2026"
 3. For each search result, extract:
    - The specific change mentioned

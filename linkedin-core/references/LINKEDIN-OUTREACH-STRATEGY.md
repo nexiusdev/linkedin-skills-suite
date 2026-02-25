@@ -40,7 +40,7 @@ This LinkedIn outreach strategy is built for the 2026 360Brew algorithm era, des
 - SME decision-makers as primary ICP
 - Technical content (schemas, PRDs, logic diagrams) that gets saved
 - Authentic commenting that proves genuine engagement
-- Autonomous workflow execution via Claude Code + Chrome
+- Autonomous workflow execution via Codex Code + Chrome
 
 ---
 
@@ -731,7 +731,7 @@ The central log tracks all engagement for token optimization and progress tracki
 
 ### Quick Start Options
 
-**Option 1: Run directly in Claude Code**
+**Option 1: Run directly in Codex Code**
 ```
 start linkedin
 ```
@@ -836,7 +836,7 @@ linkedin-daily-planner/scripts/
 
 ---
 
-*This documentation synthesizes the complete LinkedIn skill suite for autonomous execution via Claude Code + Chrome. For specific skill usage, refer to individual skill files in the skills directory.*
+*This documentation synthesizes the complete LinkedIn skill suite for autonomous execution via Codex Code + Chrome. For specific skill usage, refer to individual skill files in the skills directory.*
 
 ---
 
@@ -878,7 +878,7 @@ These work for any business:
 | `linkedin-pro-commenter/skill.md` | "When to Mention {{CLIENT_BRAND_PRIMARY}}", deployment examples | Update company name, example metrics |
 | `linkedin-trender/skill.md` | "Positioning Context" section | Update niche keywords, angles |
 | `linkedin-core/references/linkedin-strategy.md` | "Agentic AI and SME Automation" references | Update to new domain/focus |
-| `linkedin-core/references/connect-request.md` | Asset-led note templates, "Nexius Style" | Update templates, company name |
+| `linkedin-core/references/connect-request.md` | Asset-led note templates, "Client Style" | Update templates, company name |
 | `linkedin-core/references/saved-asset.md` | Example schemas, hooks reference Agentic ERP | Update asset examples for new domain |
 
 #### LOW Priority (Generic/Optional)

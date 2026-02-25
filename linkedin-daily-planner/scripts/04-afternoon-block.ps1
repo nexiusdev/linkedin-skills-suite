@@ -9,7 +9,7 @@ try {
 
     # Execute afternoon block tasks
     $prompt = "Resume LinkedIn daily plan - execute afternoon block tasks"
-    $result = & claude-code $prompt 2>&1
+    $result = & codex $prompt 2>&1
 
     Add-Content -Path $logFile -Value "[$timestamp] Afternoon block completed"
     Add-Content -Path $logFile -Value $result

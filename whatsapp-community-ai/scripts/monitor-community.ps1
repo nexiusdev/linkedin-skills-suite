@@ -1,5 +1,5 @@
 # {{CLIENT_COMMUNITY_NAME}} WhatsApp Monitor
-# Runs Claude Code to check for unanswered questions and auto-reply
+# Runs Codex Code to check for unanswered questions and auto-reply
 # Schedule this script to run every 15 minutes via Windows Task Scheduler
 
 # Set working directory
@@ -12,8 +12,8 @@ if ($currentHour -lt 7 -or $currentHour -ge 23) {
     exit 0
 }
 
-# Run Claude Code with monitoring command
+# Run codex with monitoring command
 Write-Host "Starting {{CLIENT_COMMUNITY_NAME}} monitoring at $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')"
-claude "monitor ai ignite"
+codex "monitor {{CLIENT_COMMUNITY_NAME}}"
 
 Write-Host "Monitoring complete at $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')"

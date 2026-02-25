@@ -2,7 +2,7 @@
 """
 CLI wrapper for HubSpot CRM sync operations.
 
-Fallback for when MCP tools aren't loaded in Claude Code session.
+Fallback for when MCP tools aren't loaded in Codex Code session.
 Reuses the same logic as hubspot_mcp.py but callable via command line.
 
 Usage:

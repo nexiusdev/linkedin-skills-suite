@@ -1,8 +1,8 @@
 # Setup script for {{CLIENT_COMMUNITY_NAME}} Monitor scheduled task
 # Run this script once to create the 15-minute monitoring task
 
-$taskName = "AI-Ignite-Monitor"
-$scriptPath = "{{CLIENT_WORKSPACE_ROOT}}\whatsapp-community-ai\scripts\monitor-ai-ignite.ps1"
+$taskName = "Community-Monitor"
+$scriptPath = "{{CLIENT_WORKSPACE_ROOT}}\whatsapp-community-ai\scripts\monitor-community.ps1"
 
 # Check if task already exists
 $existingTask = Get-ScheduledTask -TaskName $taskName -ErrorAction SilentlyContinue

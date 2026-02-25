@@ -45,7 +45,7 @@ When user triggers autonomous mode ("start linkedin"):
 - ❌ Do NOT ask user to select variations - AI auto-selects
 - ❌ Do NOT wait for confirmation - proceed automatically
 - ✅ Execute all tasks for current time block
-- ✅ Use browser MCP (Chrome DevTools or Playwright) for all LinkedIn actions
+- ✅ Use Chrome DevTools MCP (default; Playwright fallback) for all LinkedIn actions
 - ✅ Log everything to shared activity log
 - ✅ Move to next task immediately after completion
 
@@ -108,7 +108,7 @@ When user triggers autonomous mode ("start linkedin"):
      - CHECK: Post NOT in "already commented" set (COMMENT DEDUP RULE)
      - If duplicate detected → Skip post, find replacement
      - Generate comment using linkedin-pro-commenter (AI auto-selects)
-     - Post comment via browser MCP (Chrome DevTools or Playwright)
+     - Post comment via Chrome DevTools MCP (default; Playwright fallback)
      - Update "already commented" set with new post identifier
      - Update daily limits: Comments +1
    → Log all comments to shared activity log

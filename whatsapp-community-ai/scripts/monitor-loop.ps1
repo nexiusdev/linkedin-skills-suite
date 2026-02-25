@@ -8,7 +8,7 @@ $activeEndHour = 23    # 11 PM
 
 Write-Host ""
 Write-Host "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" -ForegroundColor Cyan
-Write-Host "🔄 AI IGNITE MONITOR - CONTINUOUS MODE" -ForegroundColor Cyan
+Write-Host "🔄 {{CLIENT_COMMUNITY_NAME}} MONITOR - CONTINUOUS MODE" -ForegroundColor Cyan
 Write-Host "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" -ForegroundColor Cyan
 Write-Host ""
 Write-Host "Interval: Every $intervalMinutes minutes"
@@ -37,8 +37,8 @@ while ($true) {
         Write-Host "[$currentTime] 🔍 Starting monitoring cycle #$cycleCount..." -ForegroundColor Green
         Write-Host ""
 
-        # Run Claude Code with monitoring command
-        claude "monitor ai ignite"
+        # Run codex with monitoring command
+        codex "monitor {{CLIENT_COMMUNITY_NAME}}"
 
         Write-Host ""
         Write-Host "[$currentTime] ✅ Cycle #$cycleCount complete" -ForegroundColor Green

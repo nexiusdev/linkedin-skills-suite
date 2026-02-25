@@ -42,7 +42,7 @@ Add to your MCP server config in `.mcp.json`:
 ```json
 "hubspot-crm": {
   "command": "python",
-  "args": ["C:\\Users\\{{CLIENT_LOCAL_USER}}\\.claude\\skills\\crm-integration\\hubspot_mcp.py"],
+  "args": ["C:\\Users\\{{CLIENT_LOCAL_USER}}\\.codex\\skills\\crm-integration\\hubspot_mcp.py"],
   "env": {
     "HUBSPOT_API_KEY": "pat-na1-xxxxx",
     "HUBSPOT_PORTAL_ID": "12345678",

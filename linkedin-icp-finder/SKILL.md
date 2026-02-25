@@ -1,6 +1,6 @@
 ---
 name: linkedin-icp-finder
-description: Contact classification and ICP discovery for LinkedIn engagement in ASEAN markets. Classifies contacts as PEER (1K-10K followers, same niche), THOUGHT LEADER (10K+ followers), or PROSPECT (ICP criteria match). Use when user says "start icp", "classify contacts", "find prospects", or wants to screen LinkedIn profiles. Designed to work with browser MCP (Chrome DevTools or Playwright). References contact-classification.md for classification criteria and icp-profile.md for ICP screening. Outputs classification verdicts, engagement recommendations, and comment strategies per contact type.
+description: Contact classification and ICP discovery for LinkedIn engagement in ASEAN markets. Classifies contacts as PEER (1K-10K followers, same niche), THOUGHT LEADER (10K+ followers), or PROSPECT (ICP criteria match). Use when user says "start icp", "classify contacts", "find prospects", or wants to screen LinkedIn profiles. Designed to work with Chrome DevTools MCP (default; Playwright fallback). References contact-classification.md for classification criteria and icp-profile.md for ICP screening. Outputs classification verdicts, engagement recommendations, and comment strategies per contact type.
 ---
 
 # LinkedIn Contact Classifier & ICP Finder

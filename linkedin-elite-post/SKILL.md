@@ -195,11 +195,11 @@ Match your content type to the optimal day:
 | Thought Leadership | Thursday | End-of-week reflection mode |
 | Personal Story / Win | Friday | Light, human content performs well |
 
-## browser MCP (Chrome DevTools or Playwright): Schedule Post Workflow
+## Chrome DevTools MCP (default; Playwright fallback): Schedule Post Workflow
 
 **MANDATORY: Never click "Post" immediately. Always use LinkedIn's "Schedule" feature.**
 
-When using browser MCP (Chrome DevTools or Playwright) to publish content, follow this workflow:
+When using Chrome DevTools MCP (default; Playwright fallback) to publish content, follow this workflow:
 
 ### Step 1: Open Post Composer
 1. Navigate to LinkedIn homepage
@@ -245,7 +245,7 @@ After scheduling:
 
 ### Element References for Automation
 
-When automating via browser MCP (Chrome DevTools or Playwright):
+When automating via Chrome DevTools MCP (default; Playwright fallback):
 - **Post composer trigger**: "Start a post" button on homepage
 - **Schedule icon**: Clock icon (🕐) in composer toolbar, typically bottom-left
 - **Date picker**: Calendar interface after clicking clock icon
@@ -402,7 +402,7 @@ Automatically invoke linkedin-image-generator when:
 2. **AI auto-selects best variation** (based on selection criteria)
 3. **Invoke linkedin-image-generator** with selected post content
 4. Image saved to `linkedin-image-generator/assets/generated/`
-5. Schedule post via browser MCP (Chrome DevTools or Playwright) (attach image)
+5. Schedule post via Chrome DevTools MCP (default; Playwright fallback) (attach image)
 6. User can override selection at any point
 
 ### Output with Image

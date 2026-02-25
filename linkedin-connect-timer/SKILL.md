@@ -120,7 +120,7 @@ Navigate to user's recent activity:
 https://www.linkedin.com/in/{{CLIENT_LINKEDIN_HANDLE}}/recent-activity/all/
 ```
 
-Use browser MCP (Chrome DevTools or Playwright) to read the activity feed.
+Use Chrome DevTools MCP (default; Playwright fallback) to read the activity feed.
 
 **Incremental Read Logic:**
 ```

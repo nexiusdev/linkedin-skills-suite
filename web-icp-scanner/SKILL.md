@@ -884,7 +884,7 @@ Standard rejection reasons (for consistent learning):
 ```
 User: "reject #135 - too large, SBF is an association not SME"
 
-Claude:
+Codex:
 ✓ Rejected: Kok Ping Soon (Singapore Business Federation)
 ✓ Reason logged: "too large, association not SME"
 ✓ Learning updated:
@@ -1148,7 +1148,7 @@ Trigger: "review icp learning"
 ```
 User: "scan web for prospects"
 
-Claude: Reading ICP profile and learning history...
+Codex: Reading ICP profile and learning history...
 
 **ICP Loaded:**
 - Target: SME Founders/CEOs, Operations Directors, Finance Directors

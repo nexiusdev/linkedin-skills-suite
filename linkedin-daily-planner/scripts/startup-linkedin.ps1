@@ -126,7 +126,7 @@ if (Test-Path $scriptPath) {
 } else {
     Write-Log "ERROR: start-linkedin.ps1 not found"
     Write-Host "Error: start-linkedin.ps1 not found at $scriptPath" -ForegroundColor Red
-    Write-Host "Run 'start linkedin' manually in Claude Code." -ForegroundColor Yellow
+    Write-Host "Run 'start linkedin' manually in Codex Code." -ForegroundColor Yellow
 }
 
 Write-Log "Startup script completed"

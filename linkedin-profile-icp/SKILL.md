@@ -46,7 +46,7 @@ LinkedIn's 360Brew algorithm "reads" your profile to verify your "Right to Speak
 User provides their LinkedIn profile via:
 - Copy-pasted profile sections (headline, about, experience)
 - Screenshot of profile
-- LinkedIn profile URL (requires browser MCP (Chrome DevTools or Playwright))
+- LinkedIn profile URL (requires Chrome DevTools MCP (default; Playwright fallback))
 
 ## Workflow
 

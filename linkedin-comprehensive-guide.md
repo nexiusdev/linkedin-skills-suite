@@ -1052,8 +1052,8 @@ linkedin-daily-planner divides your day into engagement blocks with specific tar
 
 linkedin-daily-planner uses two automation stacks:
 
-**Primary:** Claude for Chrome (if available)
-**Fallback:** Chrome DevTools MCP server
+**Primary:** Chrome DevTools MCP (default)
+**Fallback:** Playwright MCP
 
 **Tool mapping documented in the skill file.**
 

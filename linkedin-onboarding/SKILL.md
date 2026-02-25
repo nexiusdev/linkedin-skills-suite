@@ -34,6 +34,9 @@ Ask these questions (use AskUserQuestion tool for structured collection):
 **Q1b: Branding & Runtime Variables**
 - "Do you have secondary brand names or sub-brands?" (e.g., academy/education brand)
 - "Do you have a named community/group?" (e.g., WhatsApp/Slack/Discord community name)
+- "What is the LinkedIn company page slug for your primary brand?" (from `/company/<slug>/`)
+- "What is the LinkedIn company page slug for your secondary brand?" (or reuse primary slug if not applicable)
+- "What is the LinkedIn company page slug for your community page?" (or use a placeholder slug if not applicable)
 - "What should we use as founder/operator display name?"
 - "What is your LinkedIn handle slug?" (e.g., `my-name` from `/in/my-name/`)
 - "What is your local workspace root path?" (e.g., `C:\\Users\\you\\linkedin-skills-suite`)
@@ -141,10 +144,15 @@ If yes, guide the client through Google Cloud Service Account setup:
 
 Run in terminal:
 ```bash
-claude mcp add google-sheets -s user -e GOOGLE_APPLICATION_CREDENTIALS=/path/to/gsheets-service-account.json -e GOOGLE_PROJECT_ID=your-project-id -- npx -y mcp-gsheets@latest
+codex mcp add google-sheets -s user -e GOOGLE_APPLICATION_CREDENTIALS=/path/to/gsheets-service-account.json -e GOOGLE_PROJECT_ID=your-project-id -- npx -y mcp-gsheets@latest
 ```
 
 Replace `/path/to/gsheets-service-account.json` with the actual path to the downloaded JSON key, and `your-project-id` with the Google Cloud project ID.
+
+Capture these values in `client-profile.json` tokens:
+- `CLIENT_GSHEETS_CREDENTIALS_FILE`: filename/path used by the sync script (for example `gsheets-service-account.json`)
+- `CLIENT_GSHEETS_PROJECT_ID`: Google Cloud project ID
+- `CLIENT_GSHEETS_SERVICE_ACCOUNT_EMAIL`: service account email shared on spreadsheets
 
 **Step 4: Share spreadsheets with the service account**
 
@@ -332,9 +340,15 @@ Create/update `linkedin-core/references/client-profile.json` with these values:
 ```json
 {
   "CLIENT_BRAND_PRIMARY": "[Q1 company name]",
+  "CLIENT_BRAND_PRIMARY_SLUG": "[Q1b primary brand LinkedIn page slug]",
   "CLIENT_BRAND_SECONDARY": "[Q1b secondary brand or same as primary]",
+  "CLIENT_BRAND_SECONDARY_SLUG": "[Q1b secondary brand LinkedIn page slug or same as primary]",
   "CLIENT_COMMUNITY_NAME": "[Q1b community name or generic fallback]",
+  "CLIENT_COMMUNITY_SLUG": "[Q1b community LinkedIn page slug or placeholder slug]",
   "CLIENT_FOUNDER_NAME": "[Q1b founder/operator name]",
+  "CLIENT_GSHEETS_CREDENTIALS_FILE": "[Q13a credentials file, or default gsheets-service-account.json]",
+  "CLIENT_GSHEETS_PROJECT_ID": "[Q13a Google project id, or default your-google-project-id]",
+  "CLIENT_GSHEETS_SERVICE_ACCOUNT_EMAIL": "[Q13a service account email, or placeholder value]",
   "CLIENT_LINKEDIN_HANDLE": "[Q1b LinkedIn handle]",
   "CLIENT_TIMEZONE": "[Q12 timezone]",
   "CLIENT_TARGET_GEO": "[Q7 region label]",

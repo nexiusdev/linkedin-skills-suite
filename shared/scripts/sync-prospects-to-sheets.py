@@ -6,8 +6,8 @@ Auto-runs as part of linkedin-daily-planner Evening Block.
 Prerequisites:
 - pip install gspread google-auth
 - Service account JSON key at SERVICE_ACCOUNT_FILE path
-- Spreadsheet shared with: claude-sheets@gen-lang-client-0759962377.iam.gserviceaccount.com (Editor)
-- Google Drive API + Google Sheets API enabled on project gen-lang-client-0759962377
+- Spreadsheet shared with: {{CLIENT_GSHEETS_SERVICE_ACCOUNT_EMAIL}} (Editor)
+- Google Drive API + Google Sheets API enabled on project {{CLIENT_GSHEETS_PROJECT_ID}}
 
 Trigger: "sync to googlesheet" or auto-run in Evening Block
 """
@@ -20,11 +20,11 @@ import os
 from datetime import datetime
 
 # --- Configuration ---
-SERVICE_ACCOUNT_FILE = r"{{CLIENT_WORKSPACE_ROOT}}\gen-lang-client-0759962377-207882157ce2.json"
+SERVICE_ACCOUNT_FILE = r"{{CLIENT_WORKSPACE_ROOT}}\{{CLIENT_GSHEETS_CREDENTIALS_FILE}}"
 PROSPECTS_FILE = r"{{CLIENT_WORKSPACE_ROOT}}\linkedin-core\shared\logs\icp-prospects.md"
 SPREADSHEET_ID = "1-3Ua8O6vwqHtuUe17VepNpWPWPeT0eeL8jXfN40lfKc"
 DRIVE_FOLDER_ID = "1PAvNtv07W2wsLkAgIr93xxPCeoINjAnX"
-SERVICE_ACCOUNT_EMAIL = "claude-sheets@gen-lang-client-0759962377.iam.gserviceaccount.com"
+SERVICE_ACCOUNT_EMAIL = "{{CLIENT_GSHEETS_SERVICE_ACCOUNT_EMAIL}}"
 CSV_BACKUP_DIR = r"{{CLIENT_WORKSPACE_ROOT}}\linkedin-core\shared\logs\backups"
 
 SCOPES = [

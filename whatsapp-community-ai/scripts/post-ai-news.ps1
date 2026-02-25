@@ -1,5 +1,5 @@
 # {{CLIENT_COMMUNITY_NAME}} News Poster
-# Runs Claude Code to find and post AI news to WhatsApp
+# Runs Codex Code to find and post AI news to WhatsApp
 # Schedule: 10 AM and 8 PM {{CLIENT_TIMEZONE}}, weekdays only
 
 # Set working directory
@@ -12,8 +12,8 @@ if ($dayOfWeek -eq 0 -or $dayOfWeek -eq 6) {
     exit 0
 }
 
-# Run Claude Code with posting command
+# Run codex with posting command
 Write-Host "Starting {{CLIENT_COMMUNITY_NAME}} news posting at $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')"
-claude "post ai news to ai ignite"
+codex "post ai news to {{CLIENT_COMMUNITY_NAME}}"
 
 Write-Host "Posting complete at $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')"

@@ -1,7 +1,7 @@
 # Setup script for {{CLIENT_COMMUNITY_NAME}} News Poster scheduled tasks
 # Run this script once to create the 10 AM and 8 PM posting tasks (weekdays only)
 
-$taskName = "AI-Ignite-News-Poster"
+$taskName = "Community-News-Poster"
 $scriptPath = "{{CLIENT_WORKSPACE_ROOT}}\whatsapp-community-ai\scripts\post-ai-news.ps1"
 
 # Check if task already exists

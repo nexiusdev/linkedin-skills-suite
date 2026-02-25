@@ -1,11 +1,11 @@
 ---
 name: linkedin-company-pages
-description: Manage daily LinkedIn posts for 3 company pages ({{CLIENT_BRAND_PRIMARY}}, {{CLIENT_BRAND_SECONDARY}}, {{CLIENT_COMMUNITY_NAME}}). Use when user says "post to company pages", "company page posts", "manage company pages", or "daily company content". Fully autonomous workflow - finds trending topics via x-trender, selects 1 topic per page based on positioning, generates posts, and publishes via browser automation (browser MCP (Chrome DevTools or Playwright) or DevTools fallback). No approval needed.
+description: Manage daily LinkedIn posts for 3 company pages ({{CLIENT_BRAND_PRIMARY}}, {{CLIENT_BRAND_SECONDARY}}, {{CLIENT_COMMUNITY_NAME}}). Use when user says "post to company pages", "company page posts", "manage company pages", or "daily company content". Fully autonomous workflow - finds trending topics via x-trender, selects 1 topic per page based on positioning, generates posts, and publishes via browser automation using Chrome DevTools MCP by default, with Playwright fallback. No approval needed.
 ---
 
 # LinkedIn Company Pages Manager
 
-**Browser automation uses browser MCP (Chrome DevTools or Playwright) if available, otherwise falls back to Chrome DevTools. See linkedin-daily-planner skill for detailed tool mapping.**
+**Browser automation uses Chrome DevTools MCP by default, with Playwright fallback if unavailable. See linkedin-daily-planner skill for detailed tool mapping.**
 
 Autonomous daily content creation and posting for 3 company pages with distinct positioning.
 
@@ -13,9 +13,9 @@ Autonomous daily content creation and posting for 3 company pages with distinct 
 
 | Page | LinkedIn ID | URL Slug | Focus | Content Pillars |
 |------|-------------|----------|-------|-----------------|
-| **{{CLIENT_BRAND_PRIMARY}}** | 105886234 | nexius-labs | Agentic AI ERP for SMEs | Product updates, AI automation wins, SME transformation stories |
-| **{{CLIENT_BRAND_SECONDARY}}** | 109310332 | nexius-academy | AI workshops for non-coders | Learning tips, workshop highlights, non-coder success stories |
-| **{{CLIENT_COMMUNITY_NAME}}** | 104472305 | aiignite2022 | AI events for business leaders | Industry insights, event announcements, AI implementation trends |
+| **{{CLIENT_BRAND_PRIMARY}}** | 105886234 | {{CLIENT_BRAND_PRIMARY_SLUG}} | Agentic AI ERP for SMEs | Product updates, AI automation wins, SME transformation stories |
+| **{{CLIENT_BRAND_SECONDARY}}** | 109310332 | {{CLIENT_BRAND_SECONDARY_SLUG}} | AI workshops for non-coders | Learning tips, workshop highlights, non-coder success stories |
+| **{{CLIENT_COMMUNITY_NAME}}** | 104472305 | {{CLIENT_COMMUNITY_SLUG}} | AI events for business leaders | Industry insights, event announcements, AI implementation trends |
 
 ## Autonomous Workflow
 

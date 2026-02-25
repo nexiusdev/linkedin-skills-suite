@@ -224,7 +224,7 @@ Load these as needed for deeper guidance:
 - **references/selection-guide.md** - Detailed selection heuristics, decision tree, and examples for choosing best variation
 - **references/strategy-guide.md** - Core LinkedIn engagement strategy and principles
 - **references/comment-patterns.md** - 7 proven comment patterns with examples
-- **references/nexius-positioning.md** - {{CLIENT_BRAND_PRIMARY}} value prop, expertise areas, proof points
+- **linkedin-core/references/linkedin-strategy.md** - {{CLIENT_BRAND_PRIMARY}} positioning, expertise areas, and proof points
 
 ## Automatic AI Selection of Best Variation
 

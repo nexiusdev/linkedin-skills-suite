@@ -1,4 +1,4 @@
-# Claude Skills Project Memory
+# Codex Skills Project Memory
 
 ## Key Learnings
 
@@ -34,8 +34,8 @@
 - **Files:** `crm-integration/cli_sync.py` (CLI wrapper), `crm-integration/hubspot_mcp.py` (MCP server + shared logic)
 
 ### MCP Tools Are Deferred - Use CLI Fallback for CRM (10 Feb 2026)
-- **RULE:** With 8+ MCP servers, Claude Code defers tool loading to save context (Tool Search feature)
-- Only ~3 servers' tools load per session (playwright, kling, claude-in-chrome typically)
+- **RULE:** With 8+ MCP servers, Codex Code defers tool loading to save context (Tool Search feature)
+- Only ~3 servers' tools load per session (playwright, kling, chrome-devtools typically)
 - hubspot-crm, gdrive, chrome-devtools, HeyGen, mcp-veo3, google-sheets are deferred
 - **CRM SYNC FIX:** Use CLI script instead of MCP tools:
   - `python crm-integration/cli_sync.py sync "Name1" "Name2"` — always works
@@ -88,14 +88,14 @@
 ### Google Sheets Sync (Trigger: "sync to googlesheet")
 - **Spreadsheet ID:** `1-3Ua8O6vwqHtuUe17VepNpWPWPeT0eeL8jXfN40lfKc`
 - **Drive Folder ID:** `1PAvNtv07W2wsLkAgIr93xxPCeoINjAnX`
-- **Service Account:** `claude-sheets@gen-lang-client-0759962377.iam.gserviceaccount.com`
-- **Credentials file:** `gen-lang-client-0759962377-207882157ce2.json` (in project root)
+- **Service Account:** `{{CLIENT_GSHEETS_SERVICE_ACCOUNT_EMAIL}}`
+- **Credentials file:** `{{CLIENT_GSHEETS_CREDENTIALS_FILE}}` (in project root)
 - **Script:** `shared/scripts/sync-prospects-to-sheets.py`
 - **Command:** `python shared/scripts/sync-prospects-to-sheets.py`
 - **Source:** Reads markdown table from `shared/logs/icp-prospects.md` (NOT CSV)
 - **CSV Backups:** Auto-saved to `shared/logs/backups/` with format `icp-prospects_YYYYMMDDHHMM.csv`
 - **Dependencies:** `gspread`, `google-auth` (pip installed)
-- **APIs enabled:** Google Drive API + Google Sheets API on project `gen-lang-client-0759962377`
+- **APIs enabled:** Google Drive API + Google Sheets API on project `{{CLIENT_GSHEETS_PROJECT_ID}}`
 - **Sheet shared with SA as Editor** — do NOT revoke or the sync breaks
 - **Gotcha:** Service account Drive storage quota is limited — cannot create new sheets, only write to existing shared ones
 
@@ -109,13 +109,13 @@
 - **User preference:** "make all decisions to proceed autonomously and not ask me any questions"
 - **Skills affected:** linkedin-daily-planner, linkedin-icp-warmer, linkedin-pro-commenter, all content creation skills
 
-### Push Skills to nexiusdev (Trigger: "push skills to nexiusdev")
-- **Private repo:** `origin` = melkizac/claude-skills (dev branch, has personal data)
-- **Public repo:** `public` = nexiusdev/linkedin-skills-suite (master only, skills only)
+### Push Skills to Public Repo (Trigger: "push skills to public")
+- **Private repo:** `origin` = `<private-org>/<private-repo>` (dev branch, may contain personal data)
+- **Public repo:** `public` = `<public-org>/linkedin-skills-suite` (public branch, skills only)
 - **Workflow:**
   1. `git worktree add <temp-dir> public/master`
   2. Copy ONLY skill files from current working dir (use `git show public/dev:` or direct copy)
-  3. **EXCLUDE:** `shared/logs/icp-prospects.md`, `shared/logs/linkedin-activity.md`, `shared/logs/whatsapp-activity.md`, `shared/logs/video-activity.md`, `shared/linkedin-account-config.md`, `linkedin-daily-planner/to-do_*.md`, `to-do_*.md`, `**/logs/activity-log.md`, `**/logs/warmup-runs.md`, `.claude/settings.local.json`, `references/icp-profile.md`, `references/connect-request.md`, `references/contact-classification.md`, `references/linkedin-strategy.md`, `references/saved-asset.md`, any `data/` dirs with personal config
+  3. **EXCLUDE:** `shared/logs/icp-prospects.md`, `shared/logs/linkedin-activity.md`, `shared/logs/whatsapp-activity.md`, `shared/logs/video-activity.md`, `shared/linkedin-account-config.md`, `linkedin-daily-planner/to-do_*.md`, `to-do_*.md`, `**/logs/activity-log.md`, `**/logs/warmup-runs.md`, `.codex/settings.local.json`, `references/icp-profile.md`, `references/connect-request.md`, `references/contact-classification.md`, `references/linkedin-strategy.md`, `references/saved-asset.md`, any `data/` dirs with personal config
   4. **INCLUDE:** `*/skill.md`, `*/SKILL.md`, `*.skill`, scripts, references (generic), README, templates
   5. Commit, push to `public master`, remove worktree
-- **NEVER push dev branch to nexiusdev** — it contains prospect names, emails, LinkedIn URLs
+- **NEVER push private dev branch to public repo** — it may contain prospect names, emails, and LinkedIn URLs

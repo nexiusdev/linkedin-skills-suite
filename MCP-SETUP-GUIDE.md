@@ -4,15 +4,15 @@ This guide will help you set up the Model Context Protocol (MCP) servers require
 
 ## Overview
 
-The LinkedIn Skills Suite uses MCP servers to extend Claude's capabilities for browser automation, CRM integration, and optional video creation. Not all MCPs are required - choose based on your needs.
+The LinkedIn Skills Suite uses MCP servers to extend Codex's capabilities for browser automation, CRM integration, and optional video creation. Not all MCPs are required - choose based on your needs.
 
 ## MCP Requirements by Priority
 
 ### ✅ Required: Browser Automation
-**Primary: Claude in Chrome** (Recommended)
+**Primary: Chrome DevTools MCP** (Recommended)
 - Enables LinkedIn automation (posting, commenting, profile visits)
 - Best user experience with visual feedback
-- **Fallback: Playwright MCP** (automatic if Claude in Chrome unavailable)
+- **Fallback: Playwright MCP** (automatic if Chrome DevTools MCP unavailable)
 
 ### 🔵 Optional: CRM Integration
 **HubSpot CRM MCP**
@@ -43,7 +43,7 @@ The LinkedIn Skills Suite uses MCP servers to extend Claude's capabilities for b
    - See `.env.example` for all available options
 
 3. **Which keys do you need?**
-   - **Browser automation:** No API keys needed (Claude in Chrome extension handles it)
+   - **Browser automation:** No API keys needed (Chrome DevTools MCP extension handles it)
    - **HubSpot CRM:** Get from HubSpot Settings → Private Apps
    - **Email finder:** Pick ONE service (Apollo, Hunter, Snov.io, etc.)
    - **Video creation:** Optional - only if using video skills
@@ -52,17 +52,17 @@ The LinkedIn Skills Suite uses MCP servers to extend Claude's capabilities for b
 
 ## Installation Instructions
 
-### 1. Install Claude in Chrome (Primary Browser Automation)
+### 1. Install Chrome DevTools MCP (Primary Browser Automation)
 
 **Step 1: Install the Chrome Extension**
 1. Open Chrome browser
 2. Visit the Chrome Web Store
-3. Search for "Claude in Chrome" (or "Claude for Chrome")
+3. Search for "Chrome DevTools MCP"
 4. Click "Add to Chrome"
 5. Pin the extension to your toolbar
 
-**Step 2: Configure Claude Code Integration**
-1. Open Claude Code CLI
+**Step 2: Configure Codex Code Integration**
+1. Open Codex Code CLI
 2. The extension should auto-detect and connect
 3. Test by running: `/skill linkedin-onboarding`
 4. If prompted, authorize the extension connection
@@ -70,19 +70,19 @@ The LinkedIn Skills Suite uses MCP servers to extend Claude's capabilities for b
 **Verification:**
 ```bash
 # You should see browser automation tools available
-claude code --list-tools | grep "mcp__claude-in-chrome"
+codex --list-tools | grep "mcp__chrome-devtools"
 ```
 
 ---
 
 ### 2. Install Playwright MCP (Fallback Browser Automation)
 
-Playwright is automatically used as a fallback if Claude in Chrome is unavailable. No additional setup required - it's built into Claude Code.
+Playwright is automatically used as a fallback if Chrome DevTools MCP is unavailable. No additional setup required - it's built into Codex Code.
 
 **Verification:**
 ```bash
 # Check if Playwright tools are available
-claude code --list-tools | grep "mcp__playwright"
+codex --list-tools | grep "mcp__playwright"
 ```
 
 ---
@@ -97,7 +97,7 @@ claude code --list-tools | grep "mcp__playwright"
 1. Log in to HubSpot
 2. Go to Settings → Integrations → Private Apps
 3. Click "Create a private app"
-4. Name it "Claude LinkedIn Skills Suite"
+4. Name it "Codex LinkedIn Skills Suite"
 5. Grant scopes:
    - `crm.objects.contacts` (Read/Write)
    - `crm.objects.companies` (Read/Write)
@@ -133,7 +133,7 @@ cd crm-integration
 pip install -r requirements.txt
 ```
 
-**Step 4: Register with Claude Code**
+**Step 4: Register with Codex Code**
 
 1. Copy the MCP configuration template:
 ```bash
@@ -178,13 +178,13 @@ cp .mcp.json.example .mcp.json
 }
 ```
 
-**Note:** The `${VARIABLE}` syntax tells Claude Code to read values from your `.env` file.
+**Note:** The `${VARIABLE}` syntax tells Codex Code to read values from your `.env` file.
 
 **Step 4: Setup HubSpot Properties**
 
 Run the setup command to create custom LinkedIn pipeline properties:
 ```
-In Claude Code: "setup hubspot properties"
+In Codex Code: "setup hubspot properties"
 ```
 
 This creates custom fields:
@@ -196,7 +196,7 @@ This creates custom fields:
 
 **Verification:**
 ```bash
-# In Claude Code, check if HubSpot tools are available
+# In Codex Code, check if HubSpot tools are available
 /tools | grep "hubspot"
 ```
 
@@ -222,7 +222,7 @@ Only install this if you plan to use video creation skills (`instagram-reel-crea
 npm install -g @modelcontextprotocol/server-kling
 ```
 
-**Step 3: Configure Claude Code**
+**Step 3: Configure Codex Code**
 
 Add to your `mcp.json`:
 ```json
@@ -256,7 +256,7 @@ Add to your `mcp.json`:
 ❌ CRM sync
 ❌ Video creation
 
-### With Claude in Chrome Only:
+### With Chrome DevTools MCP Only:
 ✅ Everything above, plus:
 ✅ Automated LinkedIn posting
 ✅ Automated commenting
@@ -266,14 +266,14 @@ Add to your `mcp.json`:
 ❌ CRM sync
 ❌ Video creation
 
-### With Claude in Chrome + HubSpot CRM:
+### With Chrome DevTools MCP + HubSpot CRM:
 ✅ Everything above, plus:
 ✅ Auto-sync prospects to HubSpot
 ✅ Pipeline tracking
 ✅ Engagement logging as CRM notes
 ✅ Deal stage automation
 
-### With Claude in Chrome + Kling AI:
+### With Chrome DevTools MCP + Kling AI:
 ✅ Everything above, plus:
 ✅ AI-generated Instagram Reels
 ✅ Short-form video creation
@@ -283,42 +283,42 @@ Add to your `mcp.json`:
 
 ## Testing Your Setup
 
-Run these commands in Claude Code to verify each integration:
+Run these commands in Codex Code to verify each integration:
 
 **Test Browser Automation:**
 ```
-In Claude: "Check if browser automation is available"
+In Codex: "Check if browser automation is available"
 ```
 
 **Test HubSpot CRM (if installed):**
 ```
-In Claude: "Get my HubSpot pipeline summary"
+In Codex: "Get my HubSpot pipeline summary"
 ```
 
 **Test Video Creation (if installed):**
 ```
-In Claude: "Check Kling AI connection"
+In Codex: "Check Kling AI connection"
 ```
 
 ---
 
 ## Troubleshooting
 
-### Claude in Chrome Not Connecting
+### Chrome DevTools MCP Not Connecting
 1. Ensure Chrome extension is installed and pinned
 2. Check if extension is enabled in Chrome settings
-3. Restart Claude Code
-4. Try clicking the extension icon and selecting "Connect to Claude Code"
+3. Restart Codex Code
+4. Try clicking the extension icon and selecting "Connect to Codex Code"
 
 ### HubSpot CRM Tools Not Available
 1. Verify API key is correct in `mcp.json`
 2. Check HubSpot Private App has correct scopes
 3. Ensure Python dependencies are installed
-4. Check MCP server logs: `~/.claude/logs/mcp-hubspot-crm.log`
+4. Check MCP server logs: `~/.codex/logs/mcp-hubspot-crm.log`
 
 ### Playwright Fallback Not Working
-- Playwright is built-in to Claude Code, no action needed
-- If skills fail, ensure Claude Code is updated to latest version
+- Playwright is built-in to Codex Code, no action needed
+- If skills fail, ensure Codex Code is updated to latest version
 
 ### Kling AI Not Responding
 1. Verify API key is valid
@@ -332,7 +332,7 @@ In Claude: "Check Kling AI connection"
 After setting up MCPs, run the onboarding skill to customize the suite for your business:
 
 ```
-In Claude Code: "/skill linkedin-onboarding"
+In Codex Code: "/skill linkedin-onboarding"
 ```
 
 This will guide you through configuring:
@@ -346,17 +346,17 @@ This will guide you through configuring:
 
 ## Support
 
-**Documentation:** https://github.com/nexiusdev/linkedin-skills-suite/wiki
-**Issues:** https://github.com/nexiusdev/linkedin-skills-suite/issues
+**Documentation:** https://github.com/<your-org>/linkedin-skills-suite/wiki
+**Issues:** https://github.com/<your-org>/linkedin-skills-suite/issues
 **Community:** [Your Discord/Slack link]
 
 ---
 
 ## Next Steps
 
-1. ✅ Install required browser automation (Claude in Chrome)
+1. ✅ Install required browser automation (Chrome DevTools MCP)
 2. ⚙️ Run `/skill linkedin-onboarding` to customize
-3. 🚀 Start with: `In Claude: "start linkedin"` for daily automation
+3. 🚀 Start with: `In Codex: "start linkedin"` for daily automation
 4. 📊 Optional: Install HubSpot CRM for pipeline tracking
 5. 🎥 Optional: Install Kling AI for video content creation
 

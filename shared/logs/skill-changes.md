@@ -297,7 +297,7 @@ These changes have not been committed yet:
 
 | File | Status | Changes |
 |------|--------|---------|
-| `.claude/settings.local.json` | Modified | Session settings |
+| `\.codex/settings.local.json` | Modified | Session settings |
 | `linkedin-daily-planner/skill.md` | Modified | Minor updates |
 | `shared/linkedin-account-config.md` | Modified | Account config updates |
 | `shared/logs/icp-prospects.md` | Modified | New prospects added |

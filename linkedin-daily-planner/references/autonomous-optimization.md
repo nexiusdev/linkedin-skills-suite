@@ -393,7 +393,7 @@ Before starting autonomous workflow, verify:
 - [ ] Daily limits status checked (`shared/logs/linkedin-activity.md`)
 - [ ] Profile cache available (`shared/logs/icp-prospects.md`)
 - [ ] Blacklist checked (`shared/logs/linkedin-blacklist.md`)
-- [ ] Browser automation ready (Claude for Chrome or DevTools)
+- [ ] Browser automation ready (Chrome DevTools MCP)
 
 During execution, never:
 

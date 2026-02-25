@@ -42,7 +42,7 @@ npm --version
 codex --version
 ```
 
-5. Browser automation MCP available (`chrome-devtools` or `playwright`)
+5. Browser automation MCP available (`chrome-devtools` by default, `playwright` as fallback)
 6. A LinkedIn account you will operate from (Free, Premium, or Sales Navigator)
 7. Optional integrations ready if needed:
    - HubSpot account + private app token (for CRM sync)
@@ -53,7 +53,7 @@ codex --version
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/nexiusdev/linkedin-skills-suite.git
+git clone https://github.com/<your-org>/linkedin-skills-suite.git
 cd linkedin-skills-suite
 
 # 2. Run setup to create local config files
@@ -197,7 +197,7 @@ linkedin-skills-suite/
 ## Requirements
 
 - Codex-compatible agent runtime
-- Browser automation MCP (for example `chrome-devtools` or `playwright`)
+- Browser automation MCP (use `chrome-devtools` by default; keep `playwright` as fallback)
 - LinkedIn account (Free, Premium, or Sales Navigator supported)
 
 ## Skill Format

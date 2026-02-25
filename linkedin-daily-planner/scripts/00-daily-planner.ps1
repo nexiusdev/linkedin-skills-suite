@@ -7,8 +7,8 @@ $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
 try {
     Add-Content -Path $logFile -Value "[$timestamp] Starting daily planner..."
 
-    # Invoke claude-code to run the linkedin-daily-planner skill
-    $result = & claude-code "/linkedin-daily-planner" 2>&1
+    # Invoke codex to run the linkedin-daily-planner skill
+    $result = & codex "/linkedin-daily-planner" 2>&1
 
     Add-Content -Path $logFile -Value "[$timestamp] Daily planner completed"
     Add-Content -Path $logFile -Value $result

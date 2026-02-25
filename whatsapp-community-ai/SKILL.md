@@ -1,11 +1,11 @@
 ---
 name: whatsapp-community-ai
-description: Manage the "{{CLIENT_COMMUNITY_NAME}}" WhatsApp community group by posting AI news content and driving engagement. Use when user says "post ai news", "whatsapp community", "share ai update", "ai ignite", or wants to drive engagement in the {{CLIENT_COMMUNITY_NAME}} group with latest AI developments. Integrates with x-trender and linkedin-trender to find news-worthy content from past 24 hours. Posts include source URLs from major news platforms. Multiple posts are spaced 4 hours apart. Also monitors chat for unanswered questions and auto-replies with thoughtful responses. Use "monitor ai ignite" or "check ai ignite" to scan for questions needing answers.
+description: Manage the "{{CLIENT_COMMUNITY_NAME}}" WhatsApp community group by posting AI news content and driving engagement. Use when user says "post ai news", "whatsapp community", "share ai update", "{{CLIENT_COMMUNITY_NAME}}", or wants to drive engagement in the {{CLIENT_COMMUNITY_NAME}} group with latest AI developments. Integrates with x-trender and linkedin-trender to find news-worthy content from past 24 hours. Posts include source URLs from major news platforms. Multiple posts are spaced 4 hours apart. Also monitors chat for unanswered questions and auto-replies with thoughtful responses. Use "monitor {{CLIENT_COMMUNITY_NAME}}" or "check {{CLIENT_COMMUNITY_NAME}}" to scan for questions needing answers.
 ---
 
 # WhatsApp Community AI News Manager
 
-Drive engagement in the **{{CLIENT_COMMUNITY_NAME}}** WhatsApp community by sharing curated AI news and encouraging member reactions and discussions. Designed for browser MCP (Chrome DevTools or Playwright) workflow.
+Drive engagement in the **{{CLIENT_COMMUNITY_NAME}}** WhatsApp community by sharing curated AI news and encouraging member reactions and discussions. Designed for Chrome DevTools MCP (default; Playwright fallback) workflow.
 
 **Target Group: {{CLIENT_COMMUNITY_NAME}}** (only post to this group)
 
@@ -19,8 +19,8 @@ Activate when user says:
 - "community engagement"
 - "post to whatsapp group"
 - "find ai news to share"
-- "ai ignite"
-- "post to ai ignite"
+- "{{CLIENT_COMMUNITY_NAME}}"
+- "post to {{CLIENT_COMMUNITY_NAME}}"
 
 ## Core Objectives
 
@@ -42,7 +42,7 @@ Invoke the `x-trender` skill to find:
 - Viral AI discussions
 
 **X.com Filter for AI News:**
-- Keywords: AI, artificial intelligence, ChatGPT, Claude, GPT, LLM, machine learning, neural network, agentic AI, AI agents, automation, robotics
+- Keywords: AI, artificial intelligence, ChatGPT, Codex, GPT, LLM, machine learning, neural network, agentic AI, AI agents, automation, robotics
 - Source priority: Individual thought leaders > News outlets > Company announcements
 - Engagement threshold: 100+ likes, 20+ retweets
 
@@ -84,7 +84,7 @@ If trend sources lack breaking news, search these platforms:
 Score each potential news item:
 
 **High Priority (Post Immediately):**
-- Breaking: Major AI model releases (GPT-5, Claude updates, Gemini, etc.)
+- Breaking: Major AI model releases (GPT-5, Codex updates, Gemini, etc.)
 - Industry-shifting announcements (regulations, major acquisitions)
 - Viral discussions with broad implications
 - Score: 8-10/10
@@ -200,7 +200,7 @@ Post 2: 13:00 {{CLIENT_TIMEZONE}} (Lunch slot - 4 hours later)
 Post 3: 18:00 {{CLIENT_TIMEZONE}} (Evening slot - 5 hours later)
 ```
 
-## Step 5: Post to WhatsApp via browser MCP (Chrome DevTools or Playwright)
+## Step 5: Post to WhatsApp via Chrome DevTools MCP (default; Playwright fallback)
 
 ### Target Group
 
@@ -310,9 +310,9 @@ https://linkedin.com/posts/[post-id]
 ### Example 3: Practical Application
 
 ```
-⚙️ This startup is using Claude to automate 80% of their customer support
+⚙️ This startup is using Codex to automate 80% of their customer support
 
-They shared their exact workflow: Claude reads emails → classifies intent → drafts responses → human reviews only exceptions
+They shared their exact workflow: Codex reads emails → classifies intent → drafts responses → human reviews only exceptions
 
 Cost savings: 60%. Customer satisfaction: Actually improved.
 
@@ -421,7 +421,7 @@ When triggered with "start whatsapp news" or "autonomous whatsapp":
 [10:05] ✓ Posted to WhatsApp community
 [10:05] ✓ Logged to shared activity log
 
-[10:05] Item 2/2: "Claude Agent SDK Launch"
+[10:05] Item 2/2: "Codex Agent SDK Launch"
 [10:05] ⏳ Queued for 14:00 {{CLIENT_TIMEZONE}} (4h spacing)
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -459,8 +459,8 @@ Next post: 14:00 {{CLIENT_TIMEZONE}}
 ### Trigger
 
 Activate monitoring when user says:
-- "monitor ai ignite"
-- "check ai ignite"
+- "monitor {{CLIENT_COMMUNITY_NAME}}"
+- "check {{CLIENT_COMMUNITY_NAME}}"
 - "watch whatsapp"
 - "auto-reply whatsapp"
 - "start monitoring"
@@ -545,7 +545,7 @@ Engage with interesting messages from other members by sharing thoughtful perspe
 
 Keywords to watch:
 - "agentic AI", "AI agents", "autonomous AI"
-- "Claude", "Anthropic", "GPT", "OpenAI"
+- "Codex", "Anthropic", "GPT", "OpenAI"
 - "automation", "workflow automation"
 - "SME", "small business AI"
 - "ERP", "CRM", "finance automation"
@@ -611,11 +611,11 @@ Keywords to watch:
 
 ### Response Examples
 
-**Question:** "Has anyone tried Claude for customer support automation?"
+**Question:** "Has anyone tried Codex for customer support automation?"
 
 **Good Response:**
 ```
-Yes! Claude works well for support - especially ticket classification and draft responses. The key is starting with a narrow use case (like FAQ responses) before expanding. What type of support are you looking to automate?
+Yes! Codex works well for support - especially ticket classification and draft responses. The key is starting with a narrow use case (like FAQ responses) before expanding. What type of support are you looking to automate?
 ```
 
 **Question:** "What's the difference between RAG and fine-tuning?"
@@ -629,7 +629,7 @@ RAG retrieves external docs at query time (good for current info, no retraining 
 
 **Good Response:**
 ```
-Depends on the use case! For docs/writing: Claude or ChatGPT. For no-code automation: Make.com or Zapier with AI steps. For customer comms: Intercom or Freshdesk AI. What specific workflow are you trying to improve?
+Depends on the use case! For docs/writing: Codex or ChatGPT. For no-code automation: Make.com or Zapier with AI steps. For customer comms: Intercom or Freshdesk AI. What specific workflow are you trying to improve?
 ```
 
 ### POV Response Examples
@@ -666,7 +666,7 @@ This is huge for agentic commerce. Standardized APIs mean AI agents can actually
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🔍 AI IGNITE MONITOR - START
+🔍 {{CLIENT_COMMUNITY_NAME}} MONITOR - START
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 [HH:MM] Opening WhatsApp Web...
@@ -677,7 +677,7 @@ This is huge for agentic commerce. Standardized APIs mean AI agents can actually
 
 📋 UNANSWERED QUESTIONS (2 found):
 
-1. [Member A] "How do I integrate Claude API with my app?"
+1. [Member A] "How do I integrate Codex API with my app?"
    → Generating answer...
    → Sent ✓
 
@@ -692,7 +692,7 @@ This is huge for agentic commerce. Standardized APIs mean AI agents can actually
    → Generating thoughtful POV...
    → Sent ✓
 
-2. [Member D] shared: "Just tried Claude's new computer use - mind blown"
+2. [Member D] shared: "Just tried Codex's new computer use - mind blown"
    → Context check: 1 reply agreeing, can add technical insight
    → Generating thoughtful POV...
    → Sent ✓
@@ -773,7 +773,7 @@ To avoid appearing spammy:
 #### News Posting Automation (10 AM & 8 PM, Weekdays)
 
 **Script:** `scripts/post-ai-news.ps1`
-**Task Name:** `AI-Ignite-News-Poster`
+**Task Name:** `Community-News-Poster`
 **Schedule:** 10:00 AM and 8:00 PM {{CLIENT_TIMEZONE}}, Monday-Friday only
 
 To set up, run:
@@ -784,13 +784,13 @@ powershell -ExecutionPolicy Bypass -File "{{CLIENT_WORKSPACE_ROOT}}\whatsapp-com
 Task management:
 ```powershell
 # Verify task
-Get-ScheduledTask -TaskName 'AI-Ignite-News-Poster'
+Get-ScheduledTask -TaskName 'Community-News-Poster'
 
 # Disable task
-Disable-ScheduledTask -TaskName 'AI-Ignite-News-Poster'
+Disable-ScheduledTask -TaskName 'Community-News-Poster'
 
 # Remove task
-Unregister-ScheduledTask -TaskName 'AI-Ignite-News-Poster'
+Unregister-ScheduledTask -TaskName 'Community-News-Poster'
 ```
 
 #### Monitoring Automation (Every 15 mins)
@@ -819,7 +819,7 @@ Features:
 
 Run monitoring manually anytime:
 ```
-claude "monitor ai ignite"
+codex "monitor {{CLIENT_COMMUNITY_NAME}}"
 ```
 
 **Scripts Location:**
@@ -827,7 +827,7 @@ claude "monitor ai ignite"
 scripts/
 ├── start-monitor.bat      # Double-click to start loop
 ├── monitor-loop.ps1       # Continuous 15-min loop
-└── monitor-ai-ignite.ps1  # Single run (for manual use)
+└── monitor-community.ps1  # Single run (for manual use)
 ```
 
 ### Manual Override
@@ -835,4 +835,4 @@ scripts/
 User can always:
 - Say "stop monitoring" to pause auto-replies
 - Say "skip this question" to ignore specific messages
-- Say "check ai ignite" to run an immediate scan
+- Say "check {{CLIENT_COMMUNITY_NAME}}" to run an immediate scan

@@ -93,7 +93,7 @@ Add Windows Toast notifications before each block:
 
 # Show Windows notification
 $notify = New-Object -ComObject WScript.Shell
-$notify.Popup("LinkedIn $TimeBlock Block starting!`n`nOpen Claude Code to continue.", 10, "LinkedIn Daily Planner", 64)
+$notify.Popup("LinkedIn $TimeBlock Block starting!`n`nOpen Codex Code to continue.", 10, "LinkedIn Daily Planner", 64)
 ```
 
 ## Alternative: Single Daily Trigger
@@ -140,10 +140,10 @@ Unregister-ScheduledTask -TaskName "LinkedIn-Evening" -Confirm:$false
 - Ensure PowerShell execution policy allows scripts
 - Run manually first to test
 
-**Claude Code doesn't open:**
-- Ensure `claude` is in your PATH
-- Try full path: `C:\Users\{{CLIENT_LOCAL_USER}}\.claude\bin\claude.exe`
+**Codex Code doesn't open:**
+- Ensure `Codex` is in your PATH
+- Try full path: `C:\Users\{{CLIENT_LOCAL_USER}}\\.codex\bin\Codex.exe`
 
 **Browser not ready:**
-- Claude for Chrome must be open and logged in
+- Chrome DevTools MCP must be open and logged in
 - Consider adding a delay at script start

@@ -1,11 +1,11 @@
 ---
 name: linkedin-image-generator
-description: Generate images for LinkedIn posts using Gemini via browser MCP (Chrome DevTools or Playwright). Use when linkedin-elite-post creates content that needs visual assets (schemas, diagrams, conceptual images). Automatically crafts effective prompts, navigates to Gemini, generates images, and saves them locally for post scheduling.
+description: Generate images for LinkedIn posts using Gemini via Chrome DevTools MCP (default; Playwright fallback). Use when linkedin-elite-post creates content that needs visual assets (schemas, diagrams, conceptual images). Automatically crafts effective prompts, navigates to Gemini, generates images, and saves them locally for post scheduling.
 ---
 
 # LinkedIn Image Generator
 
-Generate professional images for LinkedIn posts using Google Gemini via browser MCP (Chrome DevTools or Playwright) browser automation.
+Generate professional images for LinkedIn posts using Google Gemini via Chrome DevTools MCP (default; Playwright fallback) browser automation.
 
 ## Trigger
 
@@ -24,7 +24,7 @@ Generate professional images for LinkedIn posts using Google Gemini via browser 
 
 - Chrome browser with Gemini tab available (gemini.google.com)
 - User logged into Google account with Gemini access
-- browser MCP (Chrome DevTools or Playwright) MCP tools available
+- Chrome DevTools MCP (default; Playwright fallback) MCP tools available
 
 ## Image Types by Post Mode
 
@@ -101,7 +101,7 @@ Do NOT include:
 - Hard to read text
 ```
 
-### Step 4: Generate Image via Gemini (browser MCP (Chrome DevTools or Playwright))
+### Step 4: Generate Image via Gemini (Chrome DevTools MCP (default; Playwright fallback))
 
 **Browser Automation Steps:**
 
@@ -306,7 +306,7 @@ When linkedin-elite-post generates a Save-Worthy Asset or any post needing visua
 5. **Capture screenshot** of the generated image (store screenshot ID)
 6. **Navigate to LinkedIn** and open post composer
 7. **Use upload_image tool** to attach the screenshot directly
-8. **Proceed to scheduling** via browser MCP (Chrome DevTools or Playwright)
+8. **Proceed to scheduling** via Chrome DevTools MCP (default; Playwright fallback)
 
 User can override at any point: "use variation 2" or "regenerate image"
 
@@ -328,7 +328,7 @@ The `upload_image` MCP tool bypasses the native OS file picker by:
    ========================================
    ```
 
-## browser MCP (Chrome DevTools or Playwright) Element References
+## Chrome DevTools MCP (default; Playwright fallback) Element References
 
 **Gemini interface elements:**
 

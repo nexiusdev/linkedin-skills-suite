@@ -1,5 +1,5 @@
 # LinkedIn Daily Planner - Automated Launcher
-# This script launches Claude Code with the daily planner at scheduled times
+# This script launches Codex Code with the daily planner at scheduled times
 # Set up with Windows Task Scheduler for automation
 
 param(
@@ -58,16 +58,16 @@ Write-Host ""
 Write-Host "Time: $(Get-Date -Format 'HH:mm')" -ForegroundColor Yellow
 Write-Host "Block: $TimeBlock" -ForegroundColor Yellow
 Write-Host ""
-Write-Host "Launching Claude Code with prompt:" -ForegroundColor Green
+Write-Host "Launching Codex Code with prompt:" -ForegroundColor Green
 Write-Host $prompt -ForegroundColor White
 Write-Host ""
 
-# Launch Claude Code with the prompt
-# Option 1: Interactive mode (opens Claude Code for user interaction)
-claude --print "$prompt"
+# Launch Codex Code with the prompt
+# Option 1: Interactive mode (opens Codex Code for user interaction)
+Codex --print "$prompt"
 
 # Note: The above command prints the prompt. User can copy/paste or
-# modify to use: claude "$prompt" for direct execution
+# modify to use: Codex "$prompt" for direct execution
 
 Write-Host ""
 Write-Host "============================================" -ForegroundColor Cyan

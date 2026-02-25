@@ -1,11 +1,11 @@
 ---
 name: reddit-trender
-description: Analyze Reddit to identify trending topics and discussions for content creation. Use when user says "find trending on Reddit", "what's hot on Reddit", "Reddit trends", "analyze Reddit", or wants to discover what discussions are resonating today. Works with browser MCP (Chrome DevTools or Playwright) - navigates to Reddit popular/all to find trending posts. Filters for high-engagement discussions from relevant subreddits (technology, business, AI, startups). Outputs trending topic recommendations with angle suggestions for cross-platform content creation.
+description: Analyze Reddit to identify trending topics and discussions for content creation. Use when user says "find trending on Reddit", "what's hot on Reddit", "Reddit trends", "analyze Reddit", or wants to discover what discussions are resonating today. Works with Chrome DevTools MCP (default; Playwright fallback) - navigates to Reddit popular/all to find trending posts. Filters for high-engagement discussions from relevant subreddits (technology, business, AI, startups). Outputs trending topic recommendations with angle suggestions for cross-platform content creation.
 ---
 
 # Reddit Trending Analysis
 
-Analyze Reddit to identify trending topics and discussions worth creating content about. Designed for browser MCP (Chrome DevTools or Playwright) workflow.
+Analyze Reddit to identify trending topics and discussions worth creating content about. Designed for Chrome DevTools MCP (default; Playwright fallback) workflow.
 
 ## Trigger
 
@@ -18,7 +18,7 @@ Activate when user says:
 
 ## Step 1: Navigate to Reddit
 
-Using browser MCP (Chrome DevTools or Playwright), navigate to Reddit:
+Using Chrome DevTools MCP (default; Playwright fallback), navigate to Reddit:
 
 **Primary sources (check in order):**
 1. `reddit.com/r/popular` - Popular across all of Reddit

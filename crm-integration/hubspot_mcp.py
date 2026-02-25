@@ -40,7 +40,7 @@ GETPROSPECT_MONTHLY_LIMIT = 50
 PROSPEO_MONTHLY_LIMIT = 100
 ICP_PROSPECTS_PATH = Path(os.environ.get(
     "ICP_PROSPECTS_PATH",
-    str(Path.home() / ".claude" / "skills" / "shared" / "logs" / "icp-prospects.md")
+    str(Path.home() / ".codex" / "skills" / "shared" / "logs" / "icp-prospects.md")
 ))
 
 # Custom HubSpot properties to create

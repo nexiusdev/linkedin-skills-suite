@@ -29,7 +29,7 @@ AUTONOMOUS MODE - Execute without asking questions:
 1. Check current time block and what tasks are due
 2. Read shared activity log for today's progress
 3. Execute all pending tasks for current block
-4. Use Claude for Chrome to perform LinkedIn actions
+4. Use Chrome DevTools MCP to perform LinkedIn actions
 5. Auto-select best variations for posts and comments
 6. Log all activities to shared log
 7. Move to next task until block is complete
@@ -50,8 +50,8 @@ Write-Host "  Day: $day" -ForegroundColor Yellow
 Write-Host "  Time: $(Get-Date -Format 'HH:mm')" -ForegroundColor Yellow
 Write-Host "  Block: $block" -ForegroundColor Yellow
 Write-Host ""
-Write-Host "  Starting Claude Code..." -ForegroundColor Green
+Write-Host "  Starting Codex Code..." -ForegroundColor Green
 Write-Host ""
 
-# Launch Claude Code with autonomous prompt
-claude "$prompt"
+# Launch Codex Code with autonomous prompt
+Codex "$prompt"

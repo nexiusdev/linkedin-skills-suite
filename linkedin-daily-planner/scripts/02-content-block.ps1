@@ -9,7 +9,7 @@ try {
 
     # Execute content block tasks
     $prompt = "Resume LinkedIn daily plan - execute content block tasks"
-    $result = & claude-code $prompt 2>&1
+    $result = & codex $prompt 2>&1
 
     Add-Content -Path $logFile -Value "[$timestamp] Content block completed"
     Add-Content -Path $logFile -Value $result
